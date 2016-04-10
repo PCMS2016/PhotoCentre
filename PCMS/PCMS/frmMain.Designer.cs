@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD
+
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-=======
+
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
->>>>>>> origin/master
+
             this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSpecialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +46,7 @@
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-<<<<<<< HEAD
+
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewSpecialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -129,28 +129,27 @@
             this.staffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
->>>>>>> origin/master
+
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
-<<<<<<< HEAD
-=======
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel4.SuspendLayout();
->>>>>>> origin/master
+
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
-<<<<<<< HEAD
+
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
-=======
+
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
->>>>>>> origin/master
+
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -179,11 +178,11 @@
             // 
             this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newOrderToolStripMenuItem});
-<<<<<<< HEAD
+
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
             this.orderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.orderToolStripMenuItem.Text = "Order";
-=======
+
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.helpToolStripMenuItem.Text = "Order";
@@ -193,7 +192,7 @@
             this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
             this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.newOrderToolStripMenuItem.Text = "New Order";
->>>>>>> origin/master
+
             // 
             // refundToolStripMenuItem
             // 
@@ -258,7 +257,7 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-<<<<<<< HEAD
+
             // newOrderToolStripMenuItem
             // 
             this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
@@ -270,7 +269,7 @@
             this.viewSpecialsToolStripMenuItem.Name = "viewSpecialsToolStripMenuItem";
             this.viewSpecialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewSpecialsToolStripMenuItem.Text = "View Specials";
-=======
+
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Menu;
@@ -299,7 +298,7 @@
             this.button6.TabIndex = 0;
             this.button6.Text = "New Order";
             this.button6.UseVisualStyleBackColor = true;
->>>>>>> origin/master
+
             // 
             // panel2
             // 
@@ -309,7 +308,7 @@
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Location = new System.Drawing.Point(15, 58);
             this.panel2.Name = "panel2";
-<<<<<<< HEAD
+
             this.panel2.Size = new System.Drawing.Size(150, 579);
             this.panel2.TabIndex = 6;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
@@ -490,7 +489,7 @@
             this.btnComplete.TabIndex = 3;
             this.btnComplete.Text = "Order Complete";
             this.btnComplete.UseVisualStyleBackColor = true;
-=======
+
             this.panel2.Size = new System.Drawing.Size(799, 264);
             this.panel2.TabIndex = 1;
             // 
@@ -538,11 +537,11 @@
             this.button4.TabIndex = 1;
             this.button4.Text = "Today";
             this.button4.UseVisualStyleBackColor = true;
->>>>>>> origin/master
+
             // 
             // dateTimePicker1
             // 
-<<<<<<< HEAD
+
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 25);
             this.label1.Name = "label1";
@@ -643,7 +642,7 @@
             this.tbxOrderNumber.Name = "tbxOrderNumber";
             this.tbxOrderNumber.Size = new System.Drawing.Size(181, 20);
             this.tbxOrderNumber.TabIndex = 2;
-=======
+
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(7, 25);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -718,11 +717,11 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search Order#";
->>>>>>> origin/master
+
             // 
             // button3
             // 
-<<<<<<< HEAD
+
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 198);
             this.label7.Name = "label7";
@@ -794,7 +793,7 @@
             this.tsbtnRefund.Size = new System.Drawing.Size(65, 22);
             this.tsbtnRefund.Text = "Refund";
             this.tsbtnRefund.Click += new System.EventHandler(this.tsbtnRefund_Click);
-=======
+
             this.button3.Location = new System.Drawing.Point(39, 60);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
@@ -1005,7 +1004,7 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editToolStripMenuItem.Text = "Edit";
->>>>>>> origin/master
+
             // 
             // frmMain
             // 
@@ -1024,19 +1023,18 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
-<<<<<<< HEAD
-=======
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
->>>>>>> origin/master
+
+           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+           // this.panel4.ResumeLayout(false);
+            //this.panel4.PerformLayout();
+
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel3.ResumeLayout(false);
-<<<<<<< HEAD
+
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).EndInit();
@@ -1046,10 +1044,10 @@
             this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-=======
+
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
->>>>>>> origin/master
+           // ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1079,7 +1077,7 @@
         private System.Windows.Forms.TextBox tbxSurnameSearch;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-<<<<<<< HEAD
+
         private System.Windows.Forms.TextBox tbxNameSearch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnOrderSearch;
@@ -1110,16 +1108,16 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton tsbtnRefund;
-=======
+
         private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewSpecialsToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
+       // private System.Windows.Forms.ToolStripMenuItem viewSpecialsToolStripMenuItem;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripMenuItem staffToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
->>>>>>> origin/master
+
     }
 }
 
