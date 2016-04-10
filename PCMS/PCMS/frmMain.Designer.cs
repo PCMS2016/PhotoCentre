@@ -1,4 +1,6 @@
-﻿namespace PCMS
+﻿using System.Windows.Forms;
+
+namespace PCMS
 {
     partial class frmMain
     {
@@ -35,7 +37,7 @@
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newOrderToolStripMenuItem = new ToolStripMenuItem();
 
             this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.specialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1118,6 +1120,7 @@
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
 
+        public ToolStripMenuItem helpToolStripMenuItem { get; private set; }
     }
 }
 
