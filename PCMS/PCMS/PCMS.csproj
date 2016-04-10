@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRefund.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRefund.Designer.cs">
+      <DependentUpon>frmRefund.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSpecials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSpecials.Designer.cs">
+      <DependentUpon>frmSpecials.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
       <SubType>Form</SubType>
@@ -60,8 +78,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRefund.resx">
+      <DependentUpon>frmRefund.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSpecials.resx">
+      <DependentUpon>frmSpecials.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>

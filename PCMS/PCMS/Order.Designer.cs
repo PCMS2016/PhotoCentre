@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Order));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,12 +70,17 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -124,7 +130,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 52);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(290, 503);
             this.groupBox1.TabIndex = 1;
@@ -146,7 +152,7 @@
             this.groupBox3.Controls.Add(this.comboBox4);
             this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.dataGridView2);
-            this.groupBox3.Location = new System.Drawing.Point(308, 27);
+            this.groupBox3.Location = new System.Drawing.Point(308, 52);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(494, 434);
             this.groupBox3.TabIndex = 3;
@@ -439,7 +445,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(716, 467);
+            this.button7.Location = new System.Drawing.Point(716, 496);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 54);
             this.button7.TabIndex = 4;
@@ -448,19 +454,58 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(635, 467);
+            this.button8.Location = new System.Drawing.Point(635, 496);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 54);
             this.button8.TabIndex = 5;
             this.button8.Text = "VOID";
             this.button8.UseVisualStyleBackColor = true;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(438, 509);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(88, 24);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Total : R";
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(814, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(54, 22);
+            this.toolStripButton1.Text = "Main";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 564);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(814, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(814, 539);
+            this.ClientSize = new System.Drawing.Size(814, 586);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.groupBox3);
@@ -478,6 +523,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -526,5 +573,9 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }

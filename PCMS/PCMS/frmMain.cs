@@ -26,5 +26,16 @@ namespace PCMS
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tsbtnRefund_Click(object sender, EventArgs e)
+        {
+            frmRefund Refund = new frmRefund();
+            Refund.ShowDialog();
+        }
     }
 }
