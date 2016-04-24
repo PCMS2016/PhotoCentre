@@ -11,9 +11,9 @@ using MetroFramework.Forms;
 
 namespace PCMS
 {
-    public partial class frmRefund : MetroForm
+    public partial class frmSettings : MetroForm 
     {
-        public frmRefund()
+        public frmSettings()
         {
             InitializeComponent();
         }

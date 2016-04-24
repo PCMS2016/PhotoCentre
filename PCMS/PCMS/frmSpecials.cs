@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace PCMS
 {
-    public partial class frmSpecials : Form
+    public partial class frmSpecials : MetroForm 
     {
         public frmSpecials()
         {

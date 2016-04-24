@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace PCMS
 {
-    public partial class Order : Form
+    public partial class frmOrder : MetroForm 
     {
-        public Order()
+        public frmOrder()
         {
             InitializeComponent();
         }
@@ -21,5 +22,7 @@ namespace PCMS
         {
 
         }
+
+
     }
 }

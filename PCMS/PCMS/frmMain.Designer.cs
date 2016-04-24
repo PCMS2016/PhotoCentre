@@ -28,603 +28,902 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gbxDateSearch = new System.Windows.Forms.GroupBox();
+            this.dtpDateSearch = new MetroFramework.Controls.MetroDateTime();
+            this.btnToday = new MetroFramework.Controls.MetroButton();
+            this.gbxCustomerSearch = new System.Windows.Forms.GroupBox();
+            this.btnCustomerSearch = new MetroFramework.Controls.MetroButton();
+            this.tbxSurname = new MetroFramework.Controls.MetroTextBox();
+            this.tbxName = new MetroFramework.Controls.MetroTextBox();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.gbxOrderSearch = new System.Windows.Forms.GroupBox();
+            this.btnOrderSearch = new MetroFramework.Controls.MetroButton();
+            this.tbxOrderNumber = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btbCollected = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnCompleted = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.lblSalesperson = new MetroFramework.Controls.MetroLabel();
+            this.lblCollection = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.lblCompletion = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
+            this.lblTime = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.lblDate = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.lblCustomer = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.lblOrderNumber = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.dgvOrderLines = new MetroFramework.Controls.MetroGrid();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvOrders = new MetroFramework.Controls.MetroGrid();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSearchOrders = new System.Windows.Forms.Label();
+            this.mstrpMain = new System.Windows.Forms.MenuStrip();
+            this.tsiFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiTransactions = new System.Windows.Forms.ToolStripMenuItem();
+            this.tileNewOrder = new MetroFramework.Controls.MetroTile();
+            this.tileRefund = new MetroFramework.Controls.MetroTile();
+            this.tileReports = new MetroFramework.Controls.MetroTile();
+            this.tileSettings = new MetroFramework.Controls.MetroTile();
+            this.tsiNewOrder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiRefund = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiAdmin = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiReports = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.specialToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viewSpecialsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.staffToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.helpToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tileLogout = new MetroFramework.Controls.MetroTile();
+            this.tileSpecials = new MetroFramework.Controls.MetroTile();
+            this.gbxDateSearch.SuspendLayout();
+            this.gbxCustomerSearch.SuspendLayout();
+            this.gbxOrderSearch.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
+            this.mstrpMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // gbxDateSearch
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.Menu;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
+            this.gbxDateSearch.BackColor = System.Drawing.Color.Transparent;
+            this.gbxDateSearch.Controls.Add(this.dtpDateSearch);
+            this.gbxDateSearch.Controls.Add(this.btnToday);
+            this.gbxDateSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.gbxDateSearch.Location = new System.Drawing.Point(13, 463);
+            this.gbxDateSearch.Name = "gbxDateSearch";
+            this.gbxDateSearch.Size = new System.Drawing.Size(153, 109);
+            this.gbxDateSearch.TabIndex = 7;
+            this.gbxDateSearch.TabStop = false;
+            this.gbxDateSearch.Text = "Date";
+            // 
+            // dtpDateSearch
+            // 
+            this.dtpDateSearch.CustomFormat = "dd/MM/yyyy";
+            this.dtpDateSearch.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDateSearch.Location = new System.Drawing.Point(7, 26);
+            this.dtpDateSearch.MinimumSize = new System.Drawing.Size(0, 29);
+            this.dtpDateSearch.Name = "dtpDateSearch";
+            this.dtpDateSearch.Size = new System.Drawing.Size(140, 29);
+            this.dtpDateSearch.TabIndex = 4;
+            // 
+            // btnToday
+            // 
+            this.btnToday.Location = new System.Drawing.Point(39, 69);
+            this.btnToday.Name = "btnToday";
+            this.btnToday.Size = new System.Drawing.Size(75, 23);
+            this.btnToday.TabIndex = 3;
+            this.btnToday.Text = "Today";
+            this.btnToday.UseSelectable = true;
+            // 
+            // gbxCustomerSearch
+            // 
+            this.gbxCustomerSearch.BackColor = System.Drawing.Color.Transparent;
+            this.gbxCustomerSearch.Controls.Add(this.btnCustomerSearch);
+            this.gbxCustomerSearch.Controls.Add(this.tbxSurname);
+            this.gbxCustomerSearch.Controls.Add(this.tbxName);
+            this.gbxCustomerSearch.Controls.Add(this.lblSurname);
+            this.gbxCustomerSearch.Controls.Add(this.lblName);
+            this.gbxCustomerSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.gbxCustomerSearch.Location = new System.Drawing.Point(13, 292);
+            this.gbxCustomerSearch.Name = "gbxCustomerSearch";
+            this.gbxCustomerSearch.Size = new System.Drawing.Size(153, 166);
+            this.gbxCustomerSearch.TabIndex = 8;
+            this.gbxCustomerSearch.TabStop = false;
+            this.gbxCustomerSearch.Text = "Customer";
+            // 
+            // btnCustomerSearch
+            // 
+            this.btnCustomerSearch.Location = new System.Drawing.Point(39, 128);
+            this.btnCustomerSearch.Name = "btnCustomerSearch";
+            this.btnCustomerSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnCustomerSearch.TabIndex = 3;
+            this.btnCustomerSearch.Text = "Search";
+            this.btnCustomerSearch.UseSelectable = true;
+            // 
+            // tbxSurname
+            // 
+            // 
+            // 
+            // 
+            this.tbxSurname.CustomButton.Image = null;
+            this.tbxSurname.CustomButton.Location = new System.Drawing.Point(118, 1);
+            this.tbxSurname.CustomButton.Name = "";
+            this.tbxSurname.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbxSurname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxSurname.CustomButton.TabIndex = 1;
+            this.tbxSurname.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxSurname.CustomButton.UseSelectable = true;
+            this.tbxSurname.CustomButton.Visible = false;
+            this.tbxSurname.Lines = new string[0];
+            this.tbxSurname.Location = new System.Drawing.Point(7, 93);
+            this.tbxSurname.MaxLength = 32767;
+            this.tbxSurname.Name = "tbxSurname";
+            this.tbxSurname.PasswordChar = '\0';
+            this.tbxSurname.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxSurname.SelectedText = "";
+            this.tbxSurname.SelectionLength = 0;
+            this.tbxSurname.SelectionStart = 0;
+            this.tbxSurname.ShortcutsEnabled = true;
+            this.tbxSurname.Size = new System.Drawing.Size(140, 23);
+            this.tbxSurname.TabIndex = 2;
+            this.tbxSurname.UseSelectable = true;
+            this.tbxSurname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxSurname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // tbxName
+            // 
+            // 
+            // 
+            // 
+            this.tbxName.CustomButton.Image = null;
+            this.tbxName.CustomButton.Location = new System.Drawing.Point(118, 1);
+            this.tbxName.CustomButton.Name = "";
+            this.tbxName.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbxName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxName.CustomButton.TabIndex = 1;
+            this.tbxName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxName.CustomButton.UseSelectable = true;
+            this.tbxName.CustomButton.Visible = false;
+            this.tbxName.Lines = new string[0];
+            this.tbxName.Location = new System.Drawing.Point(7, 44);
+            this.tbxName.MaxLength = 32767;
+            this.tbxName.Name = "tbxName";
+            this.tbxName.PasswordChar = '\0';
+            this.tbxName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxName.SelectedText = "";
+            this.tbxName.SelectionLength = 0;
+            this.tbxName.SelectionStart = 0;
+            this.tbxName.ShortcutsEnabled = true;
+            this.tbxName.Size = new System.Drawing.Size(140, 23);
+            this.tbxName.TabIndex = 2;
+            this.tbxName.UseSelectable = true;
+            this.tbxName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // lblSurname
+            // 
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(8, 75);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(55, 15);
+            this.lblSurname.TabIndex = 2;
+            this.lblSurname.Text = "Surname";
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(8, 25);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(39, 15);
+            this.lblName.TabIndex = 1;
+            this.lblName.Text = "Name";
+            // 
+            // gbxOrderSearch
+            // 
+            this.gbxOrderSearch.BackColor = System.Drawing.Color.Transparent;
+            this.gbxOrderSearch.Controls.Add(this.btnOrderSearch);
+            this.gbxOrderSearch.Controls.Add(this.tbxOrderNumber);
+            this.gbxOrderSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbxOrderSearch.Location = new System.Drawing.Point(13, 197);
+            this.gbxOrderSearch.Name = "gbxOrderSearch";
+            this.gbxOrderSearch.Size = new System.Drawing.Size(153, 93);
+            this.gbxOrderSearch.TabIndex = 9;
+            this.gbxOrderSearch.TabStop = false;
+            this.gbxOrderSearch.Text = "Order#";
+            // 
+            // btnOrderSearch
+            // 
+            this.btnOrderSearch.Location = new System.Drawing.Point(39, 56);
+            this.btnOrderSearch.Name = "btnOrderSearch";
+            this.btnOrderSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnOrderSearch.TabIndex = 3;
+            this.btnOrderSearch.Text = "Search";
+            this.btnOrderSearch.UseSelectable = true;
+            // 
+            // tbxOrderNumber
+            // 
+            // 
+            // 
+            // 
+            this.tbxOrderNumber.CustomButton.Image = null;
+            this.tbxOrderNumber.CustomButton.Location = new System.Drawing.Point(118, 1);
+            this.tbxOrderNumber.CustomButton.Name = "";
+            this.tbxOrderNumber.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.tbxOrderNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxOrderNumber.CustomButton.TabIndex = 1;
+            this.tbxOrderNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxOrderNumber.CustomButton.UseSelectable = true;
+            this.tbxOrderNumber.CustomButton.Visible = false;
+            this.tbxOrderNumber.Lines = new string[0];
+            this.tbxOrderNumber.Location = new System.Drawing.Point(7, 21);
+            this.tbxOrderNumber.MaxLength = 32767;
+            this.tbxOrderNumber.Name = "tbxOrderNumber";
+            this.tbxOrderNumber.PasswordChar = '\0';
+            this.tbxOrderNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxOrderNumber.SelectedText = "";
+            this.tbxOrderNumber.SelectionLength = 0;
+            this.tbxOrderNumber.SelectionStart = 0;
+            this.tbxOrderNumber.ShortcutsEnabled = true;
+            this.tbxOrderNumber.Size = new System.Drawing.Size(140, 23);
+            this.tbxOrderNumber.TabIndex = 2;
+            this.tbxOrderNumber.UseSelectable = true;
+            this.tbxOrderNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxOrderNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.BackColor = System.Drawing.Color.YellowGreen;
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.metroPanel1.Controls.Add(this.btbCollected);
+            this.metroPanel1.Controls.Add(this.btnCompleted);
+            this.metroPanel1.Controls.Add(this.lblSalesperson);
+            this.metroPanel1.Controls.Add(this.lblCollection);
+            this.metroPanel1.Controls.Add(this.metroLabel9);
+            this.metroPanel1.Controls.Add(this.lblCompletion);
+            this.metroPanel1.Controls.Add(this.metroLabel8);
+            this.metroPanel1.Controls.Add(this.lblTime);
+            this.metroPanel1.Controls.Add(this.metroLabel7);
+            this.metroPanel1.Controls.Add(this.lblDate);
+            this.metroPanel1.Controls.Add(this.metroLabel6);
+            this.metroPanel1.Controls.Add(this.lblCustomer);
+            this.metroPanel1.Controls.Add(this.metroLabel5);
+            this.metroPanel1.Controls.Add(this.lblOrderNumber);
+            this.metroPanel1.Controls.Add(this.metroLabel4);
+            this.metroPanel1.Controls.Add(this.metroLabel3);
+            this.metroPanel1.Controls.Add(this.metroLabel2);
+            this.metroPanel1.Controls.Add(this.dgvOrderLines);
+            this.metroPanel1.Controls.Add(this.dgvOrders);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(172, 180);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(798, 651);
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel1.TabIndex = 10;
+            this.metroPanel1.UseStyleColors = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // btbCollected
+            // 
+            this.btbCollected.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btbCollected.Image = null;
+            this.btbCollected.Location = new System.Drawing.Point(169, 592);
+            this.btbCollected.Name = "btbCollected";
+            this.btbCollected.Size = new System.Drawing.Size(101, 41);
+            this.btbCollected.TabIndex = 6;
+            this.btbCollected.Text = "Collected";
+            this.btbCollected.UseSelectable = true;
+            this.btbCollected.UseVisualStyleBackColor = true;
+            // 
+            // btnCompleted
+            // 
+            this.btnCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCompleted.Image = null;
+            this.btnCompleted.Location = new System.Drawing.Point(49, 592);
+            this.btnCompleted.Name = "btnCompleted";
+            this.btnCompleted.Size = new System.Drawing.Size(101, 41);
+            this.btnCompleted.TabIndex = 6;
+            this.btnCompleted.Text = "Completed";
+            this.btnCompleted.UseSelectable = true;
+            this.btnCompleted.UseVisualStyleBackColor = true;
+            // 
+            // lblSalesperson
+            // 
+            this.lblSalesperson.AutoSize = true;
+            this.lblSalesperson.Location = new System.Drawing.Point(150, 565);
+            this.lblSalesperson.Name = "lblSalesperson";
+            this.lblSalesperson.Size = new System.Drawing.Size(0, 0);
+            this.lblSalesperson.TabIndex = 5;
+            // 
+            // lblCollection
+            // 
+            this.lblCollection.AutoSize = true;
+            this.lblCollection.Location = new System.Drawing.Point(150, 538);
+            this.lblCollection.Name = "lblCollection";
+            this.lblCollection.Size = new System.Drawing.Size(0, 0);
+            this.lblCollection.TabIndex = 5;
+            // 
+            // metroLabel9
+            // 
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(17, 565);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel9.TabIndex = 5;
+            this.metroLabel9.Text = "Salesperson:";
+            // 
+            // lblCompletion
+            // 
+            this.lblCompletion.AutoSize = true;
+            this.lblCompletion.Location = new System.Drawing.Point(150, 511);
+            this.lblCompletion.Name = "lblCompletion";
+            this.lblCompletion.Size = new System.Drawing.Size(0, 0);
+            this.lblCompletion.TabIndex = 5;
+            // 
+            // metroLabel8
+            // 
+            this.metroLabel8.AutoSize = true;
+            this.metroLabel8.Location = new System.Drawing.Point(17, 538);
+            this.metroLabel8.Name = "metroLabel8";
+            this.metroLabel8.Size = new System.Drawing.Size(108, 19);
+            this.metroLabel8.TabIndex = 5;
+            this.metroLabel8.Text = "Collection Status:";
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(150, 484);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(0, 0);
+            this.lblTime.TabIndex = 5;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.Location = new System.Drawing.Point(17, 511);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(119, 19);
+            this.metroLabel7.TabIndex = 5;
+            this.metroLabel7.Text = "Completion Status:";
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(150, 457);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(0, 0);
+            this.lblDate.TabIndex = 5;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.AutoSize = true;
+            this.metroLabel6.Location = new System.Drawing.Point(17, 484);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(41, 19);
+            this.metroLabel6.TabIndex = 5;
+            this.metroLabel6.Text = "Time:";
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(150, 430);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(0, 0);
+            this.lblCustomer.TabIndex = 5;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.AutoSize = true;
+            this.metroLabel5.Location = new System.Drawing.Point(17, 457);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(39, 19);
+            this.metroLabel5.TabIndex = 5;
+            this.metroLabel5.Text = "Date:";
+            // 
+            // lblOrderNumber
+            // 
+            this.lblOrderNumber.AutoSize = true;
+            this.lblOrderNumber.Location = new System.Drawing.Point(150, 403);
+            this.lblOrderNumber.Name = "lblOrderNumber";
+            this.lblOrderNumber.Size = new System.Drawing.Size(0, 0);
+            this.lblOrderNumber.TabIndex = 5;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Location = new System.Drawing.Point(17, 430);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel4.TabIndex = 5;
+            this.metroLabel4.Text = "Customer:";
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(17, 403);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(56, 19);
+            this.metroLabel3.TabIndex = 5;
+            this.metroLabel3.Text = "Order#:";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.Location = new System.Drawing.Point(17, 5);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel2.TabIndex = 4;
+            this.metroLabel2.Text = "ORDERS";
+            // 
+            // dgvOrderLines
+            // 
+            this.dgvOrderLines.AllowUserToAddRows = false;
+            this.dgvOrderLines.AllowUserToDeleteRows = false;
+            this.dgvOrderLines.AllowUserToResizeRows = false;
+            this.dgvOrderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrderLines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvOrderLines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvOrderLines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvOrderLines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgvOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrderLines.DefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvOrderLines.EnableHeadersVisualStyles = false;
+            this.dgvOrderLines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvOrderLines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvOrderLines.Location = new System.Drawing.Point(320, 392);
+            this.dgvOrderLines.Name = "dgvOrderLines";
+            this.dgvOrderLines.ReadOnly = true;
+            this.dgvOrderLines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrderLines.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvOrderLines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvOrderLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrderLines.Size = new System.Drawing.Size(465, 241);
+            this.dgvOrderLines.TabIndex = 3;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Product";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Quantity";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Price";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Instructions";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            // 
+            // dgvOrders
+            // 
+            this.dgvOrders.AllowUserToAddRows = false;
+            this.dgvOrders.AllowUserToDeleteRows = false;
+            this.dgvOrders.AllowUserToResizeRows = false;
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvOrders.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvOrders.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7});
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOrders.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvOrders.EnableHeadersVisualStyles = false;
+            this.dgvOrders.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvOrders.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvOrders.Location = new System.Drawing.Point(6, 31);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.ReadOnly = true;
+            this.dgvOrders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOrders.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dgvOrders.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrders.Size = new System.Drawing.Size(782, 347);
+            this.dgvOrders.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Order#";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Customer";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Date";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Time";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Completion";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Collection";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Salesperson";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // lblSearchOrders
+            // 
+            this.lblSearchOrders.AutoSize = true;
+            this.lblSearchOrders.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchOrders.Location = new System.Drawing.Point(23, 166);
+            this.lblSearchOrders.Name = "lblSearchOrders";
+            this.lblSearchOrders.Size = new System.Drawing.Size(139, 21);
+            this.lblSearchOrders.TabIndex = 11;
+            this.lblSearchOrders.Text = "Search Orders By...";
+            // 
+            // mstrpMain
+            // 
+            this.mstrpMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiFile,
+            this.tsiTransactions,
+            this.tsiAdmin,
+            this.tsiAbout});
+            this.mstrpMain.Location = new System.Drawing.Point(20, 60);
+            this.mstrpMain.Name = "mstrpMain";
+            this.mstrpMain.Size = new System.Drawing.Size(942, 24);
+            this.mstrpMain.TabIndex = 12;
+            this.mstrpMain.Text = "menuStrip1";
+            // 
+            // tsiFile
+            // 
+            this.tsiFile.Name = "tsiFile";
+            this.tsiFile.Size = new System.Drawing.Size(37, 20);
+            this.tsiFile.Text = "File";
+            // 
+            // tsiTransactions
+            // 
+            this.tsiTransactions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiNewOrder,
+            this.tsiRefund});
+            this.tsiTransactions.Name = "tsiTransactions";
+            this.tsiTransactions.Size = new System.Drawing.Size(85, 20);
+            this.tsiTransactions.Text = "Transactions";
+            // 
+            // tileNewOrder
+            // 
+            this.tileNewOrder.ActiveControl = null;
+            this.tileNewOrder.Location = new System.Drawing.Point(20, 102);
+            this.tileNewOrder.Name = "tileNewOrder";
+            this.tileNewOrder.Size = new System.Drawing.Size(86, 58);
+            this.tileNewOrder.TabIndex = 13;
+            this.tileNewOrder.Text = "New Order";
+            this.tileNewOrder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileNewOrder.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileNewOrder.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileNewOrder.UseSelectable = true;
+            this.tileNewOrder.Click += new System.EventHandler(this.tileNewOrder_Click);
+            // 
+            // tileRefund
+            // 
+            this.tileRefund.ActiveControl = null;
+            this.tileRefund.Location = new System.Drawing.Point(112, 102);
+            this.tileRefund.Name = "tileRefund";
+            this.tileRefund.Size = new System.Drawing.Size(86, 58);
+            this.tileRefund.TabIndex = 13;
+            this.tileRefund.Text = "Refund";
+            this.tileRefund.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileRefund.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileRefund.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileRefund.UseSelectable = true;
+            this.tileRefund.Click += new System.EventHandler(this.tileRefund_Click);
+            // 
+            // tileReports
+            // 
+            this.tileReports.ActiveControl = null;
+            this.tileReports.Location = new System.Drawing.Point(690, 102);
+            this.tileReports.Name = "tileReports";
+            this.tileReports.Size = new System.Drawing.Size(86, 58);
+            this.tileReports.TabIndex = 13;
+            this.tileReports.Text = "Reports";
+            this.tileReports.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileReports.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileReports.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileReports.UseSelectable = true;
+            this.tileReports.Click += new System.EventHandler(this.tileReports_Click);
+            // 
+            // tileSettings
+            // 
+            this.tileSettings.ActiveControl = null;
+            this.tileSettings.Location = new System.Drawing.Point(782, 102);
+            this.tileSettings.Name = "tileSettings";
+            this.tileSettings.Size = new System.Drawing.Size(86, 58);
+            this.tileSettings.TabIndex = 13;
+            this.tileSettings.Text = "Settings";
+            this.tileSettings.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileSettings.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileSettings.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileSettings.UseSelectable = true;
+            this.tileSettings.Click += new System.EventHandler(this.tileSettings_Click);
+            // 
+            // tsiNewOrder
+            // 
+            this.tsiNewOrder.Name = "tsiNewOrder";
+            this.tsiNewOrder.Size = new System.Drawing.Size(152, 22);
+            this.tsiNewOrder.Text = "New Order";
+            // 
+            // tsiRefund
+            // 
+            this.tsiRefund.Name = "tsiRefund";
+            this.tsiRefund.Size = new System.Drawing.Size(152, 22);
+            this.tsiRefund.Text = "Refund";
+            // 
+            // tsiAdmin
+            // 
+            this.tsiAdmin.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsiReports,
+            this.tsiSettings});
+            this.tsiAdmin.Name = "tsiAdmin";
+            this.tsiAdmin.Size = new System.Drawing.Size(55, 20);
+            this.tsiAdmin.Text = "Admin";
+            // 
+            // tsiReports
+            // 
+            this.tsiReports.Name = "tsiReports";
+            this.tsiReports.Size = new System.Drawing.Size(116, 22);
+            this.tsiReports.Text = "Reports";
+            // 
+            // tsiSettings
+            // 
+            this.tsiSettings.Name = "tsiSettings";
+            this.tsiSettings.Size = new System.Drawing.Size(116, 22);
+            this.tsiSettings.Text = "Settings";
+            // 
+            // tsiAbout
+            // 
+            this.tsiAbout.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripMenuItem,
-            this.refundToolStripMenuItem,
-            this.specialToolStripMenuItem,
-            this.adminToolStripMenuItem,
-            this.helpToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(982, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.aboutToolStripMenuItem1});
+            this.tsiAbout.Name = "tsiAbout";
+            this.tsiAbout.Size = new System.Drawing.Size(52, 20);
+            this.tsiAbout.Text = "About";
             // 
             // helpToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newOrderToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.helpToolStripMenuItem.Text = "Order";
-            // 
-            // newOrderToolStripMenuItem
-            // 
-            this.newOrderToolStripMenuItem.Name = "newOrderToolStripMenuItem";
-            this.newOrderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newOrderToolStripMenuItem.Text = "New Order";
-            // 
-            // refundToolStripMenuItem
-            // 
-            this.refundToolStripMenuItem.Name = "refundToolStripMenuItem";
-            this.refundToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.refundToolStripMenuItem.Text = "Refund";
-            // 
-            // specialToolStripMenuItem
-            // 
-            this.specialToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewSpecialsToolStripMenuItem});
-            this.specialToolStripMenuItem.Name = "specialToolStripMenuItem";
-            this.specialToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.specialToolStripMenuItem.Text = "Special";
-            // 
-            // viewSpecialsToolStripMenuItem
-            // 
-            this.viewSpecialsToolStripMenuItem.Name = "viewSpecialsToolStripMenuItem";
-            this.viewSpecialsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.viewSpecialsToolStripMenuItem.Text = "View Specials";
-            // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.reportsToolStripMenuItem,
-            this.settingsToolStripMenuItem,
-            this.staffToolStripMenuItem});
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // reportsToolStripMenuItem
-            // 
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // settingsToolStripMenuItem
-            // 
-            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.settingsToolStripMenuItem.Text = "Settings";
-            // 
-            // staffToolStripMenuItem
-            // 
-            this.staffToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.staffToolStripMenuItem.Name = "staffToolStripMenuItem";
-            this.staffToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.staffToolStripMenuItem.Text = "Staff";
-            // 
-            // addToolStripMenuItem
-            // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addToolStripMenuItem.Text = "Add";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            // 
-            // helpToolStripMenuItem1
-            // 
-            this.helpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem2,
-            this.aboutToolStripMenuItem});
-            this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem1.Text = "Help";
-            // 
-            // helpToolStripMenuItem2
-            // 
-            this.helpToolStripMenuItem2.Name = "helpToolStripMenuItem2";
-            this.helpToolStripMenuItem2.Size = new System.Drawing.Size(107, 22);
-            this.helpToolStripMenuItem2.Text = "Help";
-            // 
-            // aboutToolStripMenuItem
-            // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(790, 285);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(982, 25);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(84, 22);
-            this.toolStripButton1.Text = "New Order";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(65, 22);
-            this.toolStripButton2.Text = "Refund";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.dataGridView1);
-            this.groupBox4.Location = new System.Drawing.Point(171, 52);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(799, 310);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Orders";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.button2);
-            this.groupBox5.Controls.Add(this.button1);
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.textBox4);
-            this.groupBox5.Controls.Add(this.textBox3);
-            this.groupBox5.Controls.Add(this.textBox2);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.textBox1);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.label3);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.dataGridView2);
-            this.groupBox5.Location = new System.Drawing.Point(171, 362);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(799, 276);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Order Details";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(164, 223);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(126, 41);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Order Collected";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(29, 223);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 41);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Order Complete";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(120, 192);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(186, 20);
-            this.textBox7.TabIndex = 20;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(120, 164);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(186, 20);
-            this.textBox6.TabIndex = 19;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(120, 135);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(186, 20);
-            this.textBox5.TabIndex = 18;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(120, 106);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(186, 20);
-            this.textBox4.TabIndex = 17;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(120, 77);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 20);
-            this.textBox3.TabIndex = 15;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(120, 48);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(186, 20);
-            this.textBox2.TabIndex = 21;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 195);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Salesperson";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(120, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 20);
-            this.textBox1.TabIndex = 16;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 167);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(86, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Collection Status";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 138);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Completion Status";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 109);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Time";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Date";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Customer";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Onder#";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(318, 11);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(475, 260);
-            this.dataGridView2.TabIndex = 7;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.Menu;
-            this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 318);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(153, 100);
-            this.groupBox3.TabIndex = 7;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Search Date";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(39, 61);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Today";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(7, 25);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(140, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.SystemColors.Menu;
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Location = new System.Drawing.Point(12, 152);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(153, 166);
-            this.groupBox2.TabIndex = 8;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search Customer";
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(39, 126);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Search";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(7, 91);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(140, 20);
-            this.textBox10.TabIndex = 3;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(8, 74);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Surname";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 24);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 1;
-            this.label9.Text = "Name";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(7, 41);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(140, 20);
-            this.textBox9.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Location = new System.Drawing.Point(12, 52);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(153, 100);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Search Order#";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(39, 60);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Search";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(7, 28);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(140, 20);
-            this.textBox8.TabIndex = 0;
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Text = "About";
+            // 
+            // tileLogout
+            // 
+            this.tileLogout.ActiveControl = null;
+            this.tileLogout.Location = new System.Drawing.Point(874, 102);
+            this.tileLogout.Name = "tileLogout";
+            this.tileLogout.Size = new System.Drawing.Size(86, 58);
+            this.tileLogout.TabIndex = 13;
+            this.tileLogout.Text = "Logout";
+            this.tileLogout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileLogout.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileLogout.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileLogout.UseSelectable = true;
+            // 
+            // tileSpecials
+            // 
+            this.tileSpecials.ActiveControl = null;
+            this.tileSpecials.Location = new System.Drawing.Point(204, 102);
+            this.tileSpecials.Name = "tileSpecials";
+            this.tileSpecials.Size = new System.Drawing.Size(86, 58);
+            this.tileSpecials.TabIndex = 14;
+            this.tileSpecials.Text = "Specials";
+            this.tileSpecials.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileSpecials.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileSpecials.UseSelectable = true;
+            this.tileSpecials.Click += new System.EventHandler(this.tileSpecials_Click);
             // 
             // frmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Menu;
-            this.ClientSize = new System.Drawing.Size(982, 650);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(982, 848);
+            this.Controls.Add(this.tileSpecials);
+            this.Controls.Add(this.tileLogout);
+            this.Controls.Add(this.tileSettings);
+            this.Controls.Add(this.tileReports);
+            this.Controls.Add(this.tileRefund);
+            this.Controls.Add(this.tileNewOrder);
+            this.Controls.Add(this.lblSearchOrders);
+            this.Controls.Add(this.metroPanel1);
+            this.Controls.Add(this.gbxDateSearch);
+            this.Controls.Add(this.gbxCustomerSearch);
+            this.Controls.Add(this.gbxOrderSearch);
+            this.Controls.Add(this.mstrpMain);
             this.Name = "frmMain";
-            this.Text = "Form1";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Text = "Welcome";
+            this.gbxDateSearch.ResumeLayout(false);
+            this.gbxCustomerSearch.ResumeLayout(false);
+            this.gbxCustomerSearch.PerformLayout();
+            this.gbxOrderSearch.ResumeLayout(false);
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
+            this.mstrpMain.ResumeLayout(false);
+            this.mstrpMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.GroupBox gbxDateSearch;
+        private System.Windows.Forms.GroupBox gbxCustomerSearch;
+        private System.Windows.Forms.Label lblSurname;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.GroupBox gbxOrderSearch;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroGrid dgvOrderLines;
+        private MetroFramework.Controls.MetroGrid dgvOrders;
+        private MetroFramework.Controls.MetroLabel lblSalesperson;
+        private MetroFramework.Controls.MetroLabel lblCollection;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroLabel lblCompletion;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroLabel lblTime;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private MetroFramework.Controls.MetroLabel lblDate;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel lblCustomer;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel lblOrderNumber;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btbCollected;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnCompleted;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private MetroFramework.Controls.MetroDateTime dtpDateSearch;
+        private MetroFramework.Controls.MetroButton btnToday;
+        private MetroFramework.Controls.MetroButton btnCustomerSearch;
+        private MetroFramework.Controls.MetroTextBox tbxSurname;
+        private MetroFramework.Controls.MetroTextBox tbxName;
+        private MetroFramework.Controls.MetroButton btnOrderSearch;
+        private MetroFramework.Controls.MetroTextBox tbxOrderNumber;
+        private System.Windows.Forms.Label lblSearchOrders;
+        private System.Windows.Forms.MenuStrip mstrpMain;
+        private System.Windows.Forms.ToolStripMenuItem tsiFile;
+        private System.Windows.Forms.ToolStripMenuItem tsiTransactions;
+        private MetroFramework.Controls.MetroTile tileNewOrder;
+        private MetroFramework.Controls.MetroTile tileRefund;
+        private MetroFramework.Controls.MetroTile tileReports;
+        private MetroFramework.Controls.MetroTile tileSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsiNewOrder;
+        private System.Windows.Forms.ToolStripMenuItem tsiRefund;
+        private System.Windows.Forms.ToolStripMenuItem tsiAdmin;
+        private System.Windows.Forms.ToolStripMenuItem tsiReports;
+        private System.Windows.Forms.ToolStripMenuItem tsiSettings;
+        private System.Windows.Forms.ToolStripMenuItem tsiAbout;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem refundToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem specialToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStripMenuItem newOrderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewSpecialsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem staffToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
+        private MetroFramework.Controls.MetroTile tileLogout;
+        private MetroFramework.Controls.MetroTile tileSpecials;
     }
 }

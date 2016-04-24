@@ -7,35 +7,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace PCMS
 {
-    public partial class frmMain : Form
+    public partial class frmMain : MetroForm 
     {
-        public frmMain()
+        public frmMain(string user)
         {
             InitializeComponent();
+            this.Text += " " + user;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void tileNewOrder_Click(object sender, EventArgs e)
         {
-
+            frmOrder Order = new frmOrder();
+            Order.ShowDialog();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void tsbtnRefund_Click(object sender, EventArgs e)
+        private void tileRefund_Click(object sender, EventArgs e)
         {
             frmRefund Refund = new frmRefund();
             Refund.ShowDialog();
+        }
+
+        private void tileReports_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tileSettings_Click(object sender, EventArgs e)
+        {
+            frmSettings Settings = new frmSettings();
+            Settings.ShowDialog();
+        }
+
+        private void tileSpecials_Click(object sender, EventArgs e)
+        {
+            frmSpecials Specials = new frmSpecials();
+            Specials.ShowDialog();
         }
     }
 }

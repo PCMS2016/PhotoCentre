@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetroFramework.Forms;
 
 namespace PCMS
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : MetroForm
     {
         public frmLogin()
         {
@@ -22,10 +23,10 @@ namespace PCMS
 
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            frmMain Main = new frmMain();
-            Main.ShowDialog();        
+            frmMain Main = new frmMain("Wynand");
+            Main.ShowDialog();
         }
     }
 }
