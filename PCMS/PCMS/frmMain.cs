@@ -33,7 +33,8 @@ namespace PCMS
 
         private void tileReports_Click(object sender, EventArgs e)
         {
-            
+            frmReports Reports = new frmReports();
+            Reports.ShowDialog();
         }
 
         private void tileSettings_Click(object sender, EventArgs e)

@@ -17,5 +17,16 @@ namespace PCMS
         {
             InitializeComponent();
         }
+
+        private void metroGrid6_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void frmReports_Load(object sender, EventArgs e)
+        {
+            dtpYear.ShowUpDown = true;
+            
+        }
     }
 }
