@@ -25,7 +25,7 @@ namespace PCMS
 
         private void frmReports_Load(object sender, EventArgs e)
         {
-            dtpYear.ShowUpDown = true;
+            
             
         }
     }
