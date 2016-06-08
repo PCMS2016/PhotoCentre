@@ -17,5 +17,16 @@ namespace PCMS
         {
             InitializeComponent();
         }
+
+        private void frmSpecials_Load(object sender, EventArgs e)
+        {
+            /*
+            dgvSpecials.Rows.Add();
+            dgvSpecials.Rows[0].Cells[0].Value = "A4 Photo";
+            dgvSpecials.Rows[0].Cells[1].Value = "5 May 2016";
+            dgvSpecials.Rows[0].Cells[2].Value = "9 May 2016";
+            dgvSpecials.Rows[0].Cells[3].Value = "R 15.00";
+            */
+        }
     }
 }

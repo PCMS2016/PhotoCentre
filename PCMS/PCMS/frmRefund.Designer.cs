@@ -36,14 +36,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.metroTextButton1 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
             this.tbxInstructions = new MetroFramework.Controls.MetroTextBox();
             this.dgvOrderLines = new MetroFramework.Controls.MetroGrid();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblInstructions = new MetroFramework.Controls.MetroLabel();
             this.lblInstructions2 = new MetroFramework.Controls.MetroLabel();
             this.lblProduct = new MetroFramework.Controls.MetroLabel();
@@ -52,15 +57,11 @@
             this.lblQuantity = new MetroFramework.Controls.MetroLabel();
             this.lblPrice2 = new MetroFramework.Controls.MetroLabel();
             this.lblQuantity2 = new MetroFramework.Controls.MetroLabel();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblDate = new MetroFramework.Controls.MetroLabel();
             this.lblSalesperson = new MetroFramework.Controls.MetroLabel();
             this.lblTime = new MetroFramework.Controls.MetroLabel();
             this.lblOrderNumber = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -69,28 +70,27 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.metroTextButton4 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblRefundTotal = new MetroFramework.Controls.MetroLabel();
+            this.dgvRefundItems = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroTextButton4 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroTextButton1 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRefundItems)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -136,14 +136,17 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // numericUpDown2
+            // metroTextButton1
             // 
-            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown2.Location = new System.Drawing.Point(180, 279);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(100, 29);
-            this.numericUpDown2.TabIndex = 25;
+            this.metroTextButton1.Image = null;
+            this.metroTextButton1.Location = new System.Drawing.Point(906, 489);
+            this.metroTextButton1.Name = "metroTextButton1";
+            this.metroTextButton1.Size = new System.Drawing.Size(157, 57);
+            this.metroTextButton1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTextButton1.TabIndex = 36;
+            this.metroTextButton1.Text = "FINISH TRANSACTION";
+            this.metroTextButton1.UseSelectable = true;
+            this.metroTextButton1.UseVisualStyleBackColor = true;
             // 
             // metroLabel9
             // 
@@ -181,6 +184,15 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numericUpDown2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown2.Location = new System.Drawing.Point(180, 279);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(100, 29);
+            this.numericUpDown2.TabIndex = 25;
             // 
             // metroLabel2
             // 
@@ -220,7 +232,6 @@
             this.metroTextBox2.Multiline = true;
             this.metroTextBox2.Name = "metroTextBox2";
             this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ReadOnly = true;
             this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.metroTextBox2.SelectedText = "";
             this.metroTextBox2.SelectionLength = 0;
@@ -316,6 +327,30 @@
             this.dgvOrderLines.Size = new System.Drawing.Size(465, 241);
             this.dgvOrderLines.TabIndex = 4;
             // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Product";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Quantity";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Price";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Instructions";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
             // lblInstructions
             // 
             this.lblInstructions.AutoSize = true;
@@ -384,18 +419,6 @@
             this.lblQuantity2.TabIndex = 20;
             this.lblQuantity2.Text = "Quantity:";
             // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Product";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Price";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -457,18 +480,6 @@
             this.metroTextBox1.UseSelectable = true;
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Instructions";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Quantity";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
             // 
             // metroLabel3
             // 
@@ -551,11 +562,32 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // metroButton3
+            // 
+            this.metroButton3.Location = new System.Drawing.Point(974, 477);
+            this.metroButton3.Name = "metroButton3";
+            this.metroButton3.Size = new System.Drawing.Size(88, 57);
+            this.metroButton3.TabIndex = 14;
+            this.metroButton3.Text = "VOID";
+            this.metroButton3.UseSelectable = true;
+            // 
+            // metroTextButton4
+            // 
+            this.metroTextButton4.Image = null;
+            this.metroTextButton4.Location = new System.Drawing.Point(870, 477);
+            this.metroTextButton4.Name = "metroTextButton4";
+            this.metroTextButton4.Size = new System.Drawing.Size(88, 57);
+            this.metroTextButton4.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTextButton4.TabIndex = 13;
+            this.metroTextButton4.Text = "REFUND";
+            this.metroTextButton4.UseSelectable = true;
+            this.metroTextButton4.UseVisualStyleBackColor = true;
+            // 
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel2.Controls.Add(this.metroLabel12);
-            this.metroPanel2.Controls.Add(this.metroGrid1);
+            this.metroPanel2.Controls.Add(this.lblRefundTotal);
+            this.metroPanel2.Controls.Add(this.dgvRefundItems);
             this.metroPanel2.HorizontalScrollbarBarColor = true;
             this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel2.HorizontalScrollbarSize = 10;
@@ -567,16 +599,27 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // metroGrid1
+            // lblRefundTotal
             // 
-            this.metroGrid1.AllowUserToAddRows = false;
-            this.metroGrid1.AllowUserToDeleteRows = false;
-            this.metroGrid1.AllowUserToResizeRows = false;
-            this.metroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.lblRefundTotal.AutoSize = true;
+            this.lblRefundTotal.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.lblRefundTotal.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.lblRefundTotal.Location = new System.Drawing.Point(862, 387);
+            this.lblRefundTotal.Name = "lblRefundTotal";
+            this.lblRefundTotal.Size = new System.Drawing.Size(69, 25);
+            this.lblRefundTotal.TabIndex = 4;
+            this.lblRefundTotal.Text = "Total: R";
+            // 
+            // dgvRefundItems
+            // 
+            this.dgvRefundItems.AllowUserToAddRows = false;
+            this.dgvRefundItems.AllowUserToDeleteRows = false;
+            this.dgvRefundItems.AllowUserToResizeRows = false;
+            this.dgvRefundItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRefundItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRefundItems.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRefundItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvRefundItems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -584,9 +627,9 @@
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRefundItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvRefundItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRefundItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column12,
@@ -598,14 +641,14 @@
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.metroGrid1.EnableHeadersVisualStyles = false;
-            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(26, 13);
-            this.metroGrid1.Name = "metroGrid1";
-            this.metroGrid1.ReadOnly = true;
-            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRefundItems.DefaultCellStyle = dataGridViewCellStyle11;
+            this.dgvRefundItems.EnableHeadersVisualStyles = false;
+            this.dgvRefundItems.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvRefundItems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRefundItems.Location = new System.Drawing.Point(26, 13);
+            this.dgvRefundItems.Name = "dgvRefundItems";
+            this.dgvRefundItems.ReadOnly = true;
+            this.dgvRefundItems.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -613,35 +656,11 @@
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(1035, 343);
-            this.metroGrid1.TabIndex = 2;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Product";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Quantity";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Price";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Instructions";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.dgvRefundItems.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dgvRefundItems.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvRefundItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRefundItems.Size = new System.Drawing.Size(1035, 343);
+            this.dgvRefundItems.TabIndex = 2;
             // 
             // Column1
             // 
@@ -671,49 +690,29 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
-            // metroLabel12
+            // Column8
             // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel12.Location = new System.Drawing.Point(862, 387);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(69, 25);
-            this.metroLabel12.TabIndex = 4;
-            this.metroLabel12.Text = "Total: R";
+            this.Column8.HeaderText = "Product";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
             // 
-            // metroButton3
+            // Column10
             // 
-            this.metroButton3.Location = new System.Drawing.Point(974, 477);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(88, 57);
-            this.metroButton3.TabIndex = 14;
-            this.metroButton3.Text = "VOID";
-            this.metroButton3.UseSelectable = true;
+            this.Column10.HeaderText = "Price";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
-            // metroTextButton4
+            // Column11
             // 
-            this.metroTextButton4.Image = null;
-            this.metroTextButton4.Location = new System.Drawing.Point(870, 477);
-            this.metroTextButton4.Name = "metroTextButton4";
-            this.metroTextButton4.Size = new System.Drawing.Size(88, 57);
-            this.metroTextButton4.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTextButton4.TabIndex = 13;
-            this.metroTextButton4.Text = "REFUND";
-            this.metroTextButton4.UseSelectable = true;
-            this.metroTextButton4.UseVisualStyleBackColor = true;
+            this.Column11.HeaderText = "Instructions";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
             // 
-            // metroTextButton1
+            // Column9
             // 
-            this.metroTextButton1.Image = null;
-            this.metroTextButton1.Location = new System.Drawing.Point(906, 489);
-            this.metroTextButton1.Name = "metroTextButton1";
-            this.metroTextButton1.Size = new System.Drawing.Size(157, 57);
-            this.metroTextButton1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTextButton1.TabIndex = 36;
-            this.metroTextButton1.Text = "FINISH TRANSACTION";
-            this.metroTextButton1.UseSelectable = true;
-            this.metroTextButton1.UseVisualStyleBackColor = true;
+            this.Column9.HeaderText = "Quantity";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
             // 
             // frmRefund
             // 
@@ -724,17 +723,18 @@
             this.Name = "frmRefund";
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "PHOTO CENTRE MS - REFUNDS";
+            this.Load += new System.EventHandler(this.frmRefund_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRefundItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -776,7 +776,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private MetroFramework.Controls.MetroGrid metroGrid1;
+        private MetroFramework.Controls.MetroGrid dgvRefundItems;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
@@ -785,7 +785,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroLabel lblRefundTotal;
         private MetroFramework.Controls.MetroButton metroButton3;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton4;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton1;

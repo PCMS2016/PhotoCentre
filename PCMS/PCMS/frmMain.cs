@@ -13,6 +13,7 @@ namespace PCMS
 {
     public partial class frmMain : MetroForm 
     {
+        
         public frmMain(string user)
         {
             InitializeComponent();
@@ -47,6 +48,20 @@ namespace PCMS
         {
             frmSpecials Specials = new frmSpecials();
             Specials.ShowDialog();
+        }
+
+        private void tileLogout_Click_1(object sender, EventArgs e)
+        {
+            
+        }
+        public void BindData()
+        {
+            
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
