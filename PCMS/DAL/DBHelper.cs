@@ -24,7 +24,7 @@ namespace DAL
                     cmd.CommandType = commandType;
                     cmd.CommandText = commandName;
                     cmd.Parameters.AddRange(parameters);
-
+                    
                     try
                     {
                         if (con.State == ConnectionState.Closed)

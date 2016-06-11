@@ -16,3 +16,5 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\MetroFramework.Fo
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmOrder.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmSettings.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmReports.resources
+C:\Users\Feyt\Source\Repos\PhotoCentre\PCMS\PCMS\bin\Debug\PCMS.exe.config
+C:\Users\Feyt\Source\Repos\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.exe
