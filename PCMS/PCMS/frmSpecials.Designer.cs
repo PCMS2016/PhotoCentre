@@ -32,11 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroTextButton6 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnSpecialNotify = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroTextButton1 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.btnSpecialNew = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnSpecialUpdate = new MetroFramework.Controls.MetroButton();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -67,11 +67,11 @@
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel1.Controls.Add(this.metroTextButton6);
+            this.metroPanel1.Controls.Add(this.btnSpecialNotify);
             this.metroPanel1.Controls.Add(this.metroDateTime2);
             this.metroPanel1.Controls.Add(this.metroDateTime1);
-            this.metroPanel1.Controls.Add(this.metroTextButton1);
-            this.metroPanel1.Controls.Add(this.metroButton2);
+            this.metroPanel1.Controls.Add(this.btnSpecialNew);
+            this.metroPanel1.Controls.Add(this.btnSpecialUpdate);
             this.metroPanel1.Controls.Add(this.metroComboBox2);
             this.metroPanel1.Controls.Add(this.metroComboBox1);
             this.metroPanel1.Controls.Add(this.metroLabel1);
@@ -94,16 +94,16 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroTextButton6
+            // btnSpecialNotify
             // 
-            this.metroTextButton6.Image = null;
-            this.metroTextButton6.Location = new System.Drawing.Point(513, 263);
-            this.metroTextButton6.Name = "metroTextButton6";
-            this.metroTextButton6.Size = new System.Drawing.Size(151, 57);
-            this.metroTextButton6.TabIndex = 29;
-            this.metroTextButton6.Text = "NOTIFY CUSTOMERS";
-            this.metroTextButton6.UseSelectable = true;
-            this.metroTextButton6.UseVisualStyleBackColor = true;
+            this.btnSpecialNotify.Image = null;
+            this.btnSpecialNotify.Location = new System.Drawing.Point(513, 263);
+            this.btnSpecialNotify.Name = "btnSpecialNotify";
+            this.btnSpecialNotify.Size = new System.Drawing.Size(151, 57);
+            this.btnSpecialNotify.TabIndex = 29;
+            this.btnSpecialNotify.Text = "NOTIFY CUSTOMERS";
+            this.btnSpecialNotify.UseSelectable = true;
+            this.btnSpecialNotify.UseVisualStyleBackColor = true;
             // 
             // metroDateTime2
             // 
@@ -121,27 +121,27 @@
             this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
             this.metroDateTime1.TabIndex = 28;
             // 
-            // metroTextButton1
+            // btnSpecialNew
             // 
-            this.metroTextButton1.Image = null;
-            this.metroTextButton1.Location = new System.Drawing.Point(244, 451);
-            this.metroTextButton1.Name = "metroTextButton1";
-            this.metroTextButton1.Size = new System.Drawing.Size(110, 32);
-            this.metroTextButton1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTextButton1.TabIndex = 27;
-            this.metroTextButton1.Text = "New Special";
-            this.metroTextButton1.UseSelectable = true;
-            this.metroTextButton1.UseStyleColors = true;
-            this.metroTextButton1.UseVisualStyleBackColor = true;
+            this.btnSpecialNew.Image = null;
+            this.btnSpecialNew.Location = new System.Drawing.Point(244, 451);
+            this.btnSpecialNew.Name = "btnSpecialNew";
+            this.btnSpecialNew.Size = new System.Drawing.Size(110, 32);
+            this.btnSpecialNew.Style = MetroFramework.MetroColorStyle.Lime;
+            this.btnSpecialNew.TabIndex = 27;
+            this.btnSpecialNew.Text = "New Special";
+            this.btnSpecialNew.UseSelectable = true;
+            this.btnSpecialNew.UseStyleColors = true;
+            this.btnSpecialNew.UseVisualStyleBackColor = true;
             // 
-            // metroButton2
+            // btnSpecialUpdate
             // 
-            this.metroButton2.Location = new System.Drawing.Point(105, 451);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(110, 32);
-            this.metroButton2.TabIndex = 26;
-            this.metroButton2.Text = "Update Special";
-            this.metroButton2.UseSelectable = true;
+            this.btnSpecialUpdate.Location = new System.Drawing.Point(105, 451);
+            this.btnSpecialUpdate.Name = "btnSpecialUpdate";
+            this.btnSpecialUpdate.Size = new System.Drawing.Size(110, 32);
+            this.btnSpecialUpdate.TabIndex = 26;
+            this.btnSpecialUpdate.Text = "Update Special";
+            this.btnSpecialUpdate.UseSelectable = true;
             // 
             // metroComboBox2
             // 
@@ -460,8 +460,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private MetroFramework.Controls.MetroDateTime metroDateTime2;
         private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSpecialNew;
+        private MetroFramework.Controls.MetroButton btnSpecialUpdate;
         private MetroFramework.Controls.MetroComboBox metroComboBox2;
         private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
@@ -470,7 +470,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox metroTextBox3;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton6;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSpecialNotify;
         private System.Windows.Forms.Label lblSearchOrders;
         private System.Windows.Forms.GroupBox gbxDateSearch;
         private MetroFramework.Controls.MetroDateTime dtpDateSearch;
