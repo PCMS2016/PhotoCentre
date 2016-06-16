@@ -33,18 +33,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.btnSpecialNotify = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.cmbEndDate = new MetroFramework.Controls.MetroDateTime();
+            this.cmbStartDate = new MetroFramework.Controls.MetroDateTime();
             this.btnSpecialNew = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnSpecialUpdate = new MetroFramework.Controls.MetroButton();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.cmbSize = new MetroFramework.Controls.MetroComboBox();
+            this.cmbProduct = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
+            this.tbxPrice = new MetroFramework.Controls.MetroTextBox();
             this.dgvSpecials = new MetroFramework.Controls.MetroGrid();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,7 +57,7 @@
             this.gbxOrderSearch = new System.Windows.Forms.GroupBox();
             this.btnOrderSearch = new MetroFramework.Controls.MetroButton();
             this.tbxOrderNumber = new MetroFramework.Controls.MetroTextBox();
-            this.tileSpecials = new MetroFramework.Controls.MetroTile();
+            this.tileDone = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpecials)).BeginInit();
             this.gbxDateSearch.SuspendLayout();
@@ -68,18 +68,18 @@
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.metroPanel1.Controls.Add(this.btnSpecialNotify);
-            this.metroPanel1.Controls.Add(this.metroDateTime2);
-            this.metroPanel1.Controls.Add(this.metroDateTime1);
+            this.metroPanel1.Controls.Add(this.cmbEndDate);
+            this.metroPanel1.Controls.Add(this.cmbStartDate);
             this.metroPanel1.Controls.Add(this.btnSpecialNew);
             this.metroPanel1.Controls.Add(this.btnSpecialUpdate);
-            this.metroPanel1.Controls.Add(this.metroComboBox2);
-            this.metroPanel1.Controls.Add(this.metroComboBox1);
+            this.metroPanel1.Controls.Add(this.cmbSize);
+            this.metroPanel1.Controls.Add(this.cmbProduct);
             this.metroPanel1.Controls.Add(this.metroLabel1);
             this.metroPanel1.Controls.Add(this.metroLabel6);
             this.metroPanel1.Controls.Add(this.metroLabel5);
             this.metroPanel1.Controls.Add(this.metroLabel4);
             this.metroPanel1.Controls.Add(this.metroLabel2);
-            this.metroPanel1.Controls.Add(this.metroTextBox3);
+            this.metroPanel1.Controls.Add(this.tbxPrice);
             this.metroPanel1.Controls.Add(this.dgvSpecials);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -105,21 +105,21 @@
             this.btnSpecialNotify.UseSelectable = true;
             this.btnSpecialNotify.UseVisualStyleBackColor = true;
             // 
-            // metroDateTime2
+            // cmbEndDate
             // 
-            this.metroDateTime2.Location = new System.Drawing.Point(165, 369);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime2.TabIndex = 28;
+            this.cmbEndDate.Location = new System.Drawing.Point(165, 369);
+            this.cmbEndDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.cmbEndDate.Name = "cmbEndDate";
+            this.cmbEndDate.Size = new System.Drawing.Size(200, 29);
+            this.cmbEndDate.TabIndex = 28;
             // 
-            // metroDateTime1
+            // cmbStartDate
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(165, 334);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime1.TabIndex = 28;
+            this.cmbStartDate.Location = new System.Drawing.Point(165, 334);
+            this.cmbStartDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.cmbStartDate.Name = "cmbStartDate";
+            this.cmbStartDate.Size = new System.Drawing.Size(200, 29);
+            this.cmbStartDate.TabIndex = 28;
             // 
             // btnSpecialNew
             // 
@@ -143,29 +143,29 @@
             this.btnSpecialUpdate.Text = "Update Special";
             this.btnSpecialUpdate.UseSelectable = true;
             // 
-            // metroComboBox2
+            // cmbSize
             // 
-            this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 23;
-            this.metroComboBox2.Items.AddRange(new object[] {
+            this.cmbSize.FormattingEnabled = true;
+            this.cmbSize.ItemHeight = 23;
+            this.cmbSize.Items.AddRange(new object[] {
             "A4"});
-            this.metroComboBox2.Location = new System.Drawing.Point(165, 299);
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(200, 29);
-            this.metroComboBox2.TabIndex = 24;
-            this.metroComboBox2.UseSelectable = true;
+            this.cmbSize.Location = new System.Drawing.Point(165, 299);
+            this.cmbSize.Name = "cmbSize";
+            this.cmbSize.Size = new System.Drawing.Size(200, 29);
+            this.cmbSize.TabIndex = 24;
+            this.cmbSize.UseSelectable = true;
             // 
-            // metroComboBox1
+            // cmbProduct
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Items.AddRange(new object[] {
+            this.cmbProduct.FormattingEnabled = true;
+            this.cmbProduct.ItemHeight = 23;
+            this.cmbProduct.Items.AddRange(new object[] {
             "Photo"});
-            this.metroComboBox1.Location = new System.Drawing.Point(165, 263);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(200, 29);
-            this.metroComboBox1.TabIndex = 25;
-            this.metroComboBox1.UseSelectable = true;
+            this.cmbProduct.Location = new System.Drawing.Point(165, 263);
+            this.cmbProduct.Name = "cmbProduct";
+            this.cmbProduct.Size = new System.Drawing.Size(200, 29);
+            this.cmbProduct.TabIndex = 25;
+            this.cmbProduct.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -212,36 +212,36 @@
             this.metroLabel2.TabIndex = 21;
             this.metroLabel2.Text = "Product:";
             // 
-            // metroTextBox3
+            // tbxPrice
             // 
             // 
             // 
             // 
-            this.metroTextBox3.CustomButton.Image = null;
-            this.metroTextBox3.CustomButton.Location = new System.Drawing.Point(172, 1);
-            this.metroTextBox3.CustomButton.Name = "";
-            this.metroTextBox3.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.metroTextBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox3.CustomButton.TabIndex = 1;
-            this.metroTextBox3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox3.CustomButton.UseSelectable = true;
-            this.metroTextBox3.CustomButton.Visible = false;
-            this.metroTextBox3.FontSize = MetroFramework.MetroTextBoxSize.Medium;
-            this.metroTextBox3.Lines = new string[0];
-            this.metroTextBox3.Location = new System.Drawing.Point(165, 405);
-            this.metroTextBox3.MaxLength = 32767;
-            this.metroTextBox3.Name = "metroTextBox3";
-            this.metroTextBox3.PasswordChar = '\0';
-            this.metroTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox3.SelectedText = "";
-            this.metroTextBox3.SelectionLength = 0;
-            this.metroTextBox3.SelectionStart = 0;
-            this.metroTextBox3.ShortcutsEnabled = true;
-            this.metroTextBox3.Size = new System.Drawing.Size(200, 29);
-            this.metroTextBox3.TabIndex = 23;
-            this.metroTextBox3.UseSelectable = true;
-            this.metroTextBox3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxPrice.CustomButton.Image = null;
+            this.tbxPrice.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.tbxPrice.CustomButton.Name = "";
+            this.tbxPrice.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tbxPrice.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxPrice.CustomButton.TabIndex = 1;
+            this.tbxPrice.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxPrice.CustomButton.UseSelectable = true;
+            this.tbxPrice.CustomButton.Visible = false;
+            this.tbxPrice.FontSize = MetroFramework.MetroTextBoxSize.Medium;
+            this.tbxPrice.Lines = new string[0];
+            this.tbxPrice.Location = new System.Drawing.Point(165, 405);
+            this.tbxPrice.MaxLength = 32767;
+            this.tbxPrice.Name = "tbxPrice";
+            this.tbxPrice.PasswordChar = '\0';
+            this.tbxPrice.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxPrice.SelectedText = "";
+            this.tbxPrice.SelectionLength = 0;
+            this.tbxPrice.SelectionStart = 0;
+            this.tbxPrice.ShortcutsEnabled = true;
+            this.tbxPrice.Size = new System.Drawing.Size(200, 29);
+            this.tbxPrice.TabIndex = 23;
+            this.tbxPrice.UseSelectable = true;
+            this.tbxPrice.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxPrice.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // dgvSpecials
             // 
@@ -413,25 +413,25 @@
             this.tbxOrderNumber.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxOrderNumber.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // tileSpecials
+            // tileDone
             // 
-            this.tileSpecials.ActiveControl = null;
-            this.tileSpecials.Location = new System.Drawing.Point(766, 570);
-            this.tileSpecials.Name = "tileSpecials";
-            this.tileSpecials.Size = new System.Drawing.Size(86, 58);
-            this.tileSpecials.TabIndex = 15;
-            this.tileSpecials.Text = "Done";
-            this.tileSpecials.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.tileSpecials.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.tileSpecials.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
-            this.tileSpecials.UseSelectable = true;
+            this.tileDone.ActiveControl = null;
+            this.tileDone.Location = new System.Drawing.Point(766, 570);
+            this.tileDone.Name = "tileDone";
+            this.tileDone.Size = new System.Drawing.Size(86, 58);
+            this.tileDone.TabIndex = 15;
+            this.tileDone.Text = "Done";
+            this.tileDone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileDone.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tileDone.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.tileDone.UseSelectable = true;
             // 
             // frmSpecials
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 653);
-            this.Controls.Add(this.tileSpecials);
+            this.Controls.Add(this.tileDone);
             this.Controls.Add(this.gbxDateSearch);
             this.Controls.Add(this.gbxOrderSearch);
             this.Controls.Add(this.lblSearchOrders);
@@ -458,18 +458,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
+        private MetroFramework.Controls.MetroDateTime cmbEndDate;
+        private MetroFramework.Controls.MetroDateTime cmbStartDate;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSpecialNew;
         private MetroFramework.Controls.MetroButton btnSpecialUpdate;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox cmbSize;
+        private MetroFramework.Controls.MetroComboBox cmbProduct;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox3;
+        private MetroFramework.Controls.MetroTextBox tbxPrice;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnSpecialNotify;
         private System.Windows.Forms.Label lblSearchOrders;
         private System.Windows.Forms.GroupBox gbxDateSearch;
@@ -478,6 +478,6 @@
         private System.Windows.Forms.GroupBox gbxOrderSearch;
         private MetroFramework.Controls.MetroButton btnOrderSearch;
         private MetroFramework.Controls.MetroTextBox tbxOrderNumber;
-        private MetroFramework.Controls.MetroTile tileSpecials;
+        private MetroFramework.Controls.MetroTile tileDone;
     }
 }
