@@ -40,10 +40,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOrder));
             this.Customer = new MetroFramework.Controls.MetroTabControl();
             this.tabCustomer = new MetroFramework.Controls.MetroTabPage();
-            this.metroTextButton6 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderNext = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroTextButton1 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.btnOrderAddNewCustomer = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderUpdateCustomer = new MetroFramework.Controls.MetroButton();
             this.cmbDiscount = new MetroFramework.Controls.MetroComboBox();
             this.cmbCustomerType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
@@ -68,11 +68,11 @@
             this.lblSurname = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.tabProducts = new MetroFramework.Controls.MetroTabPage();
-            this.metroTextButton5 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderFinishTransaction = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
-            this.metroTextButton3 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroTextButton2 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnOrderRemoveItem = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderAddOrder = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderEditItem = new MetroFramework.Controls.MetroButton();
             this.cmbSize = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
@@ -88,8 +88,8 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabFinish = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.metroTextButton4 = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.btnOrderVoid = new MetroFramework.Controls.MetroButton();
+            this.btnOrderPay = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroTextBox6 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
@@ -132,7 +132,7 @@
             // 
             // tabCustomer
             // 
-            this.tabCustomer.Controls.Add(this.metroTextButton6);
+            this.tabCustomer.Controls.Add(this.btnOrderNext);
             this.tabCustomer.Controls.Add(this.metroPanel1);
             this.tabCustomer.Controls.Add(this.lblSearchOrders);
             this.tabCustomer.Controls.Add(this.btnCustomerSearch);
@@ -154,22 +154,22 @@
             this.tabCustomer.VerticalScrollbarHighlightOnWheel = false;
             this.tabCustomer.VerticalScrollbarSize = 10;
             // 
-            // metroTextButton6
+            // btnOrderNext
             // 
-            this.metroTextButton6.Image = null;
-            this.metroTextButton6.Location = new System.Drawing.Point(623, 500);
-            this.metroTextButton6.Name = "metroTextButton6";
-            this.metroTextButton6.Size = new System.Drawing.Size(151, 57);
-            this.metroTextButton6.TabIndex = 19;
-            this.metroTextButton6.Text = "NEXT -->";
-            this.metroTextButton6.UseSelectable = true;
-            this.metroTextButton6.UseVisualStyleBackColor = true;
+            this.btnOrderNext.Image = null;
+            this.btnOrderNext.Location = new System.Drawing.Point(623, 500);
+            this.btnOrderNext.Name = "btnOrderNext";
+            this.btnOrderNext.Size = new System.Drawing.Size(151, 57);
+            this.btnOrderNext.TabIndex = 19;
+            this.btnOrderNext.Text = "NEXT -->";
+            this.btnOrderNext.UseSelectable = true;
+            this.btnOrderNext.UseVisualStyleBackColor = true;
             // 
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel1.Controls.Add(this.metroTextButton1);
-            this.metroPanel1.Controls.Add(this.metroButton2);
+            this.metroPanel1.Controls.Add(this.btnOrderAddNewCustomer);
+            this.metroPanel1.Controls.Add(this.btnOrderUpdateCustomer);
             this.metroPanel1.Controls.Add(this.cmbDiscount);
             this.metroPanel1.Controls.Add(this.cmbCustomerType);
             this.metroPanel1.Controls.Add(this.metroLabel6);
@@ -195,27 +195,28 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroTextButton1
+            // btnOrderAddNewCustomer
             // 
-            this.metroTextButton1.Image = null;
-            this.metroTextButton1.Location = new System.Drawing.Point(214, 430);
-            this.metroTextButton1.Name = "metroTextButton1";
-            this.metroTextButton1.Size = new System.Drawing.Size(110, 32);
-            this.metroTextButton1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTextButton1.TabIndex = 17;
-            this.metroTextButton1.Text = "New Customer";
-            this.metroTextButton1.UseSelectable = true;
-            this.metroTextButton1.UseStyleColors = true;
-            this.metroTextButton1.UseVisualStyleBackColor = true;
+            this.btnOrderAddNewCustomer.Image = null;
+            this.btnOrderAddNewCustomer.Location = new System.Drawing.Point(214, 430);
+            this.btnOrderAddNewCustomer.Name = "btnOrderAddNewCustomer";
+            this.btnOrderAddNewCustomer.Size = new System.Drawing.Size(110, 32);
+            this.btnOrderAddNewCustomer.Style = MetroFramework.MetroColorStyle.Lime;
+            this.btnOrderAddNewCustomer.TabIndex = 17;
+            this.btnOrderAddNewCustomer.Text = "New Customer";
+            this.btnOrderAddNewCustomer.UseSelectable = true;
+            this.btnOrderAddNewCustomer.UseStyleColors = true;
+            this.btnOrderAddNewCustomer.UseVisualStyleBackColor = true;
+            this.btnOrderAddNewCustomer.Click += new System.EventHandler(this.metroTextButton1_Click);
             // 
-            // metroButton2
+            // btnOrderUpdateCustomer
             // 
-            this.metroButton2.Location = new System.Drawing.Point(75, 430);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(110, 32);
-            this.metroButton2.TabIndex = 16;
-            this.metroButton2.Text = "Update Customer";
-            this.metroButton2.UseSelectable = true;
+            this.btnOrderUpdateCustomer.Location = new System.Drawing.Point(75, 430);
+            this.btnOrderUpdateCustomer.Name = "btnOrderUpdateCustomer";
+            this.btnOrderUpdateCustomer.Size = new System.Drawing.Size(110, 32);
+            this.btnOrderUpdateCustomer.TabIndex = 16;
+            this.btnOrderUpdateCustomer.Text = "Update Customer";
+            this.btnOrderUpdateCustomer.UseSelectable = true;
             // 
             // cmbDiscount
             // 
@@ -590,7 +591,7 @@
             // 
             // tabProducts
             // 
-            this.tabProducts.Controls.Add(this.metroTextButton5);
+            this.tabProducts.Controls.Add(this.btnOrderFinishTransaction);
             this.tabProducts.Controls.Add(this.metroPanel2);
             this.tabProducts.HorizontalScrollbarBarColor = true;
             this.tabProducts.HorizontalScrollbarHighlightOnWheel = false;
@@ -605,23 +606,23 @@
             this.tabProducts.VerticalScrollbarHighlightOnWheel = false;
             this.tabProducts.VerticalScrollbarSize = 10;
             // 
-            // metroTextButton5
+            // btnOrderFinishTransaction
             // 
-            this.metroTextButton5.Image = null;
-            this.metroTextButton5.Location = new System.Drawing.Point(623, 500);
-            this.metroTextButton5.Name = "metroTextButton5";
-            this.metroTextButton5.Size = new System.Drawing.Size(151, 57);
-            this.metroTextButton5.TabIndex = 12;
-            this.metroTextButton5.Text = "FINISH TRANSACTION";
-            this.metroTextButton5.UseSelectable = true;
-            this.metroTextButton5.UseVisualStyleBackColor = true;
+            this.btnOrderFinishTransaction.Image = null;
+            this.btnOrderFinishTransaction.Location = new System.Drawing.Point(623, 500);
+            this.btnOrderFinishTransaction.Name = "btnOrderFinishTransaction";
+            this.btnOrderFinishTransaction.Size = new System.Drawing.Size(151, 57);
+            this.btnOrderFinishTransaction.TabIndex = 12;
+            this.btnOrderFinishTransaction.Text = "FINISH TRANSACTION";
+            this.btnOrderFinishTransaction.UseSelectable = true;
+            this.btnOrderFinishTransaction.UseVisualStyleBackColor = true;
             // 
             // metroPanel2
             // 
             this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.metroPanel2.Controls.Add(this.metroTextButton3);
-            this.metroPanel2.Controls.Add(this.metroTextButton2);
-            this.metroPanel2.Controls.Add(this.metroButton1);
+            this.metroPanel2.Controls.Add(this.btnOrderRemoveItem);
+            this.metroPanel2.Controls.Add(this.btnOrderAddOrder);
+            this.metroPanel2.Controls.Add(this.btnOrderEditItem);
             this.metroPanel2.Controls.Add(this.cmbSize);
             this.metroPanel2.Controls.Add(this.metroLabel9);
             this.metroPanel2.Controls.Add(this.metroLabel8);
@@ -643,43 +644,43 @@
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel2.VerticalScrollbarSize = 10;
             // 
-            // metroTextButton3
+            // btnOrderRemoveItem
             // 
-            this.metroTextButton3.Image = null;
-            this.metroTextButton3.Location = new System.Drawing.Point(635, 434);
-            this.metroTextButton3.Name = "metroTextButton3";
-            this.metroTextButton3.Size = new System.Drawing.Size(110, 32);
-            this.metroTextButton3.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroTextButton3.TabIndex = 20;
-            this.metroTextButton3.Text = "Remove Item";
-            this.metroTextButton3.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextButton3.UseSelectable = true;
-            this.metroTextButton3.UseStyleColors = true;
-            this.metroTextButton3.UseVisualStyleBackColor = true;
+            this.btnOrderRemoveItem.Image = null;
+            this.btnOrderRemoveItem.Location = new System.Drawing.Point(635, 434);
+            this.btnOrderRemoveItem.Name = "btnOrderRemoveItem";
+            this.btnOrderRemoveItem.Size = new System.Drawing.Size(110, 32);
+            this.btnOrderRemoveItem.Style = MetroFramework.MetroColorStyle.Green;
+            this.btnOrderRemoveItem.TabIndex = 20;
+            this.btnOrderRemoveItem.Text = "Remove Item";
+            this.btnOrderRemoveItem.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.btnOrderRemoveItem.UseSelectable = true;
+            this.btnOrderRemoveItem.UseStyleColors = true;
+            this.btnOrderRemoveItem.UseVisualStyleBackColor = true;
             // 
-            // metroTextButton2
+            // btnOrderAddOrder
             // 
-            this.metroTextButton2.BackColor = System.Drawing.Color.GreenYellow;
-            this.metroTextButton2.Image = null;
-            this.metroTextButton2.Location = new System.Drawing.Point(611, 134);
-            this.metroTextButton2.Name = "metroTextButton2";
-            this.metroTextButton2.Size = new System.Drawing.Size(110, 32);
-            this.metroTextButton2.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTextButton2.TabIndex = 20;
-            this.metroTextButton2.Text = "Add To Order";
-            this.metroTextButton2.UseCustomBackColor = true;
-            this.metroTextButton2.UseSelectable = true;
-            this.metroTextButton2.UseStyleColors = true;
-            this.metroTextButton2.UseVisualStyleBackColor = false;
+            this.btnOrderAddOrder.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnOrderAddOrder.Image = null;
+            this.btnOrderAddOrder.Location = new System.Drawing.Point(611, 134);
+            this.btnOrderAddOrder.Name = "btnOrderAddOrder";
+            this.btnOrderAddOrder.Size = new System.Drawing.Size(110, 32);
+            this.btnOrderAddOrder.Style = MetroFramework.MetroColorStyle.Lime;
+            this.btnOrderAddOrder.TabIndex = 20;
+            this.btnOrderAddOrder.Text = "Add To Order";
+            this.btnOrderAddOrder.UseCustomBackColor = true;
+            this.btnOrderAddOrder.UseSelectable = true;
+            this.btnOrderAddOrder.UseStyleColors = true;
+            this.btnOrderAddOrder.UseVisualStyleBackColor = false;
             // 
-            // metroButton1
+            // btnOrderEditItem
             // 
-            this.metroButton1.Location = new System.Drawing.Point(479, 134);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(110, 32);
-            this.metroButton1.TabIndex = 19;
-            this.metroButton1.Text = "Edit Item";
-            this.metroButton1.UseSelectable = true;
+            this.btnOrderEditItem.Location = new System.Drawing.Point(479, 134);
+            this.btnOrderEditItem.Name = "btnOrderEditItem";
+            this.btnOrderEditItem.Size = new System.Drawing.Size(110, 32);
+            this.btnOrderEditItem.TabIndex = 19;
+            this.btnOrderEditItem.Text = "Edit Item";
+            this.btnOrderEditItem.UseSelectable = true;
             // 
             // cmbSize
             // 
@@ -866,8 +867,8 @@
             // 
             // tabFinish
             // 
-            this.tabFinish.Controls.Add(this.metroButton3);
-            this.tabFinish.Controls.Add(this.metroTextButton4);
+            this.tabFinish.Controls.Add(this.btnOrderVoid);
+            this.tabFinish.Controls.Add(this.btnOrderPay);
             this.tabFinish.Controls.Add(this.metroTextBox6);
             this.tabFinish.Controls.Add(this.metroLabel14);
             this.tabFinish.Controls.Add(this.metroPanel3);
@@ -886,25 +887,25 @@
             this.tabFinish.VerticalScrollbarHighlightOnWheel = false;
             this.tabFinish.VerticalScrollbarSize = 10;
             // 
-            // metroButton3
+            // btnOrderVoid
             // 
-            this.metroButton3.Location = new System.Drawing.Point(685, 499);
-            this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(88, 57);
-            this.metroButton3.TabIndex = 12;
-            this.metroButton3.Text = "VOID";
-            this.metroButton3.UseSelectable = true;
+            this.btnOrderVoid.Location = new System.Drawing.Point(685, 499);
+            this.btnOrderVoid.Name = "btnOrderVoid";
+            this.btnOrderVoid.Size = new System.Drawing.Size(88, 57);
+            this.btnOrderVoid.TabIndex = 12;
+            this.btnOrderVoid.Text = "VOID";
+            this.btnOrderVoid.UseSelectable = true;
             // 
-            // metroTextButton4
+            // btnOrderPay
             // 
-            this.metroTextButton4.Image = null;
-            this.metroTextButton4.Location = new System.Drawing.Point(581, 499);
-            this.metroTextButton4.Name = "metroTextButton4";
-            this.metroTextButton4.Size = new System.Drawing.Size(88, 57);
-            this.metroTextButton4.TabIndex = 11;
-            this.metroTextButton4.Text = "PAY";
-            this.metroTextButton4.UseSelectable = true;
-            this.metroTextButton4.UseVisualStyleBackColor = true;
+            this.btnOrderPay.Image = null;
+            this.btnOrderPay.Location = new System.Drawing.Point(581, 499);
+            this.btnOrderPay.Name = "btnOrderPay";
+            this.btnOrderPay.Size = new System.Drawing.Size(88, 57);
+            this.btnOrderPay.TabIndex = 11;
+            this.btnOrderPay.Text = "PAY";
+            this.btnOrderPay.UseSelectable = true;
+            this.btnOrderPay.UseVisualStyleBackColor = true;
             // 
             // metroTextBox6
             // 
@@ -1128,9 +1129,9 @@
         private MetroFramework.Controls.MetroTabPage tabProducts;
         private MetroFramework.Controls.MetroTabPage tabFinish;
         private MetroFramework.Controls.MetroPanel metroPanel2;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton3;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton2;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderRemoveItem;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderAddOrder;
+        private MetroFramework.Controls.MetroButton btnOrderEditItem;
         private MetroFramework.Controls.MetroComboBox cmbSize;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
@@ -1150,8 +1151,8 @@
         private MetroFramework.Controls.MetroLabel lblOrderTotal;
         private MetroFramework.Controls.MetroTabPage tabCustomer;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton1;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderAddNewCustomer;
+        private MetroFramework.Controls.MetroButton btnOrderUpdateCustomer;
         private MetroFramework.Controls.MetroComboBox cmbDiscount;
         private MetroFramework.Controls.MetroComboBox cmbCustomerType;
         private MetroFramework.Controls.MetroLabel metroLabel6;
@@ -1175,8 +1176,8 @@
         private MetroFramework.Controls.MetroTextBox tbxName;
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.Label lblName;
-        private MetroFramework.Controls.MetroButton metroButton3;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton4;
+        private MetroFramework.Controls.MetroButton btnOrderVoid;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderPay;
         private MetroFramework.Controls.MetroTextBox metroTextBox6;
         private MetroFramework.Controls.MetroLabel metroLabel14;
         private MetroFramework.Controls.MetroPanel metroPanel3;
@@ -1187,7 +1188,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private System.Windows.Forms.RichTextBox rtbxReceipt;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton5;
-        private MetroFramework.Controls.MetroTextBox.MetroTextButton metroTextButton6;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderFinishTransaction;
+        private MetroFramework.Controls.MetroTextBox.MetroTextButton btnOrderNext;
     }
 }

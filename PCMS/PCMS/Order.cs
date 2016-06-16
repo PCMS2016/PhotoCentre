@@ -75,5 +75,10 @@ namespace PCMS
         {
 
         }
+
+        private void metroTextButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
