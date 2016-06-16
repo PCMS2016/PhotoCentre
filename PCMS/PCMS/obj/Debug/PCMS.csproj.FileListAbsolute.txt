@@ -18,3 +18,7 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmSettings.
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmReports.resources
 C:\Users\Feyt\Source\Repos\PhotoCentre\PCMS\PCMS\bin\Debug\PCMS.exe.config
 C:\Users\Feyt\Source\Repos\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.exe
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\BLL.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\DAL.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\BLL.pdb
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\DAL.pdb

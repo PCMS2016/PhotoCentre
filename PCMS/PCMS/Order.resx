@@ -156,39 +156,4 @@
   <metadata name="Column10.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="rtbxReceipt.Text" xml:space="preserve">
-    <value>                                   PHOTO CENTRE
-
-                              Shop 12 Binnehof Centre
-                                        Uitenhage
-
-                                      041 992 5757
-===============================================
-Date: 14 May 2016
-Time : 14:00
-
-ORDER#: 000002
-
-Customer: Victor Maxwel
-
-Salesperson: Annette Deyzel
-----------------------------------------------------------------------------------------------------
-Product                         Qty               Price                   Total
-=============           ====            ======                ======
-Jumbo Photo                 50                 R     5.00            R 250.00
-A3 Canvas	        1                 R 250.00            R 250.00
-Mug                                 2                 R   70.00            R 140.00
-
-TOTAL:                                                                        R 640.00
-
-VAT 14%:				                    R   78.60
-
-CASH:                                                                         R 700.00
-CHANGE:	                                                    R   60.00
-
-VAT NO: 4150166991
----------------------------------------------------------------------------------------------------
-
-                                       THANK YOU!</value>
-  </data>
 </root>

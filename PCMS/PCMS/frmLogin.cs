@@ -25,7 +25,7 @@ namespace PCMS
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            frmMain Main = new frmMain("Wynand");
+            frmMain Main = new frmMain("Wynand", 1);
             Main.ShowDialog();
         }
     }
