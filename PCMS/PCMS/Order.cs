@@ -41,6 +41,7 @@ namespace PCMS
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            //Add Order to Database===>
             int customerIndex = dgvCustomers.CurrentRow.Index;
 
             Order order = new Order();
@@ -54,6 +55,7 @@ namespace PCMS
             order.Total = Convert.ToDouble(lblTotal.Text);
 
             handlerOrder.AddOrder(order);
+            //<===
         }
     }
 }

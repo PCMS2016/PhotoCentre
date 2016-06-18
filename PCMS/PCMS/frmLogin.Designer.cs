@@ -33,6 +33,7 @@
             this.tbxUsername = new MetroFramework.Controls.MetroTextBox();
             this.tbxPassword = new MetroFramework.Controls.MetroTextBox();
             this.btnLogin = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
+            this.lblError = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -61,10 +62,10 @@
             // 
             // 
             this.tbxUsername.CustomButton.Image = null;
-            this.tbxUsername.CustomButton.Location = new System.Drawing.Point(129, 2);
-            this.tbxUsername.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxUsername.CustomButton.Location = new System.Drawing.Point(144, 1);
+            this.tbxUsername.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.tbxUsername.CustomButton.Name = "";
-            this.tbxUsername.CustomButton.Size = new System.Drawing.Size(19, 20);
+            this.tbxUsername.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.tbxUsername.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbxUsername.CustomButton.TabIndex = 1;
             this.tbxUsername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -93,10 +94,10 @@
             // 
             // 
             this.tbxPassword.CustomButton.Image = null;
-            this.tbxPassword.CustomButton.Location = new System.Drawing.Point(129, 2);
-            this.tbxPassword.CustomButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbxPassword.CustomButton.Location = new System.Drawing.Point(144, 1);
+            this.tbxPassword.CustomButton.Margin = new System.Windows.Forms.Padding(4);
             this.tbxPassword.CustomButton.Name = "";
-            this.tbxPassword.CustomButton.Size = new System.Drawing.Size(19, 20);
+            this.tbxPassword.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.tbxPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.tbxPassword.CustomButton.TabIndex = 1;
             this.tbxPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -135,6 +136,16 @@
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.lblError.ForeColor = System.Drawing.Color.Silver;
+            this.lblError.Location = new System.Drawing.Point(62, 177);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 0);
+            this.lblError.TabIndex = 8;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,6 +155,7 @@
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.tbxPassword);
             this.Controls.Add(this.tbxUsername);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,6 +169,7 @@
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "LOGIN";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,5 +182,6 @@
         private MetroFramework.Controls.MetroTextBox tbxUsername;
         private MetroFramework.Controls.MetroTextBox tbxPassword;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnLogin;
+        private MetroFramework.Controls.MetroLabel lblError;
     }
 }

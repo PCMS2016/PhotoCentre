@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler_Login.cs" />
     <Compile Include="Handler_Order.cs" />
+    <Compile Include="IHandler_Login.cs" />
     <Compile Include="IHandler_Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

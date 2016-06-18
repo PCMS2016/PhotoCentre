@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBAccess_Login.cs" />
     <Compile Include="DBAccess_Order.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="IDBAccess_Login.cs" />
     <Compile Include="IDBAccess_Order.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,6 +53,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Salesperson.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

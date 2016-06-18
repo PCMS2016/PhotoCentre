@@ -14,12 +14,16 @@ namespace PCMS
     public partial class frmMain : MetroForm 
     {
         int salespersonID;
+        string privileges;
+        string employeeType;
 
-        public frmMain(string user, int salespersonID)
+        public frmMain(int salespersonID, string user, string privileges, string employeeType)
         {
             InitializeComponent();
             this.Text += " " + user;
             this.salespersonID = salespersonID;
+            this.privileges = privileges;
+            this.employeeType = employeeType;
         }
 
         private void tileNewOrder_Click(object sender, EventArgs e)
