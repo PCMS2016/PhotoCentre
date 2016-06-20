@@ -24,10 +24,6 @@ namespace PCMS
         {
             handlerLogin = new Handler_Login();
         }
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
@@ -38,17 +34,27 @@ namespace PCMS
             salesperson.Username = username;
             salesperson.Password = password;
 
+            //Retrieve details from database matching the username and password...
             handlerLogin.Login(salesperson);
 
+            //Check if the login details are valid...
             if (salesperson.Name != null)
             {
                 frmMain Main = new frmMain(salesperson.SalespersonID, salesperson.Name + " " + salesperson.Surname, salesperson.Privileges, salesperson.EmployeeType);
                 Main.ShowDialog();
+
+                //Clear textboxes and set focus on username textbox...
+                tbxUsername.Clear();
+                tbxPassword.Clear();
+                lblError.Text = "";
+                tbxUsername.Focus();
             }
             else
             {
+                //Display error message for invalid login details...
                 lblError.Text = "*Invalid Login Details";
             }
+            
         }
 
         

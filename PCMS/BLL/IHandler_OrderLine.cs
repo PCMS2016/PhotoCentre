@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 
-namespace DAL
+namespace BLL
 {
-    public interface IDBAccess_Order
+    public interface IHandler_OrderLine
     {
-        bool AddOrder(Order order);
-        List<Order> GetAllOrders();
+        List<OrderLine> GetOrderLines(int orderNumber);
     }
 }

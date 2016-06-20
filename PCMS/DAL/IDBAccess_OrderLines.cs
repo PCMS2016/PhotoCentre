@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface IDBAccess_Order
+    public interface IDBAccess_OrderLines
     {
-        bool AddOrder(Order order);
-        List<Order> GetAllOrders();
+        List<OrderLine> GetOrderLines(int orderNumber);
     }
 }

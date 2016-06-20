@@ -43,10 +43,13 @@
   <ItemGroup>
     <Compile Include="DBAccess_Login.cs" />
     <Compile Include="DBAccess_Order.cs" />
+    <Compile Include="DBAccess_OrderLine.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="IDBAccess_Login.cs" />
     <Compile Include="IDBAccess_Order.cs" />
+    <Compile Include="IDBAccess_OrderLines.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

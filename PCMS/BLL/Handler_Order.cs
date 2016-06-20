@@ -18,5 +18,9 @@ namespace BLL
         {
             return db.AddOrder(order);
         }
+        public List<Order> GetAllOrders()
+        {
+            return db.GetAllOrders();
+        }
     }
 }

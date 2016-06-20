@@ -10,5 +10,6 @@ namespace BLL
     public interface IHandler_Order
     {
         bool AddOrder(Order order);
+        List<Order> GetAllOrders();
     }
 }

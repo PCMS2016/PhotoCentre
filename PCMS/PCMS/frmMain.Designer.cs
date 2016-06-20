@@ -65,10 +65,6 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dgvOrderLines = new MetroFramework.Controls.MetroGrid();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOrders = new MetroFramework.Controls.MetroGrid();
             this.lblSearchOrders = new System.Windows.Forms.Label();
             this.mstrpMain = new System.Windows.Forms.MenuStrip();
@@ -492,11 +488,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvOrderLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -524,30 +515,6 @@
             this.dgvOrderLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrderLines.Size = new System.Drawing.Size(465, 241);
             this.dgvOrderLines.TabIndex = 3;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Product";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Quantity";
-            this.Column9.Name = "Column9";
-            this.Column9.ReadOnly = true;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Price";
-            this.Column10.Name = "Column10";
-            this.Column10.ReadOnly = true;
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "Instructions";
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
             // 
             // dgvOrders
             // 
@@ -595,6 +562,7 @@
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(782, 245);
             this.dgvOrders.TabIndex = 2;
+            this.dgvOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOrders_CellClick);
             // 
             // lblSearchOrders
             // 
@@ -756,7 +724,6 @@
             this.tileLogout.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.tileLogout.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.tileLogout.UseSelectable = true;
-            this.tileLogout.Click += new System.EventHandler(this.tileLogout_Click_1);
             // 
             // tileSpecials
             // 
@@ -834,10 +801,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btbCollected;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnCompleted;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private MetroFramework.Controls.MetroDateTime dtpDateSearch;
         private MetroFramework.Controls.MetroButton btnToday;
         private MetroFramework.Controls.MetroButton btnCustomerSearch;

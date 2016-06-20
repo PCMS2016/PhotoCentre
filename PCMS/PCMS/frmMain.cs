@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using DAL;
+using BLL;
 
 namespace PCMS
 {
     public partial class frmMain : MetroForm 
     {
+        private IHandler_Order handlerOrder = null;
+        private IHandler_OrderLine handlerOrderLines = null;
+
         int salespersonID;
         string privileges;
         string employeeType;
@@ -25,49 +30,75 @@ namespace PCMS
             this.privileges = privileges;
             this.employeeType = employeeType;
         }
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            //Limit access to features according to user rights
+            if (privileges == "Limited")
+            {
+                tileReports.Enabled = false;
+                tsiAdmin.Enabled = false;
+            }
 
+            //Load orders of the current day
+            handlerOrder = new Handler_Order();
+            BindData_Orders();
+        }
+
+        //Bind orders to orders grid
+        private void BindData_Orders()
+        {
+            dgvOrders.DataSource = handlerOrder.GetAllOrders();
+        }
+
+        //Bind order lines to order lines grid
+        private void BindData_OrderLines(int orderNumber)
+        {
+            dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
+        }
+        //Start a new order transaction
         private void tileNewOrder_Click(object sender, EventArgs e)
         {
             frmOrder Order = new frmOrder(salespersonID);
             Order.ShowDialog();
         }
 
+        //Start a new refund transaction
         private void tileRefund_Click(object sender, EventArgs e)
         {
             frmRefund Refund = new frmRefund();
             Refund.ShowDialog();
         }
 
+        //Generate reports
         private void tileReports_Click(object sender, EventArgs e)
         {
             frmReports Reports = new frmReports();
             Reports.ShowDialog();
         }
 
+        //Enter settins
         private void tileSettings_Click(object sender, EventArgs e)
         {
             frmSettings Settings = new frmSettings();
             Settings.ShowDialog();
         }
 
+        //Go to specials
         private void tileSpecials_Click(object sender, EventArgs e)
         {
             frmSpecials Specials = new frmSpecials();
             Specials.ShowDialog();
         }
 
-        private void tileLogout_Click_1(object sender, EventArgs e)
+        //Load details for a specific order
+        private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-        }
-        public void BindData()
-        {
-            
-        }
+            int rowIndex = dgvOrders.SelectedRows[0].Index;
 
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            
+            int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
+
+            handlerOrderLines = new Handler_OrderLine();
+            BindData_OrderLines(orderNumber);
         }
     }
 }
