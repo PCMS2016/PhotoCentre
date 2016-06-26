@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class OrderLine
+    public class RefundProduct
     {
+        public int RefundProductID { get; set; }
+        public int RefundID { get; set; }
         public int OrderLineID { get; set; }
-        public string Product { get; set; }
-        public int OrderNumber { get; set; }
+        public string Reason { get; set; }
         public int Quantity { get; set; }
-        public double ItemPrice { get; set; }
+        public double Price { get; set; }
         public double LineTotal { get; set; }
-        public string Instructions { get; set; }
     }
 }

@@ -32,73 +32,95 @@ namespace PCMS
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //Limit access to features according to user rights
+            //Limit access to features according to user rights...
             if (privileges == "Limited")
             {
                 tileReports.Enabled = false;
                 tsiAdmin.Enabled = false;
+                tileSettings.Enabled = false;
+            }
+            if (employeeType == "Temp")
+            {
+                tileRefund.Enabled = false;
+                tsiRefund.Enabled = false;
             }
 
-            //Load orders of the current day
+            //Load orders of the current day...
             handlerOrder = new Handler_Order();
             BindData_Orders();
         }
 
-        //Bind orders to orders grid
+        //Bind orders to orders grid...
         private void BindData_Orders()
         {
             dgvOrders.DataSource = handlerOrder.GetAllOrders();
         }
 
-        //Bind order lines to order lines grid
+        //Bind order lines to order lines grid...
         private void BindData_OrderLines(int orderNumber)
         {
             dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
         }
-        //Start a new order transaction
+        //Start a new order transaction...
         private void tileNewOrder_Click(object sender, EventArgs e)
         {
             frmOrder Order = new frmOrder(salespersonID);
             Order.ShowDialog();
         }
 
-        //Start a new refund transaction
+        //Start a new refund transaction...
         private void tileRefund_Click(object sender, EventArgs e)
         {
             frmRefund Refund = new frmRefund();
             Refund.ShowDialog();
         }
 
-        //Generate reports
+        //Generate reports...
         private void tileReports_Click(object sender, EventArgs e)
         {
             frmReports Reports = new frmReports();
             Reports.ShowDialog();
         }
 
-        //Enter settins
+        //Enter settins...
         private void tileSettings_Click(object sender, EventArgs e)
         {
             frmSettings Settings = new frmSettings();
             Settings.ShowDialog();
         }
 
-        //Go to specials
+        //Go to specials...
         private void tileSpecials_Click(object sender, EventArgs e)
         {
             frmSpecials Specials = new frmSpecials();
             Specials.ShowDialog();
         }
 
-        //Load details for a specific order
+        //Load details for a specific order...
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgvOrders.SelectedRows[0].Index;
 
             int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
 
+            //Display all items in the order
             handlerOrderLines = new Handler_OrderLine();
             BindData_OrderLines(orderNumber);
+
+            //Display order details 
+            lblOrderNumber.Text = dgvOrders.Rows[rowIndex].Cells[0].Value.ToString();
+            lblCustomer.Text = dgvOrders.Rows[rowIndex].Cells[7].Value.ToString();
+            lblDate.Text = dgvOrders.Rows[rowIndex].Cells[3].Value.ToString();
+            lblTime.Text = dgvOrders.Rows[rowIndex].Cells[4].Value.ToString();
+            lblCompletion.Text = dgvOrders.Rows[rowIndex].Cells[5].Value.ToString();
+            lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
+            lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
+        }
+
+        //Log out as the current user...
+        private void tileLogout_Click(object sender, EventArgs e)
+        {
+            frmMain.ActiveForm.Close();
         }
     }
 }

@@ -10,5 +10,8 @@ namespace BLL
     public interface IHandler_OrderLine
     {
         List<OrderLine> GetOrderLines(int orderNumber);
+        bool AddOrderLine(OrderLine orderLine);
+        bool UpdateOrderLine(OrderLine orderLine);
+        bool RemoveOrderLine(int OrderNumber);
     }
 }

@@ -724,6 +724,7 @@
             this.tileLogout.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.tileLogout.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.tileLogout.UseSelectable = true;
+            this.tileLogout.Click += new System.EventHandler(this.tileLogout_Click);
             // 
             // tileSpecials
             // 

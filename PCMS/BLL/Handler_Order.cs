@@ -22,5 +22,13 @@ namespace BLL
         {
             return db.GetAllOrders();
         }
+        public bool UpdateOrder(Order order)
+        {
+            return db.UpdateOrder(order);
+        }
+        public bool RemoveOrder(int OrderNumber)
+        {
+            return db.RemoveOrder(OrderNumber);
+        }
     }
 }

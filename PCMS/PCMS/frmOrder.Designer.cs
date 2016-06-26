@@ -44,7 +44,9 @@
             this.btnNewCustomer = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnUpdateCustomer = new MetroFramework.Controls.MetroButton();
             this.cmbDiscount = new MetroFramework.Controls.MetroComboBox();
+            this.cmbNotificationType = new MetroFramework.Controls.MetroComboBox();
             this.cmbCustomerType = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -56,10 +58,6 @@
             this.tbxCustomerName = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.dgvCustomers = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSearchOrders = new System.Windows.Forms.Label();
             this.btnCustomerSearch = new MetroFramework.Controls.MetroButton();
             this.tbxSurname = new MetroFramework.Controls.MetroTextBox();
@@ -75,7 +73,7 @@
             this.cmbSize = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.cmbProduct = new MetroFramework.Controls.MetroComboBox();
+            this.cmbMedium = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.numQty = new System.Windows.Forms.NumericUpDown();
@@ -123,7 +121,7 @@
             this.Customer.Controls.Add(this.tabFinish);
             this.Customer.Location = new System.Drawing.Point(23, 51);
             this.Customer.Name = "Customer";
-            this.Customer.SelectedIndex = 2;
+            this.Customer.SelectedIndex = 1;
             this.Customer.Size = new System.Drawing.Size(793, 612);
             this.Customer.Style = MetroFramework.MetroColorStyle.Lime;
             this.Customer.TabIndex = 7;
@@ -171,7 +169,9 @@
             this.metroPanel1.Controls.Add(this.btnNewCustomer);
             this.metroPanel1.Controls.Add(this.btnUpdateCustomer);
             this.metroPanel1.Controls.Add(this.cmbDiscount);
+            this.metroPanel1.Controls.Add(this.cmbNotificationType);
             this.metroPanel1.Controls.Add(this.cmbCustomerType);
+            this.metroPanel1.Controls.Add(this.metroLabel12);
             this.metroPanel1.Controls.Add(this.metroLabel6);
             this.metroPanel1.Controls.Add(this.metroLabel5);
             this.metroPanel1.Controls.Add(this.metroLabel4);
@@ -198,7 +198,7 @@
             // btnNewCustomer
             // 
             this.btnNewCustomer.Image = null;
-            this.btnNewCustomer.Location = new System.Drawing.Point(214, 430);
+            this.btnNewCustomer.Location = new System.Drawing.Point(487, 428);
             this.btnNewCustomer.Name = "btnNewCustomer";
             this.btnNewCustomer.Size = new System.Drawing.Size(110, 32);
             this.btnNewCustomer.Style = MetroFramework.MetroColorStyle.Lime;
@@ -207,10 +207,11 @@
             this.btnNewCustomer.UseSelectable = true;
             this.btnNewCustomer.UseStyleColors = true;
             this.btnNewCustomer.UseVisualStyleBackColor = true;
+            this.btnNewCustomer.Click += new System.EventHandler(this.btnNewCustomer_Click);
             // 
             // btnUpdateCustomer
             // 
-            this.btnUpdateCustomer.Location = new System.Drawing.Point(75, 430);
+            this.btnUpdateCustomer.Location = new System.Drawing.Point(348, 428);
             this.btnUpdateCustomer.Name = "btnUpdateCustomer";
             this.btnUpdateCustomer.Size = new System.Drawing.Size(110, 32);
             this.btnUpdateCustomer.TabIndex = 16;
@@ -219,32 +220,59 @@
             // 
             // cmbDiscount
             // 
+            this.cmbDiscount.Enabled = false;
             this.cmbDiscount.FormattingEnabled = true;
             this.cmbDiscount.ItemHeight = 23;
             this.cmbDiscount.Items.AddRange(new object[] {
             "10%"});
-            this.cmbDiscount.Location = new System.Drawing.Point(151, 387);
+            this.cmbDiscount.Location = new System.Drawing.Point(424, 299);
             this.cmbDiscount.Name = "cmbDiscount";
             this.cmbDiscount.Size = new System.Drawing.Size(173, 29);
             this.cmbDiscount.TabIndex = 15;
             this.cmbDiscount.UseSelectable = true;
             // 
+            // cmbNotificationType
+            // 
+            this.cmbNotificationType.Enabled = false;
+            this.cmbNotificationType.FormattingEnabled = true;
+            this.cmbNotificationType.ItemHeight = 23;
+            this.cmbNotificationType.Items.AddRange(new object[] {
+            "None",
+            "SMS",
+            "Email"});
+            this.cmbNotificationType.Location = new System.Drawing.Point(424, 224);
+            this.cmbNotificationType.Name = "cmbNotificationType";
+            this.cmbNotificationType.Size = new System.Drawing.Size(173, 29);
+            this.cmbNotificationType.TabIndex = 15;
+            this.cmbNotificationType.UseSelectable = true;
+            // 
             // cmbCustomerType
             // 
+            this.cmbCustomerType.Enabled = false;
             this.cmbCustomerType.FormattingEnabled = true;
             this.cmbCustomerType.ItemHeight = 23;
             this.cmbCustomerType.Items.AddRange(new object[] {
-            "Freelance"});
-            this.cmbCustomerType.Location = new System.Drawing.Point(151, 349);
+            "Freelance",
+            "Normal"});
+            this.cmbCustomerType.Location = new System.Drawing.Point(424, 261);
             this.cmbCustomerType.Name = "cmbCustomerType";
             this.cmbCustomerType.Size = new System.Drawing.Size(173, 29);
             this.cmbCustomerType.TabIndex = 15;
             this.cmbCustomerType.UseSelectable = true;
             // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(313, 227);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(110, 19);
+            this.metroLabel12.TabIndex = 6;
+            this.metroLabel12.Text = "Notification Type:";
+            // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(32, 391);
+            this.metroLabel6.Location = new System.Drawing.Point(313, 303);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(61, 19);
             this.metroLabel6.TabIndex = 6;
@@ -253,7 +281,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(32, 356);
+            this.metroLabel5.Location = new System.Drawing.Point(313, 265);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(100, 19);
             this.metroLabel5.TabIndex = 6;
@@ -262,7 +290,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(32, 321);
+            this.metroLabel4.Location = new System.Drawing.Point(32, 341);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(44, 19);
             this.metroLabel4.TabIndex = 6;
@@ -271,7 +299,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(32, 290);
+            this.metroLabel2.Location = new System.Drawing.Point(32, 303);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(71, 19);
             this.metroLabel2.TabIndex = 6;
@@ -280,7 +308,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(32, 258);
+            this.metroLabel1.Location = new System.Drawing.Point(32, 265);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(64, 19);
             this.metroLabel1.TabIndex = 6;
@@ -300,8 +328,9 @@
             this.tbxEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxEmail.CustomButton.UseSelectable = true;
             this.tbxEmail.CustomButton.Visible = false;
+            this.tbxEmail.Enabled = false;
             this.tbxEmail.Lines = new string[0];
-            this.tbxEmail.Location = new System.Drawing.Point(151, 317);
+            this.tbxEmail.Location = new System.Drawing.Point(109, 341);
             this.tbxEmail.MaxLength = 32767;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.PasswordChar = '\0';
@@ -330,8 +359,9 @@
             this.tbxCellphone.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxCellphone.CustomButton.UseSelectable = true;
             this.tbxCellphone.CustomButton.Visible = false;
+            this.tbxCellphone.Enabled = false;
             this.tbxCellphone.Lines = new string[0];
-            this.tbxCellphone.Location = new System.Drawing.Point(151, 286);
+            this.tbxCellphone.Location = new System.Drawing.Point(109, 303);
             this.tbxCellphone.MaxLength = 32767;
             this.tbxCellphone.Name = "tbxCellphone";
             this.tbxCellphone.PasswordChar = '\0';
@@ -360,8 +390,9 @@
             this.tbxCustomerSurname.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxCustomerSurname.CustomButton.UseSelectable = true;
             this.tbxCustomerSurname.CustomButton.Visible = false;
+            this.tbxCustomerSurname.Enabled = false;
             this.tbxCustomerSurname.Lines = new string[0];
-            this.tbxCustomerSurname.Location = new System.Drawing.Point(151, 254);
+            this.tbxCustomerSurname.Location = new System.Drawing.Point(109, 265);
             this.tbxCustomerSurname.MaxLength = 32767;
             this.tbxCustomerSurname.Name = "tbxCustomerSurname";
             this.tbxCustomerSurname.PasswordChar = '\0';
@@ -390,8 +421,9 @@
             this.tbxCustomerName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxCustomerName.CustomButton.UseSelectable = true;
             this.tbxCustomerName.CustomButton.Visible = false;
+            this.tbxCustomerName.Enabled = false;
             this.tbxCustomerName.Lines = new string[0];
-            this.tbxCustomerName.Location = new System.Drawing.Point(151, 223);
+            this.tbxCustomerName.Location = new System.Drawing.Point(109, 227);
             this.tbxCustomerName.MaxLength = 32767;
             this.tbxCustomerName.Name = "tbxCustomerName";
             this.tbxCustomerName.PasswordChar = '\0';
@@ -434,11 +466,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCustomers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -450,7 +477,7 @@
             this.dgvCustomers.EnableHeadersVisualStyles = false;
             this.dgvCustomers.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvCustomers.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvCustomers.Location = new System.Drawing.Point(12, 3);
+            this.dgvCustomers.Location = new System.Drawing.Point(3, 3);
             this.dgvCustomers.Name = "dgvCustomers";
             this.dgvCustomers.ReadOnly = true;
             this.dgvCustomers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -464,32 +491,9 @@
             this.dgvCustomers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCustomers.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(594, 204);
+            this.dgvCustomers.Size = new System.Drawing.Size(603, 204);
             this.dgvCustomers.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Surname";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Cellphone";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.dgvCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentClick);
             // 
             // lblSearchOrders
             // 
@@ -509,6 +513,7 @@
             this.btnCustomerSearch.TabIndex = 16;
             this.btnCustomerSearch.Text = "Search";
             this.btnCustomerSearch.UseSelectable = true;
+            this.btnCustomerSearch.Click += new System.EventHandler(this.btnCustomerSearch_Click);
             // 
             // tbxSurname
             // 
@@ -625,7 +630,7 @@
             this.metroPanel2.Controls.Add(this.cmbSize);
             this.metroPanel2.Controls.Add(this.metroLabel9);
             this.metroPanel2.Controls.Add(this.metroLabel8);
-            this.metroPanel2.Controls.Add(this.cmbProduct);
+            this.metroPanel2.Controls.Add(this.cmbMedium);
             this.metroPanel2.Controls.Add(this.metroLabel10);
             this.metroPanel2.Controls.Add(this.metroLabel7);
             this.metroPanel2.Controls.Add(this.numQty);
@@ -711,17 +716,17 @@
             this.metroLabel8.TabIndex = 16;
             this.metroLabel8.Text = "Size";
             // 
-            // cmbProduct
+            // cmbMedium
             // 
-            this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.ItemHeight = 23;
-            this.cmbProduct.Items.AddRange(new object[] {
+            this.cmbMedium.FormattingEnabled = true;
+            this.cmbMedium.ItemHeight = 23;
+            this.cmbMedium.Items.AddRange(new object[] {
             "Mug"});
-            this.cmbProduct.Location = new System.Drawing.Point(122, 15);
-            this.cmbProduct.Name = "cmbProduct";
-            this.cmbProduct.Size = new System.Drawing.Size(173, 29);
-            this.cmbProduct.TabIndex = 18;
-            this.cmbProduct.UseSelectable = true;
+            this.cmbMedium.Location = new System.Drawing.Point(122, 15);
+            this.cmbMedium.Name = "cmbMedium";
+            this.cmbMedium.Size = new System.Drawing.Size(173, 29);
+            this.cmbMedium.TabIndex = 18;
+            this.cmbMedium.UseSelectable = true;
             // 
             // metroLabel10
             // 
@@ -737,15 +742,20 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(33, 20);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(55, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(58, 19);
             this.metroLabel7.TabIndex = 16;
-            this.metroLabel7.Text = "Product";
+            this.metroLabel7.Text = "Medium";
             // 
             // numQty
             // 
             this.numQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQty.Location = new System.Drawing.Point(634, 15);
+            this.numQty.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.numQty.Name = "numQty";
             this.numQty.Size = new System.Drawing.Size(100, 29);
             this.numQty.TabIndex = 3;
@@ -1060,7 +1070,6 @@
             this.rtbxReceipt.Size = new System.Drawing.Size(331, 399);
             this.rtbxReceipt.TabIndex = 5;
             this.rtbxReceipt.Text = "";
-            this.rtbxReceipt.TextChanged += new System.EventHandler(this.rtbxReceipt_TextChanged);
             // 
             // lblTotal
             // 
@@ -1146,7 +1155,7 @@
         private MetroFramework.Controls.MetroComboBox cmbSize;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroComboBox cmbProduct;
+        private MetroFramework.Controls.MetroComboBox cmbMedium;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private System.Windows.Forms.NumericUpDown numQty;
@@ -1177,10 +1186,6 @@
         private MetroFramework.Controls.MetroTextBox tbxCustomerName;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroGrid dgvCustomers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.Label lblSearchOrders;
         private MetroFramework.Controls.MetroButton btnCustomerSearch;
         private MetroFramework.Controls.MetroTextBox tbxSurname;
@@ -1202,5 +1207,7 @@
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnFinishTransaction;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnNext;
         private MetroFramework.Controls.MetroLabel lblTotal;
+        private MetroFramework.Controls.MetroComboBox cmbNotificationType;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
     }
 }

@@ -9,5 +9,8 @@ namespace DAL
     public interface IDBAccess_OrderLines
     {
         List<OrderLine> GetOrderLines(int orderNumber);
+        bool AddOrderLine(OrderLine orderLine);
+        bool UpdateOrderLine(OrderLine orderLine);
+        bool RemoveOrderLine(int OrderLineID);
     }
 }

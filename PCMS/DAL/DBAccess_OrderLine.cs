@@ -10,6 +10,7 @@ namespace DAL
 {
     public class DBAccess_OrderLine : IDBAccess_OrderLines 
     {
+        //Get order lines for a specific orders...
         public List<OrderLine> GetOrderLines(int orderNumber)
         {
             List<OrderLine> list = new List<OrderLine>();
@@ -37,6 +38,47 @@ namespace DAL
                 }
             }
             return list;
+        }
+
+        //Add Order Line...
+        public bool AddOrderLine(OrderLine orderLine)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@SizeMediumID", orderLine.Product),
+                new SqlParameter("@OrderID", orderLine.OrderNumber),
+                new SqlParameter("@Quantity", orderLine.Quantity),
+                new SqlParameter("@ItemPrice", orderLine.ItemPrice),
+                new SqlParameter("@LineTotal", orderLine.LineTotal),
+                new SqlParameter("@Instructions", orderLine.Instructions)
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddOrderLine", CommandType.StoredProcedure, parameters);
+        }
+
+        //Update Order Line...
+        public bool UpdateOrderLine(OrderLine orderLine)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderLineID", orderLine.OrderLineID),
+                new SqlParameter("@SizeMediumID", orderLine.Product),
+                new SqlParameter("@OrderID", orderLine.OrderNumber),
+                new SqlParameter("@Quantity", orderLine.Quantity),
+                new SqlParameter("@ItemPrice", orderLine.ItemPrice),
+                new SqlParameter("@LineTotal", orderLine.LineTotal),
+                new SqlParameter("@Instructions", orderLine.Instructions)
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdateOrderLine", CommandType.StoredProcedure, parameters);
+        }
+
+        //Remove Order Line...
+        public bool RemoveOrderLine(int OrderLineID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderLineID", OrderLineID)
+            };
+            return DBHelper.ExecuteNonQuery("sp_RemoveOrderLine", CommandType.StoredProcedure, parameters);
         }
     }
 }
