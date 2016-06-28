@@ -7,7 +7,7 @@ using DAL;
 
 namespace BLL
 {
-    class Handler_Main
+    public class Handler_Main
     {
         DBAccess_Order accessOrder;
 
