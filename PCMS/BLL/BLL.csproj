@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Handler_Customer.cs" />
     <Compile Include="Handler_Login.cs" />
+    <Compile Include="Handler_Main.cs" />
     <Compile Include="Handler_Order.cs" />
     <Compile Include="Handler_OrderLine.cs" />
     <Compile Include="IHandler_Customer.cs" />

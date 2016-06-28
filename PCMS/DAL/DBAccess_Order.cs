@@ -82,5 +82,38 @@ namespace DAL
             };
             return DBHelper.ExecuteNonQuery("sp_RemoveOrder", CommandType.StoredProcedure, parameters);
         }
+
+        //Get order by order num
+        public List<Order> GetOrderByNum(int OrderNumber)
+        {
+            List<Order> list = new List<Order>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@OrderID", OrderNumber)                
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("GetOrderByNum", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Order order = new Order();
+                        order.OrderNumber = Convert.ToInt32(row["Order#"].ToString());
+                        order.Payment = row["Payment"].ToString();
+                        order.Salesperson = row["Salesperson"].ToString();
+                        order.Date = Convert.ToDateTime(row["Date"].ToString());
+                        order.Time = Convert.ToDateTime(row["Time"].ToString());
+                        order.Completed = Convert.ToBoolean(row["Completed"].ToString());
+                        order.Collected = Convert.ToBoolean(row["Collected"].ToString());
+                        order.Customer = row["Customer"].ToString();
+                        order.Total = Convert.ToDouble(row["Total"].ToString());
+                        list.Add(order);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
-using DAL;
 using BLL;
 
 namespace PCMS
@@ -121,6 +120,11 @@ namespace PCMS
         private void tileLogout_Click(object sender, EventArgs e)
         {
             frmMain.ActiveForm.Close();
+        }
+
+        private void btnOrderSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
