@@ -22,3 +22,5 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\BLL.dll
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\DAL.dll
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\BLL.pdb
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\DAL.pdb
+C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\bin\Debug\PCMS.exe.config
+C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.exe
