@@ -249,6 +249,7 @@
             this.btnOrderSearch.TabIndex = 3;
             this.btnOrderSearch.Text = "Search";
             this.btnOrderSearch.UseSelectable = true;
+            this.btnOrderSearch.Click += new System.EventHandler(this.btnOrderSearch_Click);
             // 
             // tbxOrderNumber
             // 
