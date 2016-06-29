@@ -93,7 +93,7 @@ namespace DAL
                 new SqlParameter("@OrderID", OrderNumber)                
             };
 
-            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("GetOrderByNum", CommandType.StoredProcedure, parameters))
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByNumber", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {
