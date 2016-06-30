@@ -124,7 +124,7 @@ namespace PCMS
 
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
-            Handler_Main handlerMain = new Handler_Main();
+            IHandler_Main handlerMain = new Handler_Main();
             int OrderNum = int.Parse(tbxOrderNumber.ToString());
             dgvOrders.DataSource = handlerMain.getOrderList(OrderNum);
         }
