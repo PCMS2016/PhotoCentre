@@ -16,6 +16,7 @@ namespace PCMS
     {
         private IHandler_Order handlerOrder = null;
         private IHandler_OrderLine handlerOrderLines = null;
+        private IHandler_Main handlerMain = null;
 
         int salespersonID;
         string privileges;
@@ -124,9 +125,14 @@ namespace PCMS
 
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
-            Handler_Main handlerMain = new Handler_Main();
+            handlerMain = new Handler_Main();
             int OrderNum = int.Parse(tbxOrderNumber.ToString());
             dgvOrders.DataSource = handlerMain.getOrderList(OrderNum);
+        }
+
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

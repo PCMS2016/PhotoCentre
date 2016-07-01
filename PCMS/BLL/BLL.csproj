@@ -45,10 +45,13 @@
     <Compile Include="Handler_Main.cs" />
     <Compile Include="Handler_Order.cs" />
     <Compile Include="Handler_OrderLine.cs" />
+    <Compile Include="Handler_Product.cs" />
     <Compile Include="IHandler_Customer.cs" />
     <Compile Include="IHandler_Login.cs" />
+    <Compile Include="IHandler_Main.cs" />
     <Compile Include="IHandler_Order.cs" />
     <Compile Include="IHandler_OrderLine.cs" />
+    <Compile Include="IHandler_Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

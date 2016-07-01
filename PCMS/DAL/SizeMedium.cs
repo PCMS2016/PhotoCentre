@@ -9,8 +9,9 @@ namespace DAL
     public class SizeMedium
     {
         public int SizeMediumID { get; set; }
-        public string SizeID { get; set; }
-        public string MediumID { get; set; }
+        public string Product { get; set; }
+        public string Size { get; set; }
+        public string Medium { get; set; }
         public double Price { get; set; }
     }
 }
