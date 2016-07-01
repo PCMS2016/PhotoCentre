@@ -19,18 +19,27 @@ namespace PCMS
         private IHandler_Order handlerOrder = null;
         private IHandler_OrderLine handlerOrderLine = null;
         private IHandler_Customer handlerCustomer = null;
+        private IHandler_Product handlerProduct = null;
         
         public frmOrder(int salespersonID)
         {
             InitializeComponent();
             this.salespersonID = salespersonID;
         }
-
+        private void BindData_Product()
+        {
+            cmbProduct.DataSource = handlerProduct.GetAllProducts();
+            cmbProduct.DisplayMember = "Product";
+            cmbProduct.ValueMember = "SizeMediumID";
+        }
         private void frmOrder_Load(object sender, EventArgs e)
         {
             handlerOrder = new Handler_Order();
             handlerOrderLine = new Handler_OrderLine();
             handlerCustomer = new Handler_Customer();
+            handlerProduct = new Handler_Product();
+
+            BindData_Product();
         }
 
         private void ClearCustomerFields()

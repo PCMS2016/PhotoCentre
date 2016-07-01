@@ -70,10 +70,8 @@
             this.btnRemoveItem = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnAdd = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.btnEdit = new MetroFramework.Controls.MetroButton();
-            this.cmbSize = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.cmbMedium = new MetroFramework.Controls.MetroComboBox();
+            this.cmbProduct = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.numQty = new System.Windows.Forms.NumericUpDown();
@@ -627,10 +625,8 @@
             this.metroPanel2.Controls.Add(this.btnRemoveItem);
             this.metroPanel2.Controls.Add(this.btnAdd);
             this.metroPanel2.Controls.Add(this.btnEdit);
-            this.metroPanel2.Controls.Add(this.cmbSize);
             this.metroPanel2.Controls.Add(this.metroLabel9);
-            this.metroPanel2.Controls.Add(this.metroLabel8);
-            this.metroPanel2.Controls.Add(this.cmbMedium);
+            this.metroPanel2.Controls.Add(this.cmbProduct);
             this.metroPanel2.Controls.Add(this.metroLabel10);
             this.metroPanel2.Controls.Add(this.metroLabel7);
             this.metroPanel2.Controls.Add(this.numQty);
@@ -686,47 +682,26 @@
             this.btnEdit.Text = "Edit Item";
             this.btnEdit.UseSelectable = true;
             // 
-            // cmbSize
-            // 
-            this.cmbSize.FormattingEnabled = true;
-            this.cmbSize.ItemHeight = 23;
-            this.cmbSize.Items.AddRange(new object[] {
-            "Custom"});
-            this.cmbSize.Location = new System.Drawing.Point(374, 14);
-            this.cmbSize.Name = "cmbSize";
-            this.cmbSize.Size = new System.Drawing.Size(173, 29);
-            this.cmbSize.TabIndex = 18;
-            this.cmbSize.UseSelectable = true;
-            // 
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(571, 20);
+            this.metroLabel9.Location = new System.Drawing.Point(320, 20);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(58, 19);
             this.metroLabel9.TabIndex = 16;
             this.metroLabel9.Text = "Quantity";
             // 
-            // metroLabel8
+            // cmbProduct
             // 
-            this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(323, 20);
-            this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(32, 19);
-            this.metroLabel8.TabIndex = 16;
-            this.metroLabel8.Text = "Size";
-            // 
-            // cmbMedium
-            // 
-            this.cmbMedium.FormattingEnabled = true;
-            this.cmbMedium.ItemHeight = 23;
-            this.cmbMedium.Items.AddRange(new object[] {
+            this.cmbProduct.FormattingEnabled = true;
+            this.cmbProduct.ItemHeight = 23;
+            this.cmbProduct.Items.AddRange(new object[] {
             "Mug"});
-            this.cmbMedium.Location = new System.Drawing.Point(122, 15);
-            this.cmbMedium.Name = "cmbMedium";
-            this.cmbMedium.Size = new System.Drawing.Size(173, 29);
-            this.cmbMedium.TabIndex = 18;
-            this.cmbMedium.UseSelectable = true;
+            this.cmbProduct.Location = new System.Drawing.Point(122, 15);
+            this.cmbProduct.Name = "cmbProduct";
+            this.cmbProduct.Size = new System.Drawing.Size(173, 29);
+            this.cmbProduct.TabIndex = 18;
+            this.cmbProduct.UseSelectable = true;
             // 
             // metroLabel10
             // 
@@ -742,15 +717,15 @@
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.Location = new System.Drawing.Point(33, 20);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(58, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(55, 19);
             this.metroLabel7.TabIndex = 16;
-            this.metroLabel7.Text = "Medium";
+            this.metroLabel7.Text = "Product";
             // 
             // numQty
             // 
             this.numQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numQty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQty.Location = new System.Drawing.Point(634, 15);
+            this.numQty.Location = new System.Drawing.Point(396, 15);
             this.numQty.Maximum = new decimal(new int[] {
             500,
             0,
@@ -1152,10 +1127,8 @@
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnRemoveItem;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnAdd;
         private MetroFramework.Controls.MetroButton btnEdit;
-        private MetroFramework.Controls.MetroComboBox cmbSize;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
-        private MetroFramework.Controls.MetroComboBox cmbMedium;
+        private MetroFramework.Controls.MetroComboBox cmbProduct;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private System.Windows.Forms.NumericUpDown numQty;

@@ -149,6 +149,7 @@
             this.btnCustomerSearch.TabIndex = 3;
             this.btnCustomerSearch.Text = "Search";
             this.btnCustomerSearch.UseSelectable = true;
+            this.btnCustomerSearch.Click += new System.EventHandler(this.btnCustomerSearch_Click);
             // 
             // tbxSurname
             // 
