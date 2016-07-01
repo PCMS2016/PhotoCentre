@@ -13,5 +13,6 @@ namespace BLL
         List<Order> GetAllOrders();
         bool UpdateOrder(Order order);
         bool RemoveOrder(int OrderNumber);
+        int GetOrderNumber();
     }
 }

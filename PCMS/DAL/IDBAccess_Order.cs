@@ -13,5 +13,6 @@ namespace DAL
         bool UpdateOrder(Order order);
         bool RemoveOrder(int OrderNumber);
         List<Order> GetOrderByNum(int OrderNumber);
+        int GetOrderNumber();
     }
 }
