@@ -23,8 +23,7 @@ namespace DAL
                     {
                         SizeMedium product = new SizeMedium();
                         product.SizeMediumID = Convert.ToInt32(row["SizeMediumID"].ToString());
-                        product.Product = row["Product"].ToString();
-                        product.Price = Convert.ToDouble(row["Price"].ToString());
+                        product.Product = row["Product"].ToString() + " - " + (string.Format("{0:C}", Convert.ToDouble(row["Price"].ToString())));
                         list.Add(product);
                     }
                 }

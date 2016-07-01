@@ -30,5 +30,9 @@ namespace BLL
         {
             return db.RemoveOrder(OrderNumber);
         }
+        public int GetOrderNumber()
+        {
+            return db.GetOrderNumber();
+        }
     }
 }
