@@ -122,11 +122,39 @@ namespace PCMS
             frmMain.ActiveForm.Close();
         }
 
+        //Get Order based on order#
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
             IHandler_Main handlerMain = new Handler_Main();
             int OrderNum = int.Parse(tbxOrderNumber.ToString());
-            dgvOrders.DataSource = handlerMain.getOrderList(OrderNum);
+            dgvOrders.DataSource = handlerMain.getParaOrderList(OrderNum);
         }
+
+        //Get Order based on customer name/surname
+        private void btnCustomerSearch_Click(object sender, EventArgs e)
+        {
+            IHandler_Main handlerMain = new Handler_Main();
+            string custFirstName = tbxOrderNumber.ToString();
+            string custLastName = tbxOrderNumber.ToString();
+            dgvOrders.DataSource = handlerMain.getParaCustList(custFirstName, custLastName);
+        }
+
+        //Get order by date -- dropdown list
+        private void dtpDateSearch_ValueChanged(object sender, EventArgs e)
+        {
+            IHandler_Main handlerMain = new Handler_Main();
+            string date = dtpDateSearch.ToString();
+            dgvOrders.DataSource = handlerMain.getOrderDateList(date);
+        }
+
+        //Get order by date -- 'Today' button
+        private void btnToday_Click(object sender, EventArgs e)
+        {
+            IHandler_Main handlerMain = new Handler_Main();
+            string date = DateTime.Today.ToString();
+            dgvOrders.DataSource = handlerMain.getOrderDateList(date);
+        }
+
+        
     }
 }

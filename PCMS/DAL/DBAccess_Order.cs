@@ -90,7 +90,7 @@ namespace DAL
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@OrderID", OrderNumber)                
+                new SqlParameter("@OrderID", OrderNumber)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByNumber", CommandType.StoredProcedure, parameters))
@@ -113,6 +113,74 @@ namespace DAL
                     }
                 }
             }
+            return list;
+        }
+
+        //Get order by customer name/surname
+        public List<Order> getParaCustList(string firstName, string lastName)
+        {
+            List<Order> list = new List<Order>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", firstName),
+                new SqlParameter("@Surname", lastName)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByCustomer", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Order order = new Order();
+                        order.OrderNumber = Convert.ToInt32(row["Order#"].ToString());
+                        order.Payment = row["Payment"].ToString();
+                        order.Salesperson = row["Salesperson"].ToString();
+                        order.Date = Convert.ToDateTime(row["Date"].ToString());
+                        order.Time = Convert.ToDateTime(row["Time"].ToString());
+                        order.Completed = Convert.ToBoolean(row["Completed"].ToString());
+                        order.Collected = Convert.ToBoolean(row["Collected"].ToString());
+                        order.Customer = row["Customer"].ToString();
+                        order.Total = Convert.ToDouble(row["Total"].ToString());
+                        list.Add(order);
+                    }
+                }
+            }
+            return list;
+        }
+
+        //Get order by order date
+        public List<Order> getOrderDateList(string date)
+        {
+            List<Order> list = new List<Order>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Date", date)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByDate", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Order order = new Order();
+                        order.OrderNumber = Convert.ToInt32(row["Order#"].ToString());
+                        order.Payment = row["Payment"].ToString();
+                        order.Salesperson = row["Salesperson"].ToString();
+                        order.Date = Convert.ToDateTime(row["Date"].ToString());
+                        order.Time = Convert.ToDateTime(row["Time"].ToString());
+                        order.Completed = Convert.ToBoolean(row["Completed"].ToString());
+                        order.Collected = Convert.ToBoolean(row["Collected"].ToString());
+                        order.Customer = row["Customer"].ToString();
+                        order.Total = Convert.ToDouble(row["Total"].ToString());
+                        list.Add(order);
+                    }
+                }
+            }
+
             return list;
         }
     }

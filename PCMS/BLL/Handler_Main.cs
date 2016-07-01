@@ -16,9 +16,19 @@ namespace BLL
             accessOrder = new DBAccess_Order();
         }
 
-        public List<Order> getOrderList(int OrderNum)
+        public List<Order> getParaOrderList(int OrderNum)
         {
             return accessOrder.GetOrderByNum(OrderNum);
+        }
+
+        public List<Order> getParaCustList(string firstName, string lastName)
+        {
+            return accessOrder.getParaCustList(firstName, lastName);
+        }
+
+        public List<Order> getOrderDateList(string date)
+        {
+            return accessOrder.getOrderDateList(date);
         }
     }
 }

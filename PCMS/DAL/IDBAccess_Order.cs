@@ -12,6 +12,8 @@ namespace DAL
         List<Order> GetAllOrders();
         bool UpdateOrder(Order order);
         bool RemoveOrder(int OrderNumber);
-        List<Order> GetOrderByNum(int OrderNumber)
+        List<Order> GetOrderByNum(int OrderNumber);
+        List<Order> getParaCustList(string firstName, string lastName);
+        List<Order> getOrderDateList(string date);
     }
 }
