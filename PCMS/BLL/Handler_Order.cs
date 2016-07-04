@@ -30,6 +30,10 @@ namespace BLL
         {
             return db.RemoveOrder(OrderNumber);
         }
+        public int GetOrderNumber()
+        {
+            return db.GetOrderNumber();
+        }
         public List<Order> getParaOrderList(int OrderNum)
         {
             return db.GetOrderByNum(OrderNum);
