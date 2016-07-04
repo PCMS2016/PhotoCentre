@@ -15,7 +15,7 @@ namespace DAL
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@PaymentID", null),
+                new SqlParameter("@PaymentID", Convert.ToInt32(order.Payment)),
                 new SqlParameter("@SalespersonID", Convert.ToInt32(order.Salesperson)),
                 new SqlParameter("@Date", order.Date),
                 new SqlParameter("@Time", order.Time),

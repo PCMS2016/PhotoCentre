@@ -36,8 +36,7 @@ namespace PCMS
             salesperson.Password = password;
 
             //Retrieve details from database matching the username and password...
-            try
-            {
+
                 handlerLogin.Login(salesperson);
 
                 //Check if the login details are valid...
@@ -57,11 +56,7 @@ namespace PCMS
                     //Display error message for invalid login details...
                     lblError.Text = "*Invalid Login Details";
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
 
         
