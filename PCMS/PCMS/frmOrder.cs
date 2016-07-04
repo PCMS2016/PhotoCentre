@@ -28,6 +28,7 @@ namespace PCMS
         //This variables
         private List<OrderLine> orderItems = new List<OrderLine>();
         private int orderNumber;
+        private double orderTotal = 0;
 
         public frmOrder(int salespersonID)
         {
@@ -80,7 +81,7 @@ namespace PCMS
         //Pay button clicked...
         private void btnPay_Click(object sender, EventArgs e)
         {
-            
+            StartOrder();
         }
 
         //Add order to database...
@@ -97,7 +98,7 @@ namespace PCMS
             order.Completed = false;
             order.Collected = false;
             order.Customer = dgvCustomers[0, customerIndex].Value.ToString();
-            order.Total = Convert.ToDouble(lblTotal.Text);
+            order.Total = orderTotal;
 
             //Add order to database
             handlerOrder.AddOrder(order);
@@ -200,7 +201,7 @@ namespace PCMS
 
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
-            double orderTotal = 0;
+            
             foreach (var item in orderItems)
             {
                 orderTotal += item.LineTotal;
