@@ -15,13 +15,13 @@ namespace DAL
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@PaymentID", order.Payment),
-                new SqlParameter("@SalespersonID", order.Salesperson),
+                new SqlParameter("@PaymentID", null),
+                new SqlParameter("@SalespersonID", Convert.ToInt32(order.Salesperson)),
                 new SqlParameter("@Date", order.Date),
                 new SqlParameter("@Time", order.Time),
                 new SqlParameter("@Completed", order.Completed),
                 new SqlParameter("@Collected", order.Collected),
-                new SqlParameter("@CustomerID", order.Customer),
+                new SqlParameter("@CustomerID", Convert.ToInt32(order.Customer)),
                 new SqlParameter("@OrderTotal", order.Total)
             };
             return DBHelper.ExecuteNonQuery("sp_AddOrder", CommandType.StoredProcedure, parameters);
@@ -81,6 +81,23 @@ namespace DAL
                 new SqlParameter("OrderID", OrderNumber)
             };
             return DBHelper.ExecuteNonQuery("sp_RemoveOrder", CommandType.StoredProcedure, parameters);
+        }
+
+        //Get Order Number...
+        public int GetOrderNumber()
+        {
+            int orderNumber = 0;
+            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllOrders", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    /*===http://stackoverflow.com/questions/18528736/how-to-retrieve-values-from-the-last-row-in-a-datatable ===*/
+                    
+                    DataRow row = table.Rows[table.Rows.Count - 1];
+                    orderNumber = Convert.ToInt32(row["Order#"].ToString());
+                }
+            }
+            return orderNumber;
         }
 
         //Get order by order num
