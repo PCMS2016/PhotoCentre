@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
 using BLL;
+using DAL;
 
 namespace PCMS
 {
@@ -18,6 +19,7 @@ namespace PCMS
         private IHandler_OrderLine handlerOrderLines = null;
 
         int salespersonID;
+        public int selectedOrderNum = 0;
         string privileges;
         string employeeType;
 
@@ -102,6 +104,8 @@ namespace PCMS
 
             int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
 
+            selectedOrderNum = orderNumber;
+
             //Display all items in the order
             handlerOrderLines = new Handler_OrderLine();
             BindData_OrderLines(orderNumber);
@@ -125,36 +129,50 @@ namespace PCMS
         //Get Order based on order#
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
-            IHandler_Main handlerMain = new Handler_Main();
-            int OrderNum = int.Parse(tbxOrderNumber.ToString());
-            dgvOrders.DataSource = handlerMain.getParaOrderList(OrderNum);
+            int OrderNum = Int32.Parse(tbxOrderNumber.Text);
+            dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
         }
 
         //Get Order based on customer name/surname
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
-            IHandler_Main handlerMain = new Handler_Main();
-            string custFirstName = tbxOrderNumber.ToString();
-            string custLastName = tbxOrderNumber.ToString();
-            dgvOrders.DataSource = handlerMain.getParaCustList(custFirstName, custLastName);
+            string custFirstName = tbxName.Text;
+            string custLastName = tbxSurname.Text;
+            dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
         }
 
         //Get order by date -- dropdown list
         private void dtpDateSearch_ValueChanged(object sender, EventArgs e)
         {
-            IHandler_Main handlerMain = new Handler_Main();
-            string date = dtpDateSearch.ToString();
-            dgvOrders.DataSource = handlerMain.getOrderDateList(date);
+            DateTime date = DateTime.Parse(dtpDateSearch.Text);
+            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
         }
 
         //Get order by date -- 'Today' button
         private void btnToday_Click(object sender, EventArgs e)
         {
-            IHandler_Main handlerMain = new Handler_Main();
-            string date = DateTime.Today.ToString();
-            dgvOrders.DataSource = handlerMain.getOrderDateList(date);
+            DateTime date = DateTime.Today;
+            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
         }
 
-        
+        private void btnCompleted_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btbCollected_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefreshGrid_Click(object sender, EventArgs e)
+        {
+            BindData_Orders();
+        }
     }
 }

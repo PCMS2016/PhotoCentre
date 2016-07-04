@@ -13,5 +13,8 @@ namespace BLL
         List<Order> GetAllOrders();
         bool UpdateOrder(Order order);
         bool RemoveOrder(int OrderNumber);
+        List<Order> getParaOrderList(int OrderNum);
+        List<Order> getParaCustList(string firstName, string lastName);
+        List<Order> getOrderDateList(DateTime date);
     }
 }

@@ -119,7 +119,7 @@ namespace DAL
         //Get order by customer name/surname
         public List<Order> getParaCustList(string firstName, string lastName)
         {
-            List<Order> list = new List<Order>();
+            List<Order> list =null;
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -131,6 +131,8 @@ namespace DAL
             {
                 if (table.Rows.Count > 0)
                 {
+                    list = new List<Order>();
+
                     foreach (DataRow row in table.Rows)
                     {
                         Order order = new Order();
@@ -151,7 +153,7 @@ namespace DAL
         }
 
         //Get order by order date
-        public List<Order> getOrderDateList(string date)
+        public List<Order> getOrderDateList(DateTime date)
         {
             List<Order> list = new List<Order>();
 

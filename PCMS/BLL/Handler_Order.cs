@@ -30,5 +30,19 @@ namespace BLL
         {
             return db.RemoveOrder(OrderNumber);
         }
+        public List<Order> getParaOrderList(int OrderNum)
+        {
+            return db.GetOrderByNum(OrderNum);
+        }
+
+        public List<Order> getParaCustList(string firstName, string lastName)
+        {
+            return db.getParaCustList(firstName, lastName);
+        }
+
+        public List<Order> getOrderDateList(DateTime date)
+        {
+            return db.getOrderDateList(date);
+        }
     }
 }
