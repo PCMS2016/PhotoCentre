@@ -100,7 +100,7 @@ namespace PCMS
         //Load details for a specific order...
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = dgvOrders.SelectedRows[0].Index;
+            int rowIndex = dgvOrders.CurrentCell.RowIndex;
 
             int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
 
@@ -157,12 +157,16 @@ namespace PCMS
 
         private void btnCompleted_Click(object sender, EventArgs e)
         {
-
+            handlerOrder.CompleteOrder(selectedOrderNum);
+            BindData_OrderLines(selectedOrderNum);
+            BindData_Orders();
         }
 
         private void btbCollected_Click(object sender, EventArgs e)
         {
-
+            handlerOrder.CollectOrder(selectedOrderNum);
+            BindData_OrderLines(selectedOrderNum);
+            BindData_Orders();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

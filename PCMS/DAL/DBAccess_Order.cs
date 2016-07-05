@@ -202,5 +202,25 @@ namespace DAL
 
             return list;
         }
+
+        //Complete Order
+        public bool CompleteOrder(int OrderNum)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Order#", OrderNum)
+            };
+            return DBHelper.ExecuteNonQuery("sp_OrderCompleted", CommandType.StoredProcedure, parameters);
+        }
+
+        //Order Collected
+        public bool CollectOrder(int OrderNum)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Order#", OrderNum)
+            };
+            return DBHelper.ExecuteNonQuery("sp_OrderCollected", CommandType.StoredProcedure, parameters);
+        }
     }
 }

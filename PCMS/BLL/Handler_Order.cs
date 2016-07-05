@@ -48,5 +48,15 @@ namespace BLL
         {
             return db.getOrderDateList(date);
         }
+        
+        public bool CompleteOrder(int OrderNum)
+        {
+            return db.CompleteOrder(OrderNum);
+        }
+
+        public bool CollectOrder(int OrderNum)
+        {
+            return db.CollectOrder(OrderNum);
+        }
     }
 }

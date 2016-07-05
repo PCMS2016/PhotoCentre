@@ -17,5 +17,7 @@ namespace BLL
         List<Order> getParaOrderList(int OrderNum);
         List<Order> getParaCustList(string firstName, string lastName);
         List<Order> getOrderDateList(DateTime date);
+        bool CompleteOrder(int OrderNum);
+        bool CollectOrder(int OrderNum);
     }
 }

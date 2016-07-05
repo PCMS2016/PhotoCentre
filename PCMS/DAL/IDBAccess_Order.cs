@@ -16,5 +16,7 @@ namespace DAL
         List<Order> GetOrderByNum(int OrderNumber);
         List<Order> getParaCustList(string firstName, string lastName);
         List<Order> getOrderDateList(DateTime date);
+        bool CompleteOrder(int OrderNum);
+        bool CollectOrder(int OrderNum);
     }
 }
