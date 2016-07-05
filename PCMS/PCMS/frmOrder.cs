@@ -21,6 +21,7 @@ namespace PCMS
         private IHandler_Customer handlerCustomer = null;
         private IHandler_Product handlerProduct = null;
         private IHandler_Payment handlerPayment = null;
+        private IHandler_Discount handlerDiscount = null;
 
         //Passed variables
         private int salespersonID;
@@ -53,6 +54,13 @@ namespace PCMS
             cmbPayment.ValueMember = "PaymentID";
         }
 
+        //Bind discount to ComboBox
+        private void BindData_Discount()
+        {
+            cmbDiscount.DataSource = handlerDiscount.GetAllDiscount();
+            cmbDiscount.DisplayMember = "Percentage";
+            cmbDiscount.ValueMember = "DiscountID";
+        }
         //Form loads...
         private void frmOrder_Load(object sender, EventArgs e)
         {
@@ -62,10 +70,12 @@ namespace PCMS
             handlerCustomer = new Handler_Customer();
             handlerProduct = new Handler_Product();
             handlerPayment = new Handler_Payment();
+            handlerDiscount = new Handler_Discount();
 
             //Bind Data
             BindData_Product();
             BindData_Payment();
+            BindData_Discount();
 
             //Focus controls
             tabCtrlOrder.SelectedTab = tabCustomer;
@@ -76,7 +86,7 @@ namespace PCMS
         private void ClearCustomerFields()
         {
             tbxCustomerName.Clear();
-            tbxSurname.Clear();
+            tbxCustomerSurname.Clear();
             tbxCellphone.Clear();
             tbxEmail.Clear();
             cmbNotificationType.SelectedIndex = 0;
@@ -84,11 +94,51 @@ namespace PCMS
             cmbDiscount.SelectedIndex = 0;
         }
 
+        //Enable customer fields...
+        private void EnableCustomerEdit()
+        {
+            tbxCustomerName.Enabled = true;
+            tbxCustomerSurname.Enabled = true;
+            tbxCellphone.Enabled = true;
+            tbxEmail.Enabled = true;
+            cmbNotificationType.Enabled = true;
+            cmbCustomerType.Enabled = true;
+            cmbDiscount.Enabled = true;
+        }
+
+        //Disable customer fields...
+        private void DisableCustomerEdit()
+        {
+            tbxCustomerName.Enabled = false;
+            tbxCustomerSurname.Enabled = false;
+            tbxCellphone.Enabled = false;
+            tbxEmail.Enabled = false;
+            cmbNotificationType.Enabled = false;
+            cmbCustomerType.Enabled = false;
+            cmbDiscount.Enabled = false;
+        }
+
         //Pay button clicked...
         private void btnPay_Click(object sender, EventArgs e)
         {
-            StartOrder();
-            AddOrderItems();
+            double change = 0;
+            if (cmbPayment.Text == "Cash" && tbxCash.Text == "")
+            {
+                MessageBox.Show("Please enter amount of cash recieved.");
+                tbxCash.Focus();
+            }
+            else
+            {
+                StartOrder();
+                AddOrderItems();
+
+                if (cmbPayment.Text == "Cash")
+                {
+                    change = (Convert.ToDouble(tbxCash.Text)) - orderTotal;
+                    MessageBox.Show(string.Format("Change: {0:C}", change));
+                    this.Close();
+                }
+            }
         }
 
         //Add order items to database...
@@ -124,6 +174,11 @@ namespace PCMS
         }
 
         //Search Customer...
+        private void SearchCustomer(string name, string surname)
+        {
+            dgvCustomers.DataSource = handlerCustomer.SearchCustomer(name, surname);
+        }
+        //Search Customer...
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
             string name = tbxName.Text;
@@ -135,14 +190,137 @@ namespace PCMS
             }
             else
             {
-                dgvCustomers.DataSource = handlerCustomer.SearchCustomer(name, surname);
+                SearchCustomer(name, surname);
             }
+        }
+
+        //Add Customer to database...
+        private void AddCustomer()
+        {
+            Customer customer = new Customer();
+            customer.Name = tbxCustomerName.Text;
+            customer.Surname = tbxCustomerSurname.Text;
+            customer.Cellphone = tbxCellphone.Text;
+            customer.Email = tbxEmail.Text;
+            customer.NotificationType = cmbNotificationType.Text;
+            customer.CustomerType = cmbCustomerType.Text;
+            customer.Discount = Convert.ToDouble(cmbDiscount.SelectedValue);
+
+            try
+            {
+                handlerCustomer.AddCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not add customer." + Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Update Customer to database...
+        private void UpdateCustomer()
+        {
+            Customer customer = new Customer();
+            customer.CustomerID = Convert.ToInt32(dgvCustomers.Rows[dgvCustomers.SelectedRows[0].Index].Cells[0].Value.ToString());
+            customer.Name = tbxCustomerName.Text;
+            customer.Surname = tbxCustomerSurname.Text;
+            customer.Cellphone = tbxCellphone.Text;
+            customer.Email = tbxEmail.Text;
+            customer.NotificationType = cmbNotificationType.Text;
+            customer.CustomerType = cmbCustomerType.Text;
+            customer.Discount = Convert.ToDouble(cmbDiscount.SelectedValue);
+
+            try
+            {
+                handlerCustomer.UpdateCustomer(customer);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Could not update customer." + Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Validate Customer Fields
+        private bool ValidateCustomerFields()
+        {
+            bool valid = true;
+
+            if (tbxCustomerName.Text == "" || tbxCustomerSurname.Text == "" || (tbxCellphone.Text).Length != 10)
+                valid = false;
+
+            if (tbxEmail.Text == "")
+                tbxEmail.Text = "N/A";
+
+            return valid;
         }
 
         //Add new customer...
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
-            ClearCustomerFields();
+            if (btnNewCustomer.Text == "New Customer")
+            {
+                btnUpdateCustomer.Enabled = false;
+                btnNewCustomer.Text = "Save";
+                ClearCustomerFields();
+                EnableCustomerEdit();
+
+                tbxCustomerName.Focus();
+            }
+            else
+            {
+                if (ValidateCustomerFields() == true)
+                {
+                    AddCustomer();
+
+                    btnUpdateCustomer.Enabled = true;
+                    btnNewCustomer.Text = "New Customer";
+                    DisableCustomerEdit();
+                    ClearCustomerFields();
+
+                    SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+
+                    customerSelected = false;
+                }
+                else
+                {
+                    MessageBox.Show("Please ensure all details are valid.");
+                }
+            }
+        }
+
+        //Update customer details...
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            if (customerSelected == true)
+            {
+                if (btnUpdateCustomer.Text == "Update Customer")
+                {
+                    btnNewCustomer.Enabled = false;
+                    btnUpdateCustomer.Text = "Save";
+                    EnableCustomerEdit();
+
+                    tbxCustomerName.Focus();
+                }
+                else
+                {
+                    if (ValidateCustomerFields() == true)
+                    {
+                        UpdateCustomer();
+
+                        btnNewCustomer.Enabled = true;
+                        btnUpdateCustomer.Text = "Update Customer";
+                        DisableCustomerEdit();
+                        ClearCustomerFields();
+
+                        SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+
+                        customerSelected = false;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No Customer Selected!");
+            }
         }
 
         //Customer selected...
@@ -160,6 +338,7 @@ namespace PCMS
 
             customerSelected = true;
         }
+
         //Show details in labels when row is clicked in customer grid...
         private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -235,6 +414,7 @@ namespace PCMS
         //Next button on customer details clicked...
         private void btnNext_Click(object sender, EventArgs e)
         {
+            //Switch tab
             if (customerSelected == true)
             {
                 tabCtrlOrder.SelectedTab = tabProducts;
@@ -267,7 +447,7 @@ namespace PCMS
             }
         }
 
-        //Don't allow user to proceed if details are missing.
+        //Don't allow user to proceed if details are missing...
         private void tabCtrlOrder_SelectedIndexChanged(object sender, EventArgs e)
         {           
             if (customerSelected == false && (tabCtrlOrder.SelectedTab == tabProducts || tabCtrlOrder.SelectedTab == tabFinish))
@@ -281,12 +461,14 @@ namespace PCMS
                 MessageBox.Show("No Products Added!");
             }
         }
-        //Void Order
+
+        //Void Order...
         private void VoidOrder()
         {
             this.Close();
             orderItems.Clear();
         }
+
         private void btnVoid_Customer_Click(object sender, EventArgs e)
         {
             VoidOrder();
@@ -302,9 +484,74 @@ namespace PCMS
             VoidOrder();
         }
 
+        //Select customer when Enter button is pressed...
         private void dgvCustomers_KeyPress(object sender, KeyPressEventArgs e)
         {
             SelectCustomer();
+        }
+
+        //Remove Item from order...
+        private void btnRemoveItem_Click(object sender, EventArgs e)
+        {
+            int index = dgvProducts.SelectedRows[0].Index;
+
+            dgvProducts.Rows.RemoveAt(index);
+            dgvOrderLines.Rows.RemoveAt(index);
+
+            orderItems.RemoveAt(index);
+        }
+
+        //Edit order item...
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (btnEdit.Text == "Edit Item")
+            {
+                cmbProduct.Enabled = false;
+                btnEdit.Text = "Save";
+            }
+            else
+            {
+                int index = dgvProducts.SelectedRows[0].Index;
+                string instructions = tbxInstructions.Text;
+                string temp = dgvProducts.Rows[index].Cells[2].Value.ToString();
+                double price = Convert.ToDouble(temp.Substring(temp.LastIndexOf("R") + 1));
+                double total = Convert.ToDouble(numQty.Value.ToString()) * price;
+
+                if (instructions == "")
+                {
+                    instructions = "None";
+                }
+
+                orderItems[index].Quantity = Convert.ToInt32(numQty.Value);
+                orderItems[index].Instructions = instructions;
+                orderItems[index].LineTotal = total;
+
+                dgvProducts.Rows[index].Cells[1].Value = numQty.Value.ToString();
+                dgvProducts.Rows[index].Cells[3].Value = string.Format("{0:C}", total);
+                dgvProducts.Rows[index].Cells[4].Value = instructions;
+
+                cmbProduct.Enabled = true;
+                btnEdit.Enabled = false;
+
+                btnEdit.Text = "Edit Item";
+            }
+        }
+
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvProducts.SelectedRows[0].Index;
+
+            cmbProduct.Text = dgvProducts.Rows[index].Cells[0].Value.ToString() + " - " + dgvProducts.Rows[index].Cells[2].Value.ToString();
+            numQty.Value = Convert.ToInt32(dgvProducts.Rows[index].Cells[1].Value.ToString());
+            tbxInstructions.Text = dgvProducts.Rows[index].Cells[4].Value.ToString();
+
+            btnEdit.Enabled = true;
+        }
+
+        private void cmbProduct_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numQty.Value = 0;
+            tbxInstructions.Clear();
         }
     }
 }

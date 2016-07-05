@@ -10,5 +10,7 @@ namespace BLL
     public interface IHandler_Customer
     {
         List<Customer> SearchCustomer(string Name, string Surname);
+        bool AddCustomer(Customer customer);
+        bool UpdateCustomer(Customer customer);
     }
 }
