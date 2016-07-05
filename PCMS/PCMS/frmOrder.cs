@@ -29,6 +29,7 @@ namespace PCMS
         private List<OrderLine> orderItems = new List<OrderLine>();
         private int orderNumber;
         private double orderTotal = 0;
+        private bool customerSelected = false;
 
         public frmOrder(int salespersonID)
         {
@@ -62,8 +63,13 @@ namespace PCMS
             handlerProduct = new Handler_Product();
             handlerPayment = new Handler_Payment();
 
+            //Bind Data
             BindData_Product();
             BindData_Payment();
+
+            //Focus controls
+            tabCtrlOrder.SelectedTab = tabCustomer;
+            tbxName.Focus();
         }
 
         //Clear the fields for customer details...
@@ -82,8 +88,18 @@ namespace PCMS
         private void btnPay_Click(object sender, EventArgs e)
         {
             StartOrder();
+            AddOrderItems();
         }
 
+        //Add order items to database...
+        private void AddOrderItems()
+        {
+            foreach (var item in orderItems)
+            {
+                item.OrderNumber = orderNumber;
+                handlerOrderLine.AddOrderLine(item);
+            }
+        }
         //Add order to database...
         private void StartOrder()
         {
@@ -129,8 +145,8 @@ namespace PCMS
             ClearCustomerFields();
         }
 
-        //Show details in labels when row is clicked in customer grid...
-        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //Customer selected...
+        private void SelectCustomer()
         {
             int index = dgvCustomers.SelectedRows[0].Index;
 
@@ -141,6 +157,13 @@ namespace PCMS
             cmbNotificationType.Text = dgvCustomers.Rows[index].Cells[5].Value.ToString();
             cmbCustomerType.Text = dgvCustomers.Rows[index].Cells[6].Value.ToString();
             cmbDiscount.Text = dgvCustomers.Rows[index].Cells["Discount"].Value.ToString();
+
+            customerSelected = true;
+        }
+        //Show details in labels when row is clicked in customer grid...
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelectCustomer();
         }
 
         //Add item to grids...
@@ -153,7 +176,7 @@ namespace PCMS
             dgvProducts.Rows[index].Cells[1].Value = qty;
             dgvProducts.Rows[index].Cells[2].Value = price;
             dgvProducts.Rows[index].Cells[3].Value = string.Format("{0:C}", total);
-            dgvProducts.Rows[index].Cells[4].Value = tbxInstructions.Text;
+            dgvProducts.Rows[index].Cells[4].Value = instructions;
 
             dgvOrderLines.Rows.Add();
             dgvOrderLines.Rows[index].Cells[0].Value = product;
@@ -163,12 +186,12 @@ namespace PCMS
         }
 
         //Add item to List...
-        private void AddLineToList(string product, int orderNumber, int qty, double price, double total, string instructions)
+        private void AddLineToList(string product, int qty, double price, double total, string instructions)
         {
             //Create object for item
             OrderLine orderLine = new OrderLine();
             orderLine.Product = product;
-            orderLine.OrderNumber = orderNumber;
+            //orderLine.OrderNumber = orderNumber;
             orderLine.Quantity = qty;
             orderLine.ItemPrice = price;
             orderLine.LineTotal = total;
@@ -178,9 +201,10 @@ namespace PCMS
             orderItems.Add(orderLine);
         }
  
-        //Add Button Clicked...
+        //Add Button Clicked (Products)...
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            string instructions = tbxInstructions.Text;
             int quantity = Convert.ToInt32(numQty.Value);
             string temp = cmbProduct.Text;
             string sPrice = temp.Substring(temp.LastIndexOf("R"));
@@ -188,25 +212,99 @@ namespace PCMS
             double price = Convert.ToDouble(sPrice.Substring(1));
             double total = price * quantity;
 
-            AddLineToGrid(product, quantity, sPrice, total, tbxInstructions.Text);
+            if (instructions == "")
+            {
+                instructions = "None";
+            }
 
-            AddLineToList(cmbProduct.SelectedValue.ToString(), orderNumber, quantity, price, total, tbxInstructions.Text);
+            if (numQty.Value == 0)
+            {
+                MessageBox.Show("Invalid Quantity!");
+            }
+            else
+            {
+                AddLineToGrid(product, quantity, sPrice, total, instructions);
+
+                AddLineToList(cmbProduct.SelectedValue.ToString(), quantity, price, total, instructions);
+            }
+
+            numQty.Value = 0;
+            tbxInstructions.Clear();
         }
 
         //Next button on customer details clicked...
         private void btnNext_Click(object sender, EventArgs e)
         {
-            
+            if (customerSelected == true)
+            {
+                tabCtrlOrder.SelectedTab = tabProducts;
+            }
+            else
+            {
+                MessageBox.Show("No Customer Selected!");
+            }
+
         }
 
+        //Finish Transaction Button clicked...
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
-            
+            //Calculate order total
             foreach (var item in orderItems)
             {
                 orderTotal += item.LineTotal;
             }
             lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);
+
+            //Switch tab
+            if (dgvProducts.Rows.Count > 0)
+            {
+                tabCtrlOrder.SelectedTab = tabFinish;                
+            }
+            else
+            {
+                MessageBox.Show("No Products Added!");
+            }
+        }
+
+        //Don't allow user to proceed if details are missing.
+        private void tabCtrlOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            if (customerSelected == false && (tabCtrlOrder.SelectedTab == tabProducts || tabCtrlOrder.SelectedTab == tabFinish))
+            {
+                tabCtrlOrder.SelectedTab = tabCustomer;
+                MessageBox.Show("No Customer Selected!");
+            }
+            if (tabCtrlOrder.SelectedTab == tabFinish && dgvProducts.Rows.Count == 0)
+            {
+                tabCtrlOrder.SelectedTab = tabProducts;
+                MessageBox.Show("No Products Added!");
+            }
+        }
+        //Void Order
+        private void VoidOrder()
+        {
+            this.Close();
+            orderItems.Clear();
+        }
+        private void btnVoid_Customer_Click(object sender, EventArgs e)
+        {
+            VoidOrder();
+        }
+
+        private void btnVoid_Products_Click(object sender, EventArgs e)
+        {
+            VoidOrder();            
+        }
+
+        private void btnVoid_Finish_Click(object sender, EventArgs e)
+        {
+            VoidOrder();
+        }
+
+        private void dgvCustomers_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SelectCustomer();
         }
     }
 }

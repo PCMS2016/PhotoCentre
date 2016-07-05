@@ -45,7 +45,7 @@ namespace DAL
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@SizeMediumID", orderLine.Product),
+                new SqlParameter("@SizeMediumID", Convert.ToInt32(orderLine.Product)),
                 new SqlParameter("@OrderID", orderLine.OrderNumber),
                 new SqlParameter("@Quantity", orderLine.Quantity),
                 new SqlParameter("@ItemPrice", orderLine.ItemPrice),
