@@ -42,5 +42,38 @@ namespace DAL
             }
             return list;
         }
+
+        //Add Customer...
+        public bool AddCustomer(Customer customer)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", customer.Name),
+                new SqlParameter("@Surname", customer.Surname),
+                new SqlParameter("@Cellphone", customer.Cellphone),
+                new SqlParameter("@Email", customer.Email),
+                new SqlParameter("@NotificationType", customer.NotificationType),
+                new SqlParameter("@CustomerType", customer.CustomerType),
+                new SqlParameter("@DiscountID", Convert.ToInt32(customer.Discount))
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddCustomer", CommandType.StoredProcedure, parameters);
+        }
+
+        //Update Customer...
+        public bool UpdateCustomer(Customer customer)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@CustomerID", customer.CustomerID),
+                new SqlParameter("@Name",customer.Name),
+                new SqlParameter("@Surname", customer.Surname),
+                new SqlParameter("@Cellphone", customer.Cellphone),
+                new SqlParameter("@Email", customer.Email),
+                new SqlParameter("@NotificationType", customer.NotificationType),
+                new SqlParameter("@CustomerType", customer.CustomerType),
+                new SqlParameter("@DiscountID", Convert.ToInt32(customer.Discount))
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdateCustomer", CommandType.StoredProcedure, parameters);
+        }
     }
 }

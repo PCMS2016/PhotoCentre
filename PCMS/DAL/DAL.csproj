@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="DBAccess_Customer.cs" />
+    <Compile Include="DBAccess_Discount.cs" />
     <Compile Include="DBAccess_Login.cs" />
     <Compile Include="DBAccess_Order.cs" />
     <Compile Include="DBAccess_OrderLine.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="DBHelper.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="IDBAccess_Customer.cs" />
+    <Compile Include="IDBAccess_Discount.cs" />
     <Compile Include="IDBAccess_Login.cs" />
     <Compile Include="IDBAccess_Payment.cs" />
     <Compile Include="IDBAccess_Product.cs" />

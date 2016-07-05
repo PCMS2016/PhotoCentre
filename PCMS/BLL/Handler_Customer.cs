@@ -19,5 +19,13 @@ namespace BLL
         {
             return db.SearchCustomer(Name, Surname);
         }
+        public bool AddCustomer(Customer customer)
+        {
+            return db.AddCustomer(customer);
+        }
+        public bool UpdateCustomer(Customer customer)
+        {
+            return db.UpdateCustomer(customer);
+        }
     }
 }
