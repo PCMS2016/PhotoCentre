@@ -118,6 +118,9 @@ namespace PCMS
             lblCompletion.Text = dgvOrders.Rows[rowIndex].Cells[5].Value.ToString();
             lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
             lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
+
+            btnCompleted.Enabled = true;
+            btbCollected.Enabled = true;
         }
 
         //Log out as the current user...
@@ -157,16 +160,20 @@ namespace PCMS
 
         private void btnCompleted_Click(object sender, EventArgs e)
         {
-            handlerOrder.CompleteOrder(selectedOrderNum);
-            BindData_OrderLines(selectedOrderNum);
-            BindData_Orders();
+                handlerOrder.CompleteOrder(selectedOrderNum);
+
+                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
+
+                btnCompleted.Enabled = false;
         }
 
         private void btbCollected_Click(object sender, EventArgs e)
         {
             handlerOrder.CollectOrder(selectedOrderNum);
-            BindData_OrderLines(selectedOrderNum);
-            BindData_Orders();
+
+            dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Collected"].Value = true;
+
+            btbCollected.Enabled = false;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

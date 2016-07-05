@@ -325,6 +325,7 @@
             // 
             // btbCollected
             // 
+            this.btbCollected.Enabled = false;
             this.btbCollected.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btbCollected.Image = null;
             this.btbCollected.Location = new System.Drawing.Point(169, 494);
@@ -338,6 +339,7 @@
             // 
             // btnCompleted
             // 
+            this.btnCompleted.Enabled = false;
             this.btnCompleted.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.btnCompleted.Image = null;
             this.btnCompleted.Location = new System.Drawing.Point(49, 494);
