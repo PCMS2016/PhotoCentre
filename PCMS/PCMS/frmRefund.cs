@@ -8,20 +8,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using BLL;
+using DAL;
 
 namespace PCMS
 {
     public partial class frmRefund : MetroForm
     {
+        private IHandler_Refund handlerRefund = null;
+
         public frmRefund()
         {
             InitializeComponent();
+            handlerRefund = new Handler_Refund();
         }
 
         private void frmRefund_Load(object sender, EventArgs e)
         {
-            /*
-            dgvOrderLines.Rows.Add(3);
+            
+            /*dgvOrderLines.Rows.Add(3);
             dgvOrderLines.Rows[0].Cells[0].Value = "Jumbo Photo";
             dgvOrderLines.Rows[0].Cells[1].Value = "50";
             dgvOrderLines.Rows[0].Cells[2].Value = "R  5.00";
@@ -56,6 +61,19 @@ namespace PCMS
 
             lblRefundTotal.Text += " R 10.00";
             */
+        }
+
+        private void btnRefundSearchOrder_Click(object sender, EventArgs e)
+        {
+            int OrderNum = Int32.Parse(tbxOrderNumber.Text);
+            Order order = new Order();
+            order = handlerRefund.getOrderByNum(OrderNum);
+
+            lblOrderNumber.Text = order.OrderNumber.ToString();
+            lblCustomer.Text = order.Customer.ToString();
+            lblDate.Text = order.Date.ToString();
+            lblTime.Text = order.Time.ToString();
+            lblSalesperson.Text = order.Salesperson.ToString();
         }
     }
 }

@@ -155,6 +155,7 @@ namespace PCMS
             dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
         }
 
+        //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
             handlerOrder.CompleteOrder(selectedOrderNum);
@@ -162,6 +163,7 @@ namespace PCMS
             BindData_Orders();
         }
 
+        //Order has been collected
         private void btbCollected_Click(object sender, EventArgs e)
         {
             handlerOrder.CollectOrder(selectedOrderNum);
@@ -174,6 +176,7 @@ namespace PCMS
 
         }
 
+        //Refresh
         private void btnRefreshGrid_Click(object sender, EventArgs e)
         {
             BindData_Orders();

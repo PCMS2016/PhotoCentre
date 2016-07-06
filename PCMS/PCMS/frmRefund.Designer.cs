@@ -98,7 +98,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Location = new System.Drawing.Point(20, 51);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(1093, 591);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Lime;
             this.metroTabControl1.TabIndex = 1;
@@ -533,6 +533,7 @@
             this.btnRefundSearchOrder.TabIndex = 25;
             this.btnRefundSearchOrder.Text = "Search";
             this.btnRefundSearchOrder.UseSelectable = true;
+            this.btnRefundSearchOrder.Click += new System.EventHandler(this.btnRefundSearchOrder_Click);
             // 
             // metroTabPage2
             // 
