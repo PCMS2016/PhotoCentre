@@ -30,6 +30,7 @@ namespace DAL
                         orderline.OrderLineID = Convert.ToInt32(row["OrderLineID"].ToString());
                         orderline.Product = row["Product"].ToString();
                         orderline.Quantity = Convert.ToInt32(row["Quantity"].ToString());
+                        orderline.OrderNumber = orderNumber;
                         orderline.ItemPrice = Convert.ToDouble(row["Item Price"].ToString());
                         orderline.LineTotal = Convert.ToDouble(row["Total"].ToString());
                         orderline.Instructions = row["Instructions"].ToString();
