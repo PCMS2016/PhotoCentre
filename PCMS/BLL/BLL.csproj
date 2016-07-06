@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler_Company.cs" />
     <Compile Include="Handler_Customer.cs" />
     <Compile Include="Handler_Discount.cs" />
     <Compile Include="Handler_Login.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Handler_Payment.cs" />
     <Compile Include="Handler_Product.cs" />
     <Compile Include="Handler_Refund.cs" />
+    <Compile Include="IHandler_Company.cs" />
     <Compile Include="IHandler_Customer.cs" />
     <Compile Include="IHandler_Discount.cs" />
     <Compile Include="IHandler_Login.cs" />
