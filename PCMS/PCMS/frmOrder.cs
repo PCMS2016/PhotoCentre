@@ -31,6 +31,7 @@ namespace PCMS
         private int orderNumber;
         private double orderTotal = 0;
         private bool customerSelected = false;
+        private Order order = null;
 
         public frmOrder(int salespersonID)
         {
@@ -139,6 +140,19 @@ namespace PCMS
                     this.Close();
                 }
             }
+            List<OrderLine> orderItemsPrint = new List<OrderLine>();
+            for (int i = 0; i < dgvOrderLines.Rows.Count; i++)
+            {
+                OrderLine item = new OrderLine();
+                item.Product = dgvOrderLines[0, i].Value.ToString();
+                item.Quantity = orderItems[i].Quantity;
+                item.ItemPrice = orderItems[i].ItemPrice;
+                item.LineTotal = orderItems[i].LineTotal;
+                orderItemsPrint.Add(item);
+            }
+
+            PrintReceipt print = new PrintReceipt(orderItemsPrint, order.Date.ToString(), order.Time.ToString(), orderNumber.ToString(), orderTotal, Convert.ToDouble(tbxCash.Text), change, Convert.ToDouble(cmbDiscount.Text));
+            print.Print();
         }
 
         //Add order items to database...
@@ -156,7 +170,7 @@ namespace PCMS
             int customerIndex = dgvCustomers.CurrentRow.Index;
 
             //Create object for the order
-            Order order = new Order();
+            order = new Order();
             order.Payment = cmbPayment.SelectedValue.ToString();
             order.Salesperson = salespersonID.ToString();
             order.Date = Convert.ToDateTime(DateTime.Now.ToShortDateString());
@@ -362,6 +376,7 @@ namespace PCMS
             dgvOrderLines.Rows[index].Cells[1].Value = qty;
             dgvOrderLines.Rows[index].Cells[2].Value = price;
             dgvOrderLines.Rows[index].Cells[3].Value = string.Format("{0:C}", total);
+            dgvOrderLines.Rows[index].Cells[4].Value = instructions;
         }
 
         //Add item to List...
@@ -370,7 +385,6 @@ namespace PCMS
             //Create object for item
             OrderLine orderLine = new OrderLine();
             orderLine.Product = product;
-            //orderLine.OrderNumber = orderNumber;
             orderLine.Quantity = qty;
             orderLine.ItemPrice = price;
             orderLine.LineTotal = total;
@@ -445,6 +459,7 @@ namespace PCMS
             {
                 MessageBox.Show("No Products Added!");
             }
+            GenerateReceipt();
         }
 
         //Don't allow user to proceed if details are missing...
@@ -552,6 +567,12 @@ namespace PCMS
         {
             numQty.Value = 0;
             tbxInstructions.Clear();
+        }
+
+        //Generate receipt preview
+        private void GenerateReceipt()
+        {           
+            
         }
     }
 }

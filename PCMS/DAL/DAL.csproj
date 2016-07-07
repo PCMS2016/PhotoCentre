@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Company.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="DBAccess_Company.cs" />
     <Compile Include="DBAccess_Customer.cs" />
     <Compile Include="DBAccess_Discount.cs" />
     <Compile Include="DBAccess_Login.cs" />
@@ -52,6 +54,7 @@
     <Compile Include="DBAccess_Refund.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Discount.cs" />
+    <Compile Include="IDBAccess_Company.cs" />
     <Compile Include="IDBAccess_Customer.cs" />
     <Compile Include="IDBAccess_Discount.cs" />
     <Compile Include="IDBAccess_Login.cs" />
