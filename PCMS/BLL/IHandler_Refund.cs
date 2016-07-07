@@ -10,5 +10,6 @@ namespace BLL
     public interface IHandler_Refund
     {
         Order getOrderByNum(int OrderNum);
+        List<OrderLine> GetOrderLines(int orderNumber);
     }
 }
