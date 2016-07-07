@@ -19,5 +19,10 @@ namespace BLL
         {
             return db.getOrderByNum(OrderNum);
         }
+
+        public List<OrderLine> GetOrderLines(int orderNumber)
+        {
+            return db.GetOrderLines(orderNumber);
+        }
     }
 }

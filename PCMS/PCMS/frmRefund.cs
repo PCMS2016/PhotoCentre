@@ -74,6 +74,35 @@ namespace PCMS
             lblDate.Text = order.Date.ToString();
             lblTime.Text = order.Time.ToString();
             lblSalesperson.Text = order.Salesperson.ToString();
+
+            dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(OrderNum);
+            
+
+        }
+
+        private void dgvRefundOrderLines_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
+
+            lblProduct.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[0].Value.ToString();
+            lblQuantity.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[3].Value.ToString();
+            lblPrice.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString();
+            tbxInstructions.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[6].Value.ToString();
+        }
+
+        private void btnFinishTransaction_Click(object sender, EventArgs e)
+        {
+            Refund rfnd = new Refund();
+
+
+            /*int RefundID { get; set;
+            }
+        public int OrderNumber { get; set; }
+        public string Salesperson { get; set; }
+        public DateTime Date { get; set; }
+        public double Total { get; set; }*/
+
+        RefundProduct rfndProd = new RefundProduct();
         }
     }
 }

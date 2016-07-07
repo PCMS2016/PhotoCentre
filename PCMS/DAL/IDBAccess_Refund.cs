@@ -9,5 +9,6 @@ namespace DAL
     public interface IDBAccess_Refund
     {
         Order getOrderByNum(int OrderNum);
+        List<OrderLine> GetOrderLines(int orderNumber);
     }
 }
