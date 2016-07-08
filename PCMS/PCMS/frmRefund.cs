@@ -103,7 +103,7 @@ namespace PCMS
             //Add Refund
             Refund rfnd = new Refund();
             rfnd.OrderNumber = int.Parse(lblOrderNumber.Text);
-            rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName);
+            rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
             rfnd.Date = DateTime.Parse(lblDate.Text.ToString());
             rfnd.Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
             //handlerRefund.AddRefund(rfnd);
@@ -121,7 +121,7 @@ namespace PCMS
             rfndProd.Quantity = int.Parse(numRefundQuantity.Value.ToString());
             rfndProd.Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString());
             rfndProd.LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
-            //handlerRefund.AddRefundProduct(rfndProd); 
+            //handlerRefund.AddRefundProduct(rfndProd); */
 
             RefundTabControll.SelectedTab = RefundTabControll.TabPages[1];
             dgvRefundItems.DataSource = handlerRefund.GetAllRefunds();

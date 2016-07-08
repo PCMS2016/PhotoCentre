@@ -113,7 +113,6 @@ namespace DAL
         public int GetSalesPersonID(string salesPFName, string salesPLName)
         {
             int salesID = 0;
-            
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -169,7 +168,7 @@ namespace DAL
                 new SqlParameter("@OrderID", orderNumber)
            };
 
-            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchSalesperson", CommandType.StoredProcedure, parameters))
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetOrderLines", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {
