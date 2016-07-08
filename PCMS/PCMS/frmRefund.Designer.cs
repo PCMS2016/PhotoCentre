@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.RefundTabControll = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btnFinishTransaction = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -78,7 +78,7 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTabControl1.SuspendLayout();
+            this.RefundTabControll.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRefundQuantity)).BeginInit();
@@ -88,18 +88,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRefundItems)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroTabControl1
+            // RefundTabControll
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.Location = new System.Drawing.Point(20, 51);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(1093, 591);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTabControl1.TabIndex = 1;
-            this.metroTabControl1.UseSelectable = true;
-            this.metroTabControl1.UseStyleColors = true;
+            this.RefundTabControll.Controls.Add(this.metroTabPage1);
+            this.RefundTabControll.Controls.Add(this.metroTabPage2);
+            this.RefundTabControll.Location = new System.Drawing.Point(20, 51);
+            this.RefundTabControll.Name = "RefundTabControll";
+            this.RefundTabControll.SelectedIndex = 1;
+            this.RefundTabControll.Size = new System.Drawing.Size(1093, 591);
+            this.RefundTabControll.Style = MetroFramework.MetroColorStyle.Lime;
+            this.RefundTabControll.TabIndex = 1;
+            this.RefundTabControll.UseSelectable = true;
+            this.RefundTabControll.UseStyleColors = true;
             // 
             // metroTabPage1
             // 
@@ -530,6 +530,7 @@
             this.btnVoid.TabIndex = 14;
             this.btnVoid.Text = "VOID";
             this.btnVoid.UseSelectable = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnRefund
             // 
@@ -679,12 +680,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1130, 659);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.RefundTabControll);
             this.Name = "frmRefund";
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "PHOTO CENTRE MS - REFUNDS";
             this.Load += new System.EventHandler(this.frmRefund_Load);
-            this.metroTabControl1.ResumeLayout(false);
+            this.RefundTabControll.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
@@ -700,7 +701,7 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl RefundTabControll;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroPanel metroPanel1;
