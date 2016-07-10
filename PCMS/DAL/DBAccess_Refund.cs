@@ -191,7 +191,7 @@ namespace DAL
             {
                 new SqlParameter("@RefundID", Convert.ToInt32(refProd.RefundID)),
                 new SqlParameter("@OrderLineID", Convert.ToInt32(refProd.OrderLineID)),
-                new SqlParameter("@Reason", refProd.Reason),
+                new SqlParameter("@Reason", refProd.Reason.ToString()),
                 new SqlParameter("@Quantity", Convert.ToInt32(refProd.Quantity)),
                 new SqlParameter("@Price", Convert.ToInt32(refProd.Price)),
                 new SqlParameter("@LineTotal", Convert.ToInt32(refProd.LineTotal))
@@ -199,30 +199,32 @@ namespace DAL
             return DBHelper.ExecuteNonQuery("sp_AddRefundProduct", CommandType.StoredProcedure, parameters);
         }
 
-        public List<Refund> GetAllRefunds()
+        public List<DisplayRefund> DisplayRefund()
         {
-            List<Refund> list = new List<Refund>();
+            List<DisplayRefund> list = new List<DisplayRefund>();
             
 
-            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllRefunds", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_DisplayRefunds", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        Refund refund = new Refund();
-                        refund.RefundID = Convert.ToInt32(row["RefundID"].ToString());
-                        refund.OrderNumber = Convert.ToInt32(row["Order#"].ToString());
-                        refund.Salesperson = row["Salesperson"].ToString();
-                        refund.Date = Convert.ToDateTime(row["Date"].ToString());
-                        refund.Total = Convert.ToDouble(row["Total"].ToString());
+                        DisplayRefund dRefund = new DisplayRefund();
+                        dRefund.RefundID = Convert.ToInt32(row["RefundID"].ToString());
+                        dRefund.Product = row["Product"].ToString();
+                        dRefund.Quantity = Convert.ToInt32(row["Quantity"].ToString());
+                        dRefund.Price = Convert.ToDouble(row["Price"].ToString());
+                        dRefund.Reason = row["Reason"].ToString();
 
-                        list.Add(refund);
+                        list.Add(dRefund);
                     }
                 }
             }
             return list;
         }
+
+        
 
         public bool VoidRefund(int refundID)
         {

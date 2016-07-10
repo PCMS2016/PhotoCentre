@@ -16,7 +16,7 @@ namespace BLL
         int GetSalesPersonID(string salesPFName, string salesPLName);
         int GetRefundID(int orderNumber);
         int GetOrderLineID(int orderNumber);
-        List<Refund> GetAllRefunds();
+        List<DisplayRefund> DisplayRefund();
         bool VoidRefund(int refundID);
         bool VoidRefundProduct(int refundProdID);
         bool AddRefundProduct(RefundProduct rfndProd);
