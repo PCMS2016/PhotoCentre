@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using DAL;
 using BLL;
+using System.Globalization;
 
 namespace PCMS
 {
@@ -572,6 +573,16 @@ namespace PCMS
         //Generate receipt preview
         private void GenerateReceipt()
         {           
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxCash_TextChanged(object sender, EventArgs e)
+        {
             
         }
     }
