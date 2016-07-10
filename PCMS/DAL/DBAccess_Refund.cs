@@ -88,7 +88,7 @@ namespace DAL
 
                     foreach (DataRow row in table.Rows)
                     {
-                        if (row["Description"].ToString() == prodName)
+                        if (row["Product"].ToString() == prodName)
                             SM.SizeMediumID = Convert.ToInt32(row["SizeMediumID"].ToString());
                     }
                 }
@@ -213,7 +213,7 @@ namespace DAL
                         Refund refund = new Refund();
                         refund.RefundID = Convert.ToInt32(row["RefundID"].ToString());
                         refund.OrderNumber = Convert.ToInt32(row["Order#"].ToString());
-                        refund.Salesperson = row["Salesperson'"].ToString();
+                        refund.Salesperson = row["Salesperson"].ToString();
                         refund.Date = Convert.ToDateTime(row["Date"].ToString());
                         refund.Total = Convert.ToDouble(row["Total"].ToString());
 
