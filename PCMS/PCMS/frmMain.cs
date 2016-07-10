@@ -55,6 +55,15 @@ namespace PCMS
         private void BindData_Orders()
         {
             dgvOrders.DataSource = handlerOrder.GetAllOrders();
+            dgvOrders.Columns[0].HeaderText = "Order#";
+            dgvOrders.Columns[1].HeaderText = "Payment";
+            dgvOrders.Columns[2].HeaderText = "Salesperson";
+            dgvOrders.Columns[3].HeaderText = "Date";
+            dgvOrders.Columns[4].HeaderText = "Time";
+            dgvOrders.Columns[5].HeaderText = "Completed";
+            dgvOrders.Columns[6].HeaderText = "Collected";
+            dgvOrders.Columns[7].HeaderText = "Customer";
+            dgvOrders.Columns[8].HeaderText = "Total";
         }
 
         //Bind order lines to order lines grid...

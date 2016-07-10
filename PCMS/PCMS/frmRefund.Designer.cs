@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.RefundTabControll = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.btnFinishTransaction = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -44,11 +44,7 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.txtRefundReason = new MetroFramework.Controls.MetroTextBox();
             this.tbxInstructions = new MetroFramework.Controls.MetroTextBox();
-            this.dgvOrderLines = new MetroFramework.Controls.MetroGrid();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvRefundOrderLines = new MetroFramework.Controls.MetroGrid();
             this.lblInstructions2 = new MetroFramework.Controls.MetroLabel();
             this.lblProduct = new MetroFramework.Controls.MetroLabel();
             this.lblPrice = new MetroFramework.Controls.MetroLabel();
@@ -82,28 +78,28 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metroTabControl1.SuspendLayout();
+            this.RefundTabControll.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRefundQuantity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRefundOrderLines)).BeginInit();
             this.metroTabPage2.SuspendLayout();
             this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRefundItems)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroTabControl1
+            // RefundTabControll
             // 
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
-            this.metroTabControl1.Controls.Add(this.metroTabPage2);
-            this.metroTabControl1.Location = new System.Drawing.Point(20, 51);
-            this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(1093, 591);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Lime;
-            this.metroTabControl1.TabIndex = 1;
-            this.metroTabControl1.UseSelectable = true;
-            this.metroTabControl1.UseStyleColors = true;
+            this.RefundTabControll.Controls.Add(this.metroTabPage1);
+            this.RefundTabControll.Controls.Add(this.metroTabPage2);
+            this.RefundTabControll.Location = new System.Drawing.Point(20, 51);
+            this.RefundTabControll.Name = "RefundTabControll";
+            this.RefundTabControll.SelectedIndex = 0;
+            this.RefundTabControll.Size = new System.Drawing.Size(1093, 591);
+            this.RefundTabControll.Style = MetroFramework.MetroColorStyle.Lime;
+            this.RefundTabControll.TabIndex = 1;
+            this.RefundTabControll.UseSelectable = true;
+            this.RefundTabControll.UseStyleColors = true;
             // 
             // metroTabPage1
             // 
@@ -146,6 +142,7 @@
             this.btnFinishTransaction.Text = "FINISH TRANSACTION";
             this.btnFinishTransaction.UseSelectable = true;
             this.btnFinishTransaction.UseVisualStyleBackColor = true;
+            this.btnFinishTransaction.Click += new System.EventHandler(this.btnFinishTransaction_Click);
             // 
             // metroLabel9
             // 
@@ -164,7 +161,7 @@
             this.metroPanel1.Controls.Add(this.metroLabel7);
             this.metroPanel1.Controls.Add(this.txtRefundReason);
             this.metroPanel1.Controls.Add(this.tbxInstructions);
-            this.metroPanel1.Controls.Add(this.dgvOrderLines);
+            this.metroPanel1.Controls.Add(this.dgvRefundOrderLines);
             this.metroPanel1.Controls.Add(this.lblInstructions2);
             this.metroPanel1.Controls.Add(this.lblProduct);
             this.metroPanel1.Controls.Add(this.lblPrice);
@@ -273,16 +270,16 @@
             this.tbxInstructions.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxInstructions.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // dgvOrderLines
+            // dgvRefundOrderLines
             // 
-            this.dgvOrderLines.AllowUserToAddRows = false;
-            this.dgvOrderLines.AllowUserToDeleteRows = false;
-            this.dgvOrderLines.AllowUserToResizeRows = false;
-            this.dgvOrderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvOrderLines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvOrderLines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgvOrderLines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dgvOrderLines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRefundOrderLines.AllowUserToAddRows = false;
+            this.dgvRefundOrderLines.AllowUserToDeleteRows = false;
+            this.dgvRefundOrderLines.AllowUserToResizeRows = false;
+            this.dgvRefundOrderLines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvRefundOrderLines.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRefundOrderLines.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvRefundOrderLines.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvRefundOrderLines.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -290,13 +287,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrderLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
+            this.dgvRefundOrderLines.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvRefundOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -304,14 +296,14 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOrderLines.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvOrderLines.EnableHeadersVisualStyles = false;
-            this.dgvOrderLines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvOrderLines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.dgvOrderLines.Location = new System.Drawing.Point(12, 10);
-            this.dgvOrderLines.Name = "dgvOrderLines";
-            this.dgvOrderLines.ReadOnly = true;
-            this.dgvOrderLines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvRefundOrderLines.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvRefundOrderLines.EnableHeadersVisualStyles = false;
+            this.dgvRefundOrderLines.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvRefundOrderLines.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dgvRefundOrderLines.Location = new System.Drawing.Point(12, 10);
+            this.dgvRefundOrderLines.Name = "dgvRefundOrderLines";
+            this.dgvRefundOrderLines.ReadOnly = true;
+            this.dgvRefundOrderLines.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -319,35 +311,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOrderLines.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvOrderLines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvOrderLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOrderLines.Size = new System.Drawing.Size(465, 241);
-            this.dgvOrderLines.TabIndex = 4;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Product";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Quantity";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Price";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Instructions";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.dgvRefundOrderLines.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvRefundOrderLines.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvRefundOrderLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRefundOrderLines.Size = new System.Drawing.Size(465, 241);
+            this.dgvRefundOrderLines.TabIndex = 4;
+            this.dgvRefundOrderLines.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRefundOrderLines_CellContentClick);
             // 
             // lblInstructions2
             // 
@@ -561,6 +530,7 @@
             this.btnVoid.TabIndex = 14;
             this.btnVoid.Text = "VOID";
             this.btnVoid.UseSelectable = true;
+            this.btnVoid.Click += new System.EventHandler(this.btnVoid_Click);
             // 
             // btnRefund
             // 
@@ -710,18 +680,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1130, 659);
-            this.Controls.Add(this.metroTabControl1);
+            this.Controls.Add(this.RefundTabControll);
             this.Name = "frmRefund";
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "PHOTO CENTRE MS - REFUNDS";
             this.Load += new System.EventHandler(this.frmRefund_Load);
-            this.metroTabControl1.ResumeLayout(false);
+            this.RefundTabControll.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRefundQuantity)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrderLines)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRefundOrderLines)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroPanel2.ResumeLayout(false);
             this.metroPanel2.PerformLayout();
@@ -731,7 +701,7 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private MetroFramework.Controls.MetroTabControl RefundTabControll;
         private MetroFramework.Controls.MetroTabPage metroTabPage1;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroPanel metroPanel1;
@@ -740,7 +710,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroTextBox txtRefundReason;
         private MetroFramework.Controls.MetroTextBox tbxInstructions;
-        private MetroFramework.Controls.MetroGrid dgvOrderLines;
+        private MetroFramework.Controls.MetroGrid dgvRefundOrderLines;
         private MetroFramework.Controls.MetroLabel lblInstructions2;
         private MetroFramework.Controls.MetroLabel lblProduct;
         private MetroFramework.Controls.MetroLabel lblPrice;
@@ -767,10 +737,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroGrid dgvRefundItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column12;

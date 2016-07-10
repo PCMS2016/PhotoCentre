@@ -16,6 +16,8 @@ namespace PCMS
     public partial class frmRefund : MetroForm
     {
         private IHandler_Refund handlerRefund = null;
+        public string salesPFName = null;
+        public string salesPLName = null;
 
         public frmRefund()
         {
@@ -66,6 +68,7 @@ namespace PCMS
         private void btnRefundSearchOrder_Click(object sender, EventArgs e)
         {
             int OrderNum = Int32.Parse(tbxOrderNumber.Text);
+            
             Order order = new Order();
             order = handlerRefund.getOrderByNum(OrderNum);
 
@@ -74,6 +77,71 @@ namespace PCMS
             lblDate.Text = order.Date.ToString();
             lblTime.Text = order.Time.ToString();
             lblSalesperson.Text = order.Salesperson.ToString();
+
+            dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(OrderNum);
+            salesPFName = order.Salesperson.ToString();
+            string[] salesNames = salesPFName.Split(' ');
+            salesPFName = salesNames[0];
+            salesPLName = salesNames[1];
+
+            dgvRefundOrderLines.Columns[0].HeaderText = "Orderline ID";
+            dgvRefundOrderLines.Columns[1].HeaderText = "Product";
+            dgvRefundOrderLines.Columns[2].HeaderText = "Quantity";
+            dgvRefundOrderLines.Columns[3].HeaderText = "Item Price";
+            dgvRefundOrderLines.Columns[4].HeaderText = "Total";
+            dgvRefundOrderLines.Columns[5].HeaderText = "Instructions";
+        }
+
+        private void dgvRefundOrderLines_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
+
+            lblProduct.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[1].Value.ToString();
+            lblQuantity.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[3].Value.ToString();
+            lblPrice.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString();
+            tbxInstructions.Text = dgvRefundOrderLines.Rows[rowIndex].Cells[6].Value.ToString();
+        }
+
+        private void btnFinishTransaction_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
+            string prodName = dgvRefundOrderLines.Rows[rowIndex].Cells[1].Value.ToString();
+
+            //Add Refund
+            Refund rfnd = new Refund();
+            rfnd.OrderNumber = int.Parse(lblOrderNumber.Text);
+            rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
+            rfnd.Date = DateTime.Parse(lblDate.Text.ToString());
+            rfnd.Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
+            handlerRefund.AddRefund(rfnd);
+
+            //get productID == SM.SizeMediumID
+            SizeMedium SM = new SizeMedium();
+            SM = handlerRefund.GetProdByName(prodName);
+
+            //Add RefundProduct
+            RefundProduct rfndProd = new RefundProduct();
+            rfndProd.RefundProductID = SM.SizeMediumID;
+            rfndProd.RefundID = handlerRefund.GetRefundID(rfnd.OrderNumber);
+            rfndProd.OrderLineID = handlerRefund.GetOrderLineID(rfnd.OrderNumber);
+            rfndProd.Reason = txtRefundReason.Text;
+            rfndProd.Quantity = int.Parse(numRefundQuantity.Value.ToString());
+            rfndProd.Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString());
+            rfndProd.LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
+            handlerRefund.AddRefundProduct(rfndProd); 
+
+            RefundTabControll.SelectedTab = RefundTabControll.TabPages[1];
+            dgvRefundItems.DataSource = handlerRefund.GetAllRefunds();
+        }
+
+        private void btnVoid_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
+            int refundID = Convert.ToInt32(dgvRefundItems.Rows[rowIndex].Cells[4].Value.ToString());
+
+            handlerRefund.VoidRefund(refundID);
+            handlerRefund.VoidRefundProduct(refundID);
+            dgvRefundItems.DataSource = handlerRefund.GetAllRefunds();
         }
     }
 }
