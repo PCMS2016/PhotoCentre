@@ -29,7 +29,7 @@ namespace PCMS
         {
 
             string username = tbxUsername.Text;
-            string password = tbxPassword.Text;
+            string password = handlerLogin.Encrypt(tbxPassword.Text);
 
             Salesperson salesperson = new Salesperson();
             salesperson.Username = username;

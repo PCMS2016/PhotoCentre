@@ -10,5 +10,6 @@ namespace BLL
     public interface IHandler_Login
     {
         void Login(Salesperson salesperson);
+        string Encrypt(string word);
     }
 }

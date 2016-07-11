@@ -216,7 +216,7 @@ namespace DAL
                         dRefund.Quantity = Convert.ToInt32(row["Quantity"].ToString());
                         dRefund.Price = Convert.ToDouble(row["Price"].ToString());
                         dRefund.Reason = row["Reason"].ToString();
-
+                        dRefund.Date = Convert.ToDateTime(row["Date"].ToString());
                         list.Add(dRefund);
                     }
                 }

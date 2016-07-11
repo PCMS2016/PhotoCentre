@@ -141,8 +141,11 @@ namespace PCMS
         //Get Order based on order#
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
-            int OrderNum = Int32.Parse(tbxOrderNumber.Text);
-            dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+            int OrderNum;
+            if (int.TryParse(tbxOrderNumber.Text, out OrderNum))
+                dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+            else
+                tbxOrderNumber.Text = "Numbers only";
         }
 
         //Get Order based on customer name/surname
