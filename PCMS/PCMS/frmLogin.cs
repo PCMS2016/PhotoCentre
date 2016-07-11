@@ -66,6 +66,9 @@ namespace PCMS
 
         }
 
-        
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

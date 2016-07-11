@@ -64,12 +64,22 @@ namespace PCMS
             dgvOrders.Columns[6].HeaderText = "Collected";
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
+
         }
 
         //Bind order lines to order lines grid...
         private void BindData_OrderLines(int orderNumber)
         {
             dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
+            dgvOrderLines.Columns[0].HeaderText = "ID";
+            dgvOrderLines.Columns[1].HeaderText = "Product";
+            dgvOrderLines.Columns[3].HeaderText = "Qty";
+            dgvOrderLines.Columns[4].HeaderText = "Price";
+            dgvOrderLines.Columns[5].HeaderText = "Total";
+            dgvOrderLines.Columns[6].HeaderText = "Instructions";
+
+            dgvOrderLines.Columns[0].Visible = false;
+            dgvOrderLines.Columns[2].Visible = false;
         }
         //Start a new order transaction...
         private void tileNewOrder_Click(object sender, EventArgs e)
@@ -109,27 +119,30 @@ namespace PCMS
         //Load details for a specific order...
         private void dgvOrders_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int rowIndex = dgvOrders.CurrentCell.RowIndex;
+            if (dgvOrders.Rows.Count > 0)
+            {
+                int rowIndex = dgvOrders.CurrentCell.RowIndex;
 
-            int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
+                int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
 
-            selectedOrderNum = orderNumber;
+                selectedOrderNum = orderNumber;
 
-            //Display all items in the order
-            handlerOrderLines = new Handler_OrderLine();
-            BindData_OrderLines(orderNumber);
+                //Display all items in the order
+                handlerOrderLines = new Handler_OrderLine();
+                BindData_OrderLines(orderNumber);
 
-            //Display order details 
-            lblOrderNumber.Text = dgvOrders.Rows[rowIndex].Cells[0].Value.ToString();
-            lblCustomer.Text = dgvOrders.Rows[rowIndex].Cells[7].Value.ToString();
-            lblDate.Text = dgvOrders.Rows[rowIndex].Cells[3].Value.ToString();
-            lblTime.Text = dgvOrders.Rows[rowIndex].Cells[4].Value.ToString();
-            lblCompletion.Text = dgvOrders.Rows[rowIndex].Cells[5].Value.ToString();
-            lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
-            lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
+                //Display order details 
+                lblOrderNumber.Text = dgvOrders.Rows[rowIndex].Cells[0].Value.ToString();
+                lblCustomer.Text = dgvOrders.Rows[rowIndex].Cells[7].Value.ToString();
+                lblDate.Text = (dgvOrders.Rows[rowIndex].Cells[3].Value.ToString()).Substring(0,10);
+                lblTime.Text = (dgvOrders.Rows[rowIndex].Cells[4].Value.ToString()).Substring(11);
+                lblCompletion.Text = dgvOrders.Rows[rowIndex].Cells[5].Value.ToString();
+                lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
+                lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
 
-            btnCompleted.Enabled = true;
-            btbCollected.Enabled = true;
+                btnCompleted.Enabled = true;
+                btbCollected.Enabled = true;
+            }
         }
 
         //Log out as the current user...

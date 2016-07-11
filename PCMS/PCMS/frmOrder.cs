@@ -37,20 +37,23 @@ namespace PCMS
         public frmOrder(int salespersonID)
         {
             InitializeComponent();
-            this.salespersonID = salespersonID;
+            this.salespersonID = salespersonID;                       
         }
 
         //Bind products to ComboBox
         private void BindData_Product()
         {
+            cmbProduct.Sorted = true;
             cmbProduct.DataSource = handlerProduct.GetAllProducts();
             cmbProduct.DisplayMember = "Product";
             cmbProduct.ValueMember = "SizeMediumID";
+            
         }
 
         //Bind payments to ComboBox
         private void BindData_Payment()
         {
+            cmbPayment.Sorted = true;
             cmbPayment.DataSource = handlerPayment.GetAllPayments();
             cmbPayment.DisplayMember = "PaymentType";
             cmbPayment.ValueMember = "PaymentID";
@@ -59,6 +62,7 @@ namespace PCMS
         //Bind discount to ComboBox
         private void BindData_Discount()
         {
+            cmbDiscount.Sorted = true;
             cmbDiscount.DataSource = handlerDiscount.GetAllDiscount();
             cmbDiscount.DisplayMember = "Percentage";
             cmbDiscount.ValueMember = "DiscountID";
@@ -192,6 +196,20 @@ namespace PCMS
         private void SearchCustomer(string name, string surname)
         {
             dgvCustomers.DataSource = handlerCustomer.SearchCustomer(name, surname);
+
+            dgvCustomers.Columns[0].Visible = false;
+            dgvCustomers.Columns[5].Visible = false;
+            dgvCustomers.Columns[6].Visible = false;
+            dgvCustomers.Columns[7].Visible = false;
+
+            dgvCustomers.Columns[0].HeaderText = "ID";
+            dgvCustomers.Columns[1].HeaderText = "Name";
+            dgvCustomers.Columns[2].HeaderText = "Surname";
+            dgvCustomers.Columns[3].HeaderText = "Cellphone";
+            dgvCustomers.Columns[4].HeaderText = "Email";
+            dgvCustomers.Columns[5].HeaderText = "Notification";
+            dgvCustomers.Columns[6].HeaderText = "Customer Type";
+            dgvCustomers.Columns[7].HeaderText = "Discount";
         }
         //Search Customer...
         private void btnCustomerSearch_Click(object sender, EventArgs e)
