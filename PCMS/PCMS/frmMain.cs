@@ -51,10 +51,9 @@ namespace PCMS
             BindData_Orders();
         }
 
-        //Bind orders to orders grid...
-        private void BindData_Orders()
+        //Orders grid header text
+        private void SetOrdersHeaders()
         {
-            dgvOrders.DataSource = handlerOrder.GetAllOrders();
             dgvOrders.Columns[0].HeaderText = "Order#";
             dgvOrders.Columns[1].HeaderText = "Payment";
             dgvOrders.Columns[2].HeaderText = "Salesperson";
@@ -65,6 +64,15 @@ namespace PCMS
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
 
+            dgvOrders.Columns[1].Visible = false;
+            dgvOrders.Columns[4].Visible = false;
+        }
+        //Bind orders to orders grid...
+        private void BindData_Orders()
+        {
+            dgvOrders.DataSource = handlerOrder.GetAllOrders();
+
+            SetOrdersHeaders();
         }
 
         //Bind order lines to order lines grid...
@@ -156,6 +164,8 @@ namespace PCMS
         {
             int OrderNum = Int32.Parse(tbxOrderNumber.Text);
             dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+
+            SetOrdersHeaders();
         }
 
         //Get Order based on customer name/surname
@@ -164,6 +174,8 @@ namespace PCMS
             string custFirstName = tbxName.Text;
             string custLastName = tbxSurname.Text;
             dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
+
+            SetOrdersHeaders();
         }
 
         //Get order by date -- dropdown list
@@ -171,6 +183,8 @@ namespace PCMS
         {
             DateTime date = DateTime.Parse(dtpDateSearch.Text);
             dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+
+            SetOrdersHeaders();
         }
 
         //Get order by date -- 'Today' button
@@ -178,6 +192,8 @@ namespace PCMS
         {
             DateTime date = DateTime.Today;
             dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+
+            SetOrdersHeaders();
         }
 
         //Complete Order
@@ -209,6 +225,79 @@ namespace PCMS
         private void btnRefreshGrid_Click(object sender, EventArgs e)
         {
             BindData_Orders();
+        }
+
+        private void frmMain_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void frmMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                System.Diagnostics.Process.Start("Help\\Help.html");
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                tileNewOrder.PerformClick();
+            }
+            if (e.KeyCode == Keys.F5)
+            {
+                tileRefund.PerformClick();
+            }
+            if (e.KeyCode == Keys.F6)
+            {
+                tileSpecials.PerformClick();
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                tileReports.PerformClick();
+            }
+            if (e.KeyCode == Keys.F8)
+            {
+                tileSettings.PerformClick();
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                tileLogout.PerformClick();
+            }
+        }
+
+        private void tsiNewOrder_Click(object sender, EventArgs e)
+        {
+            tileNewOrder.PerformClick();
+        }
+
+        private void tsiRefund_Click(object sender, EventArgs e)
+        {
+            tileRefund.PerformClick();
+        }
+
+        private void tsiReports_Click(object sender, EventArgs e)
+        {
+            tileReports.PerformClick();
+        }
+
+        private void tsiSettings_Click(object sender, EventArgs e)
+        {
+            tileSettings.PerformClick();
+        }
+
+        private void tsiAbout_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("Help.html");
+        }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PCMS_About about = new PCMS_About();
+            about.ShowDialog();
         }
     }
 }

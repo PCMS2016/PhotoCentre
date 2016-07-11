@@ -41,3 +41,5 @@ C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmOrder.resour
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.Properties.Resources.resources
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.csproj.GenerateResource.Cache
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.pdb
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.resources
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.DBConnection.resources

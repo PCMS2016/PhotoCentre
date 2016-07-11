@@ -28,9 +28,10 @@ namespace PCMS
         private double totalVat;
         private double discountTotal;
         private double VAT = 0.14;
+        private string customer;
 
         public PrintReceipt(List<OrderLine> orderItems, string date, string time, string orderNumber, 
-            double total, double cash, double change, double discount)
+            double total, double cash, double change, double discount, string customer)
         {
             handlerCompany = new Handler_Company();
             company = handlerCompany.GetCompanyDetails();
@@ -43,6 +44,7 @@ namespace PCMS
             this.cash = cash;
             this.change = change;
             this.discount = discount;
+            this.customer = customer;
 
             discountTotal = total - (total / 100 * discount);
 
@@ -111,7 +113,9 @@ namespace PCMS
             offset += (int)fontHeight + 20;
 
             graphic.DrawString("Order#: " + orderNumber, font18, solidBrush, startX, startY + offset);
-            offset += (int)fontHeight + 10;
+            offset += (int)fontHeight + 5;
+            graphic.DrawString("Customer: " + customer, font18, solidBrush, startX, startY + offset);
+            offset += (int)fontHeight + 20;
             graphic.DrawString("Date: " + date, font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 5;
             graphic.DrawString("Time: " + time, font12, solidBrush, startX, startY + offset);
@@ -135,6 +139,8 @@ namespace PCMS
 
                 offset += (int)fontHeight + 5;
             }
+            graphic.DrawString("=======================================================", font12, solidBrush, startX, startY + offset);
+            offset += (int)fontHeight + 5;
 
             offset += 20;
 
