@@ -54,6 +54,7 @@
     <Compile Include="DBAccess_Refund.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Discount.cs" />
+    <Compile Include="DisplayRefund.cs" />
     <Compile Include="IDBAccess_Company.cs" />
     <Compile Include="IDBAccess_Customer.cs" />
     <Compile Include="IDBAccess_Discount.cs" />

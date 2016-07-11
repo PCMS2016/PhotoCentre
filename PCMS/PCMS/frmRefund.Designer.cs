@@ -65,15 +65,12 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.btnRefundSearchOrder = new MetroFramework.Controls.MetroButton();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.btnRefreshDispRefund = new MetroFramework.Controls.MetroButton();
             this.btnVoid = new MetroFramework.Controls.MetroButton();
             this.btnRefund = new MetroFramework.Controls.MetroTextBox.MetroTextButton();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
             this.lblRefundTotal = new MetroFramework.Controls.MetroLabel();
             this.dgvRefundItems = new MetroFramework.Controls.MetroGrid();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -188,6 +185,7 @@
             this.numRefundQuantity.Name = "numRefundQuantity";
             this.numRefundQuantity.Size = new System.Drawing.Size(100, 29);
             this.numRefundQuantity.TabIndex = 25;
+            this.numRefundQuantity.ValueChanged += new System.EventHandler(this.numRefundQuantity_ValueChanged);
             // 
             // metroLabel2
             // 
@@ -506,6 +504,7 @@
             // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.btnRefreshDispRefund);
             this.metroTabPage2.Controls.Add(this.btnVoid);
             this.metroTabPage2.Controls.Add(this.btnRefund);
             this.metroTabPage2.Controls.Add(this.metroPanel2);
@@ -521,6 +520,16 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // btnRefreshDispRefund
+            // 
+            this.btnRefreshDispRefund.Location = new System.Drawing.Point(13, 477);
+            this.btnRefreshDispRefund.Name = "btnRefreshDispRefund";
+            this.btnRefreshDispRefund.Size = new System.Drawing.Size(88, 57);
+            this.btnRefreshDispRefund.TabIndex = 15;
+            this.btnRefreshDispRefund.Text = "REFRESH";
+            this.btnRefreshDispRefund.UseSelectable = true;
+            this.btnRefreshDispRefund.Click += new System.EventHandler(this.btnRefreshDispRefund_Click);
             // 
             // btnVoid
             // 
@@ -543,6 +552,7 @@
             this.btnRefund.Text = "REFUND";
             this.btnRefund.UseSelectable = true;
             this.btnRefund.UseVisualStyleBackColor = true;
+            this.btnRefund.Click += new System.EventHandler(this.btnRefund_Click);
             // 
             // metroPanel2
             // 
@@ -590,11 +600,6 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRefundItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvRefundItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRefundItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column12,
-            this.Column3});
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -622,34 +627,6 @@
             this.dgvRefundItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRefundItems.Size = new System.Drawing.Size(1035, 343);
             this.dgvRefundItems.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 50F;
-            this.Column1.HeaderText = "Product";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 30F;
-            this.Column2.HeaderText = "Quantity";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column12
-            // 
-            this.Column12.FillWeight = 50F;
-            this.Column12.HeaderText = "Price";
-            this.Column12.Name = "Column12";
-            this.Column12.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 250F;
-            this.Column3.HeaderText = "Reason";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // Column8
             // 
@@ -737,13 +714,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private MetroFramework.Controls.MetroGrid dgvRefundItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private MetroFramework.Controls.MetroLabel lblRefundTotal;
         private MetroFramework.Controls.MetroButton btnVoid;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnRefund;
         private MetroFramework.Controls.MetroTextBox.MetroTextButton btnFinishTransaction;
+        private MetroFramework.Controls.MetroButton btnRefreshDispRefund;
     }
 }

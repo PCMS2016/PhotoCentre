@@ -50,9 +50,9 @@ namespace BLL
             return db.GetOrderLineID(orderNumber);
         }
 
-        public List<Refund> GetAllRefunds()
+        public List<DisplayRefund> DisplayRefund()
         {
-            return db.GetAllRefunds();
+            return db.DisplayRefund();
         }
 
         public bool VoidRefund(int refundID)
@@ -69,5 +69,6 @@ namespace BLL
         {
             return db.AddRefundProduct(rfndProd);
         }
+        
     }
 }
