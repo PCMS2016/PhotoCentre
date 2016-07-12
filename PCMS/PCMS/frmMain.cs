@@ -63,6 +63,10 @@ namespace PCMS
             dgvOrders.Columns[6].HeaderText = "Collected";
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
+            dgvOrders.Columns["Payment"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns["Payment"].DefaultCellStyle.Format = "c";
+            dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
 
             dgvOrders.Columns[1].Visible = false;
             dgvOrders.Columns[4].Visible = false;
@@ -85,6 +89,10 @@ namespace PCMS
             dgvOrderLines.Columns[4].HeaderText = "Price";
             dgvOrderLines.Columns[5].HeaderText = "Total";
             dgvOrderLines.Columns[6].HeaderText = "Instructions";
+            dgvOrderLines.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns["Price"].DefaultCellStyle.Format = "c";
+            dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
 
             dgvOrderLines.Columns[0].Visible = false;
             dgvOrderLines.Columns[2].Visible = false;

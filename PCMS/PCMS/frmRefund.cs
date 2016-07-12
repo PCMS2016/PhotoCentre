@@ -158,6 +158,12 @@ namespace PCMS
             dgvRefundOrderLines.Columns[4].HeaderText = "Item Price";
             dgvRefundOrderLines.Columns[5].HeaderText = "Total";
             dgvRefundOrderLines.Columns[6].HeaderText = "Instructions";
+            dgvRefundOrderLines.Columns["Item Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvRefundOrderLines.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvRefundOrderLines.Columns["Item Price"].DefaultCellStyle.Format = "c";
+            dgvRefundOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
+
+            dgvRefundOrderLines.Columns[2].Visible = false;
         }
 
         private void btnRefreshDispRefund_Click(object sender, EventArgs e)
