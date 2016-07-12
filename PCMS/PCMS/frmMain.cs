@@ -70,6 +70,13 @@ namespace PCMS
         private void BindData_OrderLines(int orderNumber)
         {
             dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
+            dgvOrderLines.Columns[0].HeaderText = "Orderline ID";
+            dgvOrderLines.Columns[1].HeaderText = "Product";
+            dgvOrderLines.Columns[2].HeaderText = "Order num.";
+            dgvOrderLines.Columns[3].HeaderText = "Quantity";
+            dgvOrderLines.Columns[4].HeaderText = "Item Price";
+            dgvOrderLines.Columns[5].HeaderText = "Line Total";
+            dgvOrderLines.Columns[6].HeaderText = "Instructions";
         }
         //Start a new order transaction...
         private void tileNewOrder_Click(object sender, EventArgs e)
