@@ -37,7 +37,14 @@ namespace PCMS
 
             //Retrieve details from database matching the username and password...
 
+            try
+            {
                 handlerLogin.Login(salesperson);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LOGIN FAILED" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
 
                 //Check if the login details are valid...
                 if (salesperson.Name != null)
@@ -59,6 +66,9 @@ namespace PCMS
 
         }
 
-        
+        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

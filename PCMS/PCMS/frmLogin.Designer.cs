@@ -42,9 +42,9 @@
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.Location = new System.Drawing.Point(46, 98);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(80, 19);
             this.metroLabel1.TabIndex = 7;
-            this.metroLabel1.Text = "Username:";
+            this.metroLabel1.Text = "*Username:";
             // 
             // metroLabel2
             // 
@@ -52,9 +52,9 @@
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel2.Location = new System.Drawing.Point(46, 132);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(70, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(76, 19);
             this.metroLabel2.TabIndex = 8;
-            this.metroLabel2.Text = "Password:";
+            this.metroLabel2.Text = "*Password:";
             // 
             // tbxUsername
             // 
@@ -170,6 +170,7 @@
             this.Style = MetroFramework.MetroColorStyle.Lime;
             this.Text = "LOGIN";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

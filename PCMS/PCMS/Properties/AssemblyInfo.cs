@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PCMS")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Photo Centre Management System")]
+[assembly: AssemblyDescription("PCMS is a Management System created by Perfect Develop for Photo Centre in Uitenhage.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Perfect Develop")]
 [assembly: AssemblyProduct("PCMS")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

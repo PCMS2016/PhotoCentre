@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using DAL;
 using BLL;
+using System.Globalization;
 
 namespace PCMS
 {
@@ -36,20 +37,23 @@ namespace PCMS
         public frmOrder(int salespersonID)
         {
             InitializeComponent();
-            this.salespersonID = salespersonID;
+            this.salespersonID = salespersonID;                       
         }
 
         //Bind products to ComboBox
         private void BindData_Product()
         {
+            cmbProduct.Sorted = true;
             cmbProduct.DataSource = handlerProduct.GetAllProducts();
             cmbProduct.DisplayMember = "Product";
             cmbProduct.ValueMember = "SizeMediumID";
+            
         }
 
         //Bind payments to ComboBox
         private void BindData_Payment()
         {
+            cmbPayment.Sorted = true;
             cmbPayment.DataSource = handlerPayment.GetAllPayments();
             cmbPayment.DisplayMember = "PaymentType";
             cmbPayment.ValueMember = "PaymentID";
@@ -58,6 +62,7 @@ namespace PCMS
         //Bind discount to ComboBox
         private void BindData_Discount()
         {
+            cmbDiscount.Sorted = true;
             cmbDiscount.DataSource = handlerDiscount.GetAllDiscount();
             cmbDiscount.DisplayMember = "Percentage";
             cmbDiscount.ValueMember = "DiscountID";
@@ -74,9 +79,17 @@ namespace PCMS
             handlerDiscount = new Handler_Discount();
 
             //Bind Data
-            BindData_Product();
-            BindData_Payment();
-            BindData_Discount();
+            try
+            {
+                BindData_Product();
+                BindData_Payment();
+                BindData_Discount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error connection to the database!" + Environment.NewLine + Environment.NewLine + ex.Message);
+                this.Close();
+            }
 
             //Focus controls
             tabCtrlOrder.SelectedTab = tabCustomer;
@@ -123,6 +136,7 @@ namespace PCMS
         private void btnPay_Click(object sender, EventArgs e)
         {
             double change = 0;
+
             if (cmbPayment.Text == "Cash" && tbxCash.Text == "")
             {
                 MessageBox.Show("Please enter amount of cash recieved.");
@@ -140,6 +154,8 @@ namespace PCMS
                     this.Close();
                 }
             }
+
+            //Generate list of products to be printed on the receipt
             List<OrderLine> orderItemsPrint = new List<OrderLine>();
             for (int i = 0; i < dgvOrderLines.Rows.Count; i++)
             {
@@ -151,7 +167,10 @@ namespace PCMS
                 orderItemsPrint.Add(item);
             }
 
-            PrintReceipt print = new PrintReceipt(orderItemsPrint, order.Date.ToString(), order.Time.ToString(), orderNumber.ToString(), orderTotal, Convert.ToDouble(tbxCash.Text), change, Convert.ToDouble(cmbDiscount.Text));
+            //Print the receipt
+            PrintReceipt print = new PrintReceipt(orderItemsPrint, order.Date.ToString(), order.Time.ToString(), 
+                orderNumber.ToString(), orderTotal, Convert.ToDouble(tbxCash.Text), change, 
+                Convert.ToDouble(cmbDiscount.Text), tbxCustomerName.Text + " " + tbxCustomerSurname.Text);
             print.Print();
         }
 
@@ -181,7 +200,14 @@ namespace PCMS
             order.Total = orderTotal;
 
             //Add order to database
-            handlerOrder.AddOrder(order);
+            try
+            {
+                handlerOrder.AddOrder(order);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to add the order!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
 
             //Get the order number from database
             orderNumber = handlerOrder.GetOrderNumber();
@@ -190,7 +216,28 @@ namespace PCMS
         //Search Customer...
         private void SearchCustomer(string name, string surname)
         {
-            dgvCustomers.DataSource = handlerCustomer.SearchCustomer(name, surname);
+            try
+            {
+                dgvCustomers.DataSource = handlerCustomer.SearchCustomer(name, surname);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when searching for customer!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+
+            dgvCustomers.Columns[0].Visible = false;
+            dgvCustomers.Columns[5].Visible = false;
+            dgvCustomers.Columns[6].Visible = false;
+            dgvCustomers.Columns[7].Visible = false;
+
+            dgvCustomers.Columns[0].HeaderText = "ID";
+            dgvCustomers.Columns[1].HeaderText = "Name";
+            dgvCustomers.Columns[2].HeaderText = "Surname";
+            dgvCustomers.Columns[3].HeaderText = "Cellphone";
+            dgvCustomers.Columns[4].HeaderText = "Email";
+            dgvCustomers.Columns[5].HeaderText = "Notification";
+            dgvCustomers.Columns[6].HeaderText = "Customer Type";
+            dgvCustomers.Columns[7].HeaderText = "Discount";
         }
         //Search Customer...
         private void btnCustomerSearch_Click(object sender, EventArgs e)
@@ -226,7 +273,7 @@ namespace PCMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not add customer." + Environment.NewLine + ex.Message);
+                MessageBox.Show("Error occured when adding customer!" + Environment.NewLine + Environment.NewLine+ ex.Message);
             }
         }
 
@@ -249,7 +296,7 @@ namespace PCMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could not update customer." + Environment.NewLine + ex.Message);
+                MessageBox.Show("Error occured when updating customer!" + Environment.NewLine + Environment.NewLine + ex.Message);
             }
         }
 
@@ -318,16 +365,19 @@ namespace PCMS
                 {
                     if (ValidateCustomerFields() == true)
                     {
-                        UpdateCustomer();
+                        if (MessageBox.Show("Are you sure you want to update this customer?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            UpdateCustomer();
 
-                        btnNewCustomer.Enabled = true;
-                        btnUpdateCustomer.Text = "Update Customer";
-                        DisableCustomerEdit();
-                        ClearCustomerFields();
+                            btnNewCustomer.Enabled = true;
+                            btnUpdateCustomer.Text = "Update Customer";
+                            DisableCustomerEdit();
+                            ClearCustomerFields();
 
-                        SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+                            SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
 
-                        customerSelected = false;
+                            customerSelected = false;
+                        }
                     }
                 }
             }
@@ -356,7 +406,10 @@ namespace PCMS
         //Show details in labels when row is clicked in customer grid...
         private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SelectCustomer();
+            if (dgvCustomers.Rows.Count > 0)
+            {
+                SelectCustomer();
+            }
         }
 
         //Add item to grids...
@@ -413,6 +466,7 @@ namespace PCMS
             if (numQty.Value == 0)
             {
                 MessageBox.Show("Invalid Quantity!");
+                numQty.Focus();
             }
             else
             {
@@ -459,7 +513,8 @@ namespace PCMS
             {
                 MessageBox.Show("No Products Added!");
             }
-            GenerateReceipt();
+
+            tbxCash.Focus();
         }
 
         //Don't allow user to proceed if details are missing...
@@ -480,8 +535,11 @@ namespace PCMS
         //Void Order...
         private void VoidOrder()
         {
-            this.Close();
-            orderItems.Clear();
+            if (MessageBox.Show("Void this order?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+                orderItems.Clear();
+            }
         }
 
         private void btnVoid_Customer_Click(object sender, EventArgs e)
@@ -563,16 +621,47 @@ namespace PCMS
             btnEdit.Enabled = true;
         }
 
+        //Reset fields when different product is selected...
         private void cmbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             numQty.Value = 0;
             tbxInstructions.Clear();
         }
 
-        //Generate receipt preview
-        private void GenerateReceipt()
-        {           
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxCash_TextChanged(object sender, EventArgs e)
+        {
             
+        }
+
+        private void frmOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                System.Diagnostics.Process.Start("Help.html");
+            }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                VoidOrder();
+            }
+
+            if (e.KeyCode == Keys.Enter && tabCtrlOrder.SelectedTab == tabFinish)
+            {
+                btnPay.PerformClick();
+            }
+        }
+
+        private void cmbPayment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbPayment.Text != "Cash")
+            {
+                tbxCash.Text = orderTotal.ToString();
+            }
         }
     }
 }
