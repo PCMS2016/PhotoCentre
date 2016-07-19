@@ -136,6 +136,7 @@ namespace PCMS
         private void btnPay_Click(object sender, EventArgs e)
         {
             double change = 0;
+            double cash;
 
             if (cmbPayment.Text == "Cash" && tbxCash.Text == "")
             {
@@ -144,34 +145,47 @@ namespace PCMS
             }
             else
             {
-                StartOrder();
-                AddOrderItems();
-
-                if (cmbPayment.Text == "Cash")
+                if (double.TryParse(tbxCash.Text, out cash))
                 {
-                    change = (Convert.ToDouble(tbxCash.Text)) - orderTotal;
-                    MessageBox.Show(string.Format("Change: {0:C}", change));
-                    this.Close();
+                    if (cash >= orderTotal)
+                    {
+                        StartOrder();
+                        AddOrderItems();
+
+                        if (cmbPayment.Text == "Cash")
+                        {
+                            change = (Convert.ToDouble(tbxCash.Text)) - orderTotal;
+                            MessageBox.Show(string.Format("Change: {0:C}", change));
+                            this.Close();
+                        }
+
+
+                        //Generate list of products to be printed on the receipt
+                        List<OrderLine> orderItemsPrint = new List<OrderLine>();
+                        for (int i = 0; i < dgvOrderLines.Rows.Count; i++)
+                        {
+                            OrderLine item = new OrderLine();
+                            item.Product = dgvOrderLines[0, i].Value.ToString();
+                            item.Quantity = orderItems[i].Quantity;
+                            item.ItemPrice = orderItems[i].ItemPrice;
+                            item.LineTotal = orderItems[i].LineTotal;
+                            orderItemsPrint.Add(item);
+                        }
+
+                        //Print the receipt
+
+                        PrintReceipt print = new PrintReceipt(orderItemsPrint, order.Date.ToString(), order.Time.ToString(),
+                            orderNumber.ToString(), orderTotal, Convert.ToDouble(tbxCash.Text), change,
+                            Convert.ToDouble(cmbDiscount.Text), tbxCustomerName.Text + " " + tbxCustomerSurname.Text);
+                        print.Print();
+                    }
+                    else
+                        MessageBox.Show("Not enough cash!");
                 }
+                else
+                    MessageBox.Show("Invalid Amount Entered!");
+                
             }
-
-            //Generate list of products to be printed on the receipt
-            List<OrderLine> orderItemsPrint = new List<OrderLine>();
-            for (int i = 0; i < dgvOrderLines.Rows.Count; i++)
-            {
-                OrderLine item = new OrderLine();
-                item.Product = dgvOrderLines[0, i].Value.ToString();
-                item.Quantity = orderItems[i].Quantity;
-                item.ItemPrice = orderItems[i].ItemPrice;
-                item.LineTotal = orderItems[i].LineTotal;
-                orderItemsPrint.Add(item);
-            }
-
-            //Print the receipt
-            PrintReceipt print = new PrintReceipt(orderItemsPrint, order.Date.ToString(), order.Time.ToString(), 
-                orderNumber.ToString(), orderTotal, Convert.ToDouble(tbxCash.Text), change, 
-                Convert.ToDouble(cmbDiscount.Text), tbxCustomerName.Text + " " + tbxCustomerSurname.Text);
-            print.Print();
         }
 
         //Add order items to database...
@@ -642,7 +656,7 @@ namespace PCMS
         {
             if (e.KeyCode == Keys.F1)
             {
-                System.Diagnostics.Process.Start("Help.html");
+                System.Diagnostics.Process.Start("Help\\Help_Orders.html");
             }
 
             if (e.KeyCode == Keys.Escape)

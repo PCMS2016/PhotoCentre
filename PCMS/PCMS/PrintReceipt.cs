@@ -107,7 +107,7 @@ namespace PCMS
             offset += (int)fontHeight + 20;
             graphic.DrawString("Phone: " + company.Phone, font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 5;
-            graphic.DrawString("Fax: " + company.Fax, font12, solidBrush, startX, startY + offset);
+            graphic.DrawString("Fax:   " + company.Fax, font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 5;
             graphic.DrawString("Email: " + company.Email, font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 20;

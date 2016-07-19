@@ -68,6 +68,9 @@ namespace PCMS
             dgvOrderLines.Columns["Payment"].DefaultCellStyle.Format = "c";
             dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
 
+            dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns[8].DefaultCellStyle.Format = "C";
+
             dgvOrders.Columns[1].Visible = false;
             dgvOrders.Columns[4].Visible = false;
         }
@@ -93,6 +96,12 @@ namespace PCMS
             dgvOrderLines.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrderLines.Columns["Price"].DefaultCellStyle.Format = "c";
             dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
+
+            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
+            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
 
             dgvOrderLines.Columns[0].Visible = false;
             dgvOrderLines.Columns[2].Visible = false;
@@ -170,20 +179,39 @@ namespace PCMS
         //Get Order based on order#
         private void btnOrderSearch_Click(object sender, EventArgs e)
         {
-            int OrderNum = Int32.Parse(tbxOrderNumber.Text);
-            dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+            int OrderNum;
+            if (int.TryParse(tbxOrderNumber.Text, out OrderNum))
+            {
+                dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+                SetOrdersHeaders();
+                tbxOrderNumber.Clear();
 
-            SetOrdersHeaders();
+            }
+            else
+                MessageBox.Show("Order Number Should Be Numeric!");
+            
+
+           
         }
 
         //Get Order based on customer name/surname
         private void btnCustomerSearch_Click(object sender, EventArgs e)
         {
-            string custFirstName = tbxName.Text;
-            string custLastName = tbxSurname.Text;
-            dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
+            if (tbxName.Text == "" && tbxSurname.Text == "")
+            {
+                MessageBox.Show("Enter at least a name or surname to search orders!");
+            }
+            else
+            {
+                string custFirstName = tbxName.Text;
+                string custLastName = tbxSurname.Text;
+                dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
 
-            SetOrdersHeaders();
+                SetOrdersHeaders();
+
+                tbxName.Clear();
+                tbxSurname.Clear();
+            }
         }
 
         //Get order by date -- dropdown list
@@ -244,7 +272,7 @@ namespace PCMS
         {
             if (e.KeyCode == Keys.F1)
             {
-                System.Diagnostics.Process.Start("Help\\Help.html");
+                System.Diagnostics.Process.Start("Help\\Help_Main.html");
             }
             if (e.KeyCode == Keys.F4)
             {
@@ -299,7 +327,7 @@ namespace PCMS
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("Help.html");
+            System.Diagnostics.Process.Start("Help\\Help_Main.html");
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
