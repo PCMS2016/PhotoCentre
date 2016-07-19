@@ -192,7 +192,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Help.html" />
+    <Content Include="Help_Main.html" />
+    <Content Include="Help_Orders.html" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
