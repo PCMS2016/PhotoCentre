@@ -17,6 +17,7 @@ namespace PCMS
     {
         private IHandler_Order handlerOrder = null;
         private IHandler_OrderLine handlerOrderLines = null;
+        private IHandler_Customer handlerCustomer = null;
 
         int salespersonID;
         public int selectedOrderNum = 0;
@@ -63,10 +64,9 @@ namespace PCMS
             dgvOrders.Columns[6].HeaderText = "Collected";
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
-            dgvOrders.Columns["Payment"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrders.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns["Payment"].DefaultCellStyle.Format = "c";
-            dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
+
+            dgvOrders.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrders.Columns[8].DefaultCellStyle.Format = "C";
@@ -92,10 +92,10 @@ namespace PCMS
             dgvOrderLines.Columns[4].HeaderText = "Price";
             dgvOrderLines.Columns[5].HeaderText = "Total";
             dgvOrderLines.Columns[6].HeaderText = "Instructions";
-            dgvOrderLines.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns["Price"].DefaultCellStyle.Format = "c";
-            dgvOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
+            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "c";
+            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "c";
 
             dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -232,14 +232,32 @@ namespace PCMS
             SetOrdersHeaders();
         }
 
+        //Notify Customer
+        private void NotifyCustomer()
+        {
+            int orderNumber = int.Parse(dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells[0].Value.ToString());
+
+            handlerCustomer = new Handler_Customer(); 
+            List<string> to = new List<string>();
+
+            to.Add(handlerCustomer.GetEmailAddress(orderNumber));
+
+            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage";
+
+            EmailNotification email = new EmailNotification(to, "Order Collection", msg);
+            email.SendMail();
+        }
+
         //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
-                handlerOrder.CompleteOrder(selectedOrderNum);
+            handlerOrder.CompleteOrder(selectedOrderNum);
 
-                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
+            dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
 
-                btnCompleted.Enabled = false;
+            btnCompleted.Enabled = false;
+
+            NotifyCustomer();
         }
 
         //Order has been collected

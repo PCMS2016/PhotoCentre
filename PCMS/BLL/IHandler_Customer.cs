@@ -12,5 +12,6 @@ namespace BLL
         List<Customer> SearchCustomer(string Name, string Surname);
         bool AddCustomer(Customer customer);
         bool UpdateCustomer(Customer customer);
+        string GetEmailAddress(int orderNumber);
     }
 }

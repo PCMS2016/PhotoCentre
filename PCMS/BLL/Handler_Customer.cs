@@ -27,5 +27,9 @@ namespace BLL
         {
             return db.UpdateCustomer(customer);
         }
+        public string GetEmailAddress(int orderNumber)
+        {
+            return db.GetEmailAddress(orderNumber);
+        }
     }
 }

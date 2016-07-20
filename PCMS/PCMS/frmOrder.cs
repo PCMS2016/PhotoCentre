@@ -138,6 +138,8 @@ namespace PCMS
             double change = 0;
             double cash;
 
+            tbxCash.Text = tbxCash.Text.Replace(".", ",");
+            
             if (cmbPayment.Text == "Cash" && tbxCash.Text == "")
             {
                 MessageBox.Show("Please enter amount of cash recieved.");
