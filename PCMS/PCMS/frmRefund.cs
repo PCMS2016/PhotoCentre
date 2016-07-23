@@ -158,6 +158,8 @@ namespace PCMS
             dgvRefundOrderLines.Columns[4].HeaderText = "Item Price";
             dgvRefundOrderLines.Columns[5].HeaderText = "Total";
             dgvRefundOrderLines.Columns[6].HeaderText = "Instructions";
+
+            dgvRefundOrderLines.Columns[2].Visible = false;
         }
 
         private void btnRefreshDispRefund_Click(object sender, EventArgs e)
