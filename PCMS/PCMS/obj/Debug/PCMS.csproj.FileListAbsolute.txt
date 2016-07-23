@@ -45,3 +45,24 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.r
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.DBConnection.resources
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.DBConnection.resources
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\PCMS.exe.config
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.exe
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.pdb
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\PCMS.exe
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\PCMS.pdb
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\BLL.dll
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\DAL.dll
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\BLL.pdb
+F:\Proj\PhotoCentre2\PCMS\PCMS\bin\Debug\DAL.pdb
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.csprojResolveAssemblyReference.cache
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.DBConnection.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmLogin.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmMain.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmRefund.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmReports.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmSettings.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmSpecials.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.frmOrder.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.Properties.Resources.resources
+F:\Proj\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.csproj.GenerateResource.Cache
