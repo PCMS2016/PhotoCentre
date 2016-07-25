@@ -165,8 +165,23 @@ namespace PCMS
                 lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
                 lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
 
-                btnCompleted.Enabled = true;
-                btbCollected.Enabled = true;
+                if (lblCompletion.Text == "False")
+                {
+                    btnCompleted.Enabled = true;
+                }
+                else
+                {
+                    btnCompleted.Enabled = false;
+                }
+                if (lblCollection.Text == "False")
+                {
+                    btbCollected.Enabled = true;
+                }
+                else
+                {
+                    btbCollected.Enabled = false;
+                }
+     
             }
         }
 
@@ -242,7 +257,7 @@ namespace PCMS
 
             to.Add(handlerCustomer.GetEmailAddress(orderNumber));
 
-            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage";
+            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage." + Environment.NewLine;
 
             EmailNotification email = new EmailNotification(to, "Order Collection", msg);
             email.SendMail();

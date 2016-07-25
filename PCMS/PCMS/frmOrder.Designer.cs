@@ -122,7 +122,7 @@
             this.tabCtrlOrder.Controls.Add(this.tabFinish);
             this.tabCtrlOrder.Location = new System.Drawing.Point(23, 51);
             this.tabCtrlOrder.Name = "tabCtrlOrder";
-            this.tabCtrlOrder.SelectedIndex = 2;
+            this.tabCtrlOrder.SelectedIndex = 0;
             this.tabCtrlOrder.Size = new System.Drawing.Size(793, 612);
             this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Lime;
             this.tabCtrlOrder.TabIndex = 7;

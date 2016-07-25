@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Configuration;
 using BLL;
 using DAL;
 
@@ -27,7 +28,7 @@ namespace PCMS
         private double discount;
         private double totalVat;
         private double discountTotal;
-        private double VAT = 0.14;
+        private double VAT = double.Parse(ConfigurationManager.AppSettings["VAT"]);
         private string customer;
 
         public PrintReceipt(List<OrderLine> orderItems, string date, string time, string orderNumber, 
@@ -46,8 +47,11 @@ namespace PCMS
             this.discount = discount;
             this.customer = customer;
 
+            VAT = VAT / 100; 
+
             discountTotal = total - (total / 100 * discount);
 
+            //===http://vatcalconline.com/ ===//
             totalVat = discountTotal - (((discountTotal / (1 + VAT)) - discountTotal) / -1);
         }
 

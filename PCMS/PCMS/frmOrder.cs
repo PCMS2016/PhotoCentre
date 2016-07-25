@@ -351,9 +351,9 @@ namespace PCMS
                     btnUpdateCustomer.Enabled = true;
                     btnNewCustomer.Text = "New Customer";
                     DisableCustomerEdit();
-                    ClearCustomerFields();
 
                     SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+                    ClearCustomerFields();
 
                     customerSelected = false;
                 }
@@ -361,6 +361,7 @@ namespace PCMS
                 {
                     MessageBox.Show("Please ensure all details are valid.");
                 }
+
             }
         }
 
@@ -388,13 +389,13 @@ namespace PCMS
                             btnNewCustomer.Enabled = true;
                             btnUpdateCustomer.Text = "Update Customer";
                             DisableCustomerEdit();
-                            ClearCustomerFields();
-
+                            
                             SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
 
-                            customerSelected = false;
+                            customerSelected = true;
                         }
                     }
+                    
                 }
             }
             else
