@@ -92,13 +92,7 @@ namespace PCMS
             dgvOrderLines.Columns[4].HeaderText = "Price";
             dgvOrderLines.Columns[5].HeaderText = "Total";
             dgvOrderLines.Columns[6].HeaderText = "Instructions";
-            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "c";
-            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "c";
-
-            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            
 
             dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
             dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
