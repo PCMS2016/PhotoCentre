@@ -64,3 +64,5 @@ D:\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmOrder.resources
 D:\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.resources
 D:\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.Properties.Resources.resources
 D:\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.csproj.GenerateResource.Cache
+C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.DBConnection.resources
+C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.PCMS_About.resources
