@@ -451,6 +451,7 @@
             this.tbxCustomerName.UseSelectable = true;
             this.tbxCustomerName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxCustomerName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxCustomerName.Enter += new System.EventHandler(this.tbxCustomerName_Enter);
             // 
             // metroLabel3
             // 
@@ -559,6 +560,7 @@
             this.tbxSurname.UseSelectable = true;
             this.tbxSurname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxSurname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxSurname.Enter += new System.EventHandler(this.tbxSurname_Enter);
             // 
             // tbxName
             // 
@@ -589,6 +591,7 @@
             this.tbxName.UseSelectable = true;
             this.tbxName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxName.Enter += new System.EventHandler(this.tbxName_Enter);
             // 
             // lblSurname
             // 
@@ -736,6 +739,7 @@
             this.cmbProduct.TabIndex = 15;
             this.cmbProduct.UseSelectable = true;
             this.cmbProduct.SelectedIndexChanged += new System.EventHandler(this.cmbProduct_SelectedIndexChanged);
+            this.cmbProduct.Enter += new System.EventHandler(this.cmbProduct_Enter);
             // 
             // metroLabel10
             // 
@@ -906,6 +910,7 @@
             this.tabFinish.VerticalScrollbarBarColor = true;
             this.tabFinish.VerticalScrollbarHighlightOnWheel = false;
             this.tabFinish.VerticalScrollbarSize = 10;
+            this.tabFinish.Enter += new System.EventHandler(this.tabFinish_Enter);
             // 
             // btnVoid_Finish
             // 

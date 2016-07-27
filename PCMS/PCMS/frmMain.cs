@@ -65,10 +65,10 @@ namespace PCMS
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
 
-            dgvOrders.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvOrders.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrders.Columns[8].DefaultCellStyle.Format = "C";
 
             dgvOrders.Columns[1].Visible = false;
@@ -93,9 +93,11 @@ namespace PCMS
             dgvOrderLines.Columns[5].HeaderText = "Total";
             dgvOrderLines.Columns[6].HeaderText = "Instructions";
             
-
             dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
             dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
+
+            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvOrderLines.Columns[0].Visible = false;
             dgvOrderLines.Columns[2].Visible = false;
@@ -361,6 +363,21 @@ namespace PCMS
         {
             PCMS_About about = new PCMS_About();
             about.ShowDialog();
+        }
+
+        private void tbxOrderNumber_Enter(object sender, EventArgs e)
+        {
+            frmMain.ActiveForm.AcceptButton = btnOrderSearch;
+        }
+
+        private void tbxName_Enter(object sender, EventArgs e)
+        {
+            frmMain.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void tbxSurname_Enter(object sender, EventArgs e)
+        {
+            frmMain.ActiveForm.AcceptButton = btnCustomerSearch;
         }
     }
 }
