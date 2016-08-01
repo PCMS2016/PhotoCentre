@@ -167,7 +167,7 @@
             this.Name = "frmLogin";
             this.Resizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "LOGIN";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);

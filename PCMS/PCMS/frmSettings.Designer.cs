@@ -143,11 +143,12 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
+            this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(23, 51);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(837, 584);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             this.metroTabControl1.UseStyleColors = true;
@@ -177,7 +178,7 @@
             this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
             this.metroTabPage1.Name = "metroTabPage1";
             this.metroTabPage1.Size = new System.Drawing.Size(829, 542);
-            this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabPage1.TabIndex = 0;
             this.metroTabPage1.Text = "General";
             this.metroTabPage1.UseStyleColors = true;
@@ -653,7 +654,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(150, 6);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(676, 530);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel1.TabIndex = 3;
             this.metroPanel1.UseStyleColors = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -1077,7 +1078,7 @@
             this.metroPanel2.Location = new System.Drawing.Point(150, 6);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(676, 530);
-            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel2.TabIndex = 24;
             this.metroPanel2.UseStyleColors = true;
             this.metroPanel2.VerticalScrollbarBarColor = true;
@@ -1427,7 +1428,7 @@
             this.metroPanel3.Location = new System.Drawing.Point(150, 6);
             this.metroPanel3.Name = "metroPanel3";
             this.metroPanel3.Size = new System.Drawing.Size(676, 530);
-            this.metroPanel3.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel3.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel3.TabIndex = 25;
             this.metroPanel3.UseStyleColors = true;
             this.metroPanel3.VerticalScrollbarBarColor = true;
@@ -1580,7 +1581,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSettings";
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE MS - SETTINGS";
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);

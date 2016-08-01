@@ -120,11 +120,12 @@
             this.tabCtrlOrder.Controls.Add(this.tabCustomer);
             this.tabCtrlOrder.Controls.Add(this.tabProducts);
             this.tabCtrlOrder.Controls.Add(this.tabFinish);
+            this.tabCtrlOrder.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.tabCtrlOrder.Location = new System.Drawing.Point(23, 51);
             this.tabCtrlOrder.Name = "tabCtrlOrder";
-            this.tabCtrlOrder.SelectedIndex = 0;
+            this.tabCtrlOrder.SelectedIndex = 1;
             this.tabCtrlOrder.Size = new System.Drawing.Size(793, 612);
-            this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Green;
             this.tabCtrlOrder.TabIndex = 7;
             this.tabCtrlOrder.TabStop = false;
             this.tabCtrlOrder.UseSelectable = true;
@@ -622,7 +623,7 @@
             this.tabProducts.Location = new System.Drawing.Point(4, 38);
             this.tabProducts.Name = "tabProducts";
             this.tabProducts.Size = new System.Drawing.Size(785, 570);
-            this.tabProducts.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabProducts.Style = MetroFramework.MetroColorStyle.Green;
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Order Products";
             this.tabProducts.VerticalScrollbarBarColor = true;
@@ -645,6 +646,7 @@
             this.btnFinishTransaction.Location = new System.Drawing.Point(518, 499);
             this.btnFinishTransaction.Name = "btnFinishTransaction";
             this.btnFinishTransaction.Size = new System.Drawing.Size(151, 57);
+            this.btnFinishTransaction.Style = MetroFramework.MetroColorStyle.Green;
             this.btnFinishTransaction.TabIndex = 20;
             this.btnFinishTransaction.Text = "FINISH TRANSACTION";
             this.btnFinishTransaction.UseSelectable = true;
@@ -670,7 +672,7 @@
             this.metroPanel2.Location = new System.Drawing.Point(10, 6);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(769, 483);
-            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel2.TabIndex = 3;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -904,7 +906,7 @@
             this.tabFinish.Location = new System.Drawing.Point(4, 38);
             this.tabFinish.Name = "tabFinish";
             this.tabFinish.Size = new System.Drawing.Size(785, 570);
-            this.tabFinish.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabFinish.Style = MetroFramework.MetroColorStyle.Green;
             this.tabFinish.TabIndex = 2;
             this.tabFinish.Text = "Finish Order";
             this.tabFinish.VerticalScrollbarBarColor = true;
@@ -1149,7 +1151,7 @@
             this.HelpButton = true;
             this.KeyPreview = true;
             this.Name = "frmOrder";
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE MS - NEW ORDER";
             this.Load += new System.EventHandler(this.frmOrder_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmOrder_KeyDown);

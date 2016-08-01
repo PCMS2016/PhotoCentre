@@ -87,7 +87,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(174, 63);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(689, 499);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel1.TabIndex = 0;
             this.metroPanel1.UseStyleColors = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
@@ -419,12 +419,14 @@
             this.tileDone.Location = new System.Drawing.Point(766, 570);
             this.tileDone.Name = "tileDone";
             this.tileDone.Size = new System.Drawing.Size(86, 58);
+            this.tileDone.Style = MetroFramework.MetroColorStyle.Green;
             this.tileDone.TabIndex = 15;
             this.tileDone.Text = "Done";
             this.tileDone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.tileDone.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.tileDone.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.tileDone.UseSelectable = true;
+            this.tileDone.UseStyleColors = true;
             // 
             // frmSpecials
             // 
@@ -437,7 +439,7 @@
             this.Controls.Add(this.lblSearchOrders);
             this.Controls.Add(this.metroPanel1);
             this.Name = "frmSpecials";
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE MS - SPECIALS";
             this.Load += new System.EventHandler(this.frmSpecials_Load);
             this.metroPanel1.ResumeLayout(false);
