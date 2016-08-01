@@ -133,11 +133,12 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
+            this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(23, 63);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(1118, 667);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             this.metroTabControl1.UseStyleColors = true;
@@ -180,7 +181,7 @@
             this.metroDateTime1.CustomFormat = "dd/MM/yyyy";
             this.metroDateTime1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.metroDateTime1.Location = new System.Drawing.Point(3, 34);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
             this.metroDateTime1.Size = new System.Drawing.Size(131, 29);
             this.metroDateTime1.TabIndex = 5;
@@ -1033,7 +1034,7 @@
             this.ClientSize = new System.Drawing.Size(1149, 770);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "frmReports";
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE ME - REPORTS";
             this.Load += new System.EventHandler(this.frmReports_Load);
             this.metroTabControl1.ResumeLayout(false);
