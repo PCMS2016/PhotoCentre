@@ -29,5 +29,23 @@ namespace DAL
             }
             return list;
         }
+        public bool AddDiscount(Discount discount)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+            new SqlParameter("@Amount", discount.Percentage)
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddDiscount", CommandType.StoredProcedure, parameters);
+        }
+        public bool UpdateDiscount(Discount discount)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@DiscountID", discount.DiscountID),
+                new SqlParameter("@Amount", discount.Percentage)
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdateDiscount", CommandType.StoredProcedure, parameters);
+        }
+
     }
 }

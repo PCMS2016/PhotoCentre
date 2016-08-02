@@ -9,5 +9,7 @@ namespace DAL
     public interface IDBAccess_Discount
     {
         List<Discount> GetAllDiscount();
+        bool AddDiscount(Discount discount);
+        bool UpdateDiscount(Discount discount);
     }
 }
