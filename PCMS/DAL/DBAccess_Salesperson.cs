@@ -69,5 +69,35 @@ namespace DAL
             }
             return list;
         }
+        public List<Salesperson> SearchSalesperson(string Name, string Surname)
+        {
+            List<Salesperson> list = new List<Salesperson>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", Name),
+                new SqlParameter("@Surname", Surname)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchSalespersons", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Salesperson salesperson = new Salesperson();
+                        salesperson.SalespersonID = Convert.ToInt32(row["SalespersonID"].ToString());
+                        salesperson.Name = row["Name"].ToString();
+                        salesperson.Surname = row["Surname"].ToString();
+                        salesperson.Username = row["Username"].ToString();
+                        salesperson.Password = row["Password"].ToString();
+                        salesperson.Privileges = row["[Privileges]"].ToString();
+                        salesperson.EmployeeType = row["Employee Type"].ToString();
+                        list.Add(salesperson);
+                    }
+                }
+            }
+            return list;
+        }
     }
 }

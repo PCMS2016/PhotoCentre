@@ -12,5 +12,6 @@ namespace DAL
         bool UpdateSalesperson(Salesperson salesperson);
         bool RemoveSalesperson(int SalespersonID);
         List<Salesperson> GetAllSalespersons();
+        List<Salesperson> SearchSalesperson(string Name, string Surname);
     }
 }

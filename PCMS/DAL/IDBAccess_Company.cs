@@ -9,5 +9,8 @@ namespace DAL
     public interface IDBAccess_Company
     {
         Company GetCompanyDetails();
+        bool AddCompany(Company company);
+        bool UpdateCompany(Company company);
+
     }
 }

@@ -55,6 +55,7 @@
     <Compile Include="DBAccess_Refund.cs" />
     <Compile Include="DBAccess_Salesperson.cs" />
     <Compile Include="DBAccess_Size.cs" />
+    <Compile Include="DBAccess_Special.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Discount.cs" />
     <Compile Include="DisplayRefund.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="IDBAccess_Refund.cs" />
     <Compile Include="IDBAccess_Salesperson.cs" />
     <Compile Include="IDBAccess_Size.cs" />
+    <Compile Include="IDBAccess_Special.cs" />
     <Compile Include="Medium.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderLine.cs" />
