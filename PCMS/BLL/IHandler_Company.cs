@@ -10,5 +10,7 @@ namespace BLL
     public interface IHandler_Company
     {
         Company GetCompanyDetails();
+        bool AddCompany(Company company);
+        bool UpdateCompany(Company company);
     }
 }

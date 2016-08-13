@@ -10,5 +10,8 @@ namespace BLL
     public interface IHandler_Product
     {
         List<SizeMedium> GetAllProducts();
+        bool AddProduct(SizeMedium sizeMedium);
+        bool UpdateProduct(SizeMedium sizeMedium);
+        bool RemoveProduct(int ProductID);
     }
 }

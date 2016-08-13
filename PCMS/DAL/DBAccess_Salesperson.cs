@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    class DBAccess_Salesperson : IDBAccess_Salesperson
+    public class DBAccess_Salesperson : IDBAccess_Salesperson
     {
         public bool AddSalesperson(Salesperson salesperson)
         {
