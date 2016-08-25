@@ -14,5 +14,6 @@ namespace DAL
         List<Special> GetAllSpecials();
         List<Special> GetSpecialsByProduct(int SizeMediumID);
         List<Special> GetSpecialsByDate(DateTime date);
+        List<string> GetAllEmailAddresses();
     }
 }

@@ -20,6 +20,11 @@ namespace BLL
             return db.AddSpecial(special);
         }
 
+        public List<string> GetAllEmailAddresses()
+        {
+            return db.GetAllEmailAddresses();
+        }
+
         public List<Special> GetAllSpecials()
         {
             return db.GetAllSpecials();
