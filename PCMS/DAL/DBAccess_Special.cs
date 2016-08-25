@@ -27,7 +27,7 @@ namespace DAL
         {
             List<string> list = new List<string>();
 
-            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllEmailAddress", CommandType.StoredProcedure))
+            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllEmailAddresses", CommandType.StoredProcedure))
             {
                 if (table.Rows.Count > 0)
                 {

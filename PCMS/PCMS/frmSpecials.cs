@@ -273,7 +273,7 @@ namespace PCMS
 
         private void btnSpecialUpdate_Click(object sender, EventArgs e)
         {
-            if (dgvSpecials.SelectedRows[0].Index < 0)
+            if (dgvSpecials.SelectedRows.Count > 0)
             {
                 if (btnSpecialUpdate.Text == "Update Special")
                 {
@@ -325,16 +325,53 @@ namespace PCMS
 
         private void btnSpecialNotify_Click(object sender, EventArgs e)
         {
+            if (dgvSpecials.SelectedRows.Count > 0)
+            {
+                int index = dgvSpecials.SelectedRows[0].Index;
 
+                string message = string.Format("Get {0} for {1:c}", dgvSpecials.Rows[index].Cells[1].Value.ToString(),
+                     Convert.ToDouble(dgvSpecials.Rows[index].Cells[3].Value.ToString()));
+
+
+                int qty = Convert.ToInt32(dgvSpecials.Rows[index].Cells[2].Value.ToString());
+                if (qty > 1)
+                {
+                    message += " when you buy " + qty.ToString() + " or more.";
+                }
+                else
+                {
+                    message += ".";
+                }
+
+                message += Environment.NewLine + Environment.NewLine + "Special valid from: " +
+                    dtpStartDate.Text + " to: " + dtpEndDate.Text + ".";
+
+                MessageBox.Show(message);
+
+                try
+                {
+                    NotifyCustomer(message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not notify customers about the special!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No special selected!");
+            }
         }
-        private void NotifyCustomer()
+        private void NotifyCustomer(string message)
         {
             List<string> to = handlerSpecial.GetAllEmailAddresses();
 
-            string msg = "Special";
-
-            EmailNotification email = new EmailNotification(to, "Order Collection", msg);
+            EmailNotification email = new EmailNotification(to, "Special At Photo Centre", message);
+            
             email.SendMail();
+
+            MessageBox.Show("Customers Notified.");
         }
     }
 }
