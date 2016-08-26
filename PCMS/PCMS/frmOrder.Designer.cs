@@ -123,7 +123,7 @@
             this.tabCtrlOrder.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.tabCtrlOrder.Location = new System.Drawing.Point(23, 51);
             this.tabCtrlOrder.Name = "tabCtrlOrder";
-            this.tabCtrlOrder.SelectedIndex = 1;
+            this.tabCtrlOrder.SelectedIndex = 2;
             this.tabCtrlOrder.Size = new System.Drawing.Size(793, 612);
             this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Green;
             this.tabCtrlOrder.TabIndex = 7;
@@ -149,7 +149,7 @@
             this.tabCustomer.Location = new System.Drawing.Point(4, 38);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.Size = new System.Drawing.Size(785, 570);
-            this.tabCustomer.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabCustomer.Style = MetroFramework.MetroColorStyle.Green;
             this.tabCustomer.TabIndex = 0;
             this.tabCustomer.Text = "Customer";
             this.tabCustomer.UseStyleColors = true;
@@ -205,7 +205,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(169, 9);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(613, 485);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel1.TabIndex = 18;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;

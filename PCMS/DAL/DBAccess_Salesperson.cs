@@ -61,7 +61,7 @@ namespace DAL
                         salesperson.Surname = row["Surname"].ToString();
                         salesperson.Username = row["Username"].ToString();
                         salesperson.Password = row["Password"].ToString();
-                        salesperson.Privileges = row["[Privileges]"].ToString();
+                        salesperson.Privileges = row["Privileges"].ToString();
                         salesperson.EmployeeType = row["Employee Type"].ToString();
                         list.Add(salesperson);
                     }
@@ -79,7 +79,7 @@ namespace DAL
                 new SqlParameter("@Surname", Surname)
             };
 
-            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchSalespersons", CommandType.StoredProcedure, parameters))
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchSalesperson", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -91,7 +91,7 @@ namespace DAL
                         salesperson.Surname = row["Surname"].ToString();
                         salesperson.Username = row["Username"].ToString();
                         salesperson.Password = row["Password"].ToString();
-                        salesperson.Privileges = row["[Privileges]"].ToString();
+                        salesperson.Privileges = row["Privileges"].ToString();
                         salesperson.EmployeeType = row["Employee Type"].ToString();
                         list.Add(salesperson);
                     }
