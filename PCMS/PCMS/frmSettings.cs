@@ -17,6 +17,9 @@ namespace PCMS
     {
         //BLL Access
         private IHandler_Salesperson handlerSalesperson = null;
+        private IHandler_Payment handlerPayment = null;
+        private IHandler_Company handlerCompany = null;
+        private IHandler_Product handlerProduct = null;
 
         //Passed Variables
 
@@ -33,7 +36,14 @@ namespace PCMS
         private void frmSettings_Load(object sender, EventArgs e)
         {
             handlerSalesperson = new Handler_Salesperson();
+            handlerPayment = new Handler_Payment();
+            handlerCompany = new Handler_Company();
+            handlerProduct = new Handler_Product();
+
+            BindData_Payments();
         }
+
+        #region Salesperson
 
         //Clear Fields for Salesperson
         private void ClearSalespersonFields()
@@ -161,14 +171,18 @@ namespace PCMS
         //Remvoe Salesperson
         private void RemoveSalesperson(int salespersonID)
         {
-            try
+            if (MessageBox.Show("Are you sure you want to remove this salesperson?", "", MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
             {
-                handlerSalesperson.RemoveSalesperson(salespersonID);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured when trying to remove salesperson!" + Environment.NewLine +
-                    Environment.NewLine + ex.Message);
+                try
+                {
+                    handlerSalesperson.RemoveSalesperson(salespersonID);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured when trying to remove salesperson!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
             }
         }
 
@@ -290,5 +304,206 @@ namespace PCMS
                 RemoveSalesperson(Convert.ToInt32(dgvSalesperson.SelectedRows[0].Cells[0].Value.ToString()));
             }
         }
+        #endregion
+
+        #region Company
+
+        #endregion
+
+        #region Payments
+        //Format Payments Grid
+        private void FormatPaymentGrid()
+        {
+            dgvPayment.Columns[0].HeaderText = "ID";
+            dgvPayment.Columns[1].HeaderText = "Description";
+        }
+
+        //Bind Payments
+        private void BindData_Payments()
+        {
+            try
+            {
+                dgvPayment.DataSource = handlerPayment.GetAllPayments();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured connecting to database!");
+                this.Close();
+            }
+        }
+
+        //Enable Payment Fields()
+        private void EnablePaymentFields()
+        {
+            tbxDescription.Enabled = true;
+        }
+
+        //Disable Payment Fields()
+        private void DisablePaymentFields()
+        {
+            tbxDescription.Enabled = false;
+        }
+
+        //Clear Payment Fields()
+        private void ClearPaymentFields()
+        {
+            tbxDescription.Clear();
+        }
+
+        //Add Payment to Database
+        private void AddPayment()
+        {
+            Payment payment = new Payment();
+            payment.PaymentType = tbxDescription.Text;
+
+            try
+            {
+                handlerPayment.AddPayment(payment);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when adding payment method!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Update Payment to Database
+        private void UpdatePayment()
+        {
+            Payment payment = new Payment();
+            payment.PaymentID = Convert.ToInt32(dgvPayment.SelectedRows[0].Cells[0].Value.ToString());
+            payment.PaymentType = tbxDescription.Text;
+
+            try
+            {
+                handlerPayment.UpdatePayment(payment);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when updating payment method!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Remove Payment 
+        private void RemovePayment(int paymentID)
+        {
+            try
+            {
+                handlerPayment.RemovePayment(paymentID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when removing payment method!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Add payment Method
+        private void btnNewPayment_Click(object sender, EventArgs e)
+        {
+            if (btnNewPayment.Text == "New Payment Method")
+            {
+                btnUpdatePayment.Enabled = false;
+                btnNewPayment.Text = "Save";
+                ClearPaymentFields();
+                EnablePaymentFields();
+
+                tbxDescription.Focus();
+            }
+            else
+            {
+                if (tbxDescription.Text != "")
+                {
+                    if (MessageBox.Show("Are you sure you want to update this payment method?", "", MessageBoxButtons.YesNo) ==
+                        DialogResult.Yes)
+                    {
+                        AddPayment();
+
+                        btnUpdatePayment.Enabled = true;
+                        btnNewPayment.Text = "New Payment Method";
+                        DisablePaymentFields();
+
+                        BindData_Payments();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a description!");
+                }
+            }
+        }
+
+        //Update payment Method
+        private void btnUpdatePayment_Click(object sender, EventArgs e)
+        {
+            if (dgvPayment.SelectedRows.Count > 0)
+            {
+                if (btnUpdatePayment. Text == "Update Payment Method")
+                {
+                    btnNewPayment.Enabled = false;
+                    btnUpdatePayment.Text = "Save";
+                    EnablePaymentFields();
+
+                    tbxDescription.Focus();
+                }
+                else
+                {
+                    if (tbxDescription.Text != "")
+                    {
+                        if (MessageBox.Show("Are you sure you want to update this payment method?", "", MessageBoxButtons.YesNo) ==
+                            DialogResult.Yes)
+                        {
+                            UpdatePayment();
+
+                            btnNewPayment.Enabled = true;
+                            btnUpdatePayment.Text = "Update Payment Method";
+                            DisablePaymentFields();
+
+                            BindData_Payments();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a description!");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No payment method selected!");
+            }
+        }
+
+        //Remove Payment Method
+        private void btnRemovePayment_Click(object sender, EventArgs e)
+        {
+            if (dgvPayment.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to remove this payment method", "", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                {
+                    RemovePayment(Convert.ToInt32(dgvPayment.SelectedRows[0].Cells[0].Value.ToString()));
+
+                    BindData_Payments();
+                }
+            }
+        }
+
+        //Payment Selected
+        private void dgvPayment_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvPayment.SelectedRows.Count > 0)
+            {
+                tbxDescription.Text = dgvPayment.SelectedRows[0].Cells[1].Value.ToString();
+            }
+        }
+        #endregion
+
+        #region Products
+
+        #endregion
+
+
     }
 }
