@@ -11,7 +11,7 @@ namespace DAL
 {
     class DBHelper
     {
-        private static string connString = ConfigurationManager.ConnectionStrings["PCMS_Local"].ConnectionString;
+        private static string connString = ConfigurationManager.ConnectionStrings["PCMS_Local_Wynand"].ConnectionString;
 
         //Select command with parameters
         public static DataTable ExecuteParamerizedSelectCommand(string commandName, CommandType commandType, SqlParameter[] parameters)

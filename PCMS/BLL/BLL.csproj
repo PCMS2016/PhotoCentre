@@ -44,21 +44,29 @@
     <Compile Include="Handler_Customer.cs" />
     <Compile Include="Handler_Discount.cs" />
     <Compile Include="Handler_Login.cs" />
+    <Compile Include="Handler_Medium.cs" />
     <Compile Include="Handler_Order.cs" />
     <Compile Include="Handler_OrderLine.cs" />
     <Compile Include="Handler_Payment.cs" />
     <Compile Include="Handler_Product.cs" />
     <Compile Include="Handler_Refund.cs" />
+    <Compile Include="Handler_Salesperson.cs" />
+    <Compile Include="Handler_Size.cs" />
+    <Compile Include="Handler_Special.cs" />
     <Compile Include="IHandler_Company.cs" />
     <Compile Include="IHandler_Customer.cs" />
     <Compile Include="IHandler_Discount.cs" />
     <Compile Include="IHandler_Login.cs" />
     <Compile Include="IHandler_Main.cs" />
+    <Compile Include="IHandler_Medium.cs" />
     <Compile Include="IHandler_Order.cs" />
     <Compile Include="IHandler_OrderLine.cs" />
     <Compile Include="IHandler_Payment.cs" />
     <Compile Include="IHandler_Product.cs" />
     <Compile Include="IHandler_Refund.cs" />
+    <Compile Include="IHandler_Salesperson.cs" />
+    <Compile Include="IHandler_Size.cs" />
+    <Compile Include="IHandler_Special.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

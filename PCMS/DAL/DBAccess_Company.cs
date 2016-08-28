@@ -34,8 +34,41 @@ namespace DAL
                     }
                 }
             }
-
             return company;
+        }
+        public bool AddCompany(Company company)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", company.Name),
+                new SqlParameter("@Address1", company.Address1),
+                new SqlParameter("@Address2", company.Address2),
+                new SqlParameter("@Suburb", company.Suburb),
+                new SqlParameter("@City", company.City),
+                new SqlParameter("@PostalCode", company.PostalCode),
+                new SqlParameter("@Phone", company.Phone),
+                new SqlParameter("@Fax", company.Fax),
+                new SqlParameter("@Email", company.Email),
+                new SqlParameter("@RefundPeriod", company.RefundPeriod)
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddCompany", CommandType.StoredProcedure, parameters);
+        }
+        public bool UpdateCompany(Company company)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@Name", company.Name),
+                new SqlParameter("@Address1", company.Address1),
+                new SqlParameter("@Address2", company.Address2),
+                new SqlParameter("@Suburb", company.Suburb),
+                new SqlParameter("@City", company.City),
+                new SqlParameter("@PostalCode", company.PostalCode),
+                new SqlParameter("@Phone", company.Phone),
+                new SqlParameter("@Fax", company.Fax),
+                new SqlParameter("@Email", company.Email),
+                new SqlParameter("@RefundPeriod", company.RefundPeriod)
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdateCompany", CommandType.StoredProcedure, parameters);
         }
     }
 }

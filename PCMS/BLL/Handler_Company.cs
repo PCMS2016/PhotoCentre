@@ -14,9 +14,19 @@ namespace BLL
         {
             db = new DBAccess_Company();
         }
+        public bool AddCompany(Company company)
+        {
+            return db.AddCompany(company);
+        }
+
         public Company GetCompanyDetails()
         {
             return db.GetCompanyDetails();
+        }
+
+        public bool UpdateCompany(Company company)
+        {
+            return db.UpdateCompany(company);
         }
     }
 }

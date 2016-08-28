@@ -14,9 +14,20 @@ namespace BLL
         {
             db = new DBAccess_Discount();
         }
+
+        public bool AddDiscount(Discount discount)
+        {
+            return db.AddDiscount(discount);
+        }
+
         public List<Discount> GetAllDiscount()
         {
             return db.GetAllDiscount();
+        }
+
+        public bool UpdateDiscount(Discount discount)
+        {
+            return db.UpdateDiscount(discount);
         }
     }
 }

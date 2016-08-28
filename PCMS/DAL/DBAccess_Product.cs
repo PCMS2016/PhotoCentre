@@ -10,6 +10,17 @@ namespace DAL
 {
     public class DBAccess_Product : IDBAccess_Product 
     {
+        public bool AddProduct(SizeMedium sizeMedium)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@SizeID", Convert.ToInt32(sizeMedium.Size)),
+                new SqlParameter("@MediumID", Convert.ToInt32(sizeMedium.Medium)),
+                new SqlParameter("@Price", sizeMedium.Price)
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddSizeMedium", CommandType.StoredProcedure, parameters);
+        }
+
         //Get all products...
         public List<SizeMedium> GetAllProducts()
         {
@@ -29,6 +40,27 @@ namespace DAL
                 }
             }
             return list;
+        }
+
+        public bool RemoveProduct(int SizeMediumID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", SizeMediumID)
+            };
+            return DBHelper.ExecuteNonQuery("sp_DeactivateSizeMedium", CommandType.StoredProcedure, parameters);
+        }
+
+        public bool UpdateProduct(SizeMedium sizeMedium)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("ID", sizeMedium.SizeMediumID),
+                new SqlParameter("@SizeID", Convert.ToInt32(sizeMedium.Size)),
+                new SqlParameter("@MediumID", Convert.ToInt32(sizeMedium.Medium)),
+                new SqlParameter("@Price", sizeMedium.Price)
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdateSizeMedium", CommandType.StoredProcedure, parameters);
         }
     }
 }

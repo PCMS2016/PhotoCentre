@@ -29,5 +29,30 @@ namespace DAL
             }
             return list;
         }
+        public bool AddPayment(Payment payment)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@PaymentType", payment.PaymentType)
+            };
+            return DBHelper.ExecuteNonQuery("sp_AddPayment", CommandType.StoredProcedure, parameters);
+        }
+        public bool UpdatePayment(Payment payment)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@PaymentID", payment.PaymentID),
+                new SqlParameter("@PaymentType", payment.PaymentType)
+            };
+            return DBHelper.ExecuteNonQuery("sp_UpdatePayment", CommandType.StoredProcedure, parameters);
+        }
+        public bool RemovePayment(int PaymentID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@PaymentID", PaymentID)
+            };
+            return DBHelper.ExecuteNonQuery("sp_DeactivatePayment", CommandType.StoredProcedure, parameters);
+        }
     }
 }

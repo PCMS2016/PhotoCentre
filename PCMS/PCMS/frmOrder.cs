@@ -269,6 +269,8 @@ namespace PCMS
             {
                 SearchCustomer(name, surname);
             }
+
+            frmOrder.ActiveForm.AcceptButton = btnNext;
         }
 
         //Add Customer to database...
@@ -324,6 +326,12 @@ namespace PCMS
             if (tbxCustomerName.Text == "" || tbxCustomerSurname.Text == "" || (tbxCellphone.Text).Length != 10)
                 valid = false;
 
+            if (cmbNotificationType.Text == "Email" && tbxEmail.Text == "")
+            {
+                MessageBox.Show("An email address needs to be supplied.");
+                valid = false;
+            }
+
             if (tbxEmail.Text == "")
                 tbxEmail.Text = "N/A";
 
@@ -346,21 +354,26 @@ namespace PCMS
             {
                 if (ValidateCustomerFields() == true)
                 {
-                    AddCustomer();
+                    if (MessageBox.Show("Are you sure you want to add this customer?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        AddCustomer();
 
-                    btnUpdateCustomer.Enabled = true;
-                    btnNewCustomer.Text = "New Customer";
-                    DisableCustomerEdit();
-                    ClearCustomerFields();
+                        btnUpdateCustomer.Enabled = true;
+                        btnNewCustomer.Text = "New Customer";
+                        DisableCustomerEdit();
 
-                    SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+                        SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+                        ClearCustomerFields();
 
-                    customerSelected = false;
+                        customerSelected = false;
+                    }
+                    frmOrder.ActiveForm.AcceptButton = btnNext;
                 }
                 else
                 {
                     MessageBox.Show("Please ensure all details are valid.");
                 }
+
             }
         }
 
@@ -388,13 +401,14 @@ namespace PCMS
                             btnNewCustomer.Enabled = true;
                             btnUpdateCustomer.Text = "Update Customer";
                             DisableCustomerEdit();
-                            ClearCustomerFields();
-
+                            
                             SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
 
-                            customerSelected = false;
+                            customerSelected = true;
                         }
+                        frmOrder.ActiveForm.AcceptButton = btnNext;
                     }
+                    
                 }
             }
             else
@@ -489,10 +503,13 @@ namespace PCMS
                 AddLineToGrid(product, quantity, sPrice, total, instructions);
 
                 AddLineToList(cmbProduct.SelectedValue.ToString(), quantity, price, total, instructions);
-            }
 
-            numQty.Value = 0;
-            tbxInstructions.Clear();
+                numQty.Value = 0;
+                tbxInstructions.Clear();
+
+                frmOrder.ActiveForm.AcceptButton = btnFinishTransaction;
+            }
+         
         }
 
         //Next button on customer details clicked...
@@ -679,5 +696,39 @@ namespace PCMS
                 tbxCash.Text = orderTotal.ToString();
             }
         }
+
+        private void tbxName_Enter(object sender, EventArgs e)
+        {
+            frmOrder.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void tbxSurname_Enter(object sender, EventArgs e)
+        {
+            frmOrder.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void tbxCustomerName_Enter(object sender, EventArgs e)
+        {
+            if (btnUpdateCustomer.Text == "Save")
+            {
+                frmOrder.ActiveForm.AcceptButton = btnUpdateCustomer;
+            }
+            else if (btnNewCustomer.Text == "Save")
+            {
+                frmOrder.ActiveForm.AcceptButton = btnNewCustomer;
+            }
+        }
+
+        private void tabFinish_Enter(object sender, EventArgs e)
+        {
+            frmOrder.ActiveForm.AcceptButton = btnPay;
+        }
+
+        private void cmbProduct_Enter(object sender, EventArgs e)
+        {
+            cmbProduct.Focus();
+            frmOrder.ActiveForm.AcceptButton = btnAdd;
+        }
+
     }
 }

@@ -14,9 +14,25 @@ namespace BLL
         {
             db = new DBAccess_Payment();
         }
+
+        public bool AddPayment(Payment payment)
+        {
+            return db.AddPayment(payment);
+        }
+
         public List<Payment> GetAllPayments()
         {
             return db.GetAllPayments();
+        }
+
+        public bool RemovePayment(int PaymentID)
+        {
+            return db.RemovePayment(PaymentID);
+        }
+
+        public bool UpdatePayment(Payment payment)
+        {
+            return db.UpdatePayment(payment);
         }
     }
 }

@@ -120,11 +120,12 @@
             this.tabCtrlOrder.Controls.Add(this.tabCustomer);
             this.tabCtrlOrder.Controls.Add(this.tabProducts);
             this.tabCtrlOrder.Controls.Add(this.tabFinish);
+            this.tabCtrlOrder.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.tabCtrlOrder.Location = new System.Drawing.Point(23, 51);
             this.tabCtrlOrder.Name = "tabCtrlOrder";
             this.tabCtrlOrder.SelectedIndex = 2;
             this.tabCtrlOrder.Size = new System.Drawing.Size(793, 612);
-            this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabCtrlOrder.Style = MetroFramework.MetroColorStyle.Green;
             this.tabCtrlOrder.TabIndex = 7;
             this.tabCtrlOrder.TabStop = false;
             this.tabCtrlOrder.UseSelectable = true;
@@ -148,7 +149,7 @@
             this.tabCustomer.Location = new System.Drawing.Point(4, 38);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.Size = new System.Drawing.Size(785, 570);
-            this.tabCustomer.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabCustomer.Style = MetroFramework.MetroColorStyle.Green;
             this.tabCustomer.TabIndex = 0;
             this.tabCustomer.Text = "Customer";
             this.tabCustomer.UseStyleColors = true;
@@ -204,7 +205,7 @@
             this.metroPanel1.Location = new System.Drawing.Point(169, 9);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(613, 485);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel1.TabIndex = 18;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
@@ -451,6 +452,7 @@
             this.tbxCustomerName.UseSelectable = true;
             this.tbxCustomerName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxCustomerName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxCustomerName.Enter += new System.EventHandler(this.tbxCustomerName_Enter);
             // 
             // metroLabel3
             // 
@@ -559,6 +561,7 @@
             this.tbxSurname.UseSelectable = true;
             this.tbxSurname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxSurname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxSurname.Enter += new System.EventHandler(this.tbxSurname_Enter);
             // 
             // tbxName
             // 
@@ -589,6 +592,7 @@
             this.tbxName.UseSelectable = true;
             this.tbxName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.tbxName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.tbxName.Enter += new System.EventHandler(this.tbxName_Enter);
             // 
             // lblSurname
             // 
@@ -619,7 +623,7 @@
             this.tabProducts.Location = new System.Drawing.Point(4, 38);
             this.tabProducts.Name = "tabProducts";
             this.tabProducts.Size = new System.Drawing.Size(785, 570);
-            this.tabProducts.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabProducts.Style = MetroFramework.MetroColorStyle.Green;
             this.tabProducts.TabIndex = 1;
             this.tabProducts.Text = "Order Products";
             this.tabProducts.VerticalScrollbarBarColor = true;
@@ -642,6 +646,7 @@
             this.btnFinishTransaction.Location = new System.Drawing.Point(518, 499);
             this.btnFinishTransaction.Name = "btnFinishTransaction";
             this.btnFinishTransaction.Size = new System.Drawing.Size(151, 57);
+            this.btnFinishTransaction.Style = MetroFramework.MetroColorStyle.Green;
             this.btnFinishTransaction.TabIndex = 20;
             this.btnFinishTransaction.Text = "FINISH TRANSACTION";
             this.btnFinishTransaction.UseSelectable = true;
@@ -667,7 +672,7 @@
             this.metroPanel2.Location = new System.Drawing.Point(10, 6);
             this.metroPanel2.Name = "metroPanel2";
             this.metroPanel2.Size = new System.Drawing.Size(769, 483);
-            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Lime;
+            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Green;
             this.metroPanel2.TabIndex = 3;
             this.metroPanel2.VerticalScrollbarBarColor = true;
             this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
@@ -736,6 +741,7 @@
             this.cmbProduct.TabIndex = 15;
             this.cmbProduct.UseSelectable = true;
             this.cmbProduct.SelectedIndexChanged += new System.EventHandler(this.cmbProduct_SelectedIndexChanged);
+            this.cmbProduct.Enter += new System.EventHandler(this.cmbProduct_Enter);
             // 
             // metroLabel10
             // 
@@ -900,12 +906,13 @@
             this.tabFinish.Location = new System.Drawing.Point(4, 38);
             this.tabFinish.Name = "tabFinish";
             this.tabFinish.Size = new System.Drawing.Size(785, 570);
-            this.tabFinish.Style = MetroFramework.MetroColorStyle.Lime;
+            this.tabFinish.Style = MetroFramework.MetroColorStyle.Green;
             this.tabFinish.TabIndex = 2;
             this.tabFinish.Text = "Finish Order";
             this.tabFinish.VerticalScrollbarBarColor = true;
             this.tabFinish.VerticalScrollbarHighlightOnWheel = false;
             this.tabFinish.VerticalScrollbarSize = 10;
+            this.tabFinish.Enter += new System.EventHandler(this.tabFinish_Enter);
             // 
             // btnVoid_Finish
             // 
@@ -1144,7 +1151,7 @@
             this.HelpButton = true;
             this.KeyPreview = true;
             this.Name = "frmOrder";
-            this.Style = MetroFramework.MetroColorStyle.Lime;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE MS - NEW ORDER";
             this.Load += new System.EventHandler(this.frmOrder_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmOrder_KeyDown);

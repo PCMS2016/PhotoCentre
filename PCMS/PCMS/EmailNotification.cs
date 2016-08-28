@@ -31,7 +31,7 @@ namespace PCMS
             from = ConfigurationManager.AppSettings["username"];
             this.to = to;
             this.subject = subject;
-            this.message = message;
+            this.message = message + Environment.NewLine + Environment.NewLine + "This is an automated emailer please do not reply.";
             smtpAddress = ConfigurationManager.AppSettings["smtpAddress"];
             portNumber = int.Parse(ConfigurationManager.AppSettings["portNumber"]);
             enableSSL = bool.Parse(ConfigurationManager.AppSettings["enableSSL"]);
