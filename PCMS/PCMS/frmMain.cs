@@ -78,7 +78,6 @@ namespace PCMS
         private void BindData_Orders()
         {
             dgvOrders.DataSource = handlerOrder.GetAllOrders();
-
             SetOrdersHeaders();
         }
 
