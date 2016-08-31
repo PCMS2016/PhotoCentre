@@ -73,22 +73,34 @@ namespace PCMS
 
                 Order order = new Order();
                 order = handlerRefund.getOrderByNum(OrderNum);
+                if (order != null)
+                {
+                    lblOrderNumber.Text = order.OrderNumber.ToString();
+                    lblCustomer.Text = order.Customer.ToString();
+                    lblDate.Text = order.Date.ToString();
+                    lblTime.Text = order.Time.ToString();
+                    lblSalesperson.Text = order.Salesperson.ToString();
 
-                lblOrderNumber.Text = order.OrderNumber.ToString();
-                lblCustomer.Text = order.Customer.ToString();
-                lblDate.Text = order.Date.ToString();
-                lblTime.Text = order.Time.ToString();
-                lblSalesperson.Text = order.Salesperson.ToString();
 
+                    dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(OrderNum);
 
-                dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(OrderNum);
+                    salesPFName = order.Salesperson.ToString();
+                    string[] salesNames = salesPFName.Split(' ');
+                    salesPFName = salesNames[0];
+                    salesPLName = salesNames[1];
 
-                salesPFName = order.Salesperson.ToString();
-                string[] salesNames = salesPFName.Split(' ');
-                salesPFName = salesNames[0];
-                salesPLName = salesNames[1];
-
-                tableNames();
+                    tableNames();
+                }
+                else
+                {
+                    lblOrderNumber.Text = "Order not found";
+                    lblCustomer.Text = "Order not found";
+                    lblDate.Text = "Order not found";
+                    lblTime.Text = "Order not found";
+                    lblSalesperson.Text = "Order not found";
+                    dgvRefundOrderLines.DataSource = null;
+                    tbxOrderNumber.Text = "Order not found";
+                }
             }
             else
                 tbxOrderNumber.Text = "Numbers Only";
@@ -109,35 +121,12 @@ namespace PCMS
 
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
-            int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
-            string prodName = dgvRefundOrderLines.Rows[rowIndex].Cells[1].Value.ToString();
+            
 
-            //Add Refund
-            Refund rfnd = new Refund();
-            rfnd.OrderNumber = int.Parse(lblOrderNumber.Text);
-            rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
-            rfnd.Date = DateTime.Parse(lblDate.Text.ToString());
-            rfnd.Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
-            handlerRefund.AddRefund(rfnd);
-
-            //get productID == SM.SizeMediumID
-            SizeMedium SM = new SizeMedium();
-            SM = handlerRefund.GetProdByName(prodName);
-
-            //Add RefundProduct
-            RefundProduct rfndProd = new RefundProduct();
-            rfndProd.RefundProductID = SM.SizeMediumID;
-            rfndProd.RefundID = handlerRefund.GetRefundID(rfnd.OrderNumber);
-            rfndProd.OrderLineID = handlerRefund.GetOrderLineID(rfnd.OrderNumber);
-            rfndProd.Reason = txtRefundReason.Text.ToString();
-            rfndProd.Quantity = int.Parse(numRefundQuantity.Value.ToString());
-            rfndProd.Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString()) * double.Parse(numRefundQuantity.Value.ToString());
-            rfndProd.LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
-            handlerRefund.AddRefundProduct(rfndProd); 
+            
 
             RefundTabControll.SelectedTab = RefundTabControll.TabPages[1];
             dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
-            tableNames();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
@@ -158,16 +147,15 @@ namespace PCMS
             dgvRefundOrderLines.Columns[4].HeaderText = "Item Price";
             dgvRefundOrderLines.Columns[5].HeaderText = "Total";
             dgvRefundOrderLines.Columns[6].HeaderText = "Instructions";
-            dgvRefundOrderLines.Columns["Item Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvRefundOrderLines.Columns["Total"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvRefundOrderLines.Columns["Item Price"].DefaultCellStyle.Format = "c";
-            dgvRefundOrderLines.Columns["Total"].DefaultCellStyle.Format = "c";
+            dgvRefundOrderLines.Columns[4].DefaultCellStyle.Format = "c";
+            dgvRefundOrderLines.Columns[5].DefaultCellStyle.Format = "c";
 
             dgvRefundOrderLines.Columns[2].Visible = false;
         }
 
         private void btnRefreshDispRefund_Click(object sender, EventArgs e)
         {
+
             dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
         }
 
@@ -179,6 +167,59 @@ namespace PCMS
         private void numRefundQuantity_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroTextButton1_Click(object sender, EventArgs e)
+        {
+            if (numRefundQuantity.Value > 0)
+            {
+                int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
+                string prodName = dgvRefundOrderLines.Rows[rowIndex].Cells[1].Value.ToString();
+                if(txtRefundReason.Text == null)
+                {
+                    txtRefundReason.Text = "N/A";
+                }
+                //Add Refund
+                Refund rfnd = new Refund();
+                rfnd.OrderNumber = int.Parse(lblOrderNumber.Text);
+                rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
+                rfnd.Date = DateTime.Parse(lblDate.Text.ToString());
+                rfnd.Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
+                handlerRefund.AddRefund(rfnd);
+
+                //get productID == SM.SizeMediumID
+                SizeMedium SM = new SizeMedium();
+                SM = handlerRefund.GetProdByName(prodName);
+
+                //Add RefundProduct
+                RefundProduct rfndProd = new RefundProduct();
+                rfndProd.RefundProductID = SM.SizeMediumID;
+                rfndProd.RefundID = handlerRefund.GetRefundID(rfnd.OrderNumber);
+                rfndProd.OrderLineID = handlerRefund.GetOrderLineID(rfnd.OrderNumber);
+                rfndProd.Reason = txtRefundReason.Text.ToString();
+                rfndProd.Quantity = int.Parse(numRefundQuantity.Value.ToString());
+                rfndProd.Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString()) * double.Parse(numRefundQuantity.Value.ToString());
+                rfndProd.LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
+                handlerRefund.AddRefundProduct(rfndProd);
+
+                MessageBox.Show("Refund Added");
+
+                lblCustomer.Text = "";
+                lblDate.Text = "";
+                tbxInstructions.Text = "";
+                lblOrderNumber.Text = "";
+                lblPrice.Text = "";
+                lblProduct.Text = "";
+                lblQuantity.Text = "";
+                lblRefundTotal.Text = "";
+                lblSalesperson.Text = "";
+                lblTime.Text = "";
+                dgvRefundOrderLines.Columns.Clear();
+                tbxOrderNumber.Text = "";
+                numRefundQuantity.Value = 0;
+            }
+            else
+                MessageBox.Show("Please select amount of products to be refunded");
         }
     }
 }
