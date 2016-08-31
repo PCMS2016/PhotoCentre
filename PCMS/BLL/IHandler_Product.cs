@@ -13,5 +13,6 @@ namespace BLL
         bool AddProduct(SizeMedium sizeMedium);
         bool UpdateProduct(SizeMedium sizeMedium);
         bool RemoveProduct(int ProductID);
+        List<SizeMedium> GetAllProductsIndividualFields();
     }
 }

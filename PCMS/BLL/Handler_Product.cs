@@ -24,6 +24,11 @@ namespace BLL
             return db.GetAllProducts();
         }
 
+        public List<SizeMedium> GetAllProductsIndividualFields()
+        {
+            return db.GetAllProductsIndividualFields();
+        }
+
         public bool RemoveProduct(int ProductID)
         {
             return db.RemoveProduct(ProductID);

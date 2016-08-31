@@ -10,16 +10,19 @@ using System.Windows.Forms;
 using MetroFramework.Forms;
 using DAL;
 using BLL;
+using System.Configuration;
 
 namespace PCMS
 {
-    public partial class frmSettings : MetroForm 
+    public partial class frmSettings : MetroForm
     {
         //BLL Access
         private IHandler_Salesperson handlerSalesperson = null;
         private IHandler_Payment handlerPayment = null;
         private IHandler_Company handlerCompany = null;
         private IHandler_Product handlerProduct = null;
+        private IHandler_Size handlerSize = null;
+        private IHandler_Medium handlerMedium = null;
 
         //Passed Variables
 
@@ -39,8 +42,26 @@ namespace PCMS
             handlerPayment = new Handler_Payment();
             handlerCompany = new Handler_Company();
             handlerProduct = new Handler_Product();
+            handlerSize = new Handler_Size();
+            handlerMedium = new Handler_Medium();
 
-            BindData_Payments();
+            try
+            {
+                BindData_Payments();
+                BindData_Size();
+                BindData_Medium();
+                BindData_Product();
+                BindData_Company();
+                BindData_Database();
+                BindData_Email();
+                BindData_VAT();
+                BindData_SMS();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured connecting to the database!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
         }
 
         #region Salesperson
@@ -236,7 +257,7 @@ namespace PCMS
         {
             if (dgvSalesperson.SelectedRows.Count > 0)
                 SelectSaleperson();
-            
+
         }
 
         //Add Salesperson
@@ -262,7 +283,7 @@ namespace PCMS
 
                         btnUpdateSalesperson.Enabled = true;
                         btnNewSalesperson.Text = "New Salesperson";
-                        DisableSalespersonFields();                     
+                        DisableSalespersonFields();
                     }
                 }
             }
@@ -307,6 +328,53 @@ namespace PCMS
         #endregion
 
         #region Company
+        //Bind Company Details
+        private void BindData_Company()
+        {
+            Company company = handlerCompany.GetCompanyDetails();
+            tbxBusinessName.Text = company.Name;
+            tbxAddress1.Text = company.Address1;
+            tbxAddress2.Text = company.Address2;
+            tbxSuburb.Text = company.Suburb;
+            tbxCity.Text = company.City;
+            tbxPhone.Text = company.Phone;
+            tbxFax.Text = company.Fax;
+            tbxEmail.Text = company.Email;
+            numRefundPeriod.Value = Convert.ToInt32(company.RefundPeriod.ToString());
+        }
+
+        //Save Company Details
+        private void SaveCompanyDetails()
+        {
+            Company company = new Company();
+            company.Name = tbxBusinessName.Text;
+            company.Address1 = tbxAddress1.Text;
+            company.Address2 = tbxAddress2.Text;
+            company.Suburb = tbxSuburb.Text;
+            company.City = tbxCity.Text;
+            company.Phone = tbxPhone.Text;
+            company.Fax = tbxFax.Text;
+            company.Email = tbxEmail.Text;
+            company.RefundPeriod = Convert.ToInt32(numRefundPeriod.Value);
+
+            try
+            {
+                handlerCompany.UpdateCompany(company);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when saving business settings!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Validate Company Fields
+        private bool ValidateCompanyFields()
+        {
+            bool valid = true;
+
+            return valid;
+        }
 
         #endregion
 
@@ -439,7 +507,7 @@ namespace PCMS
         {
             if (dgvPayment.SelectedRows.Count > 0)
             {
-                if (btnUpdatePayment. Text == "Update Payment Method")
+                if (btnUpdatePayment.Text == "Update Payment Method")
                 {
                     btnNewPayment.Enabled = false;
                     btnUpdatePayment.Text = "Save";
@@ -498,12 +566,404 @@ namespace PCMS
                 tbxDescription.Text = dgvPayment.SelectedRows[0].Cells[1].Value.ToString();
             }
         }
+
         #endregion
 
         #region Products
 
+        //Bind Size
+        private void BindData_Size()
+        {
+            cmbProductSize.DataSource = handlerSize.GetAllSizes();
+            cmbProductSize.DisplayMember = "SizeDescription";
+            cmbProductSize.ValueMember = "SizeID";
+        }
+
+        //Bind Medium
+        private void BindData_Medium()
+        {
+            cmbProductMedium.DataSource = handlerMedium.GetAllMediums();
+            cmbProductMedium.DisplayMember = "Description";
+            cmbProductMedium.ValueMember = "MediumID";
+        }
+
+        //Bind Products
+        private void BindData_Product()
+        {
+            dgvProducts.DataSource = handlerProduct.GetAllProductsIndividualFields();
+
+            FormatProductsGrid();
+        }
+
+        //Format Products Grid
+        private void FormatProductsGrid()
+        {
+            dgvProducts.Columns[0].Visible = false;
+            dgvProducts.Columns[1].Visible = false;
+
+            dgvProducts.Columns[2].HeaderText = "Size";
+            dgvProducts.Columns[3].HeaderText = "Medium";
+            dgvProducts.Columns[4].HeaderText = "Price";
+
+            dgvProducts.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProducts.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProducts.Columns[4].DefaultCellStyle.Format = "C";
+        }
+
+        //Clear Product Fields
+        private void ClearProductFields()
+        {
+            cmbProductSize.SelectedIndex = 0;
+            cmbProductMedium.SelectedIndex = 0;
+            tbxProductPrice.Clear();
+        }
+
+        //Enable Product Fields
+        private void EnableProductFields()
+        {
+            cmbProductSize.Enabled = true;
+            cmbProductMedium.Enabled = true;
+            tbxProductPrice.Enabled = true;
+        }
+
+        //Disable Product Fields
+        private void DisableProductFields()
+        {
+            cmbProductSize.Enabled = false;
+            cmbProductMedium.Enabled = false;
+            tbxProductPrice.Enabled = false;
+        }
+
+        //Select Product
+        private void SelectProduct()
+        {
+
+        }
+
+        //Add Product to Database
+        private void AddProduct()
+        {
+            SizeMedium product = new SizeMedium();
+            product.Size = cmbProductSize.SelectedValue.ToString();
+            product.Medium = cmbProductMedium.SelectedValue.ToString();
+            product.Price = Convert.ToDouble(tbxProductPrice.Text);
+
+            try
+            {
+                handlerProduct.AddProduct(product);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when adding product!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Update Product to Database
+        private void UpdateProduct(int productID)
+        {
+            SizeMedium product = new SizeMedium();
+            product.SizeMediumID = productID;
+            product.Size = cmbProductSize.SelectedValue.ToString();
+            product.Medium = cmbProductMedium.SelectedValue.ToString();
+
+            try
+            {
+                handlerProduct.UpdateProduct(product);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when updating product!" + Environment.NewLine +
+                    Environment.NewLine);
+            }
+        }
+
+        //Remove Product 
+        private void RemoveProduct(int productID)
+        {
+            try
+            {
+                handlerProduct.RemoveProduct(productID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when removing product!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        //Validate Product Fields
+        private bool ValidateProductFields()
+        {
+            bool valid = true;
+            double price;
+
+            if (double.TryParse(tbxProductPrice.Text, out price) == false || tbxProductPrice.Text == "")
+            {
+                valid = false;
+            }
+
+            if (valid = false)
+            {
+                MessageBox.Show("Price is invalid!");
+            }
+
+            return valid;
+        }
+
+        //Remove Product
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to remove this product?", "", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                {
+                    RemoveProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No product selected!");
+            }
+        }
+
+        //Add product
+        private void btnNewProduct_Click(object sender, EventArgs e)
+        {
+            if (btnNewProduct.Text == "New Product")
+            {
+                btnUpdateProduct.Enabled = false;
+                btnNewProduct.Text = "Save";
+                ClearPaymentFields();
+                EnablePaymentFields();
+
+                cmbProductSize.Focus();
+            }
+            else
+            {
+                if (ValidateProductFields() == true)
+                {
+                    if (MessageBox.Show("Are you sure you want to add this product?", "", MessageBoxButtons.YesNo) ==
+                        DialogResult.Yes)
+                    {
+                        AddProduct();
+
+                        btnUpdateProduct.Enabled = true;
+                        btnNewProduct.Text = "New Product";
+                        DisableProductFields();                        
+                    }
+                }
+            }
+        }
+
+        //Update Product
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                if (btnUpdateProduct.Text == "Update Product") 
+                {
+                    btnNewProduct.Enabled = false;
+                    btnUpdateProduct.Text = "Save";
+                    EnableProductFields();
+
+                    cmbProductSize.Focus();
+                }
+                else
+                {
+                    if (ValidateProductFields() == true)
+                    {
+                        if (MessageBox.Show("Are you sure you want to update this product?", "", MessageBoxButtons.YesNo) ==
+                            DialogResult.Yes)
+                        {
+                            UpdateProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+
+                            btnNewProduct.Enabled = true;
+                            btnUpdateProduct.Text = "Update Product";
+                            DisableProductFields();
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No product selected!");
+            }
+        }
+
+        //Product Selected
+        private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
         #endregion
 
+        #region SMS Notification
+        //Bind SMS Data
+        private void BindData_SMS()
+        {
+            tbxAccountID.Text = ConfigurationManager.AppSettings["AccountID"];
+            tbxSMSUserID.Text = ConfigurationManager.AppSettings["UserID"];
+            tbxSMSPassword.Text = ConfigurationManager.AppSettings["SmsPassword"];
+        }
+        #endregion
 
+        #region Email Notifications
+        //Bind Email Data
+        private void BindData_Email()
+        {
+            tbxEmailUsername.Text = ConfigurationManager.AppSettings["username"];
+            tbxEmailPassword.Text = ConfigurationManager.AppSettings["password"];
+            tbxSMTP.Text = ConfigurationManager.AppSettings["smtpAddress"];
+            tbxEmailPort.Text = ConfigurationManager.AppSettings["portNumber"];
+            cbxSSL.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["enableSSL"]);
+        }
+
+        //Validate Email Fields
+        private bool ValidateEmailFields()
+        {
+            bool valid = true;
+
+            if (tbxEmailUsername.Text == "" || tbxEmailPassword.Text == "" || tbxSMTP.Text == "" || tbxEmailPort.Text == "")
+            {
+                valid = false;
+                MessageBox.Show("Please enter all the details for email notification");
+            }
+
+            return valid;
+        }
+
+        //Update Email Data
+        private void UpdateEmail()
+        {
+            try
+            {
+                if (ValidateEmailFields() == true)
+                {
+                    ConfigurationManager.AppSettings["username"] = tbxEmailUsername.Text;
+                    ConfigurationManager.AppSettings["password"] = tbxEmailPassword.Text;
+                    ConfigurationManager.AppSettings["smtpAddress"] = tbxSMTP.Text;
+                    ConfigurationManager.AppSettings["portNumber"] = tbxEmailPort.Text;
+                    ConfigurationManager.AppSettings["enableSSL"] = cbxSSL.Checked.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when updating Email Notification details!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region Database
+        //Bind Database Data
+        private void BindData_Database()
+        {
+            string conString = ConfigurationManager.ConnectionStrings["PCMS_Server"].ConnectionString;
+
+            string[] temp = conString.Split(';');
+
+            tbxServer.Text = temp[0].Substring(12);
+
+            tbxDatabase.Text = temp[1].Substring(17);
+
+            tbxUserID.Text = temp[2].Substring(9);
+
+            tbxDatabasePassword.Text = temp[3].Substring(10);
+        }
+
+        //Validate Database Fields
+        private bool ValidateDatabaseFields()
+        {
+            bool valid = true;
+
+            if (tbxServer.Text == "" || tbxDatabase.Text == "" || tbxUserID.Text == "" || tbxDatabasePassword.Text == "")
+            {
+                valid = false;
+                MessageBox.Show("Please enter all details for the database connection!");
+            }
+
+            return valid;
+        }
+
+        //Update Database String
+        private void UpdateDatabaseString()
+        {
+            try
+            {
+                if (ValidateDatabaseFields() == true)
+                {
+                    string conString = "Data Source=" + tbxServer.Text + "; Initial Catalog=" + tbxDatabase.Text +
+                        "; User ID=" + tbxUserID.Text + "; Password=" + tbxDatabasePassword.Text;
+                    MessageBox.Show(conString);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when updating database connection details!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+        }
+
+        #endregion
+
+        #region VAT
+        //Bind VAT value
+        private void BindData_VAT()
+        {
+            tbxVAT.Text = ConfigurationManager.AppSettings["VAT"];
+        }
+
+        //Validate VAT
+        private bool ValidateVAT()
+        {
+            bool valid = true;
+            double vat;
+
+            if (tbxVAT.Text == "")
+            {
+                valid = false;
+                MessageBox.Show("Please enter a VAT %!");
+            }
+            else if (double.TryParse(tbxVAT.Text, out vat) == false)
+            {
+                valid = false;
+                MessageBox.Show("VAT amount entered is invalid!");
+            }
+
+            return valid;
+        }
+
+        //Update VAT
+        private void UpdateVAT()
+        {
+            try
+            {
+                if (ValidateVAT() == true)
+                    ConfigurationManager.AppSettings["VAT"] = tbxVAT.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured updating VAT %" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+        #endregion
+
+        private void btnBusinessSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                MessageBox.Show(SmsNotificaton.SendSms("0832842708", "Second test message").ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error sending sms" + Environment.NewLine + ex.Message);
+            }
+        }
     }
 }

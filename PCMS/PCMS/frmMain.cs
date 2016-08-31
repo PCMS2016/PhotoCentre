@@ -69,6 +69,7 @@ namespace PCMS
             dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             //dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrders.Columns[8].DefaultCellStyle.Format = "C";
 
             dgvOrders.Columns[1].Visible = false;
@@ -98,6 +99,9 @@ namespace PCMS
 
             dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvOrderLines.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrderLines.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvOrderLines.Columns[0].Visible = false;
             dgvOrderLines.Columns[2].Visible = false;

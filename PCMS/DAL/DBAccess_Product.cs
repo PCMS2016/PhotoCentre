@@ -42,6 +42,28 @@ namespace DAL
             return list;
         }
 
+        public List<SizeMedium> GetAllProductsIndividualFields()
+        {
+            List<SizeMedium> list = new List<DAL.SizeMedium>();
+
+            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllSizeMediumIndividualFields", CommandType.StoredProcedure))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        SizeMedium product = new DAL.SizeMedium();
+                        product.SizeMediumID = Convert.ToInt32(row["SizeMediumID"].ToString());
+                        product.Size = row["Size"].ToString();
+                        product.Medium = row["Description"].ToString();
+                        product.Price = Convert.ToDouble(row["Price"].ToString());
+                        list.Add(product);
+                    }
+                }
+            }
+            return list;
+        }
+
         public bool RemoveProduct(int SizeMediumID)
         {
             SqlParameter[] parameters = new SqlParameter[]
