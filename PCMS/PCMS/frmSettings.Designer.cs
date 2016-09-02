@@ -45,6 +45,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
             this.tbxDatabasePassword = new MetroFramework.Controls.MetroTextBox();
@@ -65,6 +66,10 @@
             this.tbxEmailUsername = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbxSMSPassword = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel36 = new MetroFramework.Controls.MetroLabel();
+            this.tbxSMSUserID = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel35 = new MetroFramework.Controls.MetroLabel();
             this.tbxAccountID = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -155,11 +160,6 @@
             this.tbxSize = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
             this.dgvSize = new MetroFramework.Controls.MetroGrid();
-            this.metroLabel35 = new MetroFramework.Controls.MetroLabel();
-            this.tbxSMSUserID = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel36 = new MetroFramework.Controls.MetroLabel();
-            this.tbxSMSPassword = new MetroFramework.Controls.MetroTextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -195,7 +195,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(23, 51);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 4;
             this.metroTabControl1.Size = new System.Drawing.Size(837, 584);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
@@ -225,6 +225,16 @@
             this.metroTabPage1.VerticalScrollbarBarColor = true;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(451, 490);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(177, 17);
+            this.checkBox1.TabIndex = 42;
+            this.checkBox1.Text = "Enable System Setting Changes";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -609,6 +619,86 @@
             this.groupBox3.TabIndex = 40;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "SMS Notification";
+            // 
+            // tbxSMSPassword
+            // 
+            // 
+            // 
+            // 
+            this.tbxSMSPassword.CustomButton.Image = null;
+            this.tbxSMSPassword.CustomButton.Location = new System.Drawing.Point(210, 1);
+            this.tbxSMSPassword.CustomButton.Name = "";
+            this.tbxSMSPassword.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tbxSMSPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxSMSPassword.CustomButton.TabIndex = 1;
+            this.tbxSMSPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxSMSPassword.CustomButton.UseSelectable = true;
+            this.tbxSMSPassword.CustomButton.Visible = false;
+            this.tbxSMSPassword.Enabled = false;
+            this.tbxSMSPassword.Lines = new string[0];
+            this.tbxSMSPassword.Location = new System.Drawing.Point(118, 95);
+            this.tbxSMSPassword.MaxLength = 32767;
+            this.tbxSMSPassword.Name = "tbxSMSPassword";
+            this.tbxSMSPassword.PasswordChar = '\0';
+            this.tbxSMSPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxSMSPassword.SelectedText = "";
+            this.tbxSMSPassword.SelectionLength = 0;
+            this.tbxSMSPassword.SelectionStart = 0;
+            this.tbxSMSPassword.ShortcutsEnabled = true;
+            this.tbxSMSPassword.Size = new System.Drawing.Size(238, 29);
+            this.tbxSMSPassword.TabIndex = 35;
+            this.tbxSMSPassword.UseSelectable = true;
+            this.tbxSMSPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxSMSPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel36
+            // 
+            this.metroLabel36.AutoSize = true;
+            this.metroLabel36.Location = new System.Drawing.Point(17, 101);
+            this.metroLabel36.Name = "metroLabel36";
+            this.metroLabel36.Size = new System.Drawing.Size(72, 19);
+            this.metroLabel36.TabIndex = 31;
+            this.metroLabel36.Text = "*Password:";
+            // 
+            // tbxSMSUserID
+            // 
+            // 
+            // 
+            // 
+            this.tbxSMSUserID.CustomButton.Image = null;
+            this.tbxSMSUserID.CustomButton.Location = new System.Drawing.Point(210, 1);
+            this.tbxSMSUserID.CustomButton.Name = "";
+            this.tbxSMSUserID.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tbxSMSUserID.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxSMSUserID.CustomButton.TabIndex = 1;
+            this.tbxSMSUserID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxSMSUserID.CustomButton.UseSelectable = true;
+            this.tbxSMSUserID.CustomButton.Visible = false;
+            this.tbxSMSUserID.Enabled = false;
+            this.tbxSMSUserID.Lines = new string[0];
+            this.tbxSMSUserID.Location = new System.Drawing.Point(118, 60);
+            this.tbxSMSUserID.MaxLength = 32767;
+            this.tbxSMSUserID.Name = "tbxSMSUserID";
+            this.tbxSMSUserID.PasswordChar = '\0';
+            this.tbxSMSUserID.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxSMSUserID.SelectedText = "";
+            this.tbxSMSUserID.SelectionLength = 0;
+            this.tbxSMSUserID.SelectionStart = 0;
+            this.tbxSMSUserID.ShortcutsEnabled = true;
+            this.tbxSMSUserID.Size = new System.Drawing.Size(238, 29);
+            this.tbxSMSUserID.TabIndex = 35;
+            this.tbxSMSUserID.UseSelectable = true;
+            this.tbxSMSUserID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxSMSUserID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel35
+            // 
+            this.metroLabel35.AutoSize = true;
+            this.metroLabel35.Location = new System.Drawing.Point(17, 66);
+            this.metroLabel35.Name = "metroLabel35";
+            this.metroLabel35.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel35.TabIndex = 31;
+            this.metroLabel35.Text = "*User ID:";
             // 
             // tbxAccountID
             // 
@@ -2076,6 +2166,7 @@
             this.btnRemoveMedium.UseSelectable = true;
             this.btnRemoveMedium.UseStyleColors = true;
             this.btnRemoveMedium.UseVisualStyleBackColor = true;
+            this.btnRemoveMedium.Click += new System.EventHandler(this.btnRemoveMedium_Click);
             // 
             // btnNewMedium
             // 
@@ -2089,6 +2180,7 @@
             this.btnNewMedium.UseSelectable = true;
             this.btnNewMedium.UseStyleColors = true;
             this.btnNewMedium.UseVisualStyleBackColor = true;
+            this.btnNewMedium.Click += new System.EventHandler(this.btnNewMedium_Click);
             // 
             // tbxMedium
             // 
@@ -2160,6 +2252,7 @@
             this.dgvMedium.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvMedium.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvMedium.Location = new System.Drawing.Point(15, 19);
+            this.dgvMedium.MultiSelect = false;
             this.dgvMedium.Name = "dgvMedium";
             this.dgvMedium.ReadOnly = true;
             this.dgvMedium.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -2175,6 +2268,7 @@
             this.dgvMedium.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedium.Size = new System.Drawing.Size(263, 397);
             this.dgvMedium.TabIndex = 3;
+            this.dgvMedium.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMedium_CellClick);
             // 
             // groupBox7
             // 
@@ -2204,6 +2298,7 @@
             this.btnRemoveSize.UseSelectable = true;
             this.btnRemoveSize.UseStyleColors = true;
             this.btnRemoveSize.UseVisualStyleBackColor = true;
+            this.btnRemoveSize.Click += new System.EventHandler(this.btnRemoveSize_Click);
             // 
             // btnNewSize
             // 
@@ -2217,6 +2312,7 @@
             this.btnNewSize.UseSelectable = true;
             this.btnNewSize.UseStyleColors = true;
             this.btnNewSize.UseVisualStyleBackColor = true;
+            this.btnNewSize.Click += new System.EventHandler(this.btnNewSize_Click);
             // 
             // tbxSize
             // 
@@ -2288,6 +2384,7 @@
             this.dgvSize.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvSize.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.dgvSize.Location = new System.Drawing.Point(15, 19);
+            this.dgvSize.MultiSelect = false;
             this.dgvSize.Name = "dgvSize";
             this.dgvSize.ReadOnly = true;
             this.dgvSize.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -2303,96 +2400,7 @@
             this.dgvSize.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSize.Size = new System.Drawing.Size(263, 397);
             this.dgvSize.TabIndex = 3;
-            // 
-            // metroLabel35
-            // 
-            this.metroLabel35.AutoSize = true;
-            this.metroLabel35.Location = new System.Drawing.Point(17, 66);
-            this.metroLabel35.Name = "metroLabel35";
-            this.metroLabel35.Size = new System.Drawing.Size(60, 19);
-            this.metroLabel35.TabIndex = 31;
-            this.metroLabel35.Text = "*User ID:";
-            // 
-            // tbxSMSUserID
-            // 
-            // 
-            // 
-            // 
-            this.tbxSMSUserID.CustomButton.Image = null;
-            this.tbxSMSUserID.CustomButton.Location = new System.Drawing.Point(210, 1);
-            this.tbxSMSUserID.CustomButton.Name = "";
-            this.tbxSMSUserID.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.tbxSMSUserID.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbxSMSUserID.CustomButton.TabIndex = 1;
-            this.tbxSMSUserID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbxSMSUserID.CustomButton.UseSelectable = true;
-            this.tbxSMSUserID.CustomButton.Visible = false;
-            this.tbxSMSUserID.Enabled = false;
-            this.tbxSMSUserID.Lines = new string[0];
-            this.tbxSMSUserID.Location = new System.Drawing.Point(118, 60);
-            this.tbxSMSUserID.MaxLength = 32767;
-            this.tbxSMSUserID.Name = "tbxSMSUserID";
-            this.tbxSMSUserID.PasswordChar = '\0';
-            this.tbxSMSUserID.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbxSMSUserID.SelectedText = "";
-            this.tbxSMSUserID.SelectionLength = 0;
-            this.tbxSMSUserID.SelectionStart = 0;
-            this.tbxSMSUserID.ShortcutsEnabled = true;
-            this.tbxSMSUserID.Size = new System.Drawing.Size(238, 29);
-            this.tbxSMSUserID.TabIndex = 35;
-            this.tbxSMSUserID.UseSelectable = true;
-            this.tbxSMSUserID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbxSMSUserID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel36
-            // 
-            this.metroLabel36.AutoSize = true;
-            this.metroLabel36.Location = new System.Drawing.Point(17, 101);
-            this.metroLabel36.Name = "metroLabel36";
-            this.metroLabel36.Size = new System.Drawing.Size(72, 19);
-            this.metroLabel36.TabIndex = 31;
-            this.metroLabel36.Text = "*Password:";
-            // 
-            // tbxSMSPassword
-            // 
-            // 
-            // 
-            // 
-            this.tbxSMSPassword.CustomButton.Image = null;
-            this.tbxSMSPassword.CustomButton.Location = new System.Drawing.Point(210, 1);
-            this.tbxSMSPassword.CustomButton.Name = "";
-            this.tbxSMSPassword.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.tbxSMSPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.tbxSMSPassword.CustomButton.TabIndex = 1;
-            this.tbxSMSPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.tbxSMSPassword.CustomButton.UseSelectable = true;
-            this.tbxSMSPassword.CustomButton.Visible = false;
-            this.tbxSMSPassword.Enabled = false;
-            this.tbxSMSPassword.Lines = new string[0];
-            this.tbxSMSPassword.Location = new System.Drawing.Point(118, 95);
-            this.tbxSMSPassword.MaxLength = 32767;
-            this.tbxSMSPassword.Name = "tbxSMSPassword";
-            this.tbxSMSPassword.PasswordChar = '\0';
-            this.tbxSMSPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.tbxSMSPassword.SelectedText = "";
-            this.tbxSMSPassword.SelectionLength = 0;
-            this.tbxSMSPassword.SelectionStart = 0;
-            this.tbxSMSPassword.ShortcutsEnabled = true;
-            this.tbxSMSPassword.Size = new System.Drawing.Size(238, 29);
-            this.tbxSMSPassword.TabIndex = 35;
-            this.tbxSMSPassword.UseSelectable = true;
-            this.tbxSMSPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.tbxSMSPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(451, 490);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 17);
-            this.checkBox1.TabIndex = 42;
-            this.checkBox1.Text = "Enable System Setting Changes";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.dgvSize.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSize_CellClick);
             // 
             // frmSettings
             // 

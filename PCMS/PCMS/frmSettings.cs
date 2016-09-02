@@ -52,6 +52,17 @@ namespace PCMS
                 BindData_Medium();
                 BindData_Product();
                 BindData_Company();
+                BindData_Size_Grid();
+                BindData_Medium_Grid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured connecting to the database!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
+
+            try
+            {
                 BindData_Database();
                 BindData_Email();
                 BindData_VAT();
@@ -59,7 +70,7 @@ namespace PCMS
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occured connecting to the database!" + Environment.NewLine +
+                MessageBox.Show("Error occured when retrieving settings!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
         }
@@ -389,15 +400,7 @@ namespace PCMS
         //Bind Payments
         private void BindData_Payments()
         {
-            try
-            {
-                dgvPayment.DataSource = handlerPayment.GetAllPayments();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured connecting to database!");
-                this.Close();
-            }
+                dgvPayment.DataSource = handlerPayment.GetAllPayments();        
         }
 
         //Enable Payment Fields()
@@ -703,7 +706,7 @@ namespace PCMS
                 valid = false;
             }
 
-            if (valid = false)
+            if (valid == false)
             {
                 MessageBox.Show("Price is invalid!");
             }
@@ -736,7 +739,7 @@ namespace PCMS
                 btnUpdateProduct.Enabled = false;
                 btnNewProduct.Text = "Save";
                 ClearPaymentFields();
-                EnablePaymentFields();
+                EnableProductFields();
 
                 cmbProductSize.Focus();
             }
@@ -798,6 +801,216 @@ namespace PCMS
 
         }
 
+
+        #endregion
+
+        #region Size
+        //Bind Size Data
+        private void BindData_Size_Grid()
+        {
+            dgvSize.DataSource = handlerSize.GetAllSizes();
+
+            dgvSize.Columns[0].Visible = false;
+            dgvSize.Columns[1].HeaderText = "Description";
+
+        }
+
+        //Add Size to Database
+        private void AddSize()
+        {
+            DAL.Size size = new DAL.Size();
+            size.SizeDescription = tbxSize.Text;
+
+            try
+            {
+                handlerSize.AddSize(size);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when adding size!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //Remove Size
+        private void RemoveSize(int sizeID)
+        {
+            try
+            {
+                handlerSize.RemoveSize(sizeID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when removing size!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //New Size
+        private void btnNewSize_Click(object sender, EventArgs e)
+        {
+            if (btnNewSize.Text == "New Size")
+            {
+                btnNewSize.Text = "Save";
+                tbxSize.Clear();
+                tbxSize.Enabled = true;
+
+                tbxSize.Focus();
+            }
+            else
+            {
+                if (tbxSize.Text != "")
+                {
+                    if (MessageBox.Show("Are you sure you want to add this size?", "", MessageBoxButtons.YesNo) ==
+                        DialogResult.Yes)
+                    {
+                        AddSize();
+
+                        btnNewSize.Text = "New Size";
+                        tbxSize.Enabled = false;
+
+                        BindData_Size_Grid();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a description!");
+                }
+            }
+        }
+
+        //Remove Size
+        private void btnRemoveSize_Click(object sender, EventArgs e)
+        {
+            if (dgvSize.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to remove this size?", "", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                {
+                    RemoveSize(Convert.ToInt32(dgvSize.SelectedRows[0].Cells[0].Value.ToString()));
+
+                    BindData_Size_Grid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No size selected!");
+            }
+        }
+
+        //Size Selected
+        private void dgvSize_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvSize.SelectedRows.Count > 0)
+            {
+                tbxSize.Text = dgvSize.SelectedRows[0].Cells[1].Value.ToString();
+            }
+        }
+
+        #endregion
+
+        #region
+        //Bind Medium Data
+        private void BindData_Medium_Grid()
+        {
+            dgvMedium.DataSource = handlerMedium.GetAllMediums();
+
+            dgvMedium.Columns[0].Visible = false;
+            dgvMedium.Columns[1].HeaderText = "Description";
+
+
+        }
+
+        //Add Medium to Database
+        private void AddMedium()
+        {
+            Medium medium = new Medium();
+            medium.Description = tbxMedium.Text;
+
+            try
+            {
+                handlerMedium.AddMedium(medium);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when adding medium!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+        
+        //Remove Medium
+        private void RemoveMedium(int mediumID)
+        {
+            try
+            {
+                handlerMedium.RemoveMedium(mediumID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when removing medium!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //New Medium
+        private void btnNewMedium_Click(object sender, EventArgs e)
+        {
+            if (btnNewMedium.Text == "New Medium")
+            {
+                btnNewMedium.Text = "Save";
+                tbxMedium.Enabled = true;
+
+                tbxMedium.Focus();
+            }
+            else
+            {
+                if (tbxMedium.Text != "")
+                {
+                    if (MessageBox.Show("Are you sure you want to add this size?", "", MessageBoxButtons.YesNo) ==
+                        DialogResult.Yes)
+                    {
+                        AddMedium();
+
+                        btnNewMedium.Text = "New Medium";
+                        tbxSize.Enabled = false;
+
+                        BindData_Medium_Grid();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a description!");
+                }
+            }
+        }
+
+        //Remove Medium
+        private void btnRemoveMedium_Click(object sender, EventArgs e)
+        {
+            if (dgvMedium.SelectedRows.Count > 0)
+            {
+                if (MessageBox.Show("Are you sure you want to remove this medium?", "", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                {
+                    RemoveMedium(Convert.ToInt32(dgvMedium.SelectedRows[0].Cells[0].Value.ToString()));
+
+                    BindData_Medium_Grid();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No medium selected!");
+            }
+        }
+
+        //Medium Selected
+        private void dgvMedium_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMedium.SelectedRows.Count > 0)
+            {
+                tbxMedium.Text = dgvMedium.SelectedRows[0].Cells[1].Value.ToString();
+            }
+        }
 
         #endregion
 
@@ -965,5 +1178,7 @@ namespace PCMS
                 MessageBox.Show("Error sending sms" + Environment.NewLine + ex.Message);
             }
         }
+
+
     }
 }
