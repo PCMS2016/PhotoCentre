@@ -1,136 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
+using System;
 
-namespace PCMS
+/*****************************************************************************************
+ *                                                                                       *
+ *                             Encryption Class Code From:                               *
+ *                                                                                       *
+ * http://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp *
+ *                                                                                       *
+ * ***************************************************************************************/
+
+
+public static class EncryptionHelper
 {
-    public class DataEncryptor
+    public static string Encrypt(string clearText)
     {
-        TripleDESCryptoServiceProvider symm;
-
-        #region Factory
-        public DataEncryptor()
+        string EncryptionKey = "abc123";
+        byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
+        using (Aes encryptor = Aes.Create())
         {
-            this.symm = new TripleDESCryptoServiceProvider();
-            this.symm.Padding = PaddingMode.PKCS7;
-        }
-        public DataEncryptor(TripleDESCryptoServiceProvider keys)
-        {
-            this.symm = keys;
-        }
-
-        public DataEncryptor(byte[] key, byte[] iv)
-        {
-            this.symm = new TripleDESCryptoServiceProvider();
-            this.symm.Padding = PaddingMode.PKCS7;
-            this.symm.Key = key;
-            this.symm.IV = iv;
-        }
-
-        #endregion
-
-        #region Properties
-        public TripleDESCryptoServiceProvider Algorithm
-        {
-            get { return symm; }
-            set { symm = value; }
-        }
-        public byte[] Key
-        {
-            get { return symm.Key; }
-            set { symm.Key = value; }
-        }
-        public byte[] IV
-        {
-            get { return symm.IV; }
-            set { symm.IV = value; }
-        }
-
-        #endregion
-
-        #region Crypto
-
-        public byte[] Encrypt(byte[] data) { return Encrypt(data, data.Length); }
-        public byte[] Encrypt(byte[] data, int length)
-        {
-            try
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            encryptor.Key = pdb.GetBytes(32);
+            encryptor.IV = pdb.GetBytes(16);
+            using (MemoryStream ms = new MemoryStream())
             {
-                // Create a MemoryStream.
-                var ms = new MemoryStream();
-
-                // Create a CryptoStream using the MemoryStream 
-                // and the passed key and initialization vector (IV).
-                var cs = new CryptoStream(ms,
-                    symm.CreateEncryptor(symm.Key, symm.IV),
-                    CryptoStreamMode.Write);
-
-                // Write the byte array to the crypto stream and flush it.
-                cs.Write(data, 0, length);
-                cs.FlushFinalBlock();
-
-                // Get an array of bytes from the 
-                // MemoryStream that holds the 
-                // encrypted data.
-                byte[] ret = ms.ToArray();
-
-                // Close the streams.
-                cs.Close();
-                ms.Close();
-
-                // Return the encrypted buffer.
-                return ret;
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(clearBytes, 0, clearBytes.Length);
+                    cs.Close();
+                }
+                clearText = Convert.ToBase64String(ms.ToArray());
             }
-            catch (CryptographicException ex)
-            {
-                Console.WriteLine("A cryptographic error occured: {0}", ex.Message);
-            }
-            return null;
         }
-
-        public string EncryptString(string text)
+        return clearText;
+    }
+    public static string Decrypt(string cipherText)
+    {
+        string EncryptionKey = "abc123";
+        cipherText = cipherText.Replace(" ", "+");
+        byte[] cipherBytes = Convert.FromBase64String(cipherText);
+        using (Aes encryptor = Aes.Create())
         {
-            return Convert.ToBase64String(Encrypt(Encoding.UTF8.GetBytes(text)));
-        }
-
-        public byte[] Decrypt(byte[] data) { return Decrypt(data, data.Length); }
-        public byte[] Decrypt(byte[] data, int length)
-        {
-            try
+            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+            encryptor.Key = pdb.GetBytes(32);
+            encryptor.IV = pdb.GetBytes(16);
+            using (MemoryStream ms = new MemoryStream())
             {
-                // Create a new MemoryStream using the passed 
-                // array of encrypted data.
-                MemoryStream ms = new MemoryStream(data);
-
-                // Create a CryptoStream using the MemoryStream 
-                // and the passed key and initialization vector (IV).
-                CryptoStream cs = new CryptoStream(ms,
-                    symm.CreateDecryptor(symm.Key, symm.IV),
-                    CryptoStreamMode.Read);
-
-                // Create buffer to hold the decrypted data.
-                byte[] result = new byte[length];
-
-                // Read the decrypted data out of the crypto stream
-                // and place it into the temporary buffer.
-                cs.Read(result, 0, result.Length);
-                return result;
+                using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                {
+                    cs.Write(cipherBytes, 0, cipherBytes.Length);
+                    cs.Close();
+                }
+                cipherText = Encoding.Unicode.GetString(ms.ToArray());
             }
-            catch (CryptographicException ex)
-            {
-                Console.WriteLine("A cryptographic error occured: {0}", ex.Message);
-            }
-            return null;
         }
-
-        public string DecryptString(string data)
-        {
-            return Encoding.UTF8.GetString(Decrypt(Convert.FromBase64String(data))).TrimEnd('\0');
-        }
-
-        #endregion
+        return cipherText;
     }
 }

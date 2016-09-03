@@ -11,6 +11,7 @@ using MetroFramework.Forms;
 using DAL;
 using BLL;
 using System.Configuration;
+using System.Text.RegularExpressions;
 
 namespace PCMS
 {
@@ -63,7 +64,6 @@ namespace PCMS
 
             try
             {
-                BindData_Database();
                 BindData_Email();
                 BindData_VAT();
                 BindData_SMS();
@@ -164,7 +164,7 @@ namespace PCMS
             salesperson.Name = tbxSalespersonName.Text;
             salesperson.Surname = tbxSalespersonSurname.Text;
             salesperson.Username = tbxUsername.Text;
-            salesperson.Password = tbxPassword.Text;
+            salesperson.Password = EncryptionHelper.Encrypt(tbxPassword.Text);
             salesperson.Privileges = cmbPrivileges.Text;
             salesperson.EmployeeType = cmbEmployeeType.Text;
 
@@ -192,7 +192,7 @@ namespace PCMS
             salesperson.Name = tbxSalespersonName.Text;
             salesperson.Surname = tbxSalespersonSurname.Text;
             salesperson.Username = tbxUsername.Text;
-            salesperson.Password = tbxPassword.Text;
+            salesperson.Password = EncryptionHelper.Encrypt(tbxPassword.Text);
             salesperson.Privileges = cmbPrivileges.Text;
             salesperson.EmployeeType = cmbEmployeeType.Text;
 
@@ -432,6 +432,29 @@ namespace PCMS
             {
                 valid = false;
                 MessageBox.Show("Refund period can't have a negative value!");
+            }
+
+            if (tbxEmail.Text != "")
+            {
+                /************************************************************************
+                 *                       Code for email validation                      *
+                 *                                                                      *
+                 * http://net-informations.com/csprj/communications/validate-email.htm  *
+                 *                                                                      *
+                 * **********************************************************************/
+
+                string pattern = null;
+                pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+
+                if (Regex.IsMatch(tbxEmail.Text, pattern))
+                {
+                    
+                }
+                else
+                {
+                    valid = false;
+                    MessageBox.Show("Email address is invalid!");
+                }
             }
 
             return valid;
@@ -1161,7 +1184,7 @@ namespace PCMS
         {
             tbxAccountID.Text = ConfigurationManager.AppSettings["AccountID"];
             tbxSMSUserID.Text = ConfigurationManager.AppSettings["UserID"];
-            tbxSMSPassword.Text = ConfigurationManager.AppSettings["SmsPassword"];
+            tbxSMSPassword.Text = EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["SmsPassword"]);
         }
 
         //Save SMS Settings
@@ -1171,9 +1194,13 @@ namespace PCMS
             {
                 try
                 {
-                    ConfigurationManager.AppSettings["AccountID"] = tbxAccountID.Text;
-                    ConfigurationManager.AppSettings["UserID"] = tbxSMSUserID.Text;
-                    ConfigurationManager.AppSettings["SmsPassword"] = tbxSMSPassword.Text;
+                    var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    config.AppSettings.Settings["AccountID"].Value = tbxAccountID.Text;
+                    config.AppSettings.Settings["UserID"].Value = tbxSMSUserID.Text;
+                    config.AppSettings.Settings["SmsPassword"].Value = EncryptionHelper.Encrypt(tbxSMSPassword.Text);
+                    config.Save(ConfigurationSaveMode.Modified);
+
+                    ConfigurationManager.RefreshSection("appSettings");
                 }
                 catch (Exception ex)
                 {
@@ -1203,7 +1230,7 @@ namespace PCMS
         private void BindData_Email()
         {
             tbxEmailUsername.Text = ConfigurationManager.AppSettings["username"];
-            tbxEmailPassword.Text = ConfigurationManager.AppSettings["password"];
+            tbxEmailPassword.Text = EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["password"]);
             tbxSMTP.Text = ConfigurationManager.AppSettings["smtpAddress"];
             tbxEmailPort.Text = ConfigurationManager.AppSettings["portNumber"];
             cbxSSL.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["enableSSL"]);
@@ -1230,67 +1257,21 @@ namespace PCMS
             {
                 if (ValidateEmailFields() == true)
                 {
-                    ConfigurationManager.AppSettings["username"] = tbxEmailUsername.Text;
-                    ConfigurationManager.AppSettings["password"] = tbxEmailPassword.Text;
-                    ConfigurationManager.AppSettings["smtpAddress"] = tbxSMTP.Text;
-                    ConfigurationManager.AppSettings["portNumber"] = tbxEmailPort.Text;
-                    ConfigurationManager.AppSettings["enableSSL"] = cbxSSL.Checked.ToString();
+                    var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    config.AppSettings.Settings["username"].Value = tbxEmailUsername.Text;
+                    config.AppSettings.Settings["password"].Value = EncryptionHelper.Encrypt(tbxEmailPassword.Text);
+                    config.AppSettings.Settings["smtpAddress"].Value = tbxSMTP.Text;
+                    config.AppSettings.Settings["portNumber"].Value = tbxEmailPort.Text;
+                    config.AppSettings.Settings["enableSSL"].Value = cbxSSL.Checked.ToString();
+                    
+                    config.Save(ConfigurationSaveMode.Modified);
+
+                    ConfigurationManager.RefreshSection("appSettings");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error occured when updating Email Notification details!" + Environment.NewLine +
-                    Environment.NewLine + ex.Message);
-            }
-        }
-
-        #endregion
-
-        #region Database
-        //Bind Database Data
-        private void BindData_Database()
-        {
-            string conString = ConfigurationManager.ConnectionStrings["PCMS_Server"].ConnectionString;
-
-            string[] temp = conString.Split(';');
-
-            tbxServer.Text = temp[0].Substring(12);
-
-            tbxDatabase.Text = temp[1].Substring(17);
-
-            tbxUserID.Text = temp[2].Substring(9);
-
-            tbxDatabasePassword.Text = temp[3].Substring(10);
-        }
-
-        //Validate Database Fields
-        private bool ValidateDatabaseFields()
-        {
-            bool valid = true;
-
-            if (tbxServer.Text == "" || tbxDatabase.Text == "" || tbxUserID.Text == "" || tbxDatabasePassword.Text == "")
-            {
-                valid = false;
-                MessageBox.Show("Please enter all details for the database connection!");
-            }
-
-            return valid;
-        }
-
-        //Update Database String
-        private void SaveDatabaseString()
-        {
-            try
-            {
-                if (ValidateDatabaseFields() == true)
-                {
-                    string conString = "Data Source=" + tbxServer.Text + "; Initial Catalog=" + tbxDatabase.Text +
-                        "; User ID=" + tbxUserID.Text + "; Password=" + tbxDatabasePassword.Text;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured when updating database connection details!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
         }
@@ -1330,7 +1311,15 @@ namespace PCMS
             try
             {
                 if (ValidateVAT() == true)
-                    ConfigurationManager.AppSettings["VAT"] = tbxVAT.Text;
+                {
+                    var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                    config.AppSettings.Settings["VAT"].Value = tbxVAT.Text;
+                    
+                    config.Save(ConfigurationSaveMode.Modified);
+
+                    ConfigurationManager.RefreshSection("appSettings");
+
+                }
             }
             catch (Exception ex)
             {
@@ -1347,13 +1336,12 @@ namespace PCMS
 
             if (cbxSystemSettings.Checked == true)
             {
-                if (MessageBox.Show("Saving incorrect system settings may result in the system not working." + 
+                if (MessageBox.Show("Saving incorrect system settings may result in the system not working properly." + 
                     Environment.NewLine + "Are you sure you want to save these settings?", "", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
                     SaveSMS();
                     SaveEmail();
-                    SaveDatabaseString();
                 }
             }
 
@@ -1366,13 +1354,11 @@ namespace PCMS
             {
                 gbxSMS.Enabled = true;
                 gbxEmail.Enabled = true;
-                gbxDatabase.Enabled = true;
             }
             else
             {
                 gbxSMS.Enabled = false;
                 gbxEmail.Enabled = false;
-                gbxDatabase.Enabled = false;
             }
         }
     }
