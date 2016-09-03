@@ -45,8 +45,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbxSystemSettings = new System.Windows.Forms.CheckBox();
+            this.gbxDatabase = new System.Windows.Forms.GroupBox();
             this.metroLabel28 = new MetroFramework.Controls.MetroLabel();
             this.tbxDatabasePassword = new MetroFramework.Controls.MetroTextBox();
             this.tbxServer = new MetroFramework.Controls.MetroTextBox();
@@ -55,7 +55,7 @@
             this.tbxUserID = new MetroFramework.Controls.MetroTextBox();
             this.tbxDatabase = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel30 = new MetroFramework.Controls.MetroLabel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gbxEmail = new System.Windows.Forms.GroupBox();
             this.cbxSSL = new System.Windows.Forms.CheckBox();
             this.tbxEmailPort = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel26 = new MetroFramework.Controls.MetroLabel();
@@ -65,7 +65,7 @@
             this.metroLabel24 = new MetroFramework.Controls.MetroLabel();
             this.tbxEmailUsername = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbxSMS = new System.Windows.Forms.GroupBox();
             this.tbxSMSPassword = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel36 = new MetroFramework.Controls.MetroLabel();
             this.tbxSMSUserID = new MetroFramework.Controls.MetroTextBox();
@@ -160,11 +160,13 @@
             this.tbxSize = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel33 = new MetroFramework.Controls.MetroLabel();
             this.dgvSize = new MetroFramework.Controls.MetroGrid();
+            this.tbxPostalCode = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel37 = new MetroFramework.Controls.MetroLabel();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.gbxDatabase.SuspendLayout();
+            this.gbxEmail.SuspendLayout();
+            this.gbxSMS.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numRefundPeriod)).BeginInit();
@@ -195,7 +197,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(23, 51);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 4;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(837, 584);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
@@ -204,10 +206,10 @@
             // 
             // metroTabPage1
             // 
-            this.metroTabPage1.Controls.Add(this.checkBox1);
-            this.metroTabPage1.Controls.Add(this.groupBox6);
-            this.metroTabPage1.Controls.Add(this.groupBox4);
-            this.metroTabPage1.Controls.Add(this.groupBox3);
+            this.metroTabPage1.Controls.Add(this.cbxSystemSettings);
+            this.metroTabPage1.Controls.Add(this.gbxDatabase);
+            this.metroTabPage1.Controls.Add(this.gbxEmail);
+            this.metroTabPage1.Controls.Add(this.gbxSMS);
             this.metroTabPage1.Controls.Add(this.groupBox5);
             this.metroTabPage1.Controls.Add(this.groupBox2);
             this.metroTabPage1.Controls.Add(this.groupBox1);
@@ -226,33 +228,35 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // checkBox1
+            // cbxSystemSettings
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(451, 490);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(177, 17);
-            this.checkBox1.TabIndex = 42;
-            this.checkBox1.Text = "Enable System Setting Changes";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cbxSystemSettings.AutoSize = true;
+            this.cbxSystemSettings.Location = new System.Drawing.Point(451, 490);
+            this.cbxSystemSettings.Name = "cbxSystemSettings";
+            this.cbxSystemSettings.Size = new System.Drawing.Size(177, 17);
+            this.cbxSystemSettings.TabIndex = 42;
+            this.cbxSystemSettings.Text = "Enable System Setting Changes";
+            this.cbxSystemSettings.UseVisualStyleBackColor = true;
+            this.cbxSystemSettings.CheckedChanged += new System.EventHandler(this.cbxSystemSettings_CheckedChanged);
             // 
-            // groupBox6
+            // gbxDatabase
             // 
-            this.groupBox6.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox6.Controls.Add(this.metroLabel28);
-            this.groupBox6.Controls.Add(this.tbxDatabasePassword);
-            this.groupBox6.Controls.Add(this.tbxServer);
-            this.groupBox6.Controls.Add(this.metroLabel31);
-            this.groupBox6.Controls.Add(this.metroLabel29);
-            this.groupBox6.Controls.Add(this.tbxUserID);
-            this.groupBox6.Controls.Add(this.tbxDatabase);
-            this.groupBox6.Controls.Add(this.metroLabel30);
-            this.groupBox6.Location = new System.Drawing.Point(403, 3);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(388, 170);
-            this.groupBox6.TabIndex = 41;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Database Connection";
+            this.gbxDatabase.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.gbxDatabase.Controls.Add(this.metroLabel28);
+            this.gbxDatabase.Controls.Add(this.tbxDatabasePassword);
+            this.gbxDatabase.Controls.Add(this.tbxServer);
+            this.gbxDatabase.Controls.Add(this.metroLabel31);
+            this.gbxDatabase.Controls.Add(this.metroLabel29);
+            this.gbxDatabase.Controls.Add(this.tbxUserID);
+            this.gbxDatabase.Controls.Add(this.tbxDatabase);
+            this.gbxDatabase.Controls.Add(this.metroLabel30);
+            this.gbxDatabase.Enabled = false;
+            this.gbxDatabase.Location = new System.Drawing.Point(403, 1);
+            this.gbxDatabase.Name = "gbxDatabase";
+            this.gbxDatabase.Size = new System.Drawing.Size(388, 170);
+            this.gbxDatabase.TabIndex = 41;
+            this.gbxDatabase.TabStop = false;
+            this.gbxDatabase.Text = "Database Connection";
             // 
             // metroLabel28
             // 
@@ -277,7 +281,6 @@
             this.tbxDatabasePassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxDatabasePassword.CustomButton.UseSelectable = true;
             this.tbxDatabasePassword.CustomButton.Visible = false;
-            this.tbxDatabasePassword.Enabled = false;
             this.tbxDatabasePassword.Lines = new string[0];
             this.tbxDatabasePassword.Location = new System.Drawing.Point(123, 122);
             this.tbxDatabasePassword.MaxLength = 32767;
@@ -308,7 +311,6 @@
             this.tbxServer.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxServer.CustomButton.UseSelectable = true;
             this.tbxServer.CustomButton.Visible = false;
-            this.tbxServer.Enabled = false;
             this.tbxServer.Lines = new string[0];
             this.tbxServer.Location = new System.Drawing.Point(123, 17);
             this.tbxServer.MaxLength = 32767;
@@ -357,7 +359,6 @@
             this.tbxUserID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxUserID.CustomButton.UseSelectable = true;
             this.tbxUserID.CustomButton.Visible = false;
-            this.tbxUserID.Enabled = false;
             this.tbxUserID.Lines = new string[0];
             this.tbxUserID.Location = new System.Drawing.Point(123, 87);
             this.tbxUserID.MaxLength = 32767;
@@ -388,7 +389,6 @@
             this.tbxDatabase.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxDatabase.CustomButton.UseSelectable = true;
             this.tbxDatabase.CustomButton.Visible = false;
-            this.tbxDatabase.Enabled = false;
             this.tbxDatabase.Lines = new string[0];
             this.tbxDatabase.Location = new System.Drawing.Point(123, 52);
             this.tbxDatabase.MaxLength = 32767;
@@ -414,29 +414,29 @@
             this.metroLabel30.TabIndex = 31;
             this.metroLabel30.Text = "*User ID:";
             // 
-            // groupBox4
+            // gbxEmail
             // 
-            this.groupBox4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox4.Controls.Add(this.cbxSSL);
-            this.groupBox4.Controls.Add(this.tbxEmailPort);
-            this.groupBox4.Controls.Add(this.metroLabel26);
-            this.groupBox4.Controls.Add(this.tbxSMTP);
-            this.groupBox4.Controls.Add(this.metroLabel25);
-            this.groupBox4.Controls.Add(this.tbxEmailPassword);
-            this.groupBox4.Controls.Add(this.metroLabel24);
-            this.groupBox4.Controls.Add(this.tbxEmailUsername);
-            this.groupBox4.Controls.Add(this.metroLabel23);
-            this.groupBox4.Location = new System.Drawing.Point(403, 175);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(388, 205);
-            this.groupBox4.TabIndex = 40;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Email Notification";
+            this.gbxEmail.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gbxEmail.Controls.Add(this.cbxSSL);
+            this.gbxEmail.Controls.Add(this.tbxEmailPort);
+            this.gbxEmail.Controls.Add(this.metroLabel26);
+            this.gbxEmail.Controls.Add(this.tbxSMTP);
+            this.gbxEmail.Controls.Add(this.metroLabel25);
+            this.gbxEmail.Controls.Add(this.tbxEmailPassword);
+            this.gbxEmail.Controls.Add(this.metroLabel24);
+            this.gbxEmail.Controls.Add(this.tbxEmailUsername);
+            this.gbxEmail.Controls.Add(this.metroLabel23);
+            this.gbxEmail.Enabled = false;
+            this.gbxEmail.Location = new System.Drawing.Point(403, 173);
+            this.gbxEmail.Name = "gbxEmail";
+            this.gbxEmail.Size = new System.Drawing.Size(388, 205);
+            this.gbxEmail.TabIndex = 40;
+            this.gbxEmail.TabStop = false;
+            this.gbxEmail.Text = "Email Notification";
             // 
             // cbxSSL
             // 
             this.cbxSSL.AutoSize = true;
-            this.cbxSSL.Enabled = false;
             this.cbxSSL.Location = new System.Drawing.Point(123, 170);
             this.cbxSSL.Name = "cbxSSL";
             this.cbxSSL.Size = new System.Drawing.Size(122, 17);
@@ -458,7 +458,6 @@
             this.tbxEmailPort.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxEmailPort.CustomButton.UseSelectable = true;
             this.tbxEmailPort.CustomButton.Visible = false;
-            this.tbxEmailPort.Enabled = false;
             this.tbxEmailPort.Lines = new string[0];
             this.tbxEmailPort.Location = new System.Drawing.Point(123, 129);
             this.tbxEmailPort.MaxLength = 32767;
@@ -498,7 +497,6 @@
             this.tbxSMTP.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxSMTP.CustomButton.UseSelectable = true;
             this.tbxSMTP.CustomButton.Visible = false;
-            this.tbxSMTP.Enabled = false;
             this.tbxSMTP.Lines = new string[0];
             this.tbxSMTP.Location = new System.Drawing.Point(123, 94);
             this.tbxSMTP.MaxLength = 32767;
@@ -538,7 +536,6 @@
             this.tbxEmailPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxEmailPassword.CustomButton.UseSelectable = true;
             this.tbxEmailPassword.CustomButton.Visible = false;
-            this.tbxEmailPassword.Enabled = false;
             this.tbxEmailPassword.Lines = new string[0];
             this.tbxEmailPassword.Location = new System.Drawing.Point(123, 59);
             this.tbxEmailPassword.MaxLength = 32767;
@@ -578,7 +575,6 @@
             this.tbxEmailUsername.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxEmailUsername.CustomButton.UseSelectable = true;
             this.tbxEmailUsername.CustomButton.Visible = false;
-            this.tbxEmailUsername.Enabled = false;
             this.tbxEmailUsername.Lines = new string[0];
             this.tbxEmailUsername.Location = new System.Drawing.Point(123, 24);
             this.tbxEmailUsername.MaxLength = 32767;
@@ -604,21 +600,22 @@
             this.metroLabel23.TabIndex = 31;
             this.metroLabel23.Text = "*Username:";
             // 
-            // groupBox3
+            // gbxSMS
             // 
-            this.groupBox3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox3.Controls.Add(this.tbxSMSPassword);
-            this.groupBox3.Controls.Add(this.metroLabel36);
-            this.groupBox3.Controls.Add(this.tbxSMSUserID);
-            this.groupBox3.Controls.Add(this.metroLabel35);
-            this.groupBox3.Controls.Add(this.tbxAccountID);
-            this.groupBox3.Controls.Add(this.metroLabel22);
-            this.groupBox3.Location = new System.Drawing.Point(3, 366);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(388, 156);
-            this.groupBox3.TabIndex = 40;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "SMS Notification";
+            this.gbxSMS.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gbxSMS.Controls.Add(this.tbxSMSPassword);
+            this.gbxSMS.Controls.Add(this.metroLabel36);
+            this.gbxSMS.Controls.Add(this.tbxSMSUserID);
+            this.gbxSMS.Controls.Add(this.metroLabel35);
+            this.gbxSMS.Controls.Add(this.tbxAccountID);
+            this.gbxSMS.Controls.Add(this.metroLabel22);
+            this.gbxSMS.Enabled = false;
+            this.gbxSMS.Location = new System.Drawing.Point(3, 390);
+            this.gbxSMS.Name = "gbxSMS";
+            this.gbxSMS.Size = new System.Drawing.Size(388, 128);
+            this.gbxSMS.TabIndex = 40;
+            this.gbxSMS.TabStop = false;
+            this.gbxSMS.Text = "SMS Notification";
             // 
             // tbxSMSPassword
             // 
@@ -634,9 +631,8 @@
             this.tbxSMSPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxSMSPassword.CustomButton.UseSelectable = true;
             this.tbxSMSPassword.CustomButton.Visible = false;
-            this.tbxSMSPassword.Enabled = false;
             this.tbxSMSPassword.Lines = new string[0];
-            this.tbxSMSPassword.Location = new System.Drawing.Point(118, 95);
+            this.tbxSMSPassword.Location = new System.Drawing.Point(118, 89);
             this.tbxSMSPassword.MaxLength = 32767;
             this.tbxSMSPassword.Name = "tbxSMSPassword";
             this.tbxSMSPassword.PasswordChar = '\0';
@@ -654,7 +650,7 @@
             // metroLabel36
             // 
             this.metroLabel36.AutoSize = true;
-            this.metroLabel36.Location = new System.Drawing.Point(17, 101);
+            this.metroLabel36.Location = new System.Drawing.Point(17, 95);
             this.metroLabel36.Name = "metroLabel36";
             this.metroLabel36.Size = new System.Drawing.Size(72, 19);
             this.metroLabel36.TabIndex = 31;
@@ -674,9 +670,8 @@
             this.tbxSMSUserID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxSMSUserID.CustomButton.UseSelectable = true;
             this.tbxSMSUserID.CustomButton.Visible = false;
-            this.tbxSMSUserID.Enabled = false;
             this.tbxSMSUserID.Lines = new string[0];
-            this.tbxSMSUserID.Location = new System.Drawing.Point(118, 60);
+            this.tbxSMSUserID.Location = new System.Drawing.Point(118, 54);
             this.tbxSMSUserID.MaxLength = 32767;
             this.tbxSMSUserID.Name = "tbxSMSUserID";
             this.tbxSMSUserID.PasswordChar = '\0';
@@ -694,7 +689,7 @@
             // metroLabel35
             // 
             this.metroLabel35.AutoSize = true;
-            this.metroLabel35.Location = new System.Drawing.Point(17, 66);
+            this.metroLabel35.Location = new System.Drawing.Point(17, 60);
             this.metroLabel35.Name = "metroLabel35";
             this.metroLabel35.Size = new System.Drawing.Size(60, 19);
             this.metroLabel35.TabIndex = 31;
@@ -714,9 +709,8 @@
             this.tbxAccountID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.tbxAccountID.CustomButton.UseSelectable = true;
             this.tbxAccountID.CustomButton.Visible = false;
-            this.tbxAccountID.Enabled = false;
             this.tbxAccountID.Lines = new string[0];
-            this.tbxAccountID.Location = new System.Drawing.Point(118, 25);
+            this.tbxAccountID.Location = new System.Drawing.Point(118, 19);
             this.tbxAccountID.MaxLength = 32767;
             this.tbxAccountID.Name = "tbxAccountID";
             this.tbxAccountID.PasswordChar = '\0';
@@ -734,7 +728,7 @@
             // metroLabel22
             // 
             this.metroLabel22.AutoSize = true;
-            this.metroLabel22.Location = new System.Drawing.Point(17, 31);
+            this.metroLabel22.Location = new System.Drawing.Point(17, 25);
             this.metroLabel22.Name = "metroLabel22";
             this.metroLabel22.Size = new System.Drawing.Size(79, 19);
             this.metroLabel22.TabIndex = 31;
@@ -745,7 +739,7 @@
             this.groupBox5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.groupBox5.Controls.Add(this.tbxVAT);
             this.groupBox5.Controls.Add(this.metroLabel27);
-            this.groupBox5.Location = new System.Drawing.Point(403, 382);
+            this.groupBox5.Location = new System.Drawing.Point(403, 380);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(388, 74);
             this.groupBox5.TabIndex = 40;
@@ -797,9 +791,9 @@
             this.groupBox2.Controls.Add(this.numRefundPeriod);
             this.groupBox2.Controls.Add(this.metroLabel32);
             this.groupBox2.Controls.Add(this.metroLabel21);
-            this.groupBox2.Location = new System.Drawing.Point(3, 290);
+            this.groupBox2.Location = new System.Drawing.Point(3, 318);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(388, 74);
+            this.groupBox2.Size = new System.Drawing.Size(388, 70);
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Refunds";
@@ -807,7 +801,6 @@
             // numRefundPeriod
             // 
             this.numRefundPeriod.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numRefundPeriod.Enabled = false;
             this.numRefundPeriod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numRefundPeriod.Location = new System.Drawing.Point(118, 24);
             this.numRefundPeriod.Maximum = new decimal(new int[] {
@@ -852,13 +845,15 @@
             this.groupBox1.Controls.Add(this.metroLabel17);
             this.groupBox1.Controls.Add(this.metroLabel7);
             this.groupBox1.Controls.Add(this.tbxEmail);
+            this.groupBox1.Controls.Add(this.metroLabel37);
             this.groupBox1.Controls.Add(this.metroLabel18);
             this.groupBox1.Controls.Add(this.tbxFax);
+            this.groupBox1.Controls.Add(this.tbxPostalCode);
             this.groupBox1.Controls.Add(this.tbxCity);
             this.groupBox1.Controls.Add(this.tbxPhone);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 1);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 285);
+            this.groupBox1.Size = new System.Drawing.Size(388, 315);
             this.groupBox1.TabIndex = 40;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Business Details";
@@ -878,7 +873,7 @@
             this.tbxBusinessName.CustomButton.UseSelectable = true;
             this.tbxBusinessName.CustomButton.Visible = false;
             this.tbxBusinessName.Lines = new string[0];
-            this.tbxBusinessName.Location = new System.Drawing.Point(108, 19);
+            this.tbxBusinessName.Location = new System.Drawing.Point(108, 15);
             this.tbxBusinessName.MaxLength = 32767;
             this.tbxBusinessName.Name = "tbxBusinessName";
             this.tbxBusinessName.PasswordChar = '\0';
@@ -896,7 +891,7 @@
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(17, 24);
+            this.metroLabel14.Location = new System.Drawing.Point(17, 20);
             this.metroLabel14.Name = "metroLabel14";
             this.metroLabel14.Size = new System.Drawing.Size(54, 19);
             this.metroLabel14.TabIndex = 26;
@@ -917,7 +912,7 @@
             this.tbxAddress1.CustomButton.UseSelectable = true;
             this.tbxAddress1.CustomButton.Visible = false;
             this.tbxAddress1.Lines = new string[0];
-            this.tbxAddress1.Location = new System.Drawing.Point(108, 51);
+            this.tbxAddress1.Location = new System.Drawing.Point(108, 47);
             this.tbxAddress1.MaxLength = 32767;
             this.tbxAddress1.Name = "tbxAddress1";
             this.tbxAddress1.PasswordChar = '\0';
@@ -947,7 +942,7 @@
             this.tbxAddress2.CustomButton.UseSelectable = true;
             this.tbxAddress2.CustomButton.Visible = false;
             this.tbxAddress2.Lines = new string[0];
-            this.tbxAddress2.Location = new System.Drawing.Point(108, 83);
+            this.tbxAddress2.Location = new System.Drawing.Point(108, 79);
             this.tbxAddress2.MaxLength = 32767;
             this.tbxAddress2.Name = "tbxAddress2";
             this.tbxAddress2.PasswordChar = '\0';
@@ -977,7 +972,7 @@
             this.tbxSuburb.CustomButton.UseSelectable = true;
             this.tbxSuburb.CustomButton.Visible = false;
             this.tbxSuburb.Lines = new string[0];
-            this.tbxSuburb.Location = new System.Drawing.Point(108, 115);
+            this.tbxSuburb.Location = new System.Drawing.Point(108, 111);
             this.tbxSuburb.MaxLength = 32767;
             this.tbxSuburb.Name = "tbxSuburb";
             this.tbxSuburb.PasswordChar = '\0';
@@ -995,7 +990,7 @@
             // metroLabel15
             // 
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(17, 248);
+            this.metroLabel15.Location = new System.Drawing.Point(17, 276);
             this.metroLabel15.Name = "metroLabel15";
             this.metroLabel15.Size = new System.Drawing.Size(44, 19);
             this.metroLabel15.TabIndex = 31;
@@ -1004,7 +999,7 @@
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(17, 56);
+            this.metroLabel13.Location = new System.Drawing.Point(17, 52);
             this.metroLabel13.Name = "metroLabel13";
             this.metroLabel13.Size = new System.Drawing.Size(72, 19);
             this.metroLabel13.TabIndex = 25;
@@ -1013,7 +1008,7 @@
             // metroLabel16
             // 
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(17, 216);
+            this.metroLabel16.Location = new System.Drawing.Point(17, 244);
             this.metroLabel16.Name = "metroLabel16";
             this.metroLabel16.Size = new System.Drawing.Size(31, 19);
             this.metroLabel16.TabIndex = 32;
@@ -1022,7 +1017,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(17, 88);
+            this.metroLabel8.Location = new System.Drawing.Point(17, 84);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(70, 19);
             this.metroLabel8.TabIndex = 24;
@@ -1031,7 +1026,7 @@
             // metroLabel17
             // 
             this.metroLabel17.AutoSize = true;
-            this.metroLabel17.Location = new System.Drawing.Point(16, 184);
+            this.metroLabel17.Location = new System.Drawing.Point(16, 212);
             this.metroLabel17.Name = "metroLabel17";
             this.metroLabel17.Size = new System.Drawing.Size(49, 19);
             this.metroLabel17.TabIndex = 33;
@@ -1040,7 +1035,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(17, 120);
+            this.metroLabel7.Location = new System.Drawing.Point(17, 116);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(60, 19);
             this.metroLabel7.TabIndex = 23;
@@ -1061,7 +1056,7 @@
             this.tbxEmail.CustomButton.UseSelectable = true;
             this.tbxEmail.CustomButton.Visible = false;
             this.tbxEmail.Lines = new string[0];
-            this.tbxEmail.Location = new System.Drawing.Point(108, 243);
+            this.tbxEmail.Location = new System.Drawing.Point(108, 271);
             this.tbxEmail.MaxLength = 32767;
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.PasswordChar = '\0';
@@ -1079,7 +1074,7 @@
             // metroLabel18
             // 
             this.metroLabel18.AutoSize = true;
-            this.metroLabel18.Location = new System.Drawing.Point(17, 152);
+            this.metroLabel18.Location = new System.Drawing.Point(17, 148);
             this.metroLabel18.Name = "metroLabel18";
             this.metroLabel18.Size = new System.Drawing.Size(40, 19);
             this.metroLabel18.TabIndex = 34;
@@ -1100,7 +1095,7 @@
             this.tbxFax.CustomButton.UseSelectable = true;
             this.tbxFax.CustomButton.Visible = false;
             this.tbxFax.Lines = new string[0];
-            this.tbxFax.Location = new System.Drawing.Point(108, 211);
+            this.tbxFax.Location = new System.Drawing.Point(108, 239);
             this.tbxFax.MaxLength = 32767;
             this.tbxFax.Name = "tbxFax";
             this.tbxFax.PasswordChar = '\0';
@@ -1130,7 +1125,7 @@
             this.tbxCity.CustomButton.UseSelectable = true;
             this.tbxCity.CustomButton.Visible = false;
             this.tbxCity.Lines = new string[0];
-            this.tbxCity.Location = new System.Drawing.Point(108, 147);
+            this.tbxCity.Location = new System.Drawing.Point(108, 143);
             this.tbxCity.MaxLength = 32767;
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.PasswordChar = '\0';
@@ -1160,7 +1155,7 @@
             this.tbxPhone.CustomButton.UseSelectable = true;
             this.tbxPhone.CustomButton.Visible = false;
             this.tbxPhone.Lines = new string[0];
-            this.tbxPhone.Location = new System.Drawing.Point(108, 179);
+            this.tbxPhone.Location = new System.Drawing.Point(108, 207);
             this.tbxPhone.MaxLength = 32767;
             this.tbxPhone.Name = "tbxPhone";
             this.tbxPhone.PasswordChar = '\0';
@@ -2402,6 +2397,45 @@
             this.dgvSize.TabIndex = 3;
             this.dgvSize.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSize_CellClick);
             // 
+            // tbxPostalCode
+            // 
+            // 
+            // 
+            // 
+            this.tbxPostalCode.CustomButton.Image = null;
+            this.tbxPostalCode.CustomButton.Location = new System.Drawing.Point(220, 1);
+            this.tbxPostalCode.CustomButton.Name = "";
+            this.tbxPostalCode.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.tbxPostalCode.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.tbxPostalCode.CustomButton.TabIndex = 1;
+            this.tbxPostalCode.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.tbxPostalCode.CustomButton.UseSelectable = true;
+            this.tbxPostalCode.CustomButton.Visible = false;
+            this.tbxPostalCode.Lines = new string[0];
+            this.tbxPostalCode.Location = new System.Drawing.Point(108, 175);
+            this.tbxPostalCode.MaxLength = 32767;
+            this.tbxPostalCode.Name = "tbxPostalCode";
+            this.tbxPostalCode.PasswordChar = '\0';
+            this.tbxPostalCode.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.tbxPostalCode.SelectedText = "";
+            this.tbxPostalCode.SelectionLength = 0;
+            this.tbxPostalCode.SelectionStart = 0;
+            this.tbxPostalCode.ShortcutsEnabled = true;
+            this.tbxPostalCode.Size = new System.Drawing.Size(248, 29);
+            this.tbxPostalCode.TabIndex = 38;
+            this.tbxPostalCode.UseSelectable = true;
+            this.tbxPostalCode.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.tbxPostalCode.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel37
+            // 
+            this.metroLabel37.AutoSize = true;
+            this.metroLabel37.Location = new System.Drawing.Point(17, 180);
+            this.metroLabel37.Name = "metroLabel37";
+            this.metroLabel37.Size = new System.Drawing.Size(88, 19);
+            this.metroLabel37.TabIndex = 34;
+            this.metroLabel37.Text = "*Postal Code:";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2417,12 +2451,12 @@
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gbxDatabase.ResumeLayout(false);
+            this.gbxDatabase.PerformLayout();
+            this.gbxEmail.ResumeLayout(false);
+            this.gbxEmail.PerformLayout();
+            this.gbxSMS.ResumeLayout(false);
+            this.gbxSMS.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -2530,10 +2564,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel21;
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroTabPage metroTabPage5;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbxSMS;
         private MetroFramework.Controls.MetroTextBox tbxAccountID;
         private MetroFramework.Controls.MetroLabel metroLabel22;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox gbxEmail;
         private System.Windows.Forms.CheckBox cbxSSL;
         private MetroFramework.Controls.MetroTextBox tbxEmailPort;
         private MetroFramework.Controls.MetroLabel metroLabel26;
@@ -2546,7 +2580,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private MetroFramework.Controls.MetroTextBox tbxVAT;
         private MetroFramework.Controls.MetroLabel metroLabel27;
-        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.GroupBox gbxDatabase;
         private MetroFramework.Controls.MetroLabel metroLabel28;
         private MetroFramework.Controls.MetroTextBox tbxDatabasePassword;
         private MetroFramework.Controls.MetroTextBox tbxServer;
@@ -2573,6 +2607,8 @@
         private MetroFramework.Controls.MetroLabel metroLabel36;
         private MetroFramework.Controls.MetroTextBox tbxSMSUserID;
         private MetroFramework.Controls.MetroLabel metroLabel35;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cbxSystemSettings;
+        private MetroFramework.Controls.MetroLabel metroLabel37;
+        private MetroFramework.Controls.MetroTextBox tbxPostalCode;
     }
 }

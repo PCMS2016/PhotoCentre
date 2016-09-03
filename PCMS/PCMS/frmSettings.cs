@@ -156,8 +156,10 @@ namespace PCMS
         }
 
         //Add Salesperson to Database
-        private void AddSalesperson()
+        private bool AddSalesperson()
         {
+            bool added = true;
+
             Salesperson salesperson = new Salesperson();
             salesperson.Name = tbxSalespersonName.Text;
             salesperson.Surname = tbxSalespersonSurname.Text;
@@ -172,14 +174,19 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when adding salesperson!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return added;
         }
 
         //Update Salesperson to Database
-        private void UpdateSalesperson()
+        private bool UpdateSalesperson()
         {
+            bool updated = true;
+
             Salesperson salesperson = new Salesperson();
             salesperson.SalespersonID = Convert.ToInt32(dgvSalesperson.SelectedRows[0].Cells[0].Value.ToString());
             salesperson.Name = tbxSalespersonName.Text;
@@ -195,14 +202,19 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                updated = false;
                 MessageBox.Show("Error occured when updating salesperson!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return updated;
         }
 
-        //Remvoe Salesperson
-        private void RemoveSalesperson(int salespersonID)
+        //Remove Salesperson
+        private bool RemoveSalesperson(int salespersonID)
         {
+            bool removed = true;
+
             if (MessageBox.Show("Are you sure you want to remove this salesperson?", "", MessageBoxButtons.YesNo) ==
                 DialogResult.Yes)
             {
@@ -212,10 +224,13 @@ namespace PCMS
                 }
                 catch (Exception ex)
                 {
+                    removed = false;
                     MessageBox.Show("Error occured when trying to remove salesperson!" + Environment.NewLine +
                         Environment.NewLine + ex.Message);
                 }
             }
+
+            return removed;
         }
 
         //Validate Salesperson Fields
@@ -290,11 +305,18 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to add this salesperson?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddSalesperson();
+                        bool added = AddSalesperson();
 
-                        btnUpdateSalesperson.Enabled = true;
-                        btnNewSalesperson.Text = "New Salesperson";
-                        DisableSalespersonFields();
+                        if (added == true)
+                        {
+                            btnUpdateSalesperson.Enabled = true;
+                            btnNewSalesperson.Text = "New Salesperson";
+                            DisableSalespersonFields();
+
+                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            
+                        }
                     }
                 }
             }
@@ -318,11 +340,16 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to update this salesperson?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        UpdateSalesperson();
+                        bool updated = UpdateSalesperson();
 
-                        btnNewSalesperson.Enabled = true;
-                        btnUpdateSalesperson.Text = "Update Salesperson";
-                        DisableSalespersonFields();
+                        if (updated == true)
+                        {
+                            btnNewSalesperson.Enabled = true;
+                            btnUpdateSalesperson.Text = "Update Salesperson";
+                            DisableSalespersonFields();
+
+                            MessageBox.Show("UPDATED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -333,7 +360,12 @@ namespace PCMS
         {
             if (dgvSalesperson.SelectedRows.Count > 0)
             {
-                RemoveSalesperson(Convert.ToInt32(dgvSalesperson.SelectedRows[0].Cells[0].Value.ToString()));
+                bool removed = RemoveSalesperson(Convert.ToInt32(dgvSalesperson.SelectedRows[0].Cells[0].Value.ToString()));
+
+                if (removed == true)
+                {
+                    MessageBox.Show("REMOVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
         #endregion
@@ -348,6 +380,7 @@ namespace PCMS
             tbxAddress2.Text = company.Address2;
             tbxSuburb.Text = company.Suburb;
             tbxCity.Text = company.City;
+            tbxPostalCode.Text = company.PostalCode;
             tbxPhone.Text = company.Phone;
             tbxFax.Text = company.Fax;
             tbxEmail.Text = company.Email;
@@ -363,19 +396,23 @@ namespace PCMS
             company.Address2 = tbxAddress2.Text;
             company.Suburb = tbxSuburb.Text;
             company.City = tbxCity.Text;
+            company.PostalCode = tbxPostalCode.Text;
             company.Phone = tbxPhone.Text;
             company.Fax = tbxFax.Text;
             company.Email = tbxEmail.Text;
             company.RefundPeriod = Convert.ToInt32(numRefundPeriod.Value);
 
-            try
+            if (ValidateCompanyFields() == true)
             {
-                handlerCompany.UpdateCompany(company);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured when saving business settings!" + Environment.NewLine +
-                    Environment.NewLine + ex.Message);
+                try
+                {
+                    handlerCompany.UpdateCompany(company);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured when saving business settings!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
             }
         }
 
@@ -383,6 +420,19 @@ namespace PCMS
         private bool ValidateCompanyFields()
         {
             bool valid = true;
+
+            if (tbxBusinessName.Text == "" || tbxAddress1.Text == "" || tbxSuburb.Text == "" ||
+                tbxCity.Text == "")
+            {
+                valid = false;
+                MessageBox.Show("Please enter all required fields for business details!");
+            }
+
+            if (numRefundPeriod.Value < 0)
+            {
+                valid = false;
+                MessageBox.Show("Refund period can't have a negative value!");
+            }
 
             return valid;
         }
@@ -422,8 +472,10 @@ namespace PCMS
         }
 
         //Add Payment to Database
-        private void AddPayment()
+        private bool AddPayment()
         {
+            bool added = true;
+
             Payment payment = new Payment();
             payment.PaymentType = tbxDescription.Text;
 
@@ -433,14 +485,19 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when adding payment method!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return added;
         }
 
         //Update Payment to Database
-        private void UpdatePayment()
+        private bool UpdatePayment()
         {
+            bool updated = true;
+
             Payment payment = new Payment();
             payment.PaymentID = Convert.ToInt32(dgvPayment.SelectedRows[0].Cells[0].Value.ToString());
             payment.PaymentType = tbxDescription.Text;
@@ -451,23 +508,31 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                updated = false;
                 MessageBox.Show("Error occured when updating payment method!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return updated;
         }
 
         //Remove Payment 
-        private void RemovePayment(int paymentID)
+        private bool RemovePayment(int paymentID)
         {
+            bool removed = true;
+
             try
             {
                 handlerPayment.RemovePayment(paymentID);
             }
             catch (Exception ex)
             {
+                removed = false;
                 MessageBox.Show("Error occured when removing payment method!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return removed;
         }
 
         //Add payment Method
@@ -489,13 +554,16 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to update this payment method?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddPayment();
+                        bool added = AddPayment();
 
-                        btnUpdatePayment.Enabled = true;
-                        btnNewPayment.Text = "New Payment Method";
-                        DisablePaymentFields();
+                        if (added == true)
+                        {
+                            btnUpdatePayment.Enabled = true;
+                            btnNewPayment.Text = "New Payment Method";
+                            DisablePaymentFields();
 
-                        BindData_Payments();
+                            BindData_Payments();
+                        }
                     }
                 }
                 else
@@ -525,13 +593,16 @@ namespace PCMS
                         if (MessageBox.Show("Are you sure you want to update this payment method?", "", MessageBoxButtons.YesNo) ==
                             DialogResult.Yes)
                         {
-                            UpdatePayment();
+                            bool updated = UpdatePayment();
 
-                            btnNewPayment.Enabled = true;
-                            btnUpdatePayment.Text = "Update Payment Method";
-                            DisablePaymentFields();
+                            if (updated == true)
+                            {
+                                btnNewPayment.Enabled = true;
+                                btnUpdatePayment.Text = "Update Payment Method";
+                                DisablePaymentFields();
 
-                            BindData_Payments();
+                                BindData_Payments();
+                            }
                         }
                     }
                     else
@@ -554,9 +625,12 @@ namespace PCMS
                 if (MessageBox.Show("Are you sure you want to remove this payment method", "", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
-                    RemovePayment(Convert.ToInt32(dgvPayment.SelectedRows[0].Cells[0].Value.ToString()));
+                    bool removed = RemovePayment(Convert.ToInt32(dgvPayment.SelectedRows[0].Cells[0].Value.ToString()));
 
-                    BindData_Payments();
+                    if (removed == true)
+                    {
+                        BindData_Payments();
+                    }
                 }
             }
         }
@@ -640,12 +714,16 @@ namespace PCMS
         //Select Product
         private void SelectProduct()
         {
-
+            cmbProductSize.Text = dgvProducts.SelectedRows[0].Cells[2].Value.ToString();
+            cmbProductMedium.Text = dgvProducts.SelectedRows[0].Cells[3].Value.ToString();
+            tbxProductPrice.Text = dgvProducts.SelectedRows[0].Cells[4].Value.ToString();
         }
 
         //Add Product to Database
-        private void AddProduct()
+        private bool AddProduct()
         {
+            bool added = true;
+
             SizeMedium product = new SizeMedium();
             product.Size = cmbProductSize.SelectedValue.ToString();
             product.Medium = cmbProductMedium.SelectedValue.ToString();
@@ -657,14 +735,19 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when adding product!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return added;
         }
 
         //Update Product to Database
-        private void UpdateProduct(int productID)
+        private bool UpdateProduct(int productID)
         {
+            bool updated = true;
+
             SizeMedium product = new SizeMedium();
             product.SizeMediumID = productID;
             product.Size = cmbProductSize.SelectedValue.ToString();
@@ -676,23 +759,31 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                updated = false;
                 MessageBox.Show("Error occured when updating product!" + Environment.NewLine +
-                    Environment.NewLine);
+                    Environment.NewLine + ex.Message);
             }
+
+            return updated;
         }
 
         //Remove Product 
-        private void RemoveProduct(int productID)
+        private bool RemoveProduct(int productID)
         {
+            bool removed = true;
+
             try
             {
                 handlerProduct.RemoveProduct(productID);
             }
             catch (Exception ex)
             {
+                removed = false;
                 MessageBox.Show("Error occured when removing product!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+
+            return removed;
         }
 
         //Validate Product Fields
@@ -722,7 +813,12 @@ namespace PCMS
                 if (MessageBox.Show("Are you sure you want to remove this product?", "", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
-                    RemoveProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+                    bool removed = RemoveProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+
+                    if (removed == true)
+                    {
+                        BindData_Product();
+                    }
                 }
             }
             else
@@ -750,11 +846,16 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to add this product?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddProduct();
+                        bool added = AddProduct();
 
-                        btnUpdateProduct.Enabled = true;
-                        btnNewProduct.Text = "New Product";
-                        DisableProductFields();                        
+                        if (added == true)
+                        {
+                            btnUpdateProduct.Enabled = true;
+                            btnNewProduct.Text = "New Product";
+                            DisableProductFields();
+
+                            BindData_Product();
+                        }                      
                     }
                 }
             }
@@ -780,11 +881,16 @@ namespace PCMS
                         if (MessageBox.Show("Are you sure you want to update this product?", "", MessageBoxButtons.YesNo) ==
                             DialogResult.Yes)
                         {
-                            UpdateProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
+                            bool updated = UpdateProduct(Convert.ToInt32(dgvProducts.SelectedRows[0].Cells[0].Value.ToString()));
 
-                            btnNewProduct.Enabled = true;
-                            btnUpdateProduct.Text = "Update Product";
-                            DisableProductFields();
+                            if (updated == true)
+                            {
+                                btnNewProduct.Enabled = true;
+                                btnUpdateProduct.Text = "Update Product";
+                                DisableProductFields();
+
+                                BindData_Product();
+                            }
                         }
                     }
                 }
@@ -798,7 +904,10 @@ namespace PCMS
         //Product Selected
         private void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dgvProducts.SelectedRows.Count > 0)
+            {
+                SelectProduct();
+            }
         }
 
 
@@ -816,8 +925,10 @@ namespace PCMS
         }
 
         //Add Size to Database
-        private void AddSize()
+        private bool AddSize()
         {
+            bool added = true;
+
             DAL.Size size = new DAL.Size();
             size.SizeDescription = tbxSize.Text;
 
@@ -827,23 +938,31 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when adding size!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
+
+            return added;
         }
 
         //Remove Size
-        private void RemoveSize(int sizeID)
+        private bool RemoveSize(int sizeID)
         {
+            bool removed = true;
+
             try
             {
                 handlerSize.RemoveSize(sizeID);
             }
             catch (Exception ex)
             {
+                removed = false;
                 MessageBox.Show("Error occured when removing size!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
+
+            return removed;
         }
 
         //New Size
@@ -864,12 +983,15 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to add this size?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddSize();
+                        bool added = AddSize();
 
-                        btnNewSize.Text = "New Size";
-                        tbxSize.Enabled = false;
+                        if (added == true)
+                        {
+                            btnNewSize.Text = "New Size";
+                            tbxSize.Enabled = false;
 
-                        BindData_Size_Grid();
+                            BindData_Size_Grid();
+                        }
                     }
                 }
                 else
@@ -887,9 +1009,12 @@ namespace PCMS
                 if (MessageBox.Show("Are you sure you want to remove this size?", "", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
-                    RemoveSize(Convert.ToInt32(dgvSize.SelectedRows[0].Cells[0].Value.ToString()));
+                    bool removed = RemoveSize(Convert.ToInt32(dgvSize.SelectedRows[0].Cells[0].Value.ToString()));
 
-                    BindData_Size_Grid();
+                    if (removed == true)
+                    {
+                        BindData_Size_Grid();
+                    }
                 }
             }
             else
@@ -909,7 +1034,7 @@ namespace PCMS
 
         #endregion
 
-        #region
+        #region Medium
         //Bind Medium Data
         private void BindData_Medium_Grid()
         {
@@ -922,8 +1047,10 @@ namespace PCMS
         }
 
         //Add Medium to Database
-        private void AddMedium()
+        private bool AddMedium()
         {
+            bool added = true;
+
             Medium medium = new Medium();
             medium.Description = tbxMedium.Text;
 
@@ -933,23 +1060,31 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when adding medium!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
+
+            return added;
         }
         
         //Remove Medium
-        private void RemoveMedium(int mediumID)
+        private bool RemoveMedium(int mediumID)
         {
+            bool removed = true;
+
             try
             {
                 handlerMedium.RemoveMedium(mediumID);
             }
             catch (Exception ex)
             {
+                removed = false;
                 MessageBox.Show("Error occured when removing medium!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
+
+            return removed;
         }
 
         //New Medium
@@ -969,12 +1104,15 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure you want to add this size?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddMedium();
+                        bool added = AddMedium();
 
-                        btnNewMedium.Text = "New Medium";
-                        tbxSize.Enabled = false;
+                        if (added == true)
+                        {
+                            btnNewMedium.Text = "New Medium";
+                            tbxSize.Enabled = false;
 
-                        BindData_Medium_Grid();
+                            BindData_Medium_Grid();
+                        }
                     }
                 }
                 else
@@ -992,9 +1130,12 @@ namespace PCMS
                 if (MessageBox.Show("Are you sure you want to remove this medium?", "", MessageBoxButtons.YesNo) ==
                     DialogResult.Yes)
                 {
-                    RemoveMedium(Convert.ToInt32(dgvMedium.SelectedRows[0].Cells[0].Value.ToString()));
+                    bool removed = RemoveMedium(Convert.ToInt32(dgvMedium.SelectedRows[0].Cells[0].Value.ToString()));
 
-                    BindData_Medium_Grid();
+                    if (removed == true)
+                    {
+                        BindData_Medium_Grid();
+                    }
                 }
             }
             else
@@ -1021,6 +1162,39 @@ namespace PCMS
             tbxAccountID.Text = ConfigurationManager.AppSettings["AccountID"];
             tbxSMSUserID.Text = ConfigurationManager.AppSettings["UserID"];
             tbxSMSPassword.Text = ConfigurationManager.AppSettings["SmsPassword"];
+        }
+
+        //Save SMS Settings
+        private void SaveSMS()
+        {
+            if (ValidateSmsDetails() == true)
+            {
+                try
+                {
+                    ConfigurationManager.AppSettings["AccountID"] = tbxAccountID.Text;
+                    ConfigurationManager.AppSettings["UserID"] = tbxSMSUserID.Text;
+                    ConfigurationManager.AppSettings["SmsPassword"] = tbxSMSPassword.Text;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured when saving SMS settings!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
+            }
+        }
+
+        //Validate SMS Fields
+        private bool ValidateSmsDetails()
+        {
+            bool valid = true;
+
+            if (tbxAccountID.Text == "" || tbxSMSUserID.Text == "" || tbxSMSPassword.Text == "")
+            {
+                valid = true;
+                MessageBox.Show("Please enter fields for SMS settings!");
+            }
+
+            return valid;
         }
         #endregion
 
@@ -1050,7 +1224,7 @@ namespace PCMS
         }
 
         //Update Email Data
-        private void UpdateEmail()
+        private void SaveEmail()
         {
             try
             {
@@ -1104,7 +1278,7 @@ namespace PCMS
         }
 
         //Update Database String
-        private void UpdateDatabaseString()
+        private void SaveDatabaseString()
         {
             try
             {
@@ -1112,7 +1286,6 @@ namespace PCMS
                 {
                     string conString = "Data Source=" + tbxServer.Text + "; Initial Catalog=" + tbxDatabase.Text +
                         "; User ID=" + tbxUserID.Text + "; Password=" + tbxDatabasePassword.Text;
-                    MessageBox.Show(conString);
                 }
             }
             catch (Exception ex)
@@ -1152,7 +1325,7 @@ namespace PCMS
         }
 
         //Update VAT
-        private void UpdateVAT()
+        private void SaveVAT()
         {
             try
             {
@@ -1169,16 +1342,38 @@ namespace PCMS
 
         private void btnBusinessSave_Click(object sender, EventArgs e)
         {
-            try
+            SaveCompanyDetails();
+            SaveVAT();
+
+            if (cbxSystemSettings.Checked == true)
             {
-                MessageBox.Show(SmsNotificaton.SendSms("0832842708", "Second test message").ToString());
+                if (MessageBox.Show("Saving incorrect system settings may result in the system not working." + 
+                    Environment.NewLine + "Are you sure you want to save these settings?", "", MessageBoxButtons.YesNo) ==
+                    DialogResult.Yes)
+                {
+                    SaveSMS();
+                    SaveEmail();
+                    SaveDatabaseString();
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error sending sms" + Environment.NewLine + ex.Message);
-            }
+
+            MessageBox.Show("SAVED","", MessageBoxButtons.OK ,MessageBoxIcon.Information);
         }
 
-
+        private void cbxSystemSettings_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxSystemSettings.Checked == true)
+            {
+                gbxSMS.Enabled = true;
+                gbxEmail.Enabled = true;
+                gbxDatabase.Enabled = true;
+            }
+            else
+            {
+                gbxSMS.Enabled = false;
+                gbxEmail.Enabled = false;
+                gbxDatabase.Enabled = false;
+            }
+        }
     }
 }
