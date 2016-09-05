@@ -1185,6 +1185,7 @@ namespace PCMS
             tbxAccountID.Text = ConfigurationManager.AppSettings["AccountID"];
             tbxSMSUserID.Text = ConfigurationManager.AppSettings["UserID"];
             tbxSMSPassword.Text = EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["SmsPassword"]);
+            //tbxSMSPassword.Text = ConfigurationManager.AppSettings["SmsPassword"];
         }
 
         //Save SMS Settings
@@ -1231,6 +1232,7 @@ namespace PCMS
         {
             tbxEmailUsername.Text = ConfigurationManager.AppSettings["username"];
             tbxEmailPassword.Text = EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["password"]);
+            //tbxEmailPassword.Text = ConfigurationManager.AppSettings["password"];
             tbxSMTP.Text = ConfigurationManager.AppSettings["smtpAddress"];
             tbxEmailPort.Text = ConfigurationManager.AppSettings["portNumber"];
             cbxSSL.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["enableSSL"]);

@@ -16,7 +16,7 @@ public static class EncryptionHelper
 {
     public static string Encrypt(string clearText)
     {
-        string EncryptionKey = "abc123";
+        string EncryptionKey = "1ECABC56F1D1C";
         byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
         using (Aes encryptor = Aes.Create())
         {
@@ -37,7 +37,7 @@ public static class EncryptionHelper
     }
     public static string Decrypt(string cipherText)
     {
-        string EncryptionKey = "abc123";
+        string EncryptionKey = "1ECABC56F1D1C";
         cipherText = cipherText.Replace(" ", "+");
         byte[] cipherBytes = Convert.FromBase64String(cipherText);
         using (Aes encryptor = Aes.Create())
