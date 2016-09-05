@@ -27,13 +27,13 @@ namespace PCMS
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-
             string username = tbxUsername.Text;
             string password = tbxPassword.Text;
 
             Salesperson salesperson = new Salesperson();
             salesperson.Username = username;
             salesperson.Password = password;
+            //salesperson.Password = EncryptionHelper.Encrypt(password);
 
             //Retrieve details from database matching the username and password...
 

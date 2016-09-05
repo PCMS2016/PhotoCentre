@@ -203,9 +203,10 @@ namespace PCMS
         {
             int index = dgvSpecials.SelectedRows[0].Index;
 
-            cmbProduct.Text = dgvSpecials.Rows[index].Cells[1].Value.ToString();
+            cmbProduct.Text = dgvSpecials.Rows[index].Cells[1].Value.ToString() + " - " + string.Format("{0:c}", double.Parse(dgvSpecials.Rows[index].Cells[3].Value.ToString()));
+            cmbProductSearch.Text = dgvSpecials.Rows[index].Cells[1].Value.ToString() + " - " + string.Format("{0:c}", double.Parse(dgvSpecials.Rows[index].Cells[3].Value.ToString()));
             numQuantity.Value = Convert.ToInt32(dgvSpecials.Rows[index].Cells[2].Value.ToString());
-            tbxPrice.Text = dgvSpecials.Rows[index].Cells[3].Value.ToString();
+            tbxPrice.Text = string.Format("{0:f2}", double.Parse(dgvSpecials.Rows[index].Cells[3].Value.ToString()));
             dtpStartDate.Text = dgvSpecials.Rows[index].Cells[4].Value.ToString();
             dtpEndDate.Text = dgvSpecials.Rows[index].Cells[5].Value.ToString();
         }

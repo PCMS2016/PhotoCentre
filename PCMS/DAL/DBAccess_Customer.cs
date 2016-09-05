@@ -82,7 +82,7 @@ namespace DAL
             string email = "";
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@orderNumber", orderNumber)
+                new SqlParameter("@Order#", orderNumber)
             };
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetEmailAddress", CommandType.StoredProcedure, parameters)) 
             {
