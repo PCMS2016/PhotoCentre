@@ -11,8 +11,10 @@ namespace DAL
         List<Reports> GetDayRefund(DateTime day);
         List<Reports> GetDaySales(DateTime day);
         List<Reports> GetDayProduct(DateTime day);
-        List<Reports> GetMonthRefund(int month);
-        List<Reports> GetMonthSales(int month);
-        List<Reports> GetMonthProduct(int month);
+        List<Reports> GetMonthRefund(int month, int year);
+        List<Reports> GetMonthSales(int month, int year);
+        List<Reports> GetMonthProduct(int month, int year);
+        List<Reports> GetYearSales(int year);
+        List<Reports> GetYearProduct(int year);
     }
 }

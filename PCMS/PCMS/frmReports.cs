@@ -102,65 +102,181 @@ namespace PCMS
         private void dtpMonthReportMonth_ValueChanged(object sender, EventArgs e)
         {
             int month;
+            int year;
             List<Reports> R;
             List<Reports> S;
             List<Reports> P;
             if (int.TryParse(dtpMonthReportMonth.Value.Month.ToString(), out month))
             {
-                
-                R = handlerReport.GetMonthRefund(month);
-
-                if (R != null)
+                if (int.TryParse(dtpYearReportYear.Value.Year.ToString(), out year))
                 {
-                    dgvReportRefunds.Columns.Clear();
-                    dgvReportRefunds.DataSource = R;
-                    dgvReportRefunds.Columns[0].HeaderText = "ID";
-                    dgvReportRefunds.Columns[1].HeaderText = "Date";
-                    dgvReportRefunds.Columns[2].HeaderText = "Order#";
-                    dgvReportRefunds.Columns[3].HeaderText = "Salesperson";
-                    dgvReportRefunds.Columns[4].HeaderText = "Product";
-                    dgvReportRefunds.Columns[5].HeaderText = "Reason";
-                    dgvReportRefunds.Columns.RemoveAt(7);
-                    dgvReportRefunds.Columns.RemoveAt(6);
+
+                    R = handlerReport.GetMonthRefund(month, year);
+
+                    if (R != null)
+                    {
+                        dgvReportRefunds.Columns.Clear();
+                        dgvReportRefunds.DataSource = R;
+                        dgvReportRefunds.Columns[0].HeaderText = "ID";
+                        dgvReportRefunds.Columns[1].HeaderText = "Date";
+                        dgvReportRefunds.Columns[2].HeaderText = "Order#";
+                        dgvReportRefunds.Columns[3].HeaderText = "Salesperson";
+                        dgvReportRefunds.Columns[4].HeaderText = "Product";
+                        dgvReportRefunds.Columns[5].HeaderText = "Reason";
+                        dgvReportRefunds.Columns.RemoveAt(7);
+                        dgvReportRefunds.Columns.RemoveAt(6);
+                    }
+                    else
+                    {
+                        MessageBox.Show("not found");
+                    }
+
+                    S = handlerReport.GetMonthSales(month, year);
+
+                    if (S != null)
+                    {
+                        dgvReportSales.Columns.Clear();
+                        dgvReportSales.DataSource = S;
+                        dgvReportSales.Columns[3].HeaderText = "Salesperson";
+                        dgvReportSales.Columns[4].HeaderText = "Products";
+                        dgvReportSales.Columns[7].HeaderText = "Total";
+                        dgvReportSales.Columns.RemoveAt(6);
+                        dgvReportSales.Columns.RemoveAt(5);
+                        dgvReportSales.Columns.RemoveAt(2);
+                        dgvReportSales.Columns.RemoveAt(1);
+                        dgvReportSales.Columns.RemoveAt(0);
+                    }
+
+                    P = handlerReport.GetMonthProduct(month, year);
+
+                    if (P != null)
+                    {
+                        dgvReportProducts.Columns.Clear();
+                        dgvReportProducts.DataSource = P;
+                        dgvReportProducts.Columns[4].HeaderText = "Product";
+                        dgvReportProducts.Columns[6].HeaderText = "Quantity";
+                        dgvReportProducts.Columns[7].HeaderText = "Total";
+                        dgvReportProducts.Columns.RemoveAt(5);
+                        dgvReportProducts.Columns.RemoveAt(3);
+                        dgvReportProducts.Columns.RemoveAt(2);
+                        dgvReportProducts.Columns.RemoveAt(1);
+                        dgvReportProducts.Columns.RemoveAt(0);
+                    }
+                }
+            }
+        }
+
+        private void dtpYearReportYear_ValueChanged(object sender, EventArgs e)
+        {
+            int month;
+            int year;
+            List<Reports> R;
+            List<Reports> S;
+            List<Reports> P;
+            if (int.TryParse(dtpYearReportYear.Value.Year.ToString(), out year))
+            {
+                if (int.TryParse(dtpMonthReportMonth.Value.Month.ToString(), out month))
+                {
+
+                    R = handlerReport.GetMonthRefund(month, year);
+
+                    if (R != null)
+                    {
+                        dgvReportRefunds.Columns.Clear();
+                        dgvReportRefunds.DataSource = R;
+                        dgvReportRefunds.Columns[0].HeaderText = "ID";
+                        dgvReportRefunds.Columns[1].HeaderText = "Date";
+                        dgvReportRefunds.Columns[2].HeaderText = "Order#";
+                        dgvReportRefunds.Columns[3].HeaderText = "Salesperson";
+                        dgvReportRefunds.Columns[4].HeaderText = "Product";
+                        dgvReportRefunds.Columns[5].HeaderText = "Reason";
+                        dgvReportRefunds.Columns.RemoveAt(7);
+                        dgvReportRefunds.Columns.RemoveAt(6);
+                    }
+                    else
+                    {
+                        MessageBox.Show("not found");
+                    }
+
+                    S = handlerReport.GetMonthSales(month, year);
+
+                    if (S != null)
+                    {
+                        dgvReportSales.Columns.Clear();
+                        dgvReportSales.DataSource = S;
+                        dgvReportSales.Columns[3].HeaderText = "Salesperson";
+                        dgvReportSales.Columns[4].HeaderText = "Products";
+                        dgvReportSales.Columns[7].HeaderText = "Total";
+                        dgvReportSales.Columns.RemoveAt(6);
+                        dgvReportSales.Columns.RemoveAt(5);
+                        dgvReportSales.Columns.RemoveAt(2);
+                        dgvReportSales.Columns.RemoveAt(1);
+                        dgvReportSales.Columns.RemoveAt(0);
+                    }
+
+                    P = handlerReport.GetMonthProduct(month, year);
+
+                    if (P != null)
+                    {
+                        dgvReportProducts.Columns.Clear();
+                        dgvReportProducts.DataSource = P;
+                        dgvReportProducts.Columns[4].HeaderText = "Product";
+                        dgvReportProducts.Columns[6].HeaderText = "Quantity";
+                        dgvReportProducts.Columns[7].HeaderText = "Total";
+                        dgvReportProducts.Columns.RemoveAt(5);
+                        dgvReportProducts.Columns.RemoveAt(3);
+                        dgvReportProducts.Columns.RemoveAt(2);
+                        dgvReportProducts.Columns.RemoveAt(1);
+                        dgvReportProducts.Columns.RemoveAt(0);
+                    }
+                }
+            }
+        }
+
+        private void dtpReportYear_ValueChanged(object sender, EventArgs e)
+        {
+            int year;
+            List<Reports> S;
+            List<Reports> P;
+
+            if (int.TryParse(dtpReportYear.Value.Year.ToString(), out year))
+            {
+                S = handlerReport.GetYearSales(year);
+
+                if (S != null)
+                {
+                    dgvReportSalesYear.Columns.Clear();
+                    dgvReportSalesYear.DataSource = S;
+                    dgvReportSalesYear.Columns[3].HeaderText = "Salesperson";
+                    dgvReportSalesYear.Columns[4].HeaderText = "Products";
+                    dgvReportSalesYear.Columns[7].HeaderText = "Total";
+                    dgvReportSalesYear.Columns.RemoveAt(6);
+                    dgvReportSalesYear.Columns.RemoveAt(5);
+                    dgvReportSalesYear.Columns.RemoveAt(2);
+                    dgvReportSalesYear.Columns.RemoveAt(1);
+                    dgvReportSalesYear.Columns.RemoveAt(0);
                 }
                 else
                 {
                     MessageBox.Show("not found");
                 }
 
-                S = handlerReport.GetMonthSales(month);
-
-                if (S != null)
-                {
-                    dgvReportSales.Columns.Clear();
-                    dgvReportSales.DataSource = S;
-                    dgvReportSales.Columns[3].HeaderText = "Salesperson";
-                    dgvReportSales.Columns[4].HeaderText = "Products";
-                    dgvReportSales.Columns[7].HeaderText = "Total";
-                    dgvReportSales.Columns.RemoveAt(6);
-                    dgvReportSales.Columns.RemoveAt(5);
-                    dgvReportSales.Columns.RemoveAt(2);
-                    dgvReportSales.Columns.RemoveAt(1);
-                    dgvReportSales.Columns.RemoveAt(0);
-                }
-
-                P = handlerReport.GetMonthProduct(month);
+                P = handlerReport.GetYearProduct(year);
 
                 if (P != null)
                 {
-                    dgvReportProducts.Columns.Clear();
-                    dgvReportProducts.DataSource = P;
-                    dgvReportProducts.Columns[4].HeaderText = "Product";
-                    dgvReportProducts.Columns[6].HeaderText = "Quantity";
-                    dgvReportProducts.Columns[7].HeaderText = "Total";
-                    dgvReportProducts.Columns.RemoveAt(5);
-                    dgvReportProducts.Columns.RemoveAt(3);
-                    dgvReportProducts.Columns.RemoveAt(2);
-                    dgvReportProducts.Columns.RemoveAt(1);
-                    dgvReportProducts.Columns.RemoveAt(0);
+                    dgvReportProductYear.Columns.Clear();
+                    dgvReportProductYear.DataSource = P;
+                    dgvReportProductYear.Columns[4].HeaderText = "Product";
+                    dgvReportProductYear.Columns[6].HeaderText = "Quantity";
+                    dgvReportProductYear.Columns[7].HeaderText = "Total";
+                    dgvReportProductYear.Columns.RemoveAt(5);
+                    dgvReportProductYear.Columns.RemoveAt(3);
+                    dgvReportProductYear.Columns.RemoveAt(2);
+                    dgvReportProductYear.Columns.RemoveAt(1);
+                    dgvReportProductYear.Columns.RemoveAt(0);
                 }
             }
         }
-
-        }
+    }
 }

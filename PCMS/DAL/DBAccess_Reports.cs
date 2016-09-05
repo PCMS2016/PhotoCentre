@@ -97,13 +97,14 @@ namespace DAL
             return list;
         }
 
-        public List<Reports> GetMonthRefund(int month)
+        public List<Reports> GetMonthRefund(int month, int year)
         {
             List<Reports> list = new List<Reports>();
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@date", month)
+                new SqlParameter("@dateMonth", month),
+                new SqlParameter("@dateYear", year)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ReportRefundMonth", CommandType.StoredProcedure, parameters))
@@ -127,13 +128,14 @@ namespace DAL
             return list;
         }
 
-        public List<Reports> GetMonthSales(int month)
+        public List<Reports> GetMonthSales(int month, int year)
         {
             List<Reports> list = new List<Reports>();
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@date", month)
+                new SqlParameter("@dateMonth", month),
+                new SqlParameter("@dateYear", year)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ReportSalesMonth", CommandType.StoredProcedure, parameters))
@@ -154,16 +156,71 @@ namespace DAL
             return list;
         }
 
-        public List<Reports> GetMonthProduct(int month)
+        public List<Reports> GetMonthProduct(int month, int year)
         {
             List<Reports> list = new List<Reports>();
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@date", month)
+                new SqlParameter("@dateMonth", month),
+                new SqlParameter("@dateYear", year)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ReportSalesMonth", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Reports report = new Reports();
+                        report.Product = row["Product"].ToString();
+                        report.Quantity = Convert.ToInt32(row["Quantity"].ToString());
+                        report.Total = Convert.ToDouble(row["Total"].ToString());
+
+                        list.Add(report);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Reports> GetYearSales(int year)
+        {
+            List<Reports> list = new List<Reports>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@dateYear", year)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ReportSalesYear", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    foreach (DataRow row in table.Rows)
+                    {
+                        Reports report = new Reports();
+                        report.SalesPerson = row["Salesperson"].ToString();
+                        report.Product = row["Product"].ToString();
+                        report.Total = Convert.ToDouble(row["Total"].ToString());
+
+                        list.Add(report);
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<Reports> GetYearProduct(int year)
+        {
+            List<Reports> list = new List<Reports>();
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@dateYear", year)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ReportProductsYear", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {

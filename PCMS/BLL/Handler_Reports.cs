@@ -34,19 +34,29 @@ namespace BLL
         }
 
 
-        public List<Reports> GetMonthRefund(int month)
+        public List<Reports> GetMonthRefund(int month, int year)
         {
-            return db.GetMonthRefund(month);
+            return db.GetMonthRefund(month, year);
         }
 
-        public List<Reports> GetMonthSales(int month)
+        public List<Reports> GetMonthSales(int month, int year)
         {
-            return db.GetMonthSales(month);
+            return db.GetMonthSales(month, year);
         }
 
-        public List<Reports> GetMonthProduct(int month)
+        public List<Reports> GetMonthProduct(int month, int year)
         {
-            return db.GetMonthSales(month);
+            return db.GetMonthSales(month, year);
+        }
+        
+        public List<Reports> GetYearSales(int year)
+        {
+            return db.GetYearSales(year);
+        }
+
+        public List<Reports> GetYearProduct(int year)
+        {
+            return db.GetYearProduct(year);
         }
     }
 }
