@@ -118,6 +118,10 @@ namespace PCMS
             cmbNotificationType.Enabled = true;
             cmbCustomerType.Enabled = true;
             cmbDiscount.Enabled = true;
+
+            btnCustomerSearch.Enabled = false;
+            dgvCustomers.Enabled = false;
+            btnNext.Enabled = false;
         }
 
         //Disable customer fields...
@@ -130,6 +134,10 @@ namespace PCMS
             cmbNotificationType.Enabled = false;
             cmbCustomerType.Enabled = false;
             cmbDiscount.Enabled = false;
+
+            btnCustomerSearch.Enabled = true;
+            dgvCustomers.Enabled = true;
+            btnNext.Enabled = true;
         }
 
         //Pay button clicked...
@@ -157,10 +165,10 @@ namespace PCMS
                         if (cmbPayment.Text == "Cash")
                         {
                             change = (Convert.ToDouble(tbxCash.Text)) - orderTotal;
-                            MessageBox.Show(string.Format("Change: {0:C}", change));
-                            this.Close();
+                            MessageBox.Show(string.Format("Change: {0:C}", change));                                               
                         }
 
+                        this.Close();
 
                         //Generate list of products to be printed on the receipt
                         List<OrderLine> orderItemsPrint = new List<OrderLine>();
@@ -380,7 +388,7 @@ namespace PCMS
         //Update customer details...
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
-            if (customerSelected == true)
+            if (dgvCustomers.SelectedRows.Count > 0)
             {
                 if (btnUpdateCustomer.Text == "Update Customer")
                 {
@@ -403,8 +411,9 @@ namespace PCMS
                             DisableCustomerEdit();
                             
                             SearchCustomer(tbxCustomerName.Text, tbxCustomerSurname.Text);
+                            ClearCustomerFields();
 
-                            customerSelected = true;
+                            customerSelected = false;
                         }
                         frmOrder.ActiveForm.AcceptButton = btnNext;
                     }
@@ -553,7 +562,8 @@ namespace PCMS
         //Don't allow user to proceed if details are missing...
         private void tabCtrlOrder_SelectedIndexChanged(object sender, EventArgs e)
         {           
-            if (customerSelected == false && (tabCtrlOrder.SelectedTab == tabProducts || tabCtrlOrder.SelectedTab == tabFinish))
+            if (customerSelected == false && (tabCtrlOrder.SelectedTab == tabProducts || 
+                tabCtrlOrder.SelectedTab == tabFinish))
             {
                 tabCtrlOrder.SelectedTab = tabCustomer;
                 MessageBox.Show("No Customer Selected!");
@@ -562,6 +572,12 @@ namespace PCMS
             {
                 tabCtrlOrder.SelectedTab = tabProducts;
                 MessageBox.Show("No Products Added!");
+            }
+
+            if ((btnNewCustomer.Text == "Save" || btnUpdateCustomer.Text == "Save") && 
+                tabCtrlOrder.SelectedTab != tabCustomer)
+            {
+                tabCtrlOrder.SelectedTab = tabCustomer;
             }
         }
 

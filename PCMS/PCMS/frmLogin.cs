@@ -32,8 +32,7 @@ namespace PCMS
 
             Salesperson salesperson = new Salesperson();
             salesperson.Username = username;
-            salesperson.Password = password;
-            //salesperson.Password = EncryptionHelper.Encrypt(password);
+            salesperson.Password = EncryptionHelper.Encrypt(password);
 
             //Retrieve details from database matching the username and password...
 
