@@ -70,7 +70,6 @@ namespace PCMS
             int OrderNum;
             if (int.TryParse(tbxOrderNumber.Text, out OrderNum))
             {
-
                 Order order = new Order();
                 order = handlerRefund.getOrderByNum(OrderNum);
                 if (order != null)
@@ -121,10 +120,6 @@ namespace PCMS
 
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
-            
-
-            
-
             RefundTabControll.SelectedTab = RefundTabControll.TabPages[1];
             dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
         }

@@ -98,13 +98,13 @@ namespace DAL
         }
         public bool AddRefund(Refund rfnd)
         {
-            string date = rfnd.Date.ToString();
+            string date = DateTime.Today.ToString();
 
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@OrderID", rfnd.OrderNumber),
                 new SqlParameter("@SalespersonID", rfnd.SalespersonID),
-                new SqlParameter("@Date", Convert.ToDateTime(rfnd.Date.ToString())),
+                new SqlParameter("@Date", Convert.ToDateTime(date)),
                 new SqlParameter("@RefundTotal", rfnd.Total)
             };
             return DBHelper.ExecuteNonQuery("sp_AddRefund", CommandType.StoredProcedure, parameters);
