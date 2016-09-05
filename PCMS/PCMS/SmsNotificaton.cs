@@ -17,7 +17,7 @@ namespace PCMS
 
             sRequestData = "AccountID=" + ConfigurationManager.AppSettings["AccountID"]
                 + "&Email=" + System.Web.HttpUtility.UrlEncode(ConfigurationManager.AppSettings["UserID"])
-                + "&Password=" + System.Web.HttpUtility.UrlEncode(ConfigurationManager.AppSettings["SmsPassword"])
+                + "&Password=" + System.Web.HttpUtility.UrlEncode(EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["SmsPassword"]))
                 + "&Recipient=" + System.Web.HttpUtility.UrlEncode(Recipient)
                 + "&Message=" + System.Web.HttpUtility.UrlEncode(Message);
 
