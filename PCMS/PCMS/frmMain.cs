@@ -49,6 +49,7 @@ namespace PCMS
 
             //Load orders of the current day...
             handlerOrder = new Handler_Order();
+            handlerCustomer = new Handler_Customer();
 
             BindData_Orders();
         }
@@ -312,45 +313,117 @@ namespace PCMS
             }
         }
 
-        //Notify Customer
-        private void NotifyCustomer()
+        //Notify Customer via Email
+        private void EmailNotifyCustomer(int orderNumber, string emailAddress, string message)
         {
-            int orderNumber = int.Parse(dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells[0].Value.ToString());
-
-            handlerCustomer = new Handler_Customer();
             List<string> to = new List<string>();
+
+            to.Add(emailAddress);
+
+            EmailNotification email = new EmailNotification(to, "Order Collection", message);
+
             try
             {
-                to.Add(handlerCustomer.GetEmailAddress(orderNumber));
+                email.SendMail();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occured when retrieving customer's email address!" + Environment.NewLine +
-                    Environment.NewLine + ex.Message);
+                MessageBox.Show("Error occured when sending Email!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //Notify Customer via SMS
+        private void SMSNotifyCustomer(string number, int orderNumber, string message)
+        {
+            string smsCode = "";
+            try
+            {
+                smsCode = SmsNotificaton.SendSms(number, message).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when sending SMS!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
             }
 
-            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage." + Environment.NewLine;
+            if (smsCode != "")
+            {
+                if (smsCode != "0")
+                {
+                    if (MessageBox.Show("Error: " + smsCode + Environment.NewLine + Environment.NewLine +
+                        "Please refere to the Red Oxygen website for details on the error." + Environment.NewLine + Environment.NewLine +
+                        "Do you want to visit the website now?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("https://www.redoxygen.com/support/wiki/doku.php?id=red_api:errors");
+                    }
+                }
+            }
+        }
 
-            EmailNotification email = new EmailNotification(to, "Order Collection", msg);
-            email.SendMail();
+        //Notify Customer
+        private void NotifyCustomer()
+        {
+            if (lblOrderNumber.Text != "")
+            {
+                int orderNumber = Convert.ToInt32(lblOrderNumber.Text);
+
+                string message = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage.";
+
+                string email = "";
+                string cellphone = "";
+                string type = "";
+
+                Customer customer = null;
+
+                try
+                {
+                    customer = handlerCustomer.GetNotificationDetails(orderNumber);
+                    type = customer.NotificationType;
+                    email = customer.Email;
+                    cellphone = customer.Cellphone;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not retrieve details to notify customer!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
+
+                if (type != "")
+                {
+                    if (type == "Email")
+                    {
+                        EmailNotifyCustomer(orderNumber, email, message);
+                    }
+                    else if (type == "SMS")
+                    {
+                        SMSNotifyCustomer(cellphone, orderNumber, message);
+                    }
+                }
+            }
         }
 
         //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
+            bool completed = true;
             try
             {
-                handlerOrder.CompleteOrder(selectedOrderNum);
+                handlerOrder.CompleteOrder(selectedOrderNum);              
+            }
+            catch (Exception ex)
+            {
+                completed = false;
+                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
 
+            if (completed == true)
+            {
                 dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
 
                 btnCompleted.Enabled = false;
 
                 NotifyCustomer();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
             }
         }
 
