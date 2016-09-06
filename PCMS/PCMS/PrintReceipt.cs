@@ -151,6 +151,8 @@ namespace PCMS
             //Footer//
             graphic.DrawString("Discount: ".PadLeft(46) + string.Format("{0:f2}%", discount), font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 5;
+            graphic.DrawString("VAT: ".PadLeft(46) + string.Format("{0:f2}%", ConfigurationManager.AppSettings["VAT"]), font12, solidBrush, startX, startY + offset);
+            offset += (int)fontHeight + 5;
             graphic.DrawString("Total (excl VAT): ".PadLeft(46) + string.Format("{0:c}", totalVat), font12, solidBrush, startX, startY + offset);
             offset += (int)fontHeight + 5;
             graphic.DrawString("Total (incl VAT): ".PadLeft(46) + string.Format("{0:c}", discountTotal), font12, solidBrush, startX, startY + offset);

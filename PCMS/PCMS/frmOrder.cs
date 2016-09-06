@@ -693,7 +693,14 @@ namespace PCMS
             }
 
             //Get the order number from database
-            orderNumber = handlerOrder.GetOrderNumber();
+            try
+            { 
+                orderNumber = handlerOrder.GetOrderNumber();
+            }
+            catch
+            {
+
+            }
         }
 
         //Add item to List...

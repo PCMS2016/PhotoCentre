@@ -23,6 +23,8 @@ namespace PCMS
         public int selectedOrderNum = 0;
         string privileges;
         string employeeType;
+        bool completed = true;
+        bool collected = false;
 
         public frmMain(int salespersonID, string user, string privileges, string employeeType)
         {
@@ -51,7 +53,17 @@ namespace PCMS
             handlerOrder = new Handler_Order();
             handlerCustomer = new Handler_Customer();
 
-            BindData_Orders();
+            try
+            {
+                dgvOrders.DataSource = handlerOrder.getOrderDateList(DateTime.Now, completed, collected);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+
+            cbxCompleted.Checked = true;
+            cbxCollectedOrders.Checked = false;
         }
 
         //Orders grid header text
@@ -82,7 +94,7 @@ namespace PCMS
         {
             try
             {
-                dgvOrders.DataSource = handlerOrder.GetAllOrders();
+                dgvOrders.DataSource = handlerOrder.GetAllOrders(completed, collected);
 
                 SetOrdersHeaders();
             }
@@ -97,23 +109,23 @@ namespace PCMS
         //Order Lines grid header text
         private void SetOrderLinesHeaders()
         {
-            dgvOrderLines.Columns[1].HeaderText = "Product";
-            dgvOrderLines.Columns[3].HeaderText = "Qty";
-            dgvOrderLines.Columns[4].HeaderText = "Price";
-            dgvOrderLines.Columns[5].HeaderText = "Total";
-            dgvOrderLines.Columns[6].HeaderText = "Instructions";
+            cbxCollected.Columns[1].HeaderText = "Product";
+            cbxCollected.Columns[3].HeaderText = "Qty";
+            cbxCollected.Columns[4].HeaderText = "Price";
+            cbxCollected.Columns[5].HeaderText = "Total";
+            cbxCollected.Columns[6].HeaderText = "Instructions";
 
-            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
-            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
+            cbxCollected.Columns[5].DefaultCellStyle.Format = "C";
+            cbxCollected.Columns[4].DefaultCellStyle.Format = "C";
 
-            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvOrderLines.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvOrderLines.Columns[0].Visible = false;
-            dgvOrderLines.Columns[2].Visible = false;
+            cbxCollected.Columns[0].Visible = false;
+            cbxCollected.Columns[2].Visible = false;
         }
 
         //Bind order lines to order lines grid...
@@ -121,7 +133,7 @@ namespace PCMS
         {
             try
             {
-                dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
+                cbxCollected.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
 
                 SetOrderLinesHeaders();
             }
@@ -271,7 +283,7 @@ namespace PCMS
 
                 try
                 {
-                    dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
+                    dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName, completed, collected);
 
                     SetOrdersHeaders();
 
@@ -290,7 +302,7 @@ namespace PCMS
         private void dtpDateSearch_ValueChanged(object sender, EventArgs e)
         {
             DateTime date = DateTime.Parse(dtpDateSearch.Text);
-            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+            dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
 
             SetOrdersHeaders();
         }
@@ -302,7 +314,7 @@ namespace PCMS
 
             try
             {
-                dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+                dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
 
                 SetOrdersHeaders();
             }
@@ -541,6 +553,22 @@ namespace PCMS
         private void tbxSurname_Enter(object sender, EventArgs e)
         {
             frmMain.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void cbxCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCompleted.Checked == true)
+                completed = true;
+            else
+                completed = false;         
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCollectedOrders.Checked == true)
+                collected = true;
+            else
+                collected = false;
         }
     }
 }
