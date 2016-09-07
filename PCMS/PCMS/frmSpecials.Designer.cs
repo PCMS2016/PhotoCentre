@@ -40,6 +40,7 @@
             this.btnSpecialUpdate = new MetroFramework.Controls.MetroButton();
             this.cmbProduct = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -54,7 +55,6 @@
             this.btnSearchProduct = new MetroFramework.Controls.MetroButton();
             this.cmbProductSearch = new MetroFramework.Controls.MetroComboBox();
             this.tileDone = new MetroFramework.Controls.MetroTile();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSpecials)).BeginInit();
@@ -173,7 +173,6 @@
             this.cmbProduct.Location = new System.Drawing.Point(165, 261);
             this.cmbProduct.Name = "cmbProduct";
             this.cmbProduct.Size = new System.Drawing.Size(177, 29);
-            this.cmbProduct.Sorted = true;
             this.cmbProduct.TabIndex = 25;
             this.cmbProduct.UseSelectable = true;
             // 
@@ -186,6 +185,16 @@
             this.metroLabel3.Size = new System.Drawing.Size(95, 19);
             this.metroLabel3.TabIndex = 18;
             this.metroLabel3.Text = "Qty To Qualify:";
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.AutoSize = true;
+            this.metroLabel4.Enabled = false;
+            this.metroLabel4.Location = new System.Drawing.Point(165, 334);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(17, 19);
+            this.metroLabel4.TabIndex = 18;
+            this.metroLabel4.Text = "R";
             // 
             // metroLabel1
             // 
@@ -233,7 +242,7 @@
             // 
             // 
             this.tbxPrice.CustomButton.Image = null;
-            this.tbxPrice.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.tbxPrice.CustomButton.Location = new System.Drawing.Point(126, 1);
             this.tbxPrice.CustomButton.Name = "";
             this.tbxPrice.CustomButton.Size = new System.Drawing.Size(27, 27);
             this.tbxPrice.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -400,16 +409,7 @@
             this.tileDone.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
             this.tileDone.UseSelectable = true;
             this.tileDone.UseStyleColors = true;
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Enabled = false;
-            this.metroLabel4.Location = new System.Drawing.Point(165, 334);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(17, 19);
-            this.metroLabel4.TabIndex = 18;
-            this.metroLabel4.Text = "R";
+            this.tileDone.Click += new System.EventHandler(this.tileDone_Click);
             // 
             // frmSpecials
             // 

@@ -20,19 +20,17 @@ namespace PCMS
         private IHandler_Product handlerProduct = null;
 
         //Passed Variables
-
+        private string employeeType;
         
         //This Variables
 
         //Bind products to ComboBox
         private void BindData_Product()
         {
-            //cmbProduct.Sorted = true;
             cmbProduct.DataSource = handlerProduct.GetAllProducts();
             cmbProduct.DisplayMember = "Product";
             cmbProduct.ValueMember = "SizeMediumID";
 
-            //cmbProductSearch.Sorted = true;
             cmbProductSearch.DataSource = handlerProduct.GetAllProducts();
             cmbProductSearch.DisplayMember = "Product";
             cmbProductSearch.ValueMember = "SizeMediumID";
@@ -82,6 +80,8 @@ namespace PCMS
             dgvSpecials.Columns[3].HeaderText = "Price";
             dgvSpecials.Columns[4].HeaderText = "Start Date";
             dgvSpecials.Columns[5].HeaderText = "End Date";
+
+            dgvSpecials.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             dgvSpecials.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSpecials.Columns[3].DefaultCellStyle.Format = "C";
@@ -164,6 +164,8 @@ namespace PCMS
         //Validate Fields
         private bool ValidateFields()
         {
+            tbxPrice.Text = tbxPrice.Text.Replace('.', ',');
+
             string errorMessage = "";
             bool valid = true;
             double price;
@@ -180,7 +182,7 @@ namespace PCMS
                 errorMessage += "Quantity needs to be more than 0" + Environment.NewLine;
             }
 
-            if (dtpStartDate.Value < DateTime.Now)
+            if (dtpStartDate.Value < DateTime.Now.AddDays(-1))
             {
                 valid = false;
                 errorMessage += "Start date can't be in the past" + Environment.NewLine;
@@ -211,9 +213,10 @@ namespace PCMS
             dtpEndDate.Text = dgvSpecials.Rows[index].Cells[5].Value.ToString();
         }
 
-        public frmSpecials()
+        public frmSpecials(string employeeType)
         {
             InitializeComponent();
+            this.employeeType = employeeType;
         }
 
         //Form Loads...
@@ -235,8 +238,17 @@ namespace PCMS
                 this.Close();
             }
 
+            SpecialSearchByDate(DateTime.Now);
+
             //Focus control
             cmbProduct.Focus();
+
+            if (employeeType != "Admin")
+            {
+                btnSpecialNew.Enabled = false;
+                btnSpecialUpdate.Enabled = false;
+                btnSpecialNotify.Enabled = false;
+            }
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)
@@ -373,6 +385,11 @@ namespace PCMS
             email.SendMail();
 
             MessageBox.Show("Customers Notified.");
+        }
+
+        private void tileDone_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
