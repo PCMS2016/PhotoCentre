@@ -736,7 +736,6 @@ namespace PCMS
         //Bind products to ComboBox
         private void BindData_Product()
         {
-            cmbProduct.Sorted = true;
             cmbProduct.DataSource = handlerProduct.GetAllProducts();
             cmbProduct.DisplayMember = "Product";
             cmbProduct.ValueMember = "SizeMediumID";           
@@ -745,7 +744,6 @@ namespace PCMS
         //Bind payments to ComboBox
         private void BindData_Payment()
         {
-            cmbPayment.Sorted = true;
             cmbPayment.DataSource = handlerPayment.GetAllPayments();
             cmbPayment.DisplayMember = "PaymentType";
             cmbPayment.ValueMember = "PaymentID";
@@ -754,7 +752,6 @@ namespace PCMS
         //Bind discount to ComboBox
         private void BindData_Discount()
         {
-            cmbDiscount.Sorted = true;
             cmbDiscount.DataSource = handlerDiscount.GetAllDiscount();
             cmbDiscount.DisplayMember = "Percentage";
             cmbDiscount.ValueMember = "DiscountID";
@@ -827,8 +824,8 @@ namespace PCMS
         private void frmOrder_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
-            {
-                System.Diagnostics.Process.Start("Help\\Help_Orders.html");
+            {        
+                System.Diagnostics.Process.Start("Help\\NewOrder.html");
             }
 
             if (e.KeyCode == Keys.Escape)

@@ -55,7 +55,7 @@ namespace PCMS
 
             try
             {
-                dgvOrders.DataSource = handlerOrder.getOrderDateList(DateTime.Now, completed, collected);
+                btnToday.PerformClick();
             }
             catch (Exception ex)
             {
@@ -476,7 +476,7 @@ namespace PCMS
         {
             if (e.KeyCode == Keys.F1)
             {
-                System.Diagnostics.Process.Start("Help\\Help_Main.html");
+                System.Diagnostics.Process.Start("Help\\Main.html");
             }
             if (e.KeyCode == Keys.F4)
             {
@@ -531,7 +531,7 @@ namespace PCMS
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("Help\\Help_Main.html");
+            System.Diagnostics.Process.Start("Help\\Main.html");
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
