@@ -436,5 +436,23 @@ namespace PCMS
             DisableFields();
             ClearFields();
         }
+
+        private void cmbProductSearch_Enter(object sender, EventArgs e)
+        {
+            frmSpecials.ActiveForm.AcceptButton = btnSearchProduct;
+        }
+
+        private void dtpDateSearch_Enter(object sender, EventArgs e)
+        {
+            frmSpecials.ActiveForm.AcceptButton = btnSearchDate;
+        }
+
+        private void cmbProduct_Enter(object sender, EventArgs e)
+        {
+            if (btnSpecialNew.Text == "Save")
+                frmSpecials.ActiveForm.AcceptButton = btnSpecialNew;
+            else if (btnSpecialUpdate.Text == "Save")
+                frmSpecials.ActiveForm.AcceptButton = btnSpecialUpdate;
+        }
     }
 }

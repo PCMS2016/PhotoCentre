@@ -39,6 +39,8 @@ namespace PCMS
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
+            metroTabControl1.SelectedTab = tabGeneral;
+
             handlerSalesperson = new Handler_Salesperson();
             handlerPayment = new Handler_Payment();
             handlerCompany = new Handler_Company();
