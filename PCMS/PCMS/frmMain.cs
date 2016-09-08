@@ -176,7 +176,7 @@ namespace PCMS
         //Go to specials...
         private void tileSpecials_Click(object sender, EventArgs e)
         {
-            frmSpecials Specials = new frmSpecials(employeeType);
+            frmSpecials Specials = new frmSpecials(privileges);
             Specials.ShowDialog();
         }
 

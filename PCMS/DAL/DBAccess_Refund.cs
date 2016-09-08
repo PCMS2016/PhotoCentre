@@ -102,10 +102,10 @@ namespace DAL
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@OrderID", rfnd.OrderNumber),
-                new SqlParameter("@SalespersonID", rfnd.SalespersonID),
+                new SqlParameter("@OrderID", Convert.ToInt32(rfnd.OrderNumber)),
+                new SqlParameter("@SalespersonID", Convert.ToInt32(rfnd.SalespersonID)),
                 new SqlParameter("@Date", Convert.ToDateTime(date)),
-                new SqlParameter("@RefundTotal", rfnd.Total)
+                new SqlParameter("@RefundTotal", Convert.ToDouble(rfnd.Total))
             };
             return DBHelper.ExecuteNonQuery("sp_AddRefund", CommandType.StoredProcedure, parameters);
         }
@@ -193,8 +193,8 @@ namespace DAL
                 new SqlParameter("@OrderLineID", Convert.ToInt32(refProd.OrderLineID)),
                 new SqlParameter("@Reason", refProd.Reason.ToString()),
                 new SqlParameter("@Quantity", Convert.ToInt32(refProd.Quantity)),
-                new SqlParameter("@Price", Convert.ToInt32(refProd.Price)),
-                new SqlParameter("@LineTotal", Convert.ToInt32(refProd.LineTotal))
+                new SqlParameter("@Price", Convert.ToDouble(refProd.Price)),
+                new SqlParameter("@LineTotal", Convert.ToDouble(refProd.LineTotal))
             };
             return DBHelper.ExecuteNonQuery("sp_AddRefundProduct", CommandType.StoredProcedure, parameters);
         }
