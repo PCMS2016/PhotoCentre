@@ -152,6 +152,10 @@ namespace PCMS
                                 ClearCustomerFields();
 
                                 customerSelected = false;
+
+                                btnCancel.Visible = false;
+
+                                MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                         frmOrder.ActiveForm.AcceptButton = btnNext;
@@ -313,6 +317,8 @@ namespace PCMS
                             ClearCustomerFields();
 
                             customerSelected = false;
+
+                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     frmOrder.ActiveForm.AcceptButton = btnNext;
@@ -476,6 +482,10 @@ namespace PCMS
                 numQty.Value = 0;
                 tbxInstructions.Clear();
 
+
+                orderTotal += total;
+                lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);
+
                 //frmOrder.ActiveForm.AcceptButton = btnFinishTransaction;
             }
         }
@@ -491,10 +501,13 @@ namespace PCMS
             else
             {
                 int index = dgvProducts.SelectedRows[0].Index;
+
+                orderTotal = orderTotal - (orderItems[index].LineTotal);
+
                 string instructions = tbxInstructions.Text;
                 string temp = dgvProducts.Rows[index].Cells[2].Value.ToString();
                 double price = GetPrice(Convert.ToInt32(cmbProduct.SelectedValue.ToString()), Convert.ToInt32(numQty.Value));
-                double total = Convert.ToDouble(numQty.Value.ToString()) * price;
+                double total = Convert.ToInt32(numQty.Value) * price;
 
                 if (instructions == "")
                 {
@@ -515,6 +528,9 @@ namespace PCMS
                 btnEdit.Enabled = false;
 
                 btnEdit.Text = "Edit Item";
+
+                orderTotal += total;
+                lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);
             }
         }
 
@@ -523,21 +539,26 @@ namespace PCMS
         {
             int index = dgvProducts.SelectedRows[0].Index;
 
+            orderTotal = orderTotal - (orderItems[index].LineTotal);
+
             dgvProducts.Rows.RemoveAt(index);
             dgvOrderLines.Rows.RemoveAt(index);
 
             orderItems.RemoveAt(index);
+
+            lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);
         }
 
         //Finish Transaction Button clicked...
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
             //Calculate order total
+            /*
             foreach (var item in orderItems)
             {
                 orderTotal += item.LineTotal;
             }
-            lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);
+            lblOrderTotal.Text = string.Format("Total: {0:c}", orderTotal);*/
 
             //Switch tab
             if (dgvProducts.Rows.Count > 0)
