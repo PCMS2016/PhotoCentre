@@ -296,6 +296,8 @@ namespace PCMS
                 ClearSalespersonFields();
                 EnableSalespersonFields();
 
+                btnCancel.Visible = true;
+
                 tbxSalespersonName.Focus();
             }
             else
@@ -313,9 +315,9 @@ namespace PCMS
                             btnNewSalesperson.Text = "New Salesperson";
                             DisableSalespersonFields();
 
-                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnCancel.Visible = false;
 
-                            
+                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);                           
                         }
                     }
                 }
@@ -330,6 +332,8 @@ namespace PCMS
                 btnNewSalesperson.Enabled = false;
                 btnUpdateSalesperson.Text = "Save";
                 EnableSalespersonFields();
+
+                btnCancel.Visible = true;
 
                 tbxSalespersonName.Focus();
             }
@@ -347,6 +351,8 @@ namespace PCMS
                             btnNewSalesperson.Enabled = true;
                             btnUpdateSalesperson.Text = "Update Salesperson";
                             DisableSalespersonFields();
+
+                            btnCancel.Visible = false;
 
                             MessageBox.Show("UPDATED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -568,6 +574,8 @@ namespace PCMS
                 ClearPaymentFields();
                 EnablePaymentFields();
 
+                btnCancel_Payments.Visible = true;
+
                 tbxDescription.Focus();
             }
             else
@@ -584,6 +592,8 @@ namespace PCMS
                             btnUpdatePayment.Enabled = true;
                             btnNewPayment.Text = "New Payment Method";
                             DisablePaymentFields();
+
+                            btnCancel_Payments.Visible = false;
 
                             BindData_Payments();
                         }
@@ -607,6 +617,8 @@ namespace PCMS
                     btnUpdatePayment.Text = "Save";
                     EnablePaymentFields();
 
+                    btnCancel_Payments.Visible = true;
+
                     tbxDescription.Focus();
                 }
                 else
@@ -623,6 +635,8 @@ namespace PCMS
                                 btnNewPayment.Enabled = true;
                                 btnUpdatePayment.Text = "Update Payment Method";
                                 DisablePaymentFields();
+
+                                btnCancel_Payments.Visible = false;
 
                                 BindData_Payments();
                             }
@@ -860,6 +874,8 @@ namespace PCMS
                 ClearPaymentFields();
                 EnableProductFields();
 
+                btnCancel_Products.Visible = true;
+
                 cmbProductSize.Focus();
             }
             else
@@ -876,6 +892,8 @@ namespace PCMS
                             btnUpdateProduct.Enabled = true;
                             btnNewProduct.Text = "New Product";
                             DisableProductFields();
+
+                            btnCancel_Products.Visible = false;
 
                             BindData_Product();
                         }                      
@@ -895,6 +913,8 @@ namespace PCMS
                     btnUpdateProduct.Text = "Save";
                     EnableProductFields();
 
+                    btnCancel_Products.Visible = true;
+
                     cmbProductSize.Focus();
                 }
                 else
@@ -911,6 +931,8 @@ namespace PCMS
                                 btnNewProduct.Enabled = true;
                                 btnUpdateProduct.Text = "Update Product";
                                 DisableProductFields();
+
+                                btnCancel_Products.Visible = false;
 
                                 BindData_Product();
                             }
@@ -1118,6 +1140,8 @@ namespace PCMS
                 btnNewMedium.Text = "Save";
                 tbxMedium.Enabled = true;
 
+                btnCancel_Medium.Visible = true;
+
                 tbxMedium.Focus();
             }
             else
@@ -1133,6 +1157,8 @@ namespace PCMS
                         {
                             btnNewMedium.Text = "New Medium";
                             tbxSize.Enabled = false;
+
+                            btnCancel_Medium.Visible = false;
 
                             BindData_Medium_Grid();
                         }
@@ -1360,6 +1386,75 @@ namespace PCMS
                 gbxSMS.Enabled = false;
                 gbxEmail.Enabled = false;
             }
+        }
+
+        //Cancel New/Update Salesperson
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnNewSalesperson.Text = "New Salesperson";
+            btnNewSalesperson.Enabled = true;
+
+            btnUpdateSalesperson.Text = "Update Salesperson";
+            btnUpdateSalesperson.Enabled = true;
+
+            btnCancel.Visible = false;
+
+            DisableSalespersonFields();
+            ClearSalespersonFields();
+        }
+
+        //Cancel New/Update Products
+        private void btnCancel_Products_Click(object sender, EventArgs e)
+        {
+            btnNewProduct.Text = "New Product";
+            btnNewProduct.Enabled = true;
+
+            btnUpdateProduct.Text = "Update Product";
+            btnUpdateProduct.Enabled = true;
+
+            btnCancel_Products.Visible = false;
+
+            DisableProductFields();
+            ClearProductFields();
+        }
+
+        //Cancel New/Update Payment Methods
+        private void btnCancel_Payments_Click(object sender, EventArgs e)
+        {
+            btnNewPayment.Text = "New Payment Method";
+            btnNewPayment.Enabled = true;
+
+            btnUpdatePayment.Text = "Update Payment Method";
+            btnUpdatePayment.Enabled = true;
+
+            btnCancel_Payments.Visible = false;
+
+            DisablePaymentFields();
+            ClearPaymentFields();
+        }
+
+        //Cancel New Medium
+        private void btnCancel_Medium_Click(object sender, EventArgs e)
+        {
+            btnNewMedium.Text = "New Medium";
+            btnNewMedium.Enabled = true;
+
+            btnCancel_Medium.Visible = false;
+
+            tbxMedium.Enabled = false;
+            tbxMedium.Clear();
+        }
+
+        //Cancel New Size
+        private void btnCancel_Size_Click(object sender, EventArgs e)
+        {
+            btnNewSize.Text = "New Size";
+            btnNewSize.Enabled = true;
+
+            btnCancel_Size.Visible = false;
+
+            tbxSize.Enabled = false;
+            tbxSize.Clear();
         }
     }
 }

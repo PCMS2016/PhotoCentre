@@ -152,6 +152,8 @@ namespace PCMS
                                 ClearCustomerFields();
 
                                 customerSelected = false;
+
+                                btnCancel.Visible = false;
                             }
                         }
                         frmOrder.ActiveForm.AcceptButton = btnNext;

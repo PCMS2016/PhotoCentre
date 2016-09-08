@@ -265,6 +265,8 @@ namespace PCMS
                 ClearFields();
                 EnableFields();
 
+                btnCancel.Visible = true;
+
                 cmbProduct.Focus();
             }
             else
@@ -279,6 +281,8 @@ namespace PCMS
                         btnSpecialUpdate.Enabled = true;
                         btnSpecialNew.Text = "New Special";
                         DisableFields();
+
+                        btnCancel.Visible = false;
                     }
                 }
             }
@@ -294,6 +298,8 @@ namespace PCMS
                     btnSpecialUpdate.Text = "Save";
                     EnableFields();
 
+                    btnCancel.Visible = true;
+
                     cmbProduct.Focus();
                 }
                 else
@@ -308,6 +314,8 @@ namespace PCMS
                             btnSpecialNew.Enabled = true;
                             btnSpecialUpdate.Text = "Update Special";
                             DisableFields();
+
+                            btnCancel.Visible = false;
                         }
                     }
                 }
@@ -390,6 +398,21 @@ namespace PCMS
         private void tileDone_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //Cancel New/Update Special
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnSpecialNew.Text = "New Special";
+            btnSpecialNew.Enabled = true;
+
+            btnSpecialUpdate.Text = "Update Special";
+            btnSpecialUpdate.Enabled = true;
+
+            btnCancel.Visible = false;
+
+            DisableFields();
+            ClearFields();
         }
     }
 }
