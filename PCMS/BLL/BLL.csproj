@@ -50,6 +50,7 @@
     <Compile Include="Handler_Payment.cs" />
     <Compile Include="Handler_Product.cs" />
     <Compile Include="Handler_Refund.cs" />
+    <Compile Include="Handler_Reports.cs" />
     <Compile Include="Handler_Salesperson.cs" />
     <Compile Include="Handler_Size.cs" />
     <Compile Include="Handler_Special.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="IHandler_Payment.cs" />
     <Compile Include="IHandler_Product.cs" />
     <Compile Include="IHandler_Refund.cs" />
+    <Compile Include="IHandler_Reports.cs" />
     <Compile Include="IHandler_Salesperson.cs" />
     <Compile Include="IHandler_Size.cs" />
     <Compile Include="IHandler_Special.cs" />

@@ -15,5 +15,6 @@ namespace BLL
         List<Special> GetSpecialsByProduct(int SizeMediumID);
         bool RemoveSpecial(int SpecialID);
         bool UpdateSpecial(Special special);
+        List<string> GetAllEmailAddresses();
     }
 }

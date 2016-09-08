@@ -12,5 +12,8 @@ namespace DAL
         bool AddProduct(SizeMedium sizeMedium);
         bool UpdateProduct(SizeMedium sizeMedium);
         bool RemoveProduct(int SizeMediumID);
+        List<SizeMedium> GetAllProductsIndividualFields();
+        List<OrderLine> GetSpecialPrice(int ProductID);
+
     }
 }

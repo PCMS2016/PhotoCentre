@@ -53,6 +53,7 @@
     <Compile Include="DBAccess_Payment.cs" />
     <Compile Include="DBAccess_Product.cs" />
     <Compile Include="DBAccess_Refund.cs" />
+    <Compile Include="DBAccess_Reports.cs" />
     <Compile Include="DBAccess_Salesperson.cs" />
     <Compile Include="DBAccess_Size.cs" />
     <Compile Include="DBAccess_Special.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="IDBAccess_Order.cs" />
     <Compile Include="IDBAccess_OrderLines.cs" />
     <Compile Include="IDBAccess_Refund.cs" />
+    <Compile Include="IDBAccess_Reports.cs" />
     <Compile Include="IDBAccess_Salesperson.cs" />
     <Compile Include="IDBAccess_Size.cs" />
     <Compile Include="IDBAccess_Special.cs" />
@@ -84,6 +86,7 @@
     </Compile>
     <Compile Include="Refund.cs" />
     <Compile Include="RefundProduct.cs" />
+    <Compile Include="Reports.cs" />
     <Compile Include="Salesperson.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="SizeMedium.cs" />

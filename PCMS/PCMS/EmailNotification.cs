@@ -35,7 +35,7 @@ namespace PCMS
             smtpAddress = ConfigurationManager.AppSettings["smtpAddress"];
             portNumber = int.Parse(ConfigurationManager.AppSettings["portNumber"]);
             enableSSL = bool.Parse(ConfigurationManager.AppSettings["enableSSL"]);
-            password = ConfigurationManager.AppSettings["password"];
+            password = EncryptionHelper.Decrypt(ConfigurationManager.AppSettings["password"]);
         }
         public void SendMail()
         {

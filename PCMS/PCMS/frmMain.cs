@@ -23,6 +23,8 @@ namespace PCMS
         public int selectedOrderNum = 0;
         string privileges;
         string employeeType;
+        bool completed = true;
+        bool collected = false;
 
         public frmMain(int salespersonID, string user, string privileges, string employeeType)
         {
@@ -49,26 +51,39 @@ namespace PCMS
 
             //Load orders of the current day...
             handlerOrder = new Handler_Order();
-            BindData_Orders();
+            handlerCustomer = new Handler_Customer();
+
+            try
+            {
+                btnToday.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+
+            cbxCompleted.Checked = true;
+            cbxCollectedOrders.Checked = false;
         }
 
         //Orders grid header text
         private void SetOrdersHeaders()
         {
             dgvOrders.Columns[0].HeaderText = "Order#";
-            dgvOrders.Columns[1].HeaderText = "Payment";
             dgvOrders.Columns[2].HeaderText = "Salesperson";
             dgvOrders.Columns[3].HeaderText = "Date";
-            dgvOrders.Columns[4].HeaderText = "Time";
             dgvOrders.Columns[5].HeaderText = "Completed";
             dgvOrders.Columns[6].HeaderText = "Collected";
             dgvOrders.Columns[7].HeaderText = "Customer";
             dgvOrders.Columns[8].HeaderText = "Total";
 
-            //dgvOrders.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvOrders.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvOrders.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            //dgvOrders.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvOrders.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvOrders.Columns[8].DefaultCellStyle.Format = "C";
 
             dgvOrders.Columns[1].Visible = false;
@@ -77,31 +92,59 @@ namespace PCMS
         //Bind orders to orders grid...
         private void BindData_Orders()
         {
-            dgvOrders.DataSource = handlerOrder.GetAllOrders();
+            try
+            {
+                dgvOrders.DataSource = handlerOrder.GetAllOrders(completed, collected);
 
-            SetOrdersHeaders();
+                SetOrdersHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured connecting to database!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+                this.Close();
+            }
+        }
+
+        //Order Lines grid header text
+        private void SetOrderLinesHeaders()
+        {
+            cbxCollected.Columns[1].HeaderText = "Product";
+            cbxCollected.Columns[3].HeaderText = "Qty";
+            cbxCollected.Columns[4].HeaderText = "Price";
+            cbxCollected.Columns[5].HeaderText = "Total";
+            cbxCollected.Columns[6].HeaderText = "Instructions";
+
+            cbxCollected.Columns[5].DefaultCellStyle.Format = "C";
+            cbxCollected.Columns[4].DefaultCellStyle.Format = "C";
+
+            cbxCollected.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            cbxCollected.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            cbxCollected.Columns[0].Visible = false;
+            cbxCollected.Columns[2].Visible = false;
         }
 
         //Bind order lines to order lines grid...
         private void BindData_OrderLines(int orderNumber)
         {
-            dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
-            dgvOrderLines.Columns[0].HeaderText = "ID";
-            dgvOrderLines.Columns[1].HeaderText = "Product";
-            dgvOrderLines.Columns[3].HeaderText = "Qty";
-            dgvOrderLines.Columns[4].HeaderText = "Price";
-            dgvOrderLines.Columns[5].HeaderText = "Total";
-            dgvOrderLines.Columns[6].HeaderText = "Instructions";
-            
-            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
-            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
+            try
+            {
+                cbxCollected.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
 
-            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            dgvOrderLines.Columns[0].Visible = false;
-            dgvOrderLines.Columns[2].Visible = false;
+                SetOrderLinesHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured terieving order lines!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
         }
+
+        #region Tile Click
         //Start a new order transaction...
         private void tileNewOrder_Click(object sender, EventArgs e)
         {
@@ -133,8 +176,47 @@ namespace PCMS
         //Go to specials...
         private void tileSpecials_Click(object sender, EventArgs e)
         {
-            frmSpecials Specials = new frmSpecials();
+            frmSpecials Specials = new frmSpecials(employeeType);
             Specials.ShowDialog();
+        }
+
+        //Log out as the current user...
+        private void tileLogout_Click(object sender, EventArgs e)
+        {
+            frmMain.ActiveForm.Close();
+        }
+        #endregion
+
+        //Select Order
+        private void SelectOrder()
+        {
+            int rowIndex = dgvOrders.CurrentCell.RowIndex;
+
+            int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
+
+            selectedOrderNum = orderNumber;
+
+            //Display all items in the order
+            handlerOrderLines = new Handler_OrderLine();
+            BindData_OrderLines(orderNumber);
+
+            //Display order details 
+            lblOrderNumber.Text = dgvOrders.Rows[rowIndex].Cells[0].Value.ToString();
+            lblCustomer.Text = dgvOrders.Rows[rowIndex].Cells[7].Value.ToString();
+            lblDate.Text = (dgvOrders.Rows[rowIndex].Cells[3].Value.ToString()).Substring(0, 10);
+            lblTime.Text = (dgvOrders.Rows[rowIndex].Cells[4].Value.ToString()).Substring(11);
+
+            if (Convert.ToBoolean(dgvOrders.Rows[rowIndex].Cells[5].Value.ToString()) == true)
+                lblCompletion.Text = "Yes";
+            else
+                lblCompletion.Text = "No";
+
+            if (Convert.ToBoolean(dgvOrders.Rows[rowIndex].Cells[6].Value.ToString()) == true)
+                lblCollection.Text = "Yes";
+            else
+                lblCollection.Text = "No";
+
+            lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
         }
 
         //Load details for a specific order...
@@ -142,49 +224,27 @@ namespace PCMS
         {
             if (dgvOrders.Rows.Count > 0)
             {
-                int rowIndex = dgvOrders.CurrentCell.RowIndex;
+                SelectOrder();
 
-                int orderNumber = Convert.ToInt32(dgvOrders.Rows[rowIndex].Cells[0].Value.ToString());
-
-                selectedOrderNum = orderNumber;
-
-                //Display all items in the order
-                handlerOrderLines = new Handler_OrderLine();
-                BindData_OrderLines(orderNumber);
-
-                //Display order details 
-                lblOrderNumber.Text = dgvOrders.Rows[rowIndex].Cells[0].Value.ToString();
-                lblCustomer.Text = dgvOrders.Rows[rowIndex].Cells[7].Value.ToString();
-                lblDate.Text = (dgvOrders.Rows[rowIndex].Cells[3].Value.ToString()).Substring(0,10);
-                lblTime.Text = (dgvOrders.Rows[rowIndex].Cells[4].Value.ToString()).Substring(11);
-                lblCompletion.Text = dgvOrders.Rows[rowIndex].Cells[5].Value.ToString();
-                lblCollection.Text = dgvOrders.Rows[rowIndex].Cells[6].Value.ToString();
-                lblSalesperson.Text = dgvOrders.Rows[rowIndex].Cells[2].Value.ToString();
-
-                if (lblCompletion.Text == "False")
+                //Enable/Disable Buttons For Completed and Collected
+                if (lblCompletion.Text == "No")
                 {
                     btnCompleted.Enabled = true;
                 }
                 else
                 {
                     btnCompleted.Enabled = false;
-                }
-                if (lblCollection.Text == "False")
-                {
-                    btbCollected.Enabled = true;
-                }
-                else
-                {
-                    btbCollected.Enabled = false;
-                }
-     
-            }
-        }
 
-        //Log out as the current user...
-        private void tileLogout_Click(object sender, EventArgs e)
-        {
-            frmMain.ActiveForm.Close();
+                    if (lblCollection.Text == "No")
+                    {
+                        btbCollected.Enabled = true;
+                    }
+                    else
+                    {
+                        btbCollected.Enabled = false;
+                    }
+                }                
+            }
         }
 
         //Get Order based on order#
@@ -193,16 +253,20 @@ namespace PCMS
             int OrderNum;
             if (int.TryParse(tbxOrderNumber.Text, out OrderNum))
             {
-                dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
-                SetOrdersHeaders();
-                tbxOrderNumber.Clear();
-
+                try
+                {
+                    dgvOrders.DataSource = handlerOrder.getParaOrderList(OrderNum);
+                    SetOrdersHeaders();
+                    tbxOrderNumber.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured when searching for order!" + Environment.NewLine + Environment.NewLine +
+                        ex.Message);
+                }
             }
             else
-                MessageBox.Show("Order Number Should Be Numeric!");
-            
-
-           
+                MessageBox.Show("Order Number Should Be Numeric!");        
         }
 
         //Get Order based on customer name/surname
@@ -216,12 +280,21 @@ namespace PCMS
             {
                 string custFirstName = tbxName.Text;
                 string custLastName = tbxSurname.Text;
-                dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
 
-                SetOrdersHeaders();
+                try
+                {
+                    dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName, completed, collected);
 
-                tbxName.Clear();
-                tbxSurname.Clear();
+                    SetOrdersHeaders();
+
+                    tbxName.Clear();
+                    tbxSurname.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured when searching for order!" + Environment.NewLine + Environment.NewLine +
+                        ex.Message);
+                }
             }
         }
 
@@ -229,7 +302,7 @@ namespace PCMS
         private void dtpDateSearch_ValueChanged(object sender, EventArgs e)
         {
             DateTime date = DateTime.Parse(dtpDateSearch.Text);
-            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+            dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
 
             SetOrdersHeaders();
         }
@@ -238,47 +311,149 @@ namespace PCMS
         private void btnToday_Click(object sender, EventArgs e)
         {
             DateTime date = DateTime.Today;
-            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
 
-            SetOrdersHeaders();
+            try
+            {
+                dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
+
+                SetOrdersHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when searching orders!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //Notify Customer via Email
+        private void EmailNotifyCustomer(int orderNumber, string emailAddress, string message)
+        {
+            List<string> to = new List<string>();
+
+            to.Add(emailAddress);
+
+            EmailNotification email = new EmailNotification(to, "Order Collection", message);
+
+            try
+            {
+                email.SendMail();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when sending Email!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //Notify Customer via SMS
+        private void SMSNotifyCustomer(string number, int orderNumber, string message)
+        {
+            string smsCode = "";
+            try
+            {
+                smsCode = SmsNotificaton.SendSms(number, message).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when sending SMS!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+
+            if (smsCode != "")
+            {
+                if (smsCode != "0")
+                {
+                    if (MessageBox.Show("Error: " + smsCode + Environment.NewLine + Environment.NewLine +
+                        "Please refere to the Red Oxygen website for details on the error." + Environment.NewLine + Environment.NewLine +
+                        "Do you want to visit the website now?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("https://www.redoxygen.com/support/wiki/doku.php?id=red_api:errors");
+                    }
+                }
+            }
         }
 
         //Notify Customer
         private void NotifyCustomer()
         {
-            int orderNumber = int.Parse(dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells[0].Value.ToString());
+            if (lblOrderNumber.Text != "")
+            {
+                int orderNumber = Convert.ToInt32(lblOrderNumber.Text);
 
-            handlerCustomer = new Handler_Customer(); 
-            List<string> to = new List<string>();
+                string message = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage.";
 
-            to.Add(handlerCustomer.GetEmailAddress(orderNumber));
+                string email = "";
+                string cellphone = "";
+                string type = "";
 
-            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage." + Environment.NewLine;
+                Customer customer = null;
 
-            EmailNotification email = new EmailNotification(to, "Order Collection", msg);
-            email.SendMail();
+                try
+                {
+                    customer = handlerCustomer.GetNotificationDetails(orderNumber);
+                    type = customer.NotificationType;
+                    email = customer.Email;
+                    cellphone = customer.Cellphone;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not retrieve details to notify customer!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
+
+                if (type != "")
+                {
+                    if (type == "Email")
+                    {
+                        EmailNotifyCustomer(orderNumber, email, message);
+                    }
+                    else if (type == "SMS")
+                    {
+                        SMSNotifyCustomer(cellphone, orderNumber, message);
+                    }
+                }
+            }
         }
 
         //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
-            handlerOrder.CompleteOrder(selectedOrderNum);
+            bool completed = true;
+            try
+            {
+                handlerOrder.CompleteOrder(selectedOrderNum);              
+            }
+            catch (Exception ex)
+            {
+                completed = false;
+                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
 
-            dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
+            if (completed == true)
+            {
+                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
 
-            btnCompleted.Enabled = false;
+                btnCompleted.Enabled = false;
 
-            NotifyCustomer();
+                NotifyCustomer();
+            }
         }
 
         //Order has been collected
         private void btbCollected_Click(object sender, EventArgs e)
         {
-            handlerOrder.CollectOrder(selectedOrderNum);
+            try
+            {
+                handlerOrder.CollectOrder(selectedOrderNum);
 
-            dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Collected"].Value = true;
+                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Collected"].Value = true;
 
-            btbCollected.Enabled = false;
+                btbCollected.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -301,7 +476,7 @@ namespace PCMS
         {
             if (e.KeyCode == Keys.F1)
             {
-                System.Diagnostics.Process.Start("Help\\Help_Main.html");
+                System.Diagnostics.Process.Start("Help\\Main.html");
             }
             if (e.KeyCode == Keys.F4)
             {
@@ -356,7 +531,7 @@ namespace PCMS
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("Help\\Help_Main.html");
+            System.Diagnostics.Process.Start("Help\\Main.html");
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -378,6 +553,22 @@ namespace PCMS
         private void tbxSurname_Enter(object sender, EventArgs e)
         {
             frmMain.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void cbxCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCompleted.Checked == true)
+                completed = true;
+            else
+                completed = false;         
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCollectedOrders.Checked == true)
+                collected = true;
+            else
+                collected = false;
         }
     }
 }

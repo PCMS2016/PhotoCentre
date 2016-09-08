@@ -76,25 +76,28 @@ namespace DAL
             return DBHelper.ExecuteNonQuery("sp_UpdateCustomer", CommandType.StoredProcedure, parameters);
         }
 
-        //Get Customer Email Address
-        public string GetEmailAddress(int orderNumber)
+        //Get Customer Notification Details
+        public Customer GetNotificationDetails(int orderNumber)
         {
-            string email = "";
+            Customer customer = new DAL.Customer();
+
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@orderNumber", orderNumber)
+                new SqlParameter("@Order#", orderNumber)
             };
-            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetEmailAddress", CommandType.StoredProcedure, parameters)) 
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetCustomer", CommandType.StoredProcedure, parameters)) 
             {
                 if (table.Rows.Count > 0)
                 {
                     foreach (DataRow row in table.Rows)
                     {
-                        email = row["Email"].ToString();
+                        customer.NotificationType = row["NotificationType"].ToString();
+                        customer.Cellphone = row["Cellphone"].ToString();
+                        customer.Email = row["Email"].ToString();
                     }
                 }
-                return email;
             }
+            return customer;
         }
     }
 }
