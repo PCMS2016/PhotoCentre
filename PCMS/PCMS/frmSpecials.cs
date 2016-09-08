@@ -119,8 +119,10 @@ namespace PCMS
         }
 
         //Add Special to Database
-        private void AddSpecial()
+        private bool AddSpecial()
         {
+            bool added = true;
+
             Special special = new Special();
             special.Product = cmbProduct.SelectedValue.ToString();
             special.Price = Convert.ToDouble(tbxPrice.Text);
@@ -134,14 +136,18 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when saving special!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+            return added;
         }
 
         //Update Special to Database
-        private void UpdateSpecial()
+        private bool UpdateSpecial()
         {
+            bool updated = true;
+
             Special special = new Special();
             special.SpecialID = Convert.ToInt32(dgvSpecials.Rows[Convert.ToInt32(dgvSpecials.SelectedRows[0].Index.ToString())].Cells[0].ToString());
             special.Product = cmbProduct.SelectedValue.ToString();
@@ -156,9 +162,11 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                updated = false;
                 MessageBox.Show("Error occured when updating special!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+            return updated;
         }
 
         //Validate Fields
@@ -256,6 +264,7 @@ namespace PCMS
 
         }
 
+        //Add new special
         private void btnSpecialNew_Click(object sender, EventArgs e)
         {
             if (btnSpecialNew.Text == "New Special")
@@ -276,18 +285,22 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure youwant to add this special?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddSpecial();
+                        if (AddSpecial() == true)
+                        {
+                            btnSpecialUpdate.Enabled = true;
+                            btnSpecialNew.Text = "New Special";
+                            DisableFields();
 
-                        btnSpecialUpdate.Enabled = true;
-                        btnSpecialNew.Text = "New Special";
-                        DisableFields();
+                            btnCancel.Visible = false;
 
-                        btnCancel.Visible = false;
+                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
         }
 
+        //Update a special
         private void btnSpecialUpdate_Click(object sender, EventArgs e)
         {
             if (dgvSpecials.SelectedRows.Count > 0)
@@ -309,19 +322,23 @@ namespace PCMS
                         if (MessageBox.Show("Are you sure you want to update this special?", "", MessageBoxButtons.YesNo) ==
                             DialogResult.Yes)
                         {
-                            UpdateSpecial();
+                            if (UpdateSpecial() == true)
+                            {
+                                btnSpecialNew.Enabled = true;
+                                btnSpecialUpdate.Text = "Update Special";
+                                DisableFields();
 
-                            btnSpecialNew.Enabled = true;
-                            btnSpecialUpdate.Text = "Update Special";
-                            DisableFields();
+                                btnCancel.Visible = false;
 
-                            btnCancel.Visible = false;
+                                MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }
             }
         }
 
+        //Order Selected
         private void dgvSpecials_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSpecials.Rows.Count > 0)
@@ -330,6 +347,7 @@ namespace PCMS
             }
         }
 
+        //Search specials by product
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
             int productID = Convert.ToInt32(cmbProductSearch.SelectedValue.ToString());
@@ -337,6 +355,7 @@ namespace PCMS
             SpecialSearchByProduct(productID);
         }
 
+        //Search Specials by date
         private void btnSearchDate_Click(object sender, EventArgs e)
         {
             DateTime date = dtpDateSearch.Value;
@@ -344,6 +363,7 @@ namespace PCMS
             SpecialSearchByDate(date);
         }
 
+        //Notify customers about special
         private void btnSpecialNotify_Click(object sender, EventArgs e)
         {
             if (dgvSpecials.SelectedRows.Count > 0)
@@ -384,6 +404,8 @@ namespace PCMS
                 MessageBox.Show("No special selected!");
             }
         }
+
+        //Notify customers about special
         private void NotifyCustomer(string message)
         {
             List<string> to = handlerSpecial.GetAllEmailAddresses();
