@@ -906,6 +906,8 @@ namespace PCMS
         //Add product
         private void btnNewProduct_Click(object sender, EventArgs e)
         {
+            tbxProductPrice.Text = tbxProductPrice.Text.Replace('.', ',');
+
             if (btnNewProduct.Text == "New Product")
             {
                 btnUpdateProduct.Enabled = false;
@@ -946,6 +948,8 @@ namespace PCMS
         //Update Product
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
+            tbxProductPrice.Text = tbxProductPrice.Text.Replace('.', ',');
+
             if (dgvProducts.SelectedRows.Count > 0)
             {
                 if (btnUpdateProduct.Text == "Update Product") 
