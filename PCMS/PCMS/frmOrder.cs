@@ -524,6 +524,11 @@ namespace PCMS
                 dgvProducts.Rows[index].Cells[3].Value = string.Format("{0:C}", total);
                 dgvProducts.Rows[index].Cells[4].Value = instructions;
 
+                dgvOrderLines.Rows[index].Cells[1].Value = numQty.Value.ToString();
+                dgvOrderLines.Rows[index].Cells[2].Value = string.Format("{0:c}", price);
+                dgvOrderLines.Rows[index].Cells[3].Value = string.Format("{0:c}", total);
+                dgvOrderLines.Rows[index].Cells[4].Value = instructions;
+
                 cmbProduct.Enabled = true;
                 btnEdit.Enabled = false;
 
