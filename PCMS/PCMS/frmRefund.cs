@@ -133,9 +133,12 @@ namespace PCMS
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
-        {
-            int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
-            dgvRefundItems.Rows.RemoveAt(rowIndex);
+        {           
+            if (dgvRefundItems.Rows.Count > 0)
+            {
+                int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
+                dgvRefundItems.Rows.RemoveAt(rowIndex);
+            }
         }
 
         private void tableNames()
