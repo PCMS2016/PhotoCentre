@@ -36,6 +36,7 @@ namespace PCMS
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             //Limit access to features according to user rights...
             if (privileges == "Limited")
             {
@@ -585,6 +586,18 @@ namespace PCMS
                 collected = true;
             else
                 collected = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                btnToday.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
     }
 }
