@@ -36,6 +36,7 @@ namespace PCMS
            
         }
 
+        //search Refund
         private void btnRefundSearchOrder_Click(object sender, EventArgs e)
         {
             int OrderNum;
@@ -77,6 +78,7 @@ namespace PCMS
                 
         }
 
+        //Populate info
         private void dgvRefundOrderLines_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
