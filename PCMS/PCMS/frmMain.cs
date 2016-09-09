@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using MetroFramework.Forms;
 using BLL;
 using DAL;
@@ -64,8 +65,9 @@ namespace PCMS
 
             cbxCompleted.Checked = true;
             cbxCollectedOrders.Checked = false;
+                        
+            
         }
-
         //Orders grid header text
         private void SetOrdersHeaders()
         {
@@ -569,6 +571,23 @@ namespace PCMS
                 collected = true;
             else
                 collected = false;
+        }
+
+        private void refreshToday()
+        {
+            DateTime date = DateTime.Today;
+
+            try
+            {
+                dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
+
+                SetOrdersHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when searching orders!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
         }
     }
 }
