@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 using MetroFramework.Forms;
 using BLL;
 using DAL;
@@ -37,6 +36,7 @@ namespace PCMS
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             //Limit access to features according to user rights...
             if (privileges == "Limited")
             {
@@ -65,9 +65,8 @@ namespace PCMS
 
             cbxCompleted.Checked = true;
             cbxCollectedOrders.Checked = false;
-                        
-            
         }
+
         //Orders grid header text
         private void SetOrdersHeaders()
         {
@@ -328,8 +327,10 @@ namespace PCMS
         }
 
         //Notify Customer via Email
-        private void EmailNotifyCustomer(int orderNumber, string emailAddress, string message)
+        private bool EmailNotifyCustomer(int orderNumber, string emailAddress, string message)
         {
+            bool sent = true;
+
             List<string> to = new List<string>();
 
             to.Add(emailAddress);
@@ -342,14 +343,19 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                sent = false;
                 MessageBox.Show("Error occured when sending Email!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
+
+            return sent;
         }
 
         //Notify Customer via SMS
-        private void SMSNotifyCustomer(string number, int orderNumber, string message)
+        private bool SMSNotifyCustomer(string number, int orderNumber, string message)
         {
+            bool sent = true;
+
             string smsCode = "";
             try
             {
@@ -357,6 +363,7 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                sent = false;
                 MessageBox.Show("Error occured when sending SMS!" + Environment.NewLine + Environment.NewLine +
                     ex.Message);
             }
@@ -365,6 +372,7 @@ namespace PCMS
             {
                 if (smsCode != "0")
                 {
+                    sent = false;
                     if (MessageBox.Show("Error: " + smsCode + Environment.NewLine + Environment.NewLine +
                         "Please refere to the Red Oxygen website for details on the error." + Environment.NewLine + Environment.NewLine +
                         "Do you want to visit the website now?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -373,11 +381,13 @@ namespace PCMS
                     }
                 }
             }
+            return sent;
         }
 
         //Notify Customer
-        private void NotifyCustomer()
+        private bool NotifyCustomer()
         {
+            bool sent = true;
             if (lblOrderNumber.Text != "")
             {
                 int orderNumber = Convert.ToInt32(lblOrderNumber.Text);
@@ -407,37 +417,42 @@ namespace PCMS
                 {
                     if (type == "Email")
                     {
-                        EmailNotifyCustomer(orderNumber, email, message);
+                        sent = EmailNotifyCustomer(orderNumber, email, message);
                     }
                     else if (type == "SMS")
                     {
-                        SMSNotifyCustomer(cellphone, orderNumber, message);
+                        sent = SMSNotifyCustomer(cellphone, orderNumber, message);
                     }
                 }
             }
+            return sent;
         }
 
         //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
             bool completed = true;
-            try
-            {
-                handlerOrder.CompleteOrder(selectedOrderNum);              
-            }
-            catch (Exception ex)
-            {
-                completed = false;
-                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
-            }
+            
 
             if (completed == true)
             {
-                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
+                
+                if (NotifyCustomer() == true)
+                {
+                    dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
 
-                btnCompleted.Enabled = false;
+                    btnCompleted.Enabled = false;
 
-                NotifyCustomer();
+                    try
+                    {
+                        handlerOrder.CompleteOrder(selectedOrderNum);
+                    }
+                    catch (Exception ex)
+                    {
+                        completed = false;
+                        MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+                    }
+                }
             }
         }
 
@@ -573,20 +588,15 @@ namespace PCMS
                 collected = false;
         }
 
-        private void refreshToday()
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            DateTime date = DateTime.Today;
-
             try
             {
-                dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
-
-                SetOrdersHeaders();
+                btnToday.PerformClick();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occured when searching orders!" + Environment.NewLine + Environment.NewLine +
-                    ex.Message);
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
             }
         }
     }
