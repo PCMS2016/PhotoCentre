@@ -356,7 +356,7 @@
             this.tbxEmailPassword.Location = new System.Drawing.Point(123, 59);
             this.tbxEmailPassword.MaxLength = 32767;
             this.tbxEmailPassword.Name = "tbxEmailPassword";
-            this.tbxEmailPassword.PasswordChar = '\0';
+            this.tbxEmailPassword.PasswordChar = '*';
             this.tbxEmailPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbxEmailPassword.SelectedText = "";
             this.tbxEmailPassword.SelectionLength = 0;
@@ -451,7 +451,7 @@
             this.tbxSMSPassword.Location = new System.Drawing.Point(118, 89);
             this.tbxSMSPassword.MaxLength = 32767;
             this.tbxSMSPassword.Name = "tbxSMSPassword";
-            this.tbxSMSPassword.PasswordChar = '\0';
+            this.tbxSMSPassword.PasswordChar = '*';
             this.tbxSMSPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbxSMSPassword.SelectedText = "";
             this.tbxSMSPassword.SelectionLength = 0;
