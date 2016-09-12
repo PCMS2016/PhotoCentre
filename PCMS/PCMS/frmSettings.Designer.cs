@@ -356,7 +356,7 @@
             this.tbxEmailPassword.Location = new System.Drawing.Point(123, 59);
             this.tbxEmailPassword.MaxLength = 32767;
             this.tbxEmailPassword.Name = "tbxEmailPassword";
-            this.tbxEmailPassword.PasswordChar = '\0';
+            this.tbxEmailPassword.PasswordChar = '*';
             this.tbxEmailPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbxEmailPassword.SelectedText = "";
             this.tbxEmailPassword.SelectionLength = 0;
@@ -451,7 +451,7 @@
             this.tbxSMSPassword.Location = new System.Drawing.Point(118, 89);
             this.tbxSMSPassword.MaxLength = 32767;
             this.tbxSMSPassword.Name = "tbxSMSPassword";
-            this.tbxSMSPassword.PasswordChar = '\0';
+            this.tbxSMSPassword.PasswordChar = '*';
             this.tbxSMSPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.tbxSMSPassword.SelectedText = "";
             this.tbxSMSPassword.SelectionLength = 0;
@@ -1230,6 +1230,7 @@
             this.btnCancel.TabIndex = 33;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseSelectable = true;
+            this.btnCancel.Visible = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnUpdateSalesperson
@@ -1684,6 +1685,7 @@
             this.btnCancel_Products.TabIndex = 40;
             this.btnCancel_Products.Text = "Cancel";
             this.btnCancel_Products.UseSelectable = true;
+            this.btnCancel_Products.Visible = false;
             this.btnCancel_Products.Click += new System.EventHandler(this.btnCancel_Products_Click);
             // 
             // btnUpdateProduct
@@ -1856,6 +1858,7 @@
             this.btnCancel_Payments.TabIndex = 45;
             this.btnCancel_Payments.Text = "Cancel";
             this.btnCancel_Payments.UseSelectable = true;
+            this.btnCancel_Payments.Visible = false;
             this.btnCancel_Payments.Click += new System.EventHandler(this.btnCancel_Payments_Click);
             // 
             // btnUpdatePayment
@@ -1998,6 +2001,7 @@
             this.btnCancel_Medium.TabIndex = 49;
             this.btnCancel_Medium.Text = "Cancel";
             this.btnCancel_Medium.UseSelectable = true;
+            this.btnCancel_Medium.Visible = false;
             this.btnCancel_Medium.Click += new System.EventHandler(this.btnCancel_Medium_Click);
             // 
             // btnRemoveMedium
@@ -2143,6 +2147,7 @@
             this.btnCancel_Size.TabIndex = 53;
             this.btnCancel_Size.Text = "Cancel";
             this.btnCancel_Size.UseSelectable = true;
+            this.btnCancel_Size.Visible = false;
             this.btnCancel_Size.Click += new System.EventHandler(this.btnCancel_Size_Click);
             // 
             // btnRemoveSize

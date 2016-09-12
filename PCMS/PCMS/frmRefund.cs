@@ -18,53 +18,25 @@ namespace PCMS
         private IHandler_Refund handlerRefund = null;
         public string salesPFName = null;
         public string salesPLName = null;
+        private int refundNum;
+        private Refund[] rfnd;
+        private RefundProduct[] rProd;
 
         public frmRefund()
         {
             InitializeComponent();
             handlerRefund = new Handler_Refund();
+            rfnd = new Refund[100];
+            rProd = new RefundProduct[100];
+            refundNum = 0;
         }
 
         private void frmRefund_Load(object sender, EventArgs e)
         {
-            
-            /*dgvOrderLines.Rows.Add(3);
-            dgvOrderLines.Rows[0].Cells[0].Value = "Jumbo Photo";
-            dgvOrderLines.Rows[0].Cells[1].Value = "50";
-            dgvOrderLines.Rows[0].Cells[2].Value = "R  5.00";
-            dgvOrderLines.Rows[0].Cells[3].Value = "None";
-
-            dgvOrderLines.Rows[1].Cells[0].Value = "A3 Canvas";
-            dgvOrderLines.Rows[1].Cells[1].Value = "1";
-            dgvOrderLines.Rows[1].Cells[2].Value = "R250.00";
-            dgvOrderLines.Rows[1].Cells[3].Value = "Include Stretch";
-
-            dgvOrderLines.Rows[2].Cells[0].Value = "Mug";
-            dgvOrderLines.Rows[2].Cells[1].Value = "2";
-            dgvOrderLines.Rows[2].Cells[2].Value = "R 70.00";
-            dgvOrderLines.Rows[2].Cells[3].Value = "None";
-
-            lblOrderNumber.Text = "000002";
-            lblCustomer.Text = "Victor Maxwel";
-            lblDate.Text = "2 May 2016";
-            lblTime.Text = "10:30";
-            lblSalesperson.Text = "Annette Deyzel";
-
-            lblProduct2.Text = "Jumbo Photo";
-            lblQuantity2.Text = "50";
-            lblPrice2.Text = "R  5.00";
-            tbxInstructions.Text = "None";
-
-            dgvRefundItems.Rows.Add();
-            dgvRefundItems.Rows[0].Cells[0].Value = "Jumbo Photo";
-            dgvRefundItems.Rows[0].Cells[1].Value = "2";
-            dgvRefundItems.Rows[0].Cells[2].Value = "R  5.00";
-            dgvRefundItems.Rows[0].Cells[3].Value = "Corrupted file.";
-
-            lblRefundTotal.Text += " R 10.00";
-            */
+           
         }
 
+        //search Refund
         private void btnRefundSearchOrder_Click(object sender, EventArgs e)
         {
             int OrderNum;
@@ -106,6 +78,7 @@ namespace PCMS
                 
         }
 
+        //Populate info
         private void dgvRefundOrderLines_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowIndex = dgvRefundOrderLines.CurrentCell.RowIndex;
@@ -120,20 +93,20 @@ namespace PCMS
 
         private void btnFinishTransaction_Click(object sender, EventArgs e)
         {
+            int i = 0;
             RefundTabControll.SelectedTab = RefundTabControll.TabPages[1];
-            dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
-        {
-            int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
-            int refundID = Convert.ToInt32(dgvRefundItems.Rows[rowIndex].Cells[0].Value.ToString());
-            
-            handlerRefund.VoidRefundProduct(refundID);
-            handlerRefund.VoidRefund(refundID);
-            dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
+        {           
+            if (dgvRefundItems.Rows.Count > 0)
+            {
+                int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
+                dgvRefundItems.Rows.RemoveAt(rowIndex);
+            }
         }
 
+        //Set Table names
         private void tableNames()
         {
             dgvRefundOrderLines.Columns[0].HeaderText = "Orderline ID";
@@ -147,16 +120,26 @@ namespace PCMS
 
             dgvRefundOrderLines.Columns[2].Visible = false;
         }
-
-        private void btnRefreshDispRefund_Click(object sender, EventArgs e)
-        {
-
-            dgvRefundItems.DataSource = handlerRefund.DisplayRefund();
-        }
-
+                
+        //Adds to Refund & RefundProduct tables
         private void btnRefund_Click(object sender, EventArgs e)
         {
-            RefundTabControll.SelectedTab = RefundTabControll.TabPages[0];
+            int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
+            string prodName = dgvRefundItems.Rows[rowIndex].Cells[1].Value.ToString();
+            int RProdID = int.Parse(dgvRefundItems.Rows[rowIndex].Cells[0].Value.ToString());
+            if (int.TryParse(dgvRefundItems.Rows[rowIndex].Cells[0].Value.ToString(), out RProdID))
+            {
+                Refund refund = new Refund();
+                refund = rfnd[RProdID-1];
+                handlerRefund.AddRefund(refund);
+                RefundProduct rfundProd = new RefundProduct();
+                rfundProd = rProd[RProdID-1];
+                handlerRefund.AddRefundProduct(rfundProd);
+
+                MessageBox.Show("Product Refunded");
+                dgvRefundItems.Rows.RemoveAt(rowIndex);
+            }
+
         }
 
         private void numRefundQuantity_ValueChanged(object sender, EventArgs e)
@@ -164,6 +147,7 @@ namespace PCMS
 
         }
 
+        //Add to Refund -- Adds to dgvRefundItems -- Add to arrays
         private void metroTextButton1_Click(object sender, EventArgs e)
         {
             if (numRefundQuantity.Value > 0)
@@ -174,31 +158,42 @@ namespace PCMS
                 {
                     txtRefundReason.Text = "N/A";
                 }
-                //Add Refund
-                Refund rfnd = new Refund();
-                rfnd.OrderNumber = int.Parse(lblOrderNumber.Text);
-                rfnd.SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
-                rfnd.Date = DateTime.Parse(lblDate.Text.ToString());
-                rfnd.Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
-                handlerRefund.AddRefund(rfnd);
+                //Add Refund Array
+                rfnd[refundNum] = new Refund();
+                rfnd[refundNum].OrderNumber = int.Parse(lblOrderNumber.Text);
+                rfnd[refundNum].SalespersonID = handlerRefund.GetSalesPersonID(salesPFName, salesPLName); ;
+                rfnd[refundNum].Date = DateTime.Parse(lblDate.Text.ToString());
+                rfnd[refundNum].Total = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
 
                 //get productID == SM.SizeMediumID
                 SizeMedium SM = new SizeMedium();
                 SM = handlerRefund.GetProdByName(prodName);
 
-                //Add RefundProduct
-                RefundProduct rfndProd = new RefundProduct();
-                rfndProd.RefundProductID = SM.SizeMediumID;
-                rfndProd.RefundID = handlerRefund.GetRefundID(rfnd.OrderNumber);
-                rfndProd.OrderLineID = handlerRefund.GetOrderLineID(rfnd.OrderNumber);
-                rfndProd.Reason = txtRefundReason.Text.ToString();
-                rfndProd.Quantity = int.Parse(numRefundQuantity.Value.ToString());
-                rfndProd.Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString()) * double.Parse(numRefundQuantity.Value.ToString());
-                rfndProd.LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
-                handlerRefund.AddRefundProduct(rfndProd);
+                //Add RefundProduct Array
+                rProd[refundNum] = new RefundProduct();
+                rProd[refundNum].RefundProductID = dgvRefundItems.Rows.Count + 1;
+                rProd[refundNum].RefundID = handlerRefund.GetRefundID(int.Parse(lblOrderNumber.Text));
+                rProd[refundNum].OrderLineID = handlerRefund.GetOrderLineID(rfnd[refundNum].OrderNumber);
+                rProd[refundNum].Reason = txtRefundReason.Text.ToString();
+                rProd[refundNum].Quantity = int.Parse(numRefundQuantity.Value.ToString());
+                rProd[refundNum].Price = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[4].Value.ToString()) * double.Parse(numRefundQuantity.Value.ToString());
+                rProd[refundNum].LineTotal = double.Parse(dgvRefundOrderLines.Rows[rowIndex].Cells[5].Value.ToString());
+                //handlerRefund.AddRefundProduct(rfndProd);
 
-                MessageBox.Show("Refund Added");
+                
+                
+                int index = dgvRefundItems.Rows.Count;
 
+                dgvRefundItems.Rows.Add();
+                dgvRefundItems.Rows[index].Cells[0].Value = rProd[refundNum].RefundProductID;
+                dgvRefundItems.Rows[index].Cells[1].Value = lblProduct.Text.ToString();
+                dgvRefundItems.Rows[index].Cells[2].Value = rProd[refundNum].Quantity;
+                dgvRefundItems.Rows[index].Cells[3].Value = rProd[refundNum].Reason;
+                dgvRefundItems.Rows[index].Cells[4].Value = rProd[refundNum].Price;
+                dgvRefundItems.Rows[index].Cells[5].Value = rfnd[refundNum].Date;
+                
+                
+                refundNum++;
                 lblCustomer.Text = "";
                 lblDate.Text = "";
                 tbxInstructions.Text = "";
@@ -209,12 +204,27 @@ namespace PCMS
                 lblRefundTotal.Text = "";
                 lblSalesperson.Text = "";
                 lblTime.Text = "";
+                txtRefundReason.Text = "";
                 dgvRefundOrderLines.Columns.Clear();
                 tbxOrderNumber.Text = "";
                 numRefundQuantity.Value = 0;
             }
             else
                 MessageBox.Show("Please select amount of products to be refunded");
+        }
+
+        //Removes refund from list
+        private void btnVoid_Customer_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dgvRefundItems.CurrentCell.RowIndex;
+            dgvRefundItems.Rows.RemoveAt(rowIndex);
+        }
+
+        private void dgvRefundItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+
         }
     }
 }

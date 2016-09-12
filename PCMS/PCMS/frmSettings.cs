@@ -1079,6 +1079,8 @@ namespace PCMS
                 tbxSize.Clear();
                 tbxSize.Enabled = true;
 
+                btnCancel_Size.Visible = true;
+
                 tbxSize.Focus();
             }
             else
@@ -1096,6 +1098,8 @@ namespace PCMS
                             tbxSize.Enabled = false;
 
                             BindData_Size_Grid();
+
+                            btnCancel_Size.Visible = false;
 
                             MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
