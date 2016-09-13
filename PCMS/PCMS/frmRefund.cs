@@ -72,6 +72,12 @@ namespace PCMS
                     lblTime.Text = order.Time.ToString().Substring(11);
                     lblSalesperson.Text = order.Salesperson.ToString();
 
+                    if (order.Completed == false)
+                    {
+                        MessageBox.Show("Refunds are not allowed for orders that have not been completed!");
+                        this.Close();
+                    }
+
                     GetOrderLines(orderNumber);
                 }
             }
