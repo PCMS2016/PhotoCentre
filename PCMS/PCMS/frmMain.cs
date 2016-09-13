@@ -156,7 +156,7 @@ namespace PCMS
         //Start a new refund transaction...
         private void tileRefund_Click(object sender, EventArgs e)
         {
-            frmRefund Refund = new frmRefund();
+            frmRefund Refund = new frmRefund(salespersonID);
             Refund.ShowDialog();
         }
 

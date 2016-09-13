@@ -18,22 +18,62 @@ namespace PCMS
         private IHandler_Refund handlerRefund = null;
         public string salesPFName = null;
         public string salesPLName = null;
+        private int salespersonID;
         private int refundNum;
         private Refund[] rfnd;
         private RefundProduct[] rProd;
 
-        public frmRefund()
+        public frmRefund(int salespersonID)
         {
             InitializeComponent();
             handlerRefund = new Handler_Refund();
             rfnd = new Refund[100];
             rProd = new RefundProduct[100];
             refundNum = 0;
+            this.salespersonID = salespersonID;
         }
 
         private void frmRefund_Load(object sender, EventArgs e)
         {
            
+        }
+        //Get Order By Number
+        private void GetOrder(int orderNumber)
+        {
+            try
+            {
+                Order order = handlerRefund.getOrderByNum(orderNumber);
+                if (order != null)
+                {
+                    lblOrderNumber.Text = order.OrderNumber.ToString();
+                    lblCustomer.Text = order.Customer.ToString();
+                    lblDate.Text = order.Date.ToString().Substring(0,10);
+                    lblTime.Text = order.Time.ToString().Substring(11);
+                    lblSalesperson.Text = order.Salesperson.ToString();
+
+                    GetOrderLines(orderNumber);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured searching for order!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+        }
+
+        //Get Order Lines
+        private void GetOrderLines(int orderNumber)
+        {
+            try
+            {
+                dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(orderNumber);
+                SetGridHeaders();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving order items!" + Environment.NewLine +
+                    Environment.NewLine + ex.Message);
+            }
         }
 
         //search Refund
@@ -42,40 +82,10 @@ namespace PCMS
             int OrderNum;
             if (int.TryParse(tbxOrderNumber.Text, out OrderNum))
             {
-                Order order = new Order();
-                order = handlerRefund.getOrderByNum(OrderNum);
-                if (order != null)
-                {
-                    lblOrderNumber.Text = order.OrderNumber.ToString();
-                    lblCustomer.Text = order.Customer.ToString();
-                    lblDate.Text = order.Date.ToString();
-                    lblTime.Text = order.Time.ToString();
-                    lblSalesperson.Text = order.Salesperson.ToString();
-
-
-                    dgvRefundOrderLines.DataSource = handlerRefund.GetOrderLines(OrderNum);
-
-                    salesPFName = order.Salesperson.ToString();
-                    string[] salesNames = salesPFName.Split(' ');
-                    salesPFName = salesNames[0];
-                    salesPLName = salesNames[1];
-
-                    tableNames();
-                }
-                else
-                {
-                    lblOrderNumber.Text = "Order not found";
-                    lblCustomer.Text = "Order not found";
-                    lblDate.Text = "Order not found";
-                    lblTime.Text = "Order not found";
-                    lblSalesperson.Text = "Order not found";
-                    dgvRefundOrderLines.DataSource = null;
-                    tbxOrderNumber.Text = "Order not found";
-                }
+                GetOrder(OrderNum);
             }
             else
-                tbxOrderNumber.Text = "Numbers Only";
-                
+                MessageBox.Show("Order# incorrect!");              
         }
 
         //Populate info
@@ -107,7 +117,7 @@ namespace PCMS
         }
 
         //Set Table names
-        private void tableNames()
+        private void SetGridHeaders()
         {
             dgvRefundOrderLines.Columns[0].HeaderText = "Orderline ID";
             dgvRefundOrderLines.Columns[1].HeaderText = "Product";
