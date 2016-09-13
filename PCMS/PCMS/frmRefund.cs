@@ -37,6 +37,10 @@ namespace PCMS
             int refund = GetRefundPeriod() * -1;
 
             minRefundDate = DateTime.Today.AddDays(refund);
+
+            RefundTabControll.SelectedTab = tabDetails;
+
+            tbxOrderNumber.Focus();
         }
 
         //Get Refund Period
@@ -80,6 +84,10 @@ namespace PCMS
 
                     GetOrderLines(orderNumber);
                 }
+                else
+                {
+                    MessageBox.Show("Order not found!");
+                }
             }
             catch (Exception ex)
             {
@@ -121,7 +129,9 @@ namespace PCMS
                     MessageBox.Show("This order has exceeded the refund period!");
                     this.Close();
                 }
-            }              
+            }
+
+            tbxOrderNumber.Clear();              
         }
 
         //Populate info
@@ -279,6 +289,22 @@ namespace PCMS
         }
 
         private void btnVoid_Click(object sender, EventArgs e)
+        {
+            refundItems.Clear();
+            this.Close();
+        }
+
+        private void tbxOrderNumber_Enter(object sender, EventArgs e)
+        {
+            frmRefund.ActiveForm.AcceptButton = btnRefundSearchOrder;
+        }
+
+        private void tbxOrderNumber_Leave(object sender, EventArgs e)
+        {
+            frmRefund.ActiveForm.AcceptButton = btnAdd;
+        }
+
+        private void btnVoid_Customer_Click(object sender, EventArgs e)
         {
             refundItems.Clear();
             this.Close();
