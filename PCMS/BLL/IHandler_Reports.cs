@@ -17,5 +17,6 @@ namespace BLL
         List<Reports> GetMonthProduct(int month, int year);
         List<Reports> GetYearSales(int year);
         List<Reports> GetYearProduct(int year);
+
     }
 }

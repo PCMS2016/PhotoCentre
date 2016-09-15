@@ -16,11 +16,13 @@ namespace PCMS
     public partial class frmReports : MetroForm 
     {
         private IHandler_Reports handlerReport = null;
+        private DataGridView salesgrid;
 
         public frmReports()
         {
             InitializeComponent();
             handlerReport = new Handler_Reports();
+            salesgrid = null;
         }
 
         private void metroGrid6_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -275,6 +277,33 @@ namespace PCMS
                     dgvReportProductYear.Columns.RemoveAt(2);
                     dgvReportProductYear.Columns.RemoveAt(1);
                     dgvReportProductYear.Columns.RemoveAt(0);
+                    salesgrid = dgvReportProductYear;
+                }
+
+            }
+        }
+
+        private void btnSaveSales_Click(object sender, EventArgs e)
+        {
+            int year = int.Parse(dtpYearReportYear.Value.Year.ToString());
+            {
+                List<Reports> S;
+                S = handlerReport.GetYearSales(year);
+                if (S != null)
+                {
+                    dgvReportSalesYear.Columns.Clear();
+                    dgvReportSalesYear.DataSource = S;
+                    dgvReportSalesYear.Columns[3].HeaderText = "Salesperson";
+                    dgvReportSalesYear.Columns[4].HeaderText = "Products";
+                    dgvReportSalesYear.Columns[7].HeaderText = "Total";
+                    dgvReportSalesYear.Columns.RemoveAt(6);
+                    dgvReportSalesYear.Columns.RemoveAt(5);
+                    dgvReportSalesYear.Columns.RemoveAt(2);
+                    dgvReportSalesYear.Columns.RemoveAt(1);
+                    dgvReportSalesYear.Columns.RemoveAt(0);
+
+                    SaveToExcel se = new SaveToExcel();
+                    se.ExportToExcel(dgvReportSalesYear);
                 }
             }
         }
