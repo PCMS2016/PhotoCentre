@@ -18,9 +18,9 @@ namespace BLL
         {
             return db.AddOrder(order);
         }
-        public List<Order> GetAllOrders()
+        public List<Order> GetAllOrders(bool completed, bool collected)
         {
-            return db.GetAllOrders();
+            return db.GetAllOrders(completed, collected);
         }
         public bool UpdateOrder(Order order)
         {
@@ -39,14 +39,14 @@ namespace BLL
             return db.GetOrderByNum(OrderNum);
         }
 
-        public List<Order> getParaCustList(string firstName, string lastName)
+        public List<Order> getParaCustList(string firstName, string lastName, bool completed, bool collected)
         {
-            return db.getParaCustList(firstName, lastName);
+            return db.getParaCustList(firstName, lastName, completed, collected);
         }
 
-        public List<Order> getOrderDateList(DateTime date)
+        public List<Order> getOrderDateList(DateTime date, bool completed, bool collected)
         {
-            return db.getOrderDateList(date);
+            return db.getOrderDateList(date, completed, collected);
         }
         
         public bool CompleteOrder(int OrderNum)

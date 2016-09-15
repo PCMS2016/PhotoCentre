@@ -23,6 +23,8 @@ namespace PCMS
         public int selectedOrderNum = 0;
         string privileges;
         string employeeType;
+        bool completed = true;
+        bool collected = false;
 
         public frmMain(int salespersonID, string user, string privileges, string employeeType)
         {
@@ -34,6 +36,7 @@ namespace PCMS
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            timer1.Start();
             //Limit access to features according to user rights...
             if (privileges == "Limited")
             {
@@ -49,8 +52,19 @@ namespace PCMS
 
             //Load orders of the current day...
             handlerOrder = new Handler_Order();
+            handlerCustomer = new Handler_Customer();
 
-            BindData_Orders();
+            try
+            {
+                btnToday.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
+
+            cbxCompleted.Checked = true;
+            cbxCollectedOrders.Checked = false;
         }
 
         //Orders grid header text
@@ -81,7 +95,7 @@ namespace PCMS
         {
             try
             {
-                dgvOrders.DataSource = handlerOrder.GetAllOrders();
+                dgvOrders.DataSource = handlerOrder.GetAllOrders(completed, collected);
 
                 SetOrdersHeaders();
             }
@@ -96,23 +110,23 @@ namespace PCMS
         //Order Lines grid header text
         private void SetOrderLinesHeaders()
         {
-            dgvOrderLines.Columns[1].HeaderText = "Product";
-            dgvOrderLines.Columns[3].HeaderText = "Qty";
-            dgvOrderLines.Columns[4].HeaderText = "Price";
-            dgvOrderLines.Columns[5].HeaderText = "Total";
-            dgvOrderLines.Columns[6].HeaderText = "Instructions";
+            cbxCollected.Columns[1].HeaderText = "Product";
+            cbxCollected.Columns[3].HeaderText = "Qty";
+            cbxCollected.Columns[4].HeaderText = "Price";
+            cbxCollected.Columns[5].HeaderText = "Total";
+            cbxCollected.Columns[6].HeaderText = "Instructions";
 
-            dgvOrderLines.Columns[5].DefaultCellStyle.Format = "C";
-            dgvOrderLines.Columns[4].DefaultCellStyle.Format = "C";
+            cbxCollected.Columns[5].DefaultCellStyle.Format = "C";
+            cbxCollected.Columns[4].DefaultCellStyle.Format = "C";
 
-            dgvOrderLines.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvOrderLines.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvOrderLines.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            cbxCollected.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            dgvOrderLines.Columns[0].Visible = false;
-            dgvOrderLines.Columns[2].Visible = false;
+            cbxCollected.Columns[0].Visible = false;
+            cbxCollected.Columns[2].Visible = false;
         }
 
         //Bind order lines to order lines grid...
@@ -120,7 +134,7 @@ namespace PCMS
         {
             try
             {
-                dgvOrderLines.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
+                cbxCollected.DataSource = handlerOrderLines.GetOrderLines(orderNumber);
 
                 SetOrderLinesHeaders();
             }
@@ -142,7 +156,7 @@ namespace PCMS
         //Start a new refund transaction...
         private void tileRefund_Click(object sender, EventArgs e)
         {
-            frmRefund Refund = new frmRefund();
+            frmRefund Refund = new frmRefund(salespersonID);
             Refund.ShowDialog();
         }
 
@@ -163,7 +177,7 @@ namespace PCMS
         //Go to specials...
         private void tileSpecials_Click(object sender, EventArgs e)
         {
-            frmSpecials Specials = new frmSpecials();
+            frmSpecials Specials = new frmSpecials(privileges);
             Specials.ShowDialog();
         }
 
@@ -270,7 +284,7 @@ namespace PCMS
 
                 try
                 {
-                    dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName);
+                    dgvOrders.DataSource = handlerOrder.getParaCustList(custFirstName, custLastName, completed, collected);
 
                     SetOrdersHeaders();
 
@@ -289,7 +303,7 @@ namespace PCMS
         private void dtpDateSearch_ValueChanged(object sender, EventArgs e)
         {
             DateTime date = DateTime.Parse(dtpDateSearch.Text);
-            dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+            dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
 
             SetOrdersHeaders();
         }
@@ -301,7 +315,7 @@ namespace PCMS
 
             try
             {
-                dgvOrders.DataSource = handlerOrder.getOrderDateList(date);
+                dgvOrders.DataSource = handlerOrder.getOrderDateList(date, completed, collected);
 
                 SetOrdersHeaders();
             }
@@ -312,45 +326,133 @@ namespace PCMS
             }
         }
 
-        //Notify Customer
-        private void NotifyCustomer()
+        //Notify Customer via Email
+        private bool EmailNotifyCustomer(int orderNumber, string emailAddress, string message)
         {
-            int orderNumber = int.Parse(dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells[0].Value.ToString());
+            bool sent = true;
 
-            handlerCustomer = new Handler_Customer();
             List<string> to = new List<string>();
+
+            to.Add(emailAddress);
+
+            EmailNotification email = new EmailNotification(to, "Order Collection", message);
+
             try
             {
-                to.Add(handlerCustomer.GetEmailAddress(orderNumber));
+                email.SendMail();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occured when retrieving customer's email address!" + Environment.NewLine +
-                    Environment.NewLine + ex.Message);
+                sent = false;
+                MessageBox.Show("Error occured when sending Email!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
             }
 
-            string msg = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage." + Environment.NewLine;
+            return sent;
+        }
 
-            EmailNotification email = new EmailNotification(to, "Order Collection", msg);
-            email.SendMail();
+        //Notify Customer via SMS
+        private bool SMSNotifyCustomer(string number, int orderNumber, string message)
+        {
+            bool sent = true;
+
+            string smsCode = "";
+            try
+            {
+                smsCode = SmsNotificaton.SendSms(number, message).ToString();
+            }
+            catch (Exception ex)
+            {
+                sent = false;
+                MessageBox.Show("Error occured when sending SMS!" + Environment.NewLine + Environment.NewLine +
+                    ex.Message);
+            }
+
+            if (smsCode != "")
+            {
+                if (smsCode != "0")
+                {
+                    sent = false;
+                    if (MessageBox.Show("Error: " + smsCode + Environment.NewLine + Environment.NewLine +
+                        "Please refere to the Red Oxygen website for details on the error." + Environment.NewLine + Environment.NewLine +
+                        "Do you want to visit the website now?", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("https://www.redoxygen.com/support/wiki/doku.php?id=red_api:errors");
+                    }
+                }
+            }
+            return sent;
+        }
+
+        //Notify Customer
+        private bool NotifyCustomer()
+        {
+            bool sent = true;
+            if (lblOrderNumber.Text != "")
+            {
+                int orderNumber = Convert.ToInt32(lblOrderNumber.Text);
+
+                string message = "Your order (Order#: " + orderNumber.ToString() + ") is ready for collection at Photo Centre Uitenhage.";
+
+                string email = "";
+                string cellphone = "";
+                string type = "";
+
+                Customer customer = null;
+
+                try
+                {
+                    customer = handlerCustomer.GetNotificationDetails(orderNumber);
+                    type = customer.NotificationType;
+                    email = customer.Email;
+                    cellphone = customer.Cellphone;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not retrieve details to notify customer!" + Environment.NewLine +
+                        Environment.NewLine + ex.Message);
+                }
+
+                if (type != "")
+                {
+                    if (type == "Email")
+                    {
+                        sent = EmailNotifyCustomer(orderNumber, email, message);
+                    }
+                    else if (type == "SMS")
+                    {
+                        sent = SMSNotifyCustomer(cellphone, orderNumber, message);
+                    }
+                }
+            }
+            return sent;
         }
 
         //Complete Order
         private void btnCompleted_Click(object sender, EventArgs e)
         {
-            try
+            bool completed = true;
+            
+
+            if (completed == true)
             {
-                handlerOrder.CompleteOrder(selectedOrderNum);
+                
+                if (NotifyCustomer() == true)
+                {
+                    dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
 
-                dgvOrders.Rows[dgvOrders.SelectedRows[0].Index].Cells["Completed"].Value = true;
+                    btnCompleted.Enabled = false;
 
-                btnCompleted.Enabled = false;
-
-                NotifyCustomer();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+                    try
+                    {
+                        handlerOrder.CompleteOrder(selectedOrderNum);
+                    }
+                    catch (Exception ex)
+                    {
+                        completed = false;
+                        MessageBox.Show("Error occured!" + Environment.NewLine + Environment.NewLine + ex.Message);
+                    }
+                }
             }
         }
 
@@ -391,7 +493,7 @@ namespace PCMS
         {
             if (e.KeyCode == Keys.F1)
             {
-                System.Diagnostics.Process.Start("Help\\Help_Main.html");
+                System.Diagnostics.Process.Start("Help\\Main.html");
             }
             if (e.KeyCode == Keys.F4)
             {
@@ -446,7 +548,7 @@ namespace PCMS
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("Help\\Help_Main.html");
+            System.Diagnostics.Process.Start("Help\\Main.html");
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -468,6 +570,34 @@ namespace PCMS
         private void tbxSurname_Enter(object sender, EventArgs e)
         {
             frmMain.ActiveForm.AcceptButton = btnCustomerSearch;
+        }
+
+        private void cbxCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCompleted.Checked == true)
+                completed = true;
+            else
+                completed = false;         
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxCollectedOrders.Checked == true)
+                collected = true;
+            else
+                collected = false;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                btnToday.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured when retrieving orders data!" + Environment.NewLine + Environment.NewLine + ex.Message);
+            }
         }
     }
 }

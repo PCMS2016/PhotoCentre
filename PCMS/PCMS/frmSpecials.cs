@@ -20,19 +20,17 @@ namespace PCMS
         private IHandler_Product handlerProduct = null;
 
         //Passed Variables
-
+        private string employeeType;
         
         //This Variables
 
         //Bind products to ComboBox
         private void BindData_Product()
         {
-            //cmbProduct.Sorted = true;
             cmbProduct.DataSource = handlerProduct.GetAllProducts();
             cmbProduct.DisplayMember = "Product";
             cmbProduct.ValueMember = "SizeMediumID";
 
-            //cmbProductSearch.Sorted = true;
             cmbProductSearch.DataSource = handlerProduct.GetAllProducts();
             cmbProductSearch.DisplayMember = "Product";
             cmbProductSearch.ValueMember = "SizeMediumID";
@@ -83,6 +81,8 @@ namespace PCMS
             dgvSpecials.Columns[4].HeaderText = "Start Date";
             dgvSpecials.Columns[5].HeaderText = "End Date";
 
+            dgvSpecials.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             dgvSpecials.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSpecials.Columns[3].DefaultCellStyle.Format = "C";
         }
@@ -119,8 +119,10 @@ namespace PCMS
         }
 
         //Add Special to Database
-        private void AddSpecial()
+        private bool AddSpecial()
         {
+            bool added = true;
+
             Special special = new Special();
             special.Product = cmbProduct.SelectedValue.ToString();
             special.Price = Convert.ToDouble(tbxPrice.Text);
@@ -134,14 +136,18 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                added = false;
                 MessageBox.Show("Error occured when saving special!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+            return added;
         }
 
         //Update Special to Database
-        private void UpdateSpecial()
+        private bool UpdateSpecial()
         {
+            bool updated = true;
+
             Special special = new Special();
             special.SpecialID = Convert.ToInt32(dgvSpecials.Rows[Convert.ToInt32(dgvSpecials.SelectedRows[0].Index.ToString())].Cells[0].ToString());
             special.Product = cmbProduct.SelectedValue.ToString();
@@ -156,14 +162,18 @@ namespace PCMS
             }
             catch (Exception ex)
             {
+                updated = false;
                 MessageBox.Show("Error occured when updating special!" + Environment.NewLine +
                     Environment.NewLine + ex.Message);
             }
+            return updated;
         }
 
         //Validate Fields
         private bool ValidateFields()
         {
+            tbxPrice.Text = tbxPrice.Text.Replace('.', ',');
+
             string errorMessage = "";
             bool valid = true;
             double price;
@@ -180,7 +190,7 @@ namespace PCMS
                 errorMessage += "Quantity needs to be more than 0" + Environment.NewLine;
             }
 
-            if (dtpStartDate.Value < DateTime.Now)
+            if (dtpStartDate.Value < DateTime.Now.AddDays(-1))
             {
                 valid = false;
                 errorMessage += "Start date can't be in the past" + Environment.NewLine;
@@ -211,9 +221,10 @@ namespace PCMS
             dtpEndDate.Text = dgvSpecials.Rows[index].Cells[5].Value.ToString();
         }
 
-        public frmSpecials()
+        public frmSpecials(string employeeType)
         {
             InitializeComponent();
+            this.employeeType = employeeType;
         }
 
         //Form Loads...
@@ -235,8 +246,17 @@ namespace PCMS
                 this.Close();
             }
 
+            SpecialSearchByDate(DateTime.Now);
+
             //Focus control
             cmbProduct.Focus();
+
+            if (employeeType != "Admin")
+            {
+                btnSpecialNew.Enabled = false;
+                btnSpecialUpdate.Enabled = false;
+                btnSpecialNotify.Enabled = false;
+            }
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)
@@ -244,6 +264,7 @@ namespace PCMS
 
         }
 
+        //Add new special
         private void btnSpecialNew_Click(object sender, EventArgs e)
         {
             if (btnSpecialNew.Text == "New Special")
@@ -252,6 +273,8 @@ namespace PCMS
                 btnSpecialNew.Text = "Save";
                 ClearFields();
                 EnableFields();
+
+                btnCancel.Visible = true;
 
                 cmbProduct.Focus();
             }
@@ -262,16 +285,22 @@ namespace PCMS
                     if (MessageBox.Show("Are you sure youwant to add this special?", "", MessageBoxButtons.YesNo) ==
                         DialogResult.Yes)
                     {
-                        AddSpecial();
+                        if (AddSpecial() == true)
+                        {
+                            btnSpecialUpdate.Enabled = true;
+                            btnSpecialNew.Text = "New Special";
+                            DisableFields();
 
-                        btnSpecialUpdate.Enabled = true;
-                        btnSpecialNew.Text = "New Special";
-                        DisableFields();
+                            btnCancel.Visible = false;
+
+                            MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
         }
 
+        //Update a special
         private void btnSpecialUpdate_Click(object sender, EventArgs e)
         {
             if (dgvSpecials.SelectedRows.Count > 0)
@@ -282,6 +311,8 @@ namespace PCMS
                     btnSpecialUpdate.Text = "Save";
                     EnableFields();
 
+                    btnCancel.Visible = true;
+
                     cmbProduct.Focus();
                 }
                 else
@@ -291,17 +322,23 @@ namespace PCMS
                         if (MessageBox.Show("Are you sure you want to update this special?", "", MessageBoxButtons.YesNo) ==
                             DialogResult.Yes)
                         {
-                            UpdateSpecial();
+                            if (UpdateSpecial() == true)
+                            {
+                                btnSpecialNew.Enabled = true;
+                                btnSpecialUpdate.Text = "Update Special";
+                                DisableFields();
 
-                            btnSpecialNew.Enabled = true;
-                            btnSpecialUpdate.Text = "Update Special";
-                            DisableFields();
+                                btnCancel.Visible = false;
+
+                                MessageBox.Show("SAVED", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                     }
                 }
             }
         }
 
+        //Order Selected
         private void dgvSpecials_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvSpecials.Rows.Count > 0)
@@ -310,6 +347,7 @@ namespace PCMS
             }
         }
 
+        //Search specials by product
         private void btnSearchProduct_Click(object sender, EventArgs e)
         {
             int productID = Convert.ToInt32(cmbProductSearch.SelectedValue.ToString());
@@ -317,6 +355,7 @@ namespace PCMS
             SpecialSearchByProduct(productID);
         }
 
+        //Search Specials by date
         private void btnSearchDate_Click(object sender, EventArgs e)
         {
             DateTime date = dtpDateSearch.Value;
@@ -324,6 +363,7 @@ namespace PCMS
             SpecialSearchByDate(date);
         }
 
+        //Notify customers about special
         private void btnSpecialNotify_Click(object sender, EventArgs e)
         {
             if (dgvSpecials.SelectedRows.Count > 0)
@@ -364,6 +404,8 @@ namespace PCMS
                 MessageBox.Show("No special selected!");
             }
         }
+
+        //Notify customers about special
         private void NotifyCustomer(string message)
         {
             List<string> to = handlerSpecial.GetAllEmailAddresses();
@@ -373,6 +415,44 @@ namespace PCMS
             email.SendMail();
 
             MessageBox.Show("Customers Notified.");
+        }
+
+        private void tileDone_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Cancel New/Update Special
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnSpecialNew.Text = "New Special";
+            btnSpecialNew.Enabled = true;
+
+            btnSpecialUpdate.Text = "Update Special";
+            btnSpecialUpdate.Enabled = true;
+
+            btnCancel.Visible = false;
+
+            DisableFields();
+            ClearFields();
+        }
+
+        private void cmbProductSearch_Enter(object sender, EventArgs e)
+        {
+            frmSpecials.ActiveForm.AcceptButton = btnSearchProduct;
+        }
+
+        private void dtpDateSearch_Enter(object sender, EventArgs e)
+        {
+            frmSpecials.ActiveForm.AcceptButton = btnSearchDate;
+        }
+
+        private void cmbProduct_Enter(object sender, EventArgs e)
+        {
+            if (btnSpecialNew.Text == "Save")
+                frmSpecials.ActiveForm.AcceptButton = btnSpecialNew;
+            else if (btnSpecialUpdate.Text == "Save")
+                frmSpecials.ActiveForm.AcceptButton = btnSpecialUpdate;
         }
     }
 }

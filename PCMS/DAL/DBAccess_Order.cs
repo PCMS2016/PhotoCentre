@@ -28,11 +28,17 @@ namespace DAL
         }
 
         //Get All Orders...
-        public List<Order> GetAllOrders()
+        public List<Order> GetAllOrders(bool completed, bool collected)
         {
             List<Order> list = new List<Order>();
 
-            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllOrders", CommandType.StoredProcedure))
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@completed", completed),
+                new SqlParameter("@collected", collected)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetAllOrders", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -87,7 +93,14 @@ namespace DAL
         public int GetOrderNumber()
         {
             int orderNumber = 0;
-            using (DataTable table = DBHelper.ExecuteSelectCommand("sp_GetAllOrders", CommandType.StoredProcedure))
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@completed", "False"),
+                new SqlParameter("@collected", "False")
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_GetAllOrders", CommandType.StoredProcedure, parameters))
             {
                 if (table.Rows.Count > 0)
                 {
@@ -134,14 +147,16 @@ namespace DAL
         }
 
         //Get order by customer name/surname
-        public List<Order> getParaCustList(string firstName, string lastName)
+        public List<Order> getParaCustList(string firstName, string lastName, bool completed, bool collected)
         {
             List<Order> list =null;
 
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@Name", firstName),
-                new SqlParameter("@Surname", lastName)
+                new SqlParameter("@Surname", lastName),
+                new SqlParameter("@completed", completed),
+                new SqlParameter("@collected", collected)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByCustomer", CommandType.StoredProcedure, parameters))
@@ -170,13 +185,15 @@ namespace DAL
         }
 
         //Get order by order date
-        public List<Order> getOrderDateList(DateTime date)
+        public List<Order> getOrderDateList(DateTime date, bool completed, bool collected)
         {
             List<Order> list = new List<Order>();
 
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@Date", date)
+                new SqlParameter("@Date", date),
+                new SqlParameter("@completed", completed),
+                new SqlParameter("@collected", collected)
             };
 
             using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_SearchOrdersByDate", CommandType.StoredProcedure, parameters))

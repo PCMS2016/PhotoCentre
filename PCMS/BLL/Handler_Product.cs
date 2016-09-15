@@ -29,6 +29,11 @@ namespace BLL
             return db.GetAllProductsIndividualFields();
         }
 
+        public List<OrderLine> GetSpecialPrice(int ProductID)
+        {
+            return db.GetSpecialPrice(ProductID);
+        }
+
         public bool RemoveProduct(int ProductID)
         {
             return db.RemoveProduct(ProductID);
