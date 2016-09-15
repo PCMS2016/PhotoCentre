@@ -76,47 +76,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBConnection.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="DBConnection.cs" />
     <Compile Include="DBConnection.Designer.cs">
       <DependentUpon>DBConnection.cs</DependentUpon>
     </Compile>
     <Compile Include="EmailNotification.cs" />
     <Compile Include="Encryption.cs" />
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmLogin.cs" />
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmMain.cs" />
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRefund.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmRefund.cs" />
     <Compile Include="frmRefund.Designer.cs">
       <DependentUpon>frmRefund.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSettings.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmSettings.cs" />
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSpecials.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmSpecials.cs" />
     <Compile Include="frmSpecials.Designer.cs">
       <DependentUpon>frmSpecials.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmOrder.cs" />
     <Compile Include="frmOrder.Designer.cs">
       <DependentUpon>frmOrder.cs</DependentUpon>
     </Compile>
@@ -129,9 +115,7 @@
     <Compile Include="PrintReceipt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="frmReports.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmReports.cs" />
     <Compile Include="frmReports.Designer.cs">
       <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
