@@ -33,7 +33,7 @@ namespace PCMS
 
         private void frmRefund_Load(object sender, EventArgs e)
         {
-           
+            RefundTabControll.SelectedTab = tabDetails;
         }
 
         private void btnRefundSearchOrder_Click(object sender, EventArgs e)
