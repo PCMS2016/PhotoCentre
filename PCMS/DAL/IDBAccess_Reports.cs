@@ -16,5 +16,8 @@ namespace DAL
         List<Reports> GetMonthProduct(int month, int year);
         List<Reports> GetYearSales(int year);
         List<Reports> GetYearProduct(int year);
+        Reports[] ChartSalespersonSalesYear(int year);
+        Reports[] ChartProductSalesYear(int year);
+        Reports[] ChartProductsSoldYear(int year);
     }
 }

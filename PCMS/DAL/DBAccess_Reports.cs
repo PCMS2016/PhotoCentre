@@ -121,7 +121,7 @@ namespace DAL
                         report.Product = row["Product"].ToString();
                         report.Reason = row["Reason"].ToString();
 
-                        list.Add(report);                        
+                        list.Add(report);
                     }
                 }
             }
@@ -236,6 +236,90 @@ namespace DAL
                 }
             }
             return list;
+        }
+
+
+        public Reports[] ChartSalespersonSalesYear(int year)
+        {
+            Reports[] rp = null;
+            int i = 0;
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@year", year)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ChartSalespersonSalesYear", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    rp = new Reports[100];
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        rp[i] = new Reports();   
+                        rp[i].SalesPerson = row["Salesperson"].ToString();
+                        rp[i].Total = Convert.ToDouble(row["SalesTotal"].ToString());
+                        i++;
+                    }
+                }
+                return rp;
+            }
+        }
+
+        public Reports[] ChartProductSalesYear(int year)
+        {
+            Reports[] rp = null;
+            int i = 0;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@year", year)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ChartProductSalesYear", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    rp = new Reports[100];
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        rp[i] = new Reports();
+                        rp[i].Product = row["Product"].ToString();
+                        rp[i].Total = Convert.ToDouble(row["SalesTotal"].ToString());
+                        i++;
+                    }
+                }
+                return rp;
+            }
+        }
+        
+        public Reports[] ChartProductsSoldYear(int year)
+        {
+            Reports[] rp = null;
+            int i = 0;
+
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@year", year)
+            };
+
+            using (DataTable table = DBHelper.ExecuteParamerizedSelectCommand("sp_ChartProductsSoldYear", CommandType.StoredProcedure, parameters))
+            {
+                if (table.Rows.Count > 0)
+                {
+                    rp = new Reports[100];
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        rp[i] = new Reports();
+                        rp[i].Product = row["Product"].ToString();
+                        rp[i].Quantity = int.Parse(row["ProductsSold"].ToString());
+                        i++;
+                    }
+                }
+                return rp;
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DAL
 {
     public class SaveToExcel
     {
-        public void ExportToExcel(DataGridView DataG)
+        public void ExportToExcel(DataGridView dgView)
         {
             // Creating a Excel object. 
             Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
@@ -23,28 +23,16 @@ namespace DAL
                 worksheet = workbook.ActiveSheet;
 
                 worksheet.Name = "ExportedFromDatGrid";
+                int i = 0;
+                int j = 0;
 
-                int cellRowIndex = 1;
-                int cellColumnIndex = 1;
-
-                //Loop through each row and read value from each column. 
-                for (int i = 0; i < DataG.Rows.Count - 1; i++)
+                for (i = 0; i <= dgView.RowCount - 1; i++)
                 {
-                    for (int j = 0; j < DataG.Columns.Count; j++)
+                    for (j = 0; j <= dgView.ColumnCount - 1; j++)
                     {
-                        // Excel index starts from 1,1. As first Row would have the Column headers, adding a condition check. 
-                        if (cellRowIndex == 1)
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = DataG.Columns[j].HeaderText;
-                        }
-                        else
-                        {
-                            worksheet.Cells[cellRowIndex, cellColumnIndex] = DataG.Rows[i].Cells[j].Value.ToString();
-                        }
-                        cellColumnIndex++;
+                        DataGridViewCell cell = dgView[j, i];
+                        worksheet.Cells[i + 1, j + 1] = cell.Value;
                     }
-                    cellColumnIndex = 1;
-                    cellRowIndex++;
                 }
 
                 //Getting the location and file name of the excel to save from user. 

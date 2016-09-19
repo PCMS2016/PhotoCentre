@@ -58,5 +58,21 @@ namespace BLL
         {
             return db.GetYearProduct(year);
         }
-    }
+
+        public Reports[] ChartSalespersonSalesYear(int year)
+        {
+            return db.ChartSalespersonSalesYear(year);
+        }
+        
+        public Reports[] ChartProductSalesYear(int year)
+        {
+            return db.ChartProductSalesYear(year);
+        }
+
+
+        public Reports[] ChartProductsSoldYear(int year)
+        {
+            return db.ChartProductsSoldYear(year);
+        }
+}
 }

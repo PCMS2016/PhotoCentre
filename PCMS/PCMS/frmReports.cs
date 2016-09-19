@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Forms;
+using Microsoft.Office.Interop;
+using Excel = Microsoft.Office.Interop.Excel;
 using BLL;
 using DAL;
 
@@ -16,13 +18,13 @@ namespace PCMS
     public partial class frmReports : MetroForm 
     {
         private IHandler_Reports handlerReport = null;
-        private DataGridView salesgrid;
+        private Reports[] rep;
 
         public frmReports()
         {
             InitializeComponent();
             handlerReport = new Handler_Reports();
-            salesgrid = null;
+            rep = new Reports[100];
         }
 
         private void metroGrid6_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -32,8 +34,8 @@ namespace PCMS
 
         private void frmReports_Load(object sender, EventArgs e)
         {
-            
-            
+
+
         }
 
         private void dtpReportDay_ValueChanged(object sender, EventArgs e)
@@ -277,7 +279,6 @@ namespace PCMS
                     dgvReportProductYear.Columns.RemoveAt(2);
                     dgvReportProductYear.Columns.RemoveAt(1);
                     dgvReportProductYear.Columns.RemoveAt(0);
-                    salesgrid = dgvReportProductYear;
                 }
 
             }
@@ -285,27 +286,89 @@ namespace PCMS
 
         private void btnSaveSales_Click(object sender, EventArgs e)
         {
-            int year = int.Parse(dtpYearReportYear.Value.Year.ToString());
-            {
-                List<Reports> S;
-                S = handlerReport.GetYearSales(year);
-                if (S != null)
-                {
-                    dgvReportSalesYear.Columns.Clear();
-                    dgvReportSalesYear.DataSource = S;
-                    dgvReportSalesYear.Columns[3].HeaderText = "Salesperson";
-                    dgvReportSalesYear.Columns[4].HeaderText = "Products";
-                    dgvReportSalesYear.Columns[7].HeaderText = "Total";
-                    dgvReportSalesYear.Columns.RemoveAt(6);
-                    dgvReportSalesYear.Columns.RemoveAt(5);
-                    dgvReportSalesYear.Columns.RemoveAt(2);
-                    dgvReportSalesYear.Columns.RemoveAt(1);
-                    dgvReportSalesYear.Columns.RemoveAt(0);
+            SaveToExcel se = new SaveToExcel();
+            se.ExportToExcel(dgvReportSalesYear);            
+        }
 
-                    SaveToExcel se = new SaveToExcel();
-                    se.ExportToExcel(dgvReportSalesYear);
-                }
+        private void btnSaveProducts_Click(object sender, EventArgs e)
+        {
+            SaveToExcel se = new SaveToExcel();
+            se.ExportToExcel(dgvReportProductYear);
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            int year = int.Parse(dtpReportYear.Text.ToString());
+
+            //ChartSalespersonSalesYear(year);
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+           /* int i = 0;
+            rep = handlerReport.ChartProductSalesYear(int.Parse(dtpReportYear.Text.ToString()));
+            while (rep[i] != null)
+            {
+                this.chrtProductsSoldMonth.Series["SalesTotal"].Points.AddXY(rep[i].Product, rep[i].Total);
+                i++;
+            }*/
+        }
+
+        private void ChartSalespersonSalesYear(int year)
+        {
+            int i = 0;
+            rep = handlerReport.ChartSalespersonSalesYear(year);
+            this.chrtReportYear.Series.Add("Sales Amount(R)");
+            while (rep[i] != null)
+            {
+                this.chrtReportYear.Series["Sales Amount(R)"].Points.AddXY(rep[i].SalesPerson, rep[i].Total);
+                i++;
             }
+        }
+
+        private void ChartProductSalesYear(int year)
+        {
+            int i = 0;
+            rep = handlerReport.ChartProductSalesYear(year);
+            this.chrtReportYear.Series.Add("Sales Amount(R)");
+            while (rep[i] != null)
+            {
+                this.chrtReportYear.Series["Sales Amount(R)"].Points.AddXY(rep[i].Product, rep[i].Total);
+                i++;
+            }
+        }
+
+        private void ChartProductsSoldYear(int year)
+        {
+            int i = 0;
+            rep = handlerReport.ChartProductsSoldYear(year);
+            this.chrtReportYear.Series.Add("Units");
+
+            while (rep[i] != null)
+            {
+                this.chrtReportYear.Series["SalesTotal"].Points.AddXY(rep[i].Product, rep[i].Quantity);
+                i++;
+            }
+        }
+
+        private void cmbChart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.chrtReportYear.Series[0].Points.Clear();
+            this.chrtReportYear.Series.Clear();
+            int year = int.Parse(dtpReportYear.Text.ToString());
+            if (cmbChart.Text.ToString() == "Sales per Employee")
+                ChartSalespersonSalesYear(year);
+            if (cmbChart.Text.ToString() == "Sales per Product")
+                ChartProductSalesYear(year);
+            if (cmbChart.Text.ToString() == "Products Sold")
+                ChartProductsSoldYear(year);
+
+            
         }
     }
 }
