@@ -280,7 +280,7 @@ namespace PCMS
                     dgvReportProductYear.Columns.RemoveAt(1);
                     dgvReportProductYear.Columns.RemoveAt(0);
                 }
-
+                
             }
         }
 
@@ -295,32 +295,13 @@ namespace PCMS
             SaveToExcel se = new SaveToExcel();
             se.ExportToExcel(dgvReportProductYear);
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void metroButton1_Click_1(object sender, EventArgs e)
-        {
-            int year = int.Parse(dtpReportYear.Text.ToString());
-
-            //ChartSalespersonSalesYear(year);
-        }
-
-        private void metroButton2_Click(object sender, EventArgs e)
-        {
-           /* int i = 0;
-            rep = handlerReport.ChartProductSalesYear(int.Parse(dtpReportYear.Text.ToString()));
-            while (rep[i] != null)
-            {
-                this.chrtProductsSoldMonth.Series["SalesTotal"].Points.AddXY(rep[i].Product, rep[i].Total);
-                i++;
-            }*/
-        }
+        
+        
 
         private void ChartSalespersonSalesYear(int year)
         {
+            this.chrtReportYear.Series[0].Points.Clear();
+            this.chrtReportYear.Series.Clear();
             int i = 0;
             rep = handlerReport.ChartSalespersonSalesYear(year);
             this.chrtReportYear.Series.Add("Sales Amount(R)");
@@ -333,6 +314,8 @@ namespace PCMS
 
         private void ChartProductSalesYear(int year)
         {
+            this.chrtReportYear.Series[0].Points.Clear();
+            this.chrtReportYear.Series.Clear();
             int i = 0;
             rep = handlerReport.ChartProductSalesYear(year);
             this.chrtReportYear.Series.Add("Sales Amount(R)");
@@ -345,30 +328,75 @@ namespace PCMS
 
         private void ChartProductsSoldYear(int year)
         {
+            this.chrtReportYear.Series[0].Points.Clear();
+            this.chrtReportYear.Series.Clear();
             int i = 0;
             rep = handlerReport.ChartProductsSoldYear(year);
             this.chrtReportYear.Series.Add("Units");
 
             while (rep[i] != null)
             {
-                this.chrtReportYear.Series["SalesTotal"].Points.AddXY(rep[i].Product, rep[i].Quantity);
+                this.chrtReportYear.Series["Units"].Points.AddXY(rep[i].Product, rep[i].Quantity);
                 i++;
             }
         }
 
         private void cmbChart_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.chrtReportYear.Series[0].Points.Clear();
-            this.chrtReportYear.Series.Clear();
             int year = int.Parse(dtpReportYear.Text.ToString());
-            if (cmbChart.Text.ToString() == "Sales per Employee")
+            if (cmbChart.Text.ToString() == "Sales per Employee" & cmbChartType.Text.ToString() == "Pie")
+            {
                 ChartSalespersonSalesYear(year);
-            if (cmbChart.Text.ToString() == "Sales per Product")
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+
+            }
+            else if (cmbChart.Text.ToString() == "Sales per Employee" || cmbChart.Text.ToString() == "Sales per Employee" & cmbChartType.Text.ToString() == "Bar")
+                ChartSalespersonSalesYear(year);
+
+            if (cmbChart.Text.ToString() == "Sales per Product" & cmbChartType.Text.ToString() == "Pie")
+            {
                 ChartProductSalesYear(year);
-            if (cmbChart.Text.ToString() == "Products Sold")
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (cmbChart.Text.ToString() == "Sales per Product" || cmbChart.Text.ToString() == "Sales per Product" & cmbChartType.Text.ToString() == "Bar")
+                ChartProductSalesYear(year);
+
+            if (cmbChart.Text.ToString() == "Products Sold" & cmbChartType.Text.ToString() == "Pie")
+            {
+                ChartProductsSoldYear(year);
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (cmbChart.Text.ToString() == "Products Sold" || cmbChart.Text.ToString() == "Products Sold" & cmbChartType.Text.ToString() == "Bar")
+                ChartProductsSoldYear(year);
+        }
+
+        private void cmbChartType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int year = int.Parse(dtpReportYear.Text.ToString());
+            if (cmbChartType.Text.ToString() == "Pie" & cmbChart.Text.ToString() == "Sales per Employee")
+            {
+                ChartSalespersonSalesYear(year);
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (cmbChart.Text.ToString() == "Sales per Employee" || cmbChart.Text.ToString() == "Sales per Employee" & cmbChartType.Text.ToString() == "Bar")
+                ChartSalespersonSalesYear(year);
+
+            if (cmbChartType.Text.ToString() == "Pie" & cmbChart.Text.ToString() == "Sales per Product")
+            {
+                ChartProductSalesYear(year);
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (cmbChart.Text.ToString() == "Sales per Product" || cmbChart.Text.ToString() == "Sales per Product" & cmbChartType.Text.ToString() == "Bar")
+                ChartProductSalesYear(year);
+
+            if (cmbChartType.Text.ToString() == "Pie" & cmbChart.Text.ToString() == "Products Sold")
+            {
+                ChartProductsSoldYear(year);
+                chrtReportYear.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            }
+            else if (cmbChart.Text.ToString() == "Products Sold" || cmbChart.Text.ToString() == "Products Sold" & cmbChartType.Text.ToString() == "Bar")
                 ChartProductsSoldYear(year);
 
-            
         }
     }
 }
