@@ -10,9 +10,6 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.pdb
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmSpecials.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmLogin.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmRefund.resources
-C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\MetroFramework.Design.dll
-C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\MetroFramework.dll
-C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\MetroFramework.Fonts.dll
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmOrder.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmSettings.resources
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.frmReports.resources
@@ -110,3 +107,5 @@ C:\Users\s214022110\Source\Repos\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.csproj.Gen
 C:\Users\s214022110\Source\Repos\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.pdb
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\Interop.VSTOEE100.dll
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.csproj.ResolveComReference.cache
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\Interop.VSTOEE100.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.csproj.ResolveComReference.cache
