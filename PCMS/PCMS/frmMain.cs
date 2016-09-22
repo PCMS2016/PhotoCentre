@@ -163,8 +163,8 @@ namespace PCMS
         //Generate reports...
         private void tileReports_Click(object sender, EventArgs e)
         {
-            frmReports Reports = new frmReports();
-            Reports.ShowDialog();
+            frmReports Reports = new PCMS.frmReports();
+            Reports.Show();
         }
 
         //Enter settins...

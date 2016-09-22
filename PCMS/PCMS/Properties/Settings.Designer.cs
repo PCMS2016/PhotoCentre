@@ -33,5 +33,16 @@ namespace PCMS.Properties {
                 return ((string)(this["PhotoCentreMSConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-D3SOFVS;Initial Catalog=PhotoCentreMS;Integrated Security=Tru" +
+            "e")]
+        public string PhotoCentreMSConnectionString1 {
+            get {
+                return ((string)(this["PhotoCentreMSConnectionString1"]));
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,63 +17,14 @@ namespace BLL
             db = new DBAccess_Reports();
         }
 
-        public List<Reports> GetDayRefund(DateTime day)
+        public DataTable GetAllProducts(DateTime start, DateTime end)
         {
-            return db.GetDayRefund(day);
+            return db.GetAllProducts(start, end);
         }
 
-
-        public List<Reports> GetDaySales(DateTime day)
+        public DataTable GetAllProductsRefunds(DateTime start, DateTime end)
         {
-            return db.GetDaySales(day);
+            return db.GetAllProductsRefunds(start, end);
         }
-
-
-        public List<Reports> GetDayProduct(DateTime day)
-        {
-            return db.GetDayProduct(day);
-        }
-
-
-        public List<Reports> GetMonthRefund(int month, int year)
-        {
-            return db.GetMonthRefund(month, year);
-        }
-
-        public List<Reports> GetMonthSales(int month, int year)
-        {
-            return db.GetMonthSales(month, year);
-        }
-
-        public List<Reports> GetMonthProduct(int month, int year)
-        {
-            return db.GetMonthSales(month, year);
-        }
-        
-        public List<Reports> GetYearSales(int year)
-        {
-            return db.GetYearSales(year);
-        }
-
-        public List<Reports> GetYearProduct(int year)
-        {
-            return db.GetYearProduct(year);
-        }
-
-        public Reports[] ChartSalespersonSalesYear(int year)
-        {
-            return db.ChartSalespersonSalesYear(year);
-        }
-        
-        public Reports[] ChartProductSalesYear(int year)
-        {
-            return db.ChartProductSalesYear(year);
-        }
-
-
-        public Reports[] ChartProductsSoldYear(int year)
-        {
-            return db.ChartProductsSoldYear(year);
-        }
-}
+    }
 }

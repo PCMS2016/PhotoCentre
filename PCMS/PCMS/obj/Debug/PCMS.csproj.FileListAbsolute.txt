@@ -109,3 +109,17 @@ C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\Interop.VSTOEE100.dl
 C:\Users\Feyt\Source\Repos\PhotoCentre2\PCMS\PCMS\obj\Debug\PCMS.csproj.ResolveComReference.cache
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\Interop.VSTOEE100.dll
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.csproj.ResolveComReference.cache
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\Microsoft.ReportViewer.WinForms.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\Microsoft.SqlServer.Types.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\de\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\es\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\fr\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\it\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\ja\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\ko\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\pt\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\RdlCompile.cache
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\RdlCompile.compiled
