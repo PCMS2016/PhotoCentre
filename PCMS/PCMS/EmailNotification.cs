@@ -28,6 +28,7 @@ namespace PCMS
 
         public EmailNotification(List<string> to, string subject, string message)
         {
+            //Get all the information needed to send the email
             from = ConfigurationManager.AppSettings["username"];
             this.to = to;
             this.subject = subject;
@@ -41,6 +42,7 @@ namespace PCMS
         {
             using (MailMessage mail = new MailMessage())
             {
+                //Build the email
                 mail.From = new MailAddress(from);
                 foreach (var item in to)
                 {
@@ -52,6 +54,7 @@ namespace PCMS
 
                 using (SmtpClient client = new SmtpClient(smtpAddress, portNumber))
                 {
+                    //Send the email.
                     client.UseDefaultCredentials = false;
                     client.Credentials = new NetworkCredential(from, password);
                     client.EnableSsl = enableSSL;

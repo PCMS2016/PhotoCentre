@@ -23,6 +23,7 @@ namespace PCMS
         private void frmLogin_Load(object sender, EventArgs e)
         {
             handlerLogin = new Handler_Login();
+            SplashScreen.ActiveForm.Visible = false;
         }
 
         private void btnLogin_Click_1(object sender, EventArgs e)

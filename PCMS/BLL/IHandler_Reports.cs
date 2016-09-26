@@ -12,5 +12,7 @@ namespace BLL
     {
         DataTable GetAllProducts(DateTime start, DateTime end);
         DataTable GetAllProductsRefunds(DateTime start, DateTime end);
+
+        DataTable GetAllSalesperson(DateTime start, DateTime end);
     }
 }

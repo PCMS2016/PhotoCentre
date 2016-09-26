@@ -32,11 +32,12 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.ProductsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.rpvProducts = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.reportViewer2 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rpvSalespersons = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -44,15 +45,20 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dtpEnd = new MetroFramework.Controls.MetroDateTime();
             this.btnGenerate = new MetroFramework.Controls.MetroButton();
-            this.products = new PCMS.products();
-            this.ProductsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SalespersonsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dsReports = new PCMS.dsReports();
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsTableBindingSource)).BeginInit();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.products)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalespersonsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsReports)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ProductsTableBindingSource
+            // 
+            this.ProductsTableBindingSource.DataMember = "ProductsTable";
             // 
             // metroTabControl1
             // 
@@ -62,7 +68,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(172, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(840, 692);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
@@ -97,7 +103,7 @@
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.reportViewer2);
+            this.metroTabPage2.Controls.Add(this.rpvSalespersons);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -110,17 +116,16 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
-            // reportViewer2
+            // rpvSalespersons
             // 
-            this.reportViewer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource2.Name = "DataSet1";
-            reportDataSource2.Value = null;
-            this.reportViewer2.LocalReport.DataSources.Add(reportDataSource2);
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "PCMS.ProductsReport.rdlc";
-            this.reportViewer2.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer2.Name = "reportViewer2";
-            this.reportViewer2.Size = new System.Drawing.Size(832, 650);
-            this.reportViewer2.TabIndex = 3;
+            reportDataSource2.Name = "dsReports";
+            reportDataSource2.Value = this.SalespersonsTableBindingSource;
+            this.rpvSalespersons.LocalReport.DataSources.Add(reportDataSource2);
+            this.rpvSalespersons.LocalReport.ReportEmbeddedResource = "PCMS.ReportSalespersons.rdlc";
+            this.rpvSalespersons.Location = new System.Drawing.Point(3, 3);
+            this.rpvSalespersons.Name = "rpvSalespersons";
+            this.rpvSalespersons.Size = new System.Drawing.Size(829, 647);
+            this.rpvSalespersons.TabIndex = 3;
             // 
             // metroTabPage3
             // 
@@ -193,15 +198,15 @@
             this.btnGenerate.UseSelectable = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
-            // products
+            // SalespersonsTableBindingSource
             // 
-            this.products.DataSetName = "products";
-            this.products.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.SalespersonsTableBindingSource.DataMember = "SalespersonsTable";
+            this.SalespersonsTableBindingSource.DataSource = this.dsReports;
             // 
-            // ProductsTableBindingSource
+            // dsReports
             // 
-            this.ProductsTableBindingSource.DataMember = "ProductsTable";
-            this.ProductsTableBindingSource.DataSource = this.products;
+            this.dsReports.DataSetName = "dsReports";
+            this.dsReports.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // frmReports
             // 
@@ -218,12 +223,13 @@
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "PHOTO CENTRE ME - REPORTS";
             this.Load += new System.EventHandler(this.frmReports_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ProductsTableBindingSource)).EndInit();
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.products)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ProductsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalespersonsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsReports)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,9 +247,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroDateTime dtpEnd;
         private MetroFramework.Controls.MetroButton btnGenerate;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer2;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvSalespersons;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
         private System.Windows.Forms.BindingSource ProductsTableBindingSource;
-        private products products;
+        private System.Windows.Forms.BindingSource SalespersonsTableBindingSource;
+        private dsReports dsReports;
     }
 }

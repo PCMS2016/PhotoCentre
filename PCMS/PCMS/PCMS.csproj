@@ -11,6 +11,7 @@
     <AssemblyName>PCMS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,7 +24,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -66,6 +66,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -84,6 +85,11 @@
     </Compile>
     <Compile Include="DBConnection.Designer.cs">
       <DependentUpon>DBConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dsReports.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReports.xsd</DependentUpon>
     </Compile>
     <Compile Include="EmailNotification.cs" />
     <Compile Include="Encryption.cs" />
@@ -130,11 +136,6 @@
       <DependentUpon>PCMS_About.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintReceipt.cs" />
-    <Compile Include="products.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>products.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="frmReports.cs">
@@ -144,6 +145,12 @@
       <DependentUpon>frmReports.cs</DependentUpon>
     </Compile>
     <Compile Include="SmsNotificaton.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DBConnection.resx">
       <DependentUpon>DBConnection.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,18 +189,22 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ReportProducts.rdlc" />
-    <None Include="packages.config" />
-    <None Include="products.xsc">
-      <DependentUpon>products.xsd</DependentUpon>
+    <EmbeddedResource Include="ReportSalespersons.rdlc" />
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="dsReports.xsc">
+      <DependentUpon>dsReports.xsd</DependentUpon>
     </None>
-    <None Include="products.xsd">
+    <None Include="dsReports.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>products.Designer.cs</LastGenOutput>
+      <LastGenOutput>dsReports.Designer.cs</LastGenOutput>
     </None>
-    <None Include="products.xss">
-      <DependentUpon>products.xsd</DependentUpon>
+    <None Include="dsReports.xss">
+      <DependentUpon>dsReports.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

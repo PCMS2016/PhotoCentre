@@ -123,3 +123,4 @@ C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\zh-Hans\Microsoft
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\RdlCompile.cache
 C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\RdlCompile.compiled
+C:\Users\Wynand Deyzel\Desktop\PhotoCentre\PCMS\PCMS\obj\Debug\PCMS.SplashScreen.resources

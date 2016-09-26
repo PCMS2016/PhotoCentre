@@ -20,6 +20,7 @@ namespace PCMS
     public partial class frmReports : MetroForm 
     {
         IHandler_Reports handlerReports;
+        dsReports ds = new dsReports();
         public frmReports()
         {
             InitializeComponent();
@@ -34,8 +35,12 @@ namespace PCMS
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             GenerateProductsData(dtpStart.Value, dtpEnd.Value);
+
+            GenerateSalespersonData(dtpStart.Value, dtpEnd.Value);
             
             this.rpvProducts.RefreshReport();
+
+            this.rpvSalespersons.RefreshReport();
         }
 
         private void GenerateProductsData(DateTime start, DateTime end)
@@ -71,7 +76,7 @@ namespace PCMS
                 temp.Rows.Add(product, pQuantity, pTotal, rQuantity, rTotal);
             }
 
-            products ds = new PCMS.products();
+            
             foreach (DataRow row in temp.Rows)
             {
                 DataRow dr = ds.Tables["ProductsTable"].NewRow();
@@ -84,10 +89,29 @@ namespace PCMS
                 ds.Tables["ProductsTable"].Rows.Add(dr);
             }
 
-            ReportDataSource rds = new ReportDataSource("products", ds.Tables["ProductsTable"]);
+            ReportDataSource rds = new ReportDataSource("dsReports", ds.Tables["ProductsTable"]);
             rpvProducts.LocalReport.DataSources.Clear();
             rpvProducts.LocalReport.DataSources.Add(rds);
             rpvProducts.LocalReport.Refresh();
+        }
+
+        private void GenerateSalespersonData(DateTime start, DateTime end)
+        {
+            foreach (DataRow row in handlerReports.GetAllSalesperson(start, end).Rows)
+            {
+                DataRow dr = ds.Tables["SalespersonsTable"].NewRow();
+                dr["Salesperson"] = row["Salesperson"].ToString();
+                dr["Date"] = Convert.ToDateTime(row["Date"].ToString()).ToShortDateString();
+                dr["Sales"] = Convert.ToInt32(row["Sales"].ToString());
+                dr["Total"] = Convert.ToDouble(row["SalesTotal"].ToString());
+
+                ds.Tables["SalespersonsTable"].Rows.Add(dr);
+            }
+
+            ReportDataSource rds = new ReportDataSource("dsReports", ds.Tables["SalespersonsTable"]);
+            rpvSalespersons.LocalReport.DataSources.Clear();
+            rpvSalespersons.LocalReport.DataSources.Add(rds);
+            rpvSalespersons.LocalReport.Refresh();
         }
     }
 }

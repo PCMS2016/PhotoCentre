@@ -26,5 +26,10 @@ namespace BLL
         {
             return db.GetAllProductsRefunds(start, end);
         }
+
+        public DataTable GetAllSalesperson(DateTime start, DateTime end)
+        {
+            return db.GetAllSalesperson(start, end);
+        }
     }
 }
