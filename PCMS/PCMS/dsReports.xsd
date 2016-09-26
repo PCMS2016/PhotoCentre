@@ -27,9 +27,34 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Salesperson" msprop:Generator_ColumnVarNameInTable="columnSalesperson" msprop:Generator_ColumnPropNameInRow="Salesperson" msprop:Generator_ColumnPropNameInTable="SalespersonColumn" msprop:Generator_UserColumnName="Salesperson" type="xs:string" minOccurs="0" />
-              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:string" minOccurs="0" />
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
               <xs:element name="Sales" msprop:Generator_ColumnVarNameInTable="columnSales" msprop:Generator_ColumnPropNameInRow="Sales" msprop:Generator_ColumnPropNameInTable="SalesColumn" msprop:Generator_UserColumnName="Sales" type="xs:int" minOccurs="0" />
               <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RefundsTable" msprop:Generator_TableClassName="RefundsTableDataTable" msprop:Generator_TableVarName="tableRefundsTable" msprop:Generator_TablePropName="RefundsTable" msprop:Generator_RowDeletingName="RefundsTableRowDeleting" msprop:Generator_RowChangingName="RefundsTableRowChanging" msprop:Generator_RowEvHandlerName="RefundsTableRowChangeEventHandler" msprop:Generator_RowDeletedName="RefundsTableRowDeleted" msprop:Generator_UserTableName="RefundsTable" msprop:Generator_RowChangedName="RefundsTableRowChanged" msprop:Generator_RowEvArgName="RefundsTableRowChangeEvent" msprop:Generator_RowClassName="RefundsTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Salesperson" msprop:Generator_ColumnVarNameInTable="columnSalesperson" msprop:Generator_ColumnPropNameInRow="Salesperson" msprop:Generator_ColumnPropNameInTable="SalespersonColumn" msprop:Generator_UserColumnName="Salesperson" type="xs:string" minOccurs="0" />
+              <xs:element name="OrderID" msprop:Generator_ColumnVarNameInTable="columnOrderID" msprop:Generator_ColumnPropNameInRow="OrderID" msprop:Generator_ColumnPropNameInTable="OrderIDColumn" msprop:Generator_UserColumnName="OrderID" type="xs:string" minOccurs="0" />
+              <xs:element name="Product" msprop:Generator_ColumnVarNameInTable="columnProduct" msprop:Generator_ColumnPropNameInRow="Product" msprop:Generator_ColumnPropNameInTable="ProductColumn" msprop:Generator_UserColumnName="Product" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_UserColumnName="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Reason" msprop:Generator_ColumnVarNameInTable="columnReason" msprop:Generator_ColumnPropNameInRow="Reason" msprop:Generator_ColumnPropNameInTable="ReasonColumn" msprop:Generator_UserColumnName="Reason" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SalesTrends" msprop:Generator_TableClassName="SalesTrendsDataTable" msprop:Generator_TableVarName="tableSalesTrends" msprop:Generator_RowChangedName="SalesTrendsRowChanged" msprop:Generator_TablePropName="SalesTrends" msprop:Generator_RowDeletingName="SalesTrendsRowDeleting" msprop:Generator_RowChangingName="SalesTrendsRowChanging" msprop:Generator_RowEvHandlerName="SalesTrendsRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesTrendsRowDeleted" msprop:Generator_RowClassName="SalesTrendsRow" msprop:Generator_UserTableName="SalesTrends" msprop:Generator_RowEvArgName="SalesTrendsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Product" msprop:Generator_ColumnVarNameInTable="columnProduct" msprop:Generator_ColumnPropNameInRow="Product" msprop:Generator_ColumnPropNameInTable="ProductColumn" msprop:Generator_UserColumnName="Product" type="xs:string" minOccurs="0" />
+              <xs:element name="Sold" msprop:Generator_ColumnVarNameInTable="columnSold" msprop:Generator_ColumnPropNameInRow="Sold" msprop:Generator_ColumnPropNameInTable="SoldColumn" msprop:Generator_UserColumnName="Sold" type="xs:int" minOccurs="0" />
+              <xs:element name="Refunded" msprop:Generator_ColumnVarNameInTable="columnRefunded" msprop:Generator_ColumnPropNameInRow="Refunded" msprop:Generator_ColumnPropNameInTable="RefundedColumn" msprop:Generator_UserColumnName="Refunded" type="xs:double" minOccurs="0" />
+              <xs:element name="SoldTotal" msprop:Generator_ColumnVarNameInTable="columnSoldTotal" msprop:Generator_ColumnPropNameInRow="SoldTotal" msprop:Generator_ColumnPropNameInTable="SoldTotalColumn" msprop:Generator_UserColumnName="SoldTotal" type="xs:int" minOccurs="0" />
+              <xs:element name="RefundedTotal" msprop:Generator_ColumnVarNameInTable="columnRefundedTotal" msprop:Generator_ColumnPropNameInRow="RefundedTotal" msprop:Generator_ColumnPropNameInTable="RefundedTotalColumn" msprop:Generator_UserColumnName="RefundedTotal" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

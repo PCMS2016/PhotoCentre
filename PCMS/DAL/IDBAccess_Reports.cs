@@ -14,5 +14,7 @@ namespace DAL
         DataTable GetAllProductsRefunds(DateTime start, DateTime end);
 
         DataTable GetAllSalesperson(DateTime start, DateTime end);
+
+        DataTable GetAllRefund(DateTime start, DateTime end);
     }
 }

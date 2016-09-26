@@ -31,5 +31,10 @@ namespace BLL
         {
             return db.GetAllSalesperson(start, end);
         }
+
+        public DataTable GetAllRefund(DateTime start, DateTime end)
+        {
+            return db.GetAllRefund(start, end);
+        }
     }
 }

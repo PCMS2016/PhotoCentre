@@ -31,6 +31,17 @@ namespace DAL
             return DBHelper.ExecuteParamerizedSelectCommand("sp_ReportProductsRefunds", CommandType.StoredProcedure, parameters);
         }
 
+        public DataTable GetAllRefund(DateTime start, DateTime end)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@startDate", start),
+                new SqlParameter("@endDate", end)
+            };
+
+            return DBHelper.ExecuteParamerizedSelectCommand("sp_ReportRefunds", CommandType.StoredProcedure, parameters);
+        }
+
         public DataTable GetAllSalesperson(DateTime start, DateTime end)
         {
             SqlParameter[] parameters = new SqlParameter[]

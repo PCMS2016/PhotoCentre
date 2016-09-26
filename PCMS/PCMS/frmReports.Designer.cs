@@ -32,6 +32,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.ProductsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
@@ -39,21 +40,28 @@
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.rpvSalespersons = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.reportViewer3 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rpvRefunds = new Microsoft.Reporting.WinForms.ReportViewer();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.dtpStart = new MetroFramework.Controls.MetroDateTime();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.dtpEnd = new MetroFramework.Controls.MetroDateTime();
             this.btnGenerate = new MetroFramework.Controls.MetroButton();
+            this.tabTrends = new MetroFramework.Controls.MetroTabPage();
+            this.rpvTrends = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SalespersonsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsReports = new PCMS.dsReports();
+            this.RefundsTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SalesTrendsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductsTableBindingSource)).BeginInit();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             this.metroTabPage3.SuspendLayout();
+            this.tabTrends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SalespersonsTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsReports)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RefundsTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalesTrendsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductsTableBindingSource
@@ -65,10 +73,11 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage1);
             this.metroTabControl1.Controls.Add(this.metroTabPage2);
             this.metroTabControl1.Controls.Add(this.metroTabPage3);
+            this.metroTabControl1.Controls.Add(this.tabTrends);
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.metroTabControl1.Location = new System.Drawing.Point(172, 63);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 3;
             this.metroTabControl1.Size = new System.Drawing.Size(840, 692);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabControl1.TabIndex = 0;
@@ -129,7 +138,7 @@
             // 
             // metroTabPage3
             // 
-            this.metroTabPage3.Controls.Add(this.reportViewer3);
+            this.metroTabPage3.Controls.Add(this.rpvRefunds);
             this.metroTabPage3.HorizontalScrollbarBarColor = true;
             this.metroTabPage3.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.HorizontalScrollbarSize = 10;
@@ -142,17 +151,16 @@
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
             // 
-            // reportViewer3
+            // rpvRefunds
             // 
-            this.reportViewer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource3.Name = "DataSet1";
-            reportDataSource3.Value = null;
-            this.reportViewer3.LocalReport.DataSources.Add(reportDataSource3);
-            this.reportViewer3.LocalReport.ReportEmbeddedResource = "PCMS.ProductsReport.rdlc";
-            this.reportViewer3.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer3.Name = "reportViewer3";
-            this.reportViewer3.Size = new System.Drawing.Size(832, 650);
-            this.reportViewer3.TabIndex = 3;
+            reportDataSource3.Name = "dsReports";
+            reportDataSource3.Value = this.RefundsTableBindingSource;
+            this.rpvRefunds.LocalReport.DataSources.Add(reportDataSource3);
+            this.rpvRefunds.LocalReport.ReportEmbeddedResource = "PCMS.ReportRefunds.rdlc";
+            this.rpvRefunds.Location = new System.Drawing.Point(3, 3);
+            this.rpvRefunds.Name = "rpvRefunds";
+            this.rpvRefunds.Size = new System.Drawing.Size(829, 647);
+            this.rpvRefunds.TabIndex = 3;
             // 
             // metroLabel1
             // 
@@ -198,6 +206,32 @@
             this.btnGenerate.UseSelectable = true;
             this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
             // 
+            // tabTrends
+            // 
+            this.tabTrends.Controls.Add(this.rpvTrends);
+            this.tabTrends.HorizontalScrollbarBarColor = true;
+            this.tabTrends.HorizontalScrollbarHighlightOnWheel = false;
+            this.tabTrends.HorizontalScrollbarSize = 10;
+            this.tabTrends.Location = new System.Drawing.Point(4, 38);
+            this.tabTrends.Name = "tabTrends";
+            this.tabTrends.Size = new System.Drawing.Size(832, 650);
+            this.tabTrends.TabIndex = 3;
+            this.tabTrends.Text = "Trends";
+            this.tabTrends.VerticalScrollbarBarColor = true;
+            this.tabTrends.VerticalScrollbarHighlightOnWheel = false;
+            this.tabTrends.VerticalScrollbarSize = 10;
+            // 
+            // rpvTrends
+            // 
+            reportDataSource4.Name = "dsReports";
+            reportDataSource4.Value = this.SalesTrendsBindingSource;
+            this.rpvTrends.LocalReport.DataSources.Add(reportDataSource4);
+            this.rpvTrends.LocalReport.ReportEmbeddedResource = "PCMS.ReportTrends.rdlc";
+            this.rpvTrends.Location = new System.Drawing.Point(2, 2);
+            this.rpvTrends.Name = "rpvTrends";
+            this.rpvTrends.Size = new System.Drawing.Size(829, 647);
+            this.rpvTrends.TabIndex = 4;
+            // 
             // SalespersonsTableBindingSource
             // 
             this.SalespersonsTableBindingSource.DataMember = "SalespersonsTable";
@@ -207,6 +241,16 @@
             // 
             this.dsReports.DataSetName = "dsReports";
             this.dsReports.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // RefundsTableBindingSource
+            // 
+            this.RefundsTableBindingSource.DataMember = "RefundsTable";
+            this.RefundsTableBindingSource.DataSource = this.dsReports;
+            // 
+            // SalesTrendsBindingSource
+            // 
+            this.SalesTrendsBindingSource.DataMember = "SalesTrends";
+            this.SalesTrendsBindingSource.DataSource = this.dsReports;
             // 
             // frmReports
             // 
@@ -228,8 +272,11 @@
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage3.ResumeLayout(false);
+            this.tabTrends.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SalespersonsTableBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsReports)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RefundsTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalesTrendsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,9 +295,13 @@
         private MetroFramework.Controls.MetroDateTime dtpEnd;
         private MetroFramework.Controls.MetroButton btnGenerate;
         private Microsoft.Reporting.WinForms.ReportViewer rpvSalespersons;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer3;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvRefunds;
         private System.Windows.Forms.BindingSource ProductsTableBindingSource;
         private System.Windows.Forms.BindingSource SalespersonsTableBindingSource;
         private dsReports dsReports;
+        private System.Windows.Forms.BindingSource RefundsTableBindingSource;
+        private MetroFramework.Controls.MetroTabPage tabTrends;
+        private Microsoft.Reporting.WinForms.ReportViewer rpvTrends;
+        private System.Windows.Forms.BindingSource SalesTrendsBindingSource;
     }
 }
